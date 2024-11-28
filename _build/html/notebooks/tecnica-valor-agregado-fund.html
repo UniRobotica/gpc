@@ -1,0 +1,947 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>title: “Introdução a Técnica do Valor Agregado” author: “UniRobótica” description: “Fundamentos da Técnica do Valor Agregado.” permalink: /tecnica-valor-agregado-fundamentos/ hide: true &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tecnica-valor-agregado-fund';</script>
+    <link rel="icon" href="../_static/favicon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tecnica_valor_agregado.html">title: “Técnica do Valor Agregado na Construção Civil”
+author: “UniRobótica”
+description: “Exemplo de Aplicação da Técnica do Valor Agregado na Construção Civil.”
+permalink: /tecnica-valor-agregado/
+hide: true</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/tecnica-valor-agregado-fund.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/tecnica-valor-agregado-fund.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/tecnica-valor-agregado-fund.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>title: “Introdução a Técnica do Valor Agregado”
+author: “UniRobótica”
+description: “Fundamentos da Técnica do Valor Agregado.”
+permalink: /tecnica-valor-agregado-fundamentos/
+hide: true</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">title: “Introdução a Técnica do Valor Agregado”
+author: “UniRobótica”
+description: “Fundamentos da Técnica do Valor Agregado.”
+permalink: /tecnica-valor-agregado-fundamentos/
+hide: true</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao-a-tecnica-do-valor-agregado">Introdução à Técnica do Valor Agregado</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao-aplicacao-do-gerenciamento-de-valor-agregado-gva">Interpretação: Aplicação do Gerenciamento de Valor Agregado (GVA)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-a-estrutura-analitica-do-projeto-eap-e-o-cronograma">1. Definir a Estrutura Analítica do Projeto (EAP) e o Cronograma</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-valores-planejados-vp">2. Atribuir Valores Planejados (VP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-valores-reais-vr">3. Atribuir Valores Reais (VR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-custos-reais-cr">4. Atribuir Custos Reais (CR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medir-e-calcular-indicadores-de-desempenho">5. Medir e Calcular Indicadores de Desempenho</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-variacao-de-prazo-vpr">a) Variação de Prazo (VPr)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-variacao-de-custo-vc">b) Variação de Custo (VC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-indice-de-desempenho-de-prazos-idp">c) Índice de Desempenho de Prazos (IDP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indice-de-desempenho-de-custos-idc">d) Índice de Desempenho de Custos (IDC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitorar-e-analisar-os-resultados">6. Monitorar e Analisar os Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identificar-desvios-e-aplicar-acoes-corretivas">7. Identificar Desvios e Aplicar Ações Corretivas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoramento-periodico-e-cumulativo">Monitoramento Periódico e Cumulativo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <hr class="docutils" />
+<section id="title-introducao-a-tecnica-do-valor-agregado-author-unirobotica-description-fundamentos-da-tecnica-do-valor-agregado-permalink-tecnica-valor-agregado-fundamentos-hide-true">
+<h1>title: “Introdução a Técnica do Valor Agregado”
+author: “UniRobótica”
+description: “Fundamentos da Técnica do Valor Agregado.”
+permalink: /tecnica-valor-agregado-fundamentos/
+hide: true<a class="headerlink" href="#title-introducao-a-tecnica-do-valor-agregado-author-unirobotica-description-fundamentos-da-tecnica-do-valor-agregado-permalink-tecnica-valor-agregado-fundamentos-hide-true" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introducao-a-tecnica-do-valor-agregado">
+<h1>Introdução à Técnica do Valor Agregado<a class="headerlink" href="#introducao-a-tecnica-do-valor-agregado" title="Link to this heading">#</a></h1>
+<p>O Gerenciamento do Valor Agregado (<em>Earned Value Management</em>, EVM) ou Análise do Valor Agregado (<em>Earned Value Analysis</em>, EVA) é uma técnica de medição e controle de projetos baseado na medição física, financeira e de tempo que proporciona indicadores de avanço real, variações de desempenho e previsões para conclusão do projeto <span id="id1">[]</span>.</p>
+<p>Foi desenvolvido pelo departamento de defesa dos Estados Unidos e é indicada pelo <em>Project Managemetn Institute</em> (PMI). Para <span id="id2"></span>, esta técnica é uma evolução desenvolvida a partir dos esforços iniciais com PERT (1962-1965, <em>Program Evaluation and Review Technique</em>) e CSPCS (1967-1996, <em>Cost Schedule Planning and Control Specification</em>) cujos principais avanços estão relacionados à integração de planejamento, controle e definição de escopos de projetos em uma única ferramenta.</p>
+<p>O <em>Project Management Institute</em> (PMI) <span id="id3">[]</span> classifica o EVM em duas categorias:</p>
+<ol class="arabic simple">
+<li><p>os parâmetros chave, que incluem
+o Valor Planejado (VP),que representa uma estimativa inicial para o trabalho planejado
+o Valor Agregado (VA), que  representa a quantidade de trabalho que foi realmente realizado até à data de medição, expressa em termos de orçamento inicial para esse trabalho
+o Custo Real (CR), que representa o verdadeiro custo do trabalho realizado até o momento de medição</p></li>
+<li><p>Indicadores de Desempenho que incluem
+A Variação de Prazo (VPr), que é calculada como VPr = VA – VP e representa o quanto o projeto está à frente (VPr &gt; 0) ou atrás (VPr &lt; 0) da programação
+A Variação de Custo (VC) é calculada como VC = VA – CR e representa o quanto o projeto está abaixo (VC &gt; 0) ou acima do orçamento (VC &lt; 0)
+O Índice de desempenho de prazos (IDP = VA / VP) representa o ritmo de produção, ou seja, a taxa de conversão de custo planejado em valor agregado. Ele fornece a mesma informação que VPr, mas agora em termos relativos
+O Índice de Desempenho de Custos (IDC = VA / CR) representa o quão eficientemente os recursos estão sendo usados em termos de taxa de conversão de CR em VA.</p></li>
+</ol>
+<p><img alt="tvaDetalhes.png" src="notebooks/attachment:tvaDetalhes.png" /></p>
+<p><img alt="tvaReservaGer.png" src="../_images/tvaReservaGer.png" /></p>
+<p>A aplicação da Gerenciamento de Valor Agregado envolve:</p>
+<ol class="arabic simple">
+<li><p>Definir a Estrutura Analítica do Projeto (EAP) e o cronograma</p></li>
+<li><p>Atribuir Valores Planejados (VP)</p></li>
+<li><p>Atribuir Valores Reais (VR)</p></li>
+<li><p>Atribuir Custos Reais (CR)</p></li>
+<li><p>Medir e calcular os Indicadores de Desempenho:
+A Variação de Prazo (VPr)
+A Variação de Custo (VC)
+O Índice de desempenho de prazos (IDP = VA / VP)
+O Índice de Desempenho de Custos (IDC = VA / CR)</p></li>
+<li><p>Monitorar e analisar os Resultados</p></li>
+<li><p>Identificar desvios e aplicar ações corretivas</p></li>
+</ol>
+<p>VP, VR e CR podem ser monitorados tanto de período a período (geralmente semana ou mês) como de maneira cumulativa</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="interpretacao-aplicacao-do-gerenciamento-de-valor-agregado-gva">
+<h1>Interpretação: Aplicação do Gerenciamento de Valor Agregado (GVA)<a class="headerlink" href="#interpretacao-aplicacao-do-gerenciamento-de-valor-agregado-gva" title="Link to this heading">#</a></h1>
+<p>O <strong>Gerenciamento de Valor Agregado (GVA)</strong> é uma técnica que integra escopo, cronograma e custo para avaliar o desempenho e o progresso de um projeto. Ele permite medir a saúde financeira e o andamento de uma obra, identificando possíveis desvios para que ações corretivas sejam aplicadas.</p>
+<hr class="docutils" />
+<section id="definir-a-estrutura-analitica-do-projeto-eap-e-o-cronograma">
+<h2>1. Definir a Estrutura Analítica do Projeto (EAP) e o Cronograma<a class="headerlink" href="#definir-a-estrutura-analitica-do-projeto-eap-e-o-cronograma" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A <strong>EAP</strong> é uma decomposição hierárquica do trabalho do projeto. Serve para estruturar as atividades em partes menores, facilitando o planejamento, controle e monitoramento.</p></li>
+<li><p>O <strong>cronograma</strong> organiza o tempo necessário para cada atividade.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="atribuir-valores-planejados-vp">
+<h2>2. Atribuir Valores Planejados (VP)<a class="headerlink" href="#atribuir-valores-planejados-vp" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Valor Planejado (VP)</strong> representa o custo orçado para executar o trabalho planejado até o momento atual.</p></li>
+<li><p>Exemplo de interpretação:</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VP (R$)</p></th>
+<th class="head"><p>Descrição</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>50.000</p></td>
+<td><p>Custo planejado para a execução inicial</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>100.000</p></td>
+<td><p>Planejado para atingir 50% da execução total</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="atribuir-valores-reais-vr">
+<h2>3. Atribuir Valores Reais (VR)<a class="headerlink" href="#atribuir-valores-reais-vr" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Valor Real (VR)</strong> é o custo orçado para o trabalho que foi efetivamente concluído.</p></li>
+<li><p>Exemplo de interpretação:</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VR (R$)</p></th>
+<th class="head"><p>Descrição</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>45.000</p></td>
+<td><p>Execução real ficou abaixo do planejado</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>110.000</p></td>
+<td><p>Execução acima do planejado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="atribuir-custos-reais-cr">
+<h2>4. Atribuir Custos Reais (CR)<a class="headerlink" href="#atribuir-custos-reais-cr" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Custo Real (CR)</strong> é o valor gasto efetivamente no período.</p></li>
+<li><p>Exemplo de interpretação:</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>CR (R$)</p></th>
+<th class="head"><p>Descrição</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>40.000</p></td>
+<td><p>Gasto real inferior ao planejado</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>120.000</p></td>
+<td><p>Custo superior ao esperado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="medir-e-calcular-indicadores-de-desempenho">
+<h2>5. Medir e Calcular Indicadores de Desempenho<a class="headerlink" href="#medir-e-calcular-indicadores-de-desempenho" title="Link to this heading">#</a></h2>
+<section id="a-variacao-de-prazo-vpr">
+<h3>a) Variação de Prazo (VPr)<a class="headerlink" href="#a-variacao-de-prazo-vpr" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fórmula: <strong>VPr = VR - VP</strong></p></li>
+<li><p>Interpretação:</p>
+<ul>
+<li><p>VPr &gt; 0: Trabalho está adiantado.</p></li>
+<li><p>VPr &lt; 0: Trabalho está atrasado.</p></li>
+</ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VR (R$)</p></th>
+<th class="head"><p>VP (R$)</p></th>
+<th class="head"><p>VPr (R$)</p></th>
+<th class="head"><p>Situação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>45.000</p></td>
+<td><p>50.000</p></td>
+<td><p>-5.000</p></td>
+<td><p>Atrasado</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>110.000</p></td>
+<td><p>100.000</p></td>
+<td><p>+10.000</p></td>
+<td><p>Adiantado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="b-variacao-de-custo-vc">
+<h3>b) Variação de Custo (VC)<a class="headerlink" href="#b-variacao-de-custo-vc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fórmula: <strong>VC = VR - CR</strong></p></li>
+<li><p>Interpretação:</p>
+<ul>
+<li><p>VC &gt; 0: O projeto está abaixo do custo esperado.</p></li>
+<li><p>VC &lt; 0: O projeto está acima do custo esperado.</p></li>
+</ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VR (R$)</p></th>
+<th class="head"><p>CR (R$)</p></th>
+<th class="head"><p>VC (R$)</p></th>
+<th class="head"><p>Situação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>45.000</p></td>
+<td><p>40.000</p></td>
+<td><p>+5.000</p></td>
+<td><p>Abaixo do custo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>110.000</p></td>
+<td><p>120.000</p></td>
+<td><p>-10.000</p></td>
+<td><p>Acima do custo</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="c-indice-de-desempenho-de-prazos-idp">
+<h3>c) Índice de Desempenho de Prazos (IDP)<a class="headerlink" href="#c-indice-de-desempenho-de-prazos-idp" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fórmula: <strong>IDP = VR / VP</strong></p></li>
+<li><p>Interpretação:</p>
+<ul>
+<li><p>IDP &gt; 1: O projeto está adiantado.</p></li>
+<li><p>IDP &lt; 1: O projeto está atrasado.</p></li>
+<li><p>IDP = 1: O projeto está no prazo.</p></li>
+</ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VR (R$)</p></th>
+<th class="head"><p>VP (R$)</p></th>
+<th class="head"><p>IDP</p></th>
+<th class="head"><p>Situação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>45.000</p></td>
+<td><p>50.000</p></td>
+<td><p>0,90</p></td>
+<td><p>Atrasado</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>110.000</p></td>
+<td><p>100.000</p></td>
+<td><p>1,10</p></td>
+<td><p>Adiantado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="d-indice-de-desempenho-de-custos-idc">
+<h3>d) Índice de Desempenho de Custos (IDC)<a class="headerlink" href="#d-indice-de-desempenho-de-custos-idc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fórmula: <strong>IDC = VR / CR</strong></p></li>
+<li><p>Interpretação:</p>
+<ul>
+<li><p>IDC &gt; 1: O projeto está dentro do orçamento.</p></li>
+<li><p>IDC &lt; 1: O projeto está acima do orçamento.</p></li>
+<li><p>IDC = 1: O projeto está dentro do orçamento previsto.</p></li>
+</ul>
+</li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VR (R$)</p></th>
+<th class="head"><p>CR (R$)</p></th>
+<th class="head"><p>IDC</p></th>
+<th class="head"><p>Situação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>45.000</p></td>
+<td><p>40.000</p></td>
+<td><p>1,12</p></td>
+<td><p>Dentro do orçamento</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>110.000</p></td>
+<td><p>120.000</p></td>
+<td><p>0,92</p></td>
+<td><p>Acima do orçamento</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="monitorar-e-analisar-os-resultados">
+<h2>6. Monitorar e Analisar os Resultados<a class="headerlink" href="#monitorar-e-analisar-os-resultados" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Comparar periodicamente os indicadores <strong>VPr</strong>, <strong>VC</strong>, <strong>IDP</strong> e <strong>IDC</strong> para avaliar o progresso.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="identificar-desvios-e-aplicar-acoes-corretivas">
+<h2>7. Identificar Desvios e Aplicar Ações Corretivas<a class="headerlink" href="#identificar-desvios-e-aplicar-acoes-corretivas" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Ações corretivas são definidas com base nos desvios observados nos indicadores.</p></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<ul class="simple">
+<li><p>Se o <strong>IDP</strong> está abaixo de 1 (atraso), pode ser necessário:</p>
+<ul>
+<li><p>Reprogramar atividades.</p></li>
+<li><p>Aumentar recursos alocados.</p></li>
+</ul>
+</li>
+<li><p>Se o <strong>IDC</strong> está abaixo de 1 (custo alto), pode ser necessário:</p>
+<ul>
+<li><p>Reduzir desperdício.</p></li>
+<li><p>Negociar novos contratos.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="monitoramento-periodico-e-cumulativo">
+<h2>Monitoramento Periódico e Cumulativo<a class="headerlink" href="#monitoramento-periodico-e-cumulativo" title="Link to this heading">#</a></h2>
+<p>Os valores <strong>VP</strong>, <strong>VR</strong> e <strong>CR</strong> podem ser monitorados:</p>
+<ul class="simple">
+<li><p><strong>Período a período</strong> (ex.: semanalmente) para identificar mudanças rápidas.</p></li>
+<li><p><strong>Cumulativamente</strong>, para avaliar o progresso total do projeto.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Período</p></th>
+<th class="head"><p>VP Acumulado (R$)</p></th>
+<th class="head"><p>VR Acumulado (R$)</p></th>
+<th class="head"><p>CR Acumulado (R$)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Semana 1</p></td>
+<td><p>50.000</p></td>
+<td><p>45.000</p></td>
+<td><p>40.000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Semana 2</p></td>
+<td><p>150.000</p></td>
+<td><p>155.000</p></td>
+<td><p>160.000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="conclusao">
+<h3>Conclusão<a class="headerlink" href="#conclusao" title="Link to this heading">#</a></h3>
+<p>O <strong>Gerenciamento de Valor Agregado</strong> fornece uma visão integrada sobre o desempenho de prazo e custo, permitindo gerenciar a obra de forma mais eficiente e assertiva.</p>
+<p>Principais desafios</p>
+<p>Falta de dados precisos
+Imprevistos e mudanças no escopo do projeto
+Falta de apoio e participação da equipe
+Dificuldade de integração com outras técnicas e indicadores</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">title: “Introdução a Técnica do Valor Agregado”
+author: “UniRobótica”
+description: “Fundamentos da Técnica do Valor Agregado.”
+permalink: /tecnica-valor-agregado-fundamentos/
+hide: true</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao-a-tecnica-do-valor-agregado">Introdução à Técnica do Valor Agregado</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao-aplicacao-do-gerenciamento-de-valor-agregado-gva">Interpretação: Aplicação do Gerenciamento de Valor Agregado (GVA)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-a-estrutura-analitica-do-projeto-eap-e-o-cronograma">1. Definir a Estrutura Analítica do Projeto (EAP) e o Cronograma</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-valores-planejados-vp">2. Atribuir Valores Planejados (VP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-valores-reais-vr">3. Atribuir Valores Reais (VR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-custos-reais-cr">4. Atribuir Custos Reais (CR)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medir-e-calcular-indicadores-de-desempenho">5. Medir e Calcular Indicadores de Desempenho</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-variacao-de-prazo-vpr">a) Variação de Prazo (VPr)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-variacao-de-custo-vc">b) Variação de Custo (VC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-indice-de-desempenho-de-prazos-idp">c) Índice de Desempenho de Prazos (IDP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indice-de-desempenho-de-custos-idc">d) Índice de Desempenho de Custos (IDC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitorar-e-analisar-os-resultados">6. Monitorar e Analisar os Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identificar-desvios-e-aplicar-acoes-corretivas">7. Identificar Desvios e Aplicar Ações Corretivas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoramento-periodico-e-cumulativo">Monitoramento Periódico e Cumulativo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
