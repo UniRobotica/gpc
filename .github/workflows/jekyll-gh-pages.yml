@@ -6,7 +6,6 @@ on:
     branches:
       - master
       - main
-    # Especifica que o workflow só será acionado se houver mudanças em notebooks ou arquivos de configuração do Jupyter Book
     paths:
       - '**/*.ipynb'
       - '**/*.md'
@@ -20,6 +19,9 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    environment:
+      name: github-pages  # Define o ambiente como 'github-pages' para a implantação
+
     steps:
     - uses: actions/checkout@v3
 
@@ -34,9 +36,6 @@ jobs:
         pip install -r requirements.txt
 
     # (optional) Cache your executed notebooks between runs
-    # if you have config:
-    # execute:
-    #   execute_notebooks: cache
     - name: Cache executed notebooks
       uses: actions/cache@v3
       with:
@@ -53,7 +52,7 @@ jobs:
       uses: actions/upload-pages-artifact@v2
       with:
         path: "_build/html"
-        name: book-artifact-${{ github.sha }}  # Adiciona o hash do commit para garantir nome único
+        name: book-artifact-${{ github.sha }}
 
     # Deploy the book's HTML to GitHub Pages
     - name: Deploy to GitHub Pages
