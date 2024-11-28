@@ -7,11 +7,11 @@ on:
       - master
       - main
     # Especifica que o workflow só será acionado se houver mudanças em notebooks ou arquivos de configuração do Jupyter Book
-    #paths:
-    #  - '**/*.ipynb'
-    #  - '**/*.md'
-    #  - '_config.yml'
-    #  - '_toc.yml'
+    paths:
+      - '**/*.ipynb'
+      - '**/*.md'
+      - '_config.yml'
+      - '_toc.yml'
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
@@ -37,7 +37,7 @@ jobs:
     # if you have config:
     # execute:
     #   execute_notebooks: cache
-    - name: cache executed notebooks
+    - name: Cache executed notebooks
       uses: actions/cache@v3
       with:
         path: _build/.jupyter_cache
@@ -48,13 +48,16 @@ jobs:
       run: |
         jupyter-book build .
 
-    # Upload the book's HTML as an artifact
+    # Upload the book's HTML as an artifact with a unique name
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
         path: "_build/html"
+        name: book-artifact-${{ github.sha }}  # Adiciona o hash do commit para garantir nome único
 
     # Deploy the book's HTML to GitHub Pages
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
+      with:
+        artifact_name: book-artifact-${{ github.sha }}  # Garantir que o artefato tenha o nome único
