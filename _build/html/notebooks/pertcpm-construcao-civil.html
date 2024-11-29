@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Análise de PERT/CPM &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -60,11 +60,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tecnica-valor-agregado-construcao';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/pertcpm-construcao-civil';</script>
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Exemplo de Aplicação: Técnica de Valor Agregado em Projetos" href="tecnica-valor-agregado-projetos.html" />
+    <link rel="next" title="Técnica de Valor Agregado (EVM - Earned Value Management)" href="tecnica-valor-agregado-fund.html" />
+    <link rel="prev" title="Gerenciamento de Projetos e Contratos" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -169,10 +170,10 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pertcpm-construcao-civil.html">Análise de PERT/CPM</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Análise de PERT/CPM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-fund.html">Técnica de Valor Agregado (EVM - Earned Value Management)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-projetos.html">Exemplo de Aplicação: Técnica de Valor Agregado em Projetos</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-construcao.html">Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</a></li>
 </ul>
 
     </div>
@@ -275,7 +276,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/tecnica-valor-agregado-construcao.ipynb" target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/pertcpm-construcao-civil.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +293,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/tecnica-valor-agregado-construcao.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/pertcpm-construcao-civil.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +323,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/tecnica-valor-agregado-construcao.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/pertcpm-construcao-civil.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +399,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</h1>
+    <h1>Análise de PERT/CPM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,14 +409,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">Introdução</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-metricas">Principais Métricas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indicadores-de-desempenho">Indicadores de Desempenho</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-do-projeto">Cenário do Projeto</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacao-dos-indicadores">Visualização dos Indicadores</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao-dos-resultados">Interpretação dos Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carregar-dados-do-projeto">Carregar Dados do Projeto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criar-o-grafo-do-projeto">Criar o Grafo do Projeto</a></li>
 </ul>
             </nav>
         </div>
@@ -427,97 +423,89 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exemplo-de-aplicacao-tecnica-do-valor-agregado-na-construcao-civil">
-<h1>Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil<a class="headerlink" href="#exemplo-de-aplicacao-tecnica-do-valor-agregado-na-construcao-civil" title="Link to this heading">#</a></h1>
-<p>A Técnica do Valor Agregado (<strong>Earned Value Management - EVM</strong>) é uma abordagem utilizada no gerenciamento de projetos para monitorar custos e prazos.</p>
-<section id="introducao">
-<h2>Introdução<a class="headerlink" href="#introducao" title="Link to this heading">#</a></h2>
-<section id="principais-metricas">
-<h3>Principais Métricas<a class="headerlink" href="#principais-metricas" title="Link to this heading">#</a></h3>
+  <section class="tex2jax_ignore mathjax_ignore" id="analise-de-pert-cpm">
+<h1>Análise de PERT/CPM<a class="headerlink" href="#analise-de-pert-cpm" title="Link to this heading">#</a></h1>
+<p>Este notebook realiza uma análise de PERT/CPM baseada no projeto descrito, considerando as atividades, dependências e durações fornecidas.</p>
+<section id="objetivos">
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Planned Value (PV)</strong>: O valor planejado até uma data específica.</p></li>
-<li><p><strong>Earned Value (EV)</strong>: O valor agregado com base no progresso real.</p></li>
-<li><p><strong>Actual Cost (AC)</strong>: O custo real incorrido até o momento.</p></li>
+<li><p>Determinar o caminho crítico.</p></li>
+<li><p>Calcular os tempos de início e término (mais cedo e mais tarde).</p></li>
+<li><p>Gerar gráficos para visualizar o progresso.</p></li>
 </ul>
-</section>
-<section id="indicadores-de-desempenho">
-<h3>Indicadores de Desempenho<a class="headerlink" href="#indicadores-de-desempenho" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Cost Variance (CV)</strong>: Diferença entre EV e AC. (CV = EV - AC).</p></li>
-<li><p><strong>Schedule Variance (SV)</strong>: Diferença entre EV e PV. (SV = EV - PV).</p></li>
-<li><p><strong>Cost Performance Index (CPI)</strong>: Eficiência de custo (CPI = EV / AC).</p></li>
-<li><p><strong>Schedule Performance Index (SPI)</strong>: Eficiência de cronograma (SPI = EV / PV).</p></li>
-</ul>
-</section>
-</section>
-<section id="cenario-do-projeto">
-<h2>Cenário do Projeto<a class="headerlink" href="#cenario-do-projeto" title="Link to this heading">#</a></h2>
-<p>Este exemplo representa um projeto de construção civil com cinco etapas principais:</p>
-<ol class="arabic simple">
-<li><p>Fundações</p></li>
-<li><p>Estrutura</p></li>
-<li><p>Instalações</p></li>
-<li><p>Acabamento</p></li>
-<li><p>Entrega</p></li>
-</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importação de bibliotecas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar bibliotecas necessárias</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Leitura dos dados do projeto</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/dados_projeto.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Cálculos adicionais</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;CV&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Valor Agregado&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Custo Real&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;SV&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Valor Agregado&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Custo Planejado&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;CPI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Valor Agregado&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Custo Real&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;SPI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Valor Agregado&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Custo Planejado&#39;</span><span class="p">]</span>
-
-<span class="c1"># Exibindo os dados</span>
-<span class="n">df</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pygraphviz</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="visualizacao-dos-indicadores">
-<h2>Visualização dos Indicadores<a class="headerlink" href="#visualizacao-dos-indicadores" title="Link to this heading">#</a></h2>
+<section id="carregar-dados-do-projeto">
+<h2>Carregar Dados do Projeto<a class="headerlink" href="#carregar-dados-do-projeto" title="Link to this heading">#</a></h2>
+<p>O arquivo CSV contém as informações das atividades, dependências e durações estimadas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para CV e SV</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregar dados do CSV</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="criar-o-grafo-do-projeto">
+<h2>Criar o Grafo do Projeto<a class="headerlink" href="#criar-o-grafo-do-projeto" title="Link to this heading">#</a></h2>
+<p>A partir das dependências, construímos um grafo dirigido para representar as relações entre as atividades.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Criar o grafo de PERT/CPM</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 
-<span class="c1"># Gráfico CV</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Etapa&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;CV&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Variação de Custo (CV)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Etapas&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;R$&#39;</span><span class="p">)</span>
+<span class="c1"># Adicionar nós e arestas ao grafo</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
 
-<span class="c1"># Gráfico SV</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Etapa&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SV&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Variação de Cronograma (SV)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Etapas&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;R$&#39;</span><span class="p">)</span>
+<span class="c1"># Melhorar a visualização do grafo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># Utilizar layout hierárquico com maior espaçamento para evitar sobreposição</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">nx_agraph</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="s1">&#39;dot&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-Granksep=1.5 -Gnodesep=1.0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Desenhar o grafo com nós ajustados</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> 
+    <span class="n">pos</span><span class="p">,</span> 
+    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa os rótulos padrão</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>     <span class="c1"># Ajusta o tamanho dos nós</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Adicionar rótulos personalizados nos nós (Nome e Duração)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;duração&#39;</span><span class="p">)</span>
+<span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Título e exibição</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="interpretacao-dos-resultados">
-<h2>Interpretação dos Resultados<a class="headerlink" href="#interpretacao-dos-resultados" title="Link to this heading">#</a></h2>
-<p>Abaixo estão as interpretações para cada etapa do projeto com base nos indicadores:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etapa: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Etapa&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - CPI: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;CPI&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;(Eficiente)&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;CPI&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;(Ineficiente)&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - SPI: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;SPI&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;(No Prazo)&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;SPI&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;(Atrasado)&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -556,13 +544,22 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tecnica-valor-agregado-projetos.html"
+       href="../intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exemplo de Aplicação: Técnica de Valor Agregado em Projetos</p>
+        <p class="prev-next-title">Gerenciamento de Projetos e Contratos</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="tecnica-valor-agregado-fund.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Técnica de Valor Agregado (EVM - Earned Value Management)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -581,14 +578,9 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">Introdução</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-metricas">Principais Métricas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indicadores-de-desempenho">Indicadores de Desempenho</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cenario-do-projeto">Cenário do Projeto</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacao-dos-indicadores">Visualização dos Indicadores</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao-dos-resultados">Interpretação dos Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carregar-dados-do-projeto">Carregar Dados do Projeto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criar-o-grafo-do-projeto">Criar o Grafo do Projeto</a></li>
 </ul>
   </nav></div>
 
