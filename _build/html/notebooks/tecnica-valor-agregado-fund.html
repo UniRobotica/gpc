@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introdução à Técnica do Valor Agregado &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Técnica de Valor Agregado (EVM - Earned Value Management) &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -170,7 +170,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introdução à Técnica do Valor Agregado</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Técnica de Valor Agregado (EVM - Earned Value Management)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tecnica_valor_agregado.html">Técnica do Valor Agregado na Construção Civil</a></li>
 </ul>
 
@@ -397,7 +397,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introdução à Técnica do Valor Agregado</h1>
+    <h1>Técnica de Valor Agregado (EVM - Earned Value Management)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -407,6 +407,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-do-notebook">Estrutura do Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao-a-tecnica-do-valor-agregado">Introdução à Técnica do Valor Agregado</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-e-interpretacao-da-tecnica-gerenciamento-de-valor-agregado-gva">Análise e interpretação da Técnica (Gerenciamento) de Valor Agregado (GVA)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-a-estrutura-analitica-do-projeto-eap-e-o-cronograma">1. Definir a Estrutura Analítica do Projeto (EAP) e o Cronograma</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-valores-planejados-vp">2. Atribuir Valores Planejados (VP)</a></li>
@@ -436,8 +438,26 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introducao-a-tecnica-do-valor-agregado">
-<h1>Introdução à Técnica do Valor Agregado<a class="headerlink" href="#introducao-a-tecnica-do-valor-agregado" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tecnica-de-valor-agregado-evm-earned-value-management">
+<h1>Técnica de Valor Agregado (EVM - Earned Value Management)<a class="headerlink" href="#tecnica-de-valor-agregado-evm-earned-value-management" title="Link to this heading">#</a></h1>
+<p>A técnica de <strong>Valor Agregado</strong> (Earned Value Management - EVM) é uma metodologia amplamente utilizada para o acompanhamento e controle de projetos. O objetivo é integrar escopo, cronograma e custo, oferecendo uma visão clara da performance e da saúde do projeto.</p>
+<p>A EVM fornece métricas que ajudam a responder questões fundamentais, como:</p>
+<ul class="simple">
+<li><p>O projeto está dentro do cronograma?</p></li>
+<li><p>O projeto está dentro do orçamento?</p></li>
+<li><p>Qual é a previsão de desempenho futuro?</p></li>
+</ul>
+<p>Neste notebook, vamos explorar a aplicação prática dessa técnica, calculando as principais métricas a partir de um conjunto de dados hipotético.</p>
+<section id="estrutura-do-notebook">
+<h2>Estrutura do Notebook<a class="headerlink" href="#estrutura-do-notebook" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Definições e Fórmulas</strong>: Breve introdução às principais métricas e conceitos.</p></li>
+<li><p><strong>Cálculo Prático</strong>: Demonstração passo a passo utilizando Python.</p></li>
+<li><p><strong>Interpretação dos Resultados</strong>: Análise dos indicadores de desempenho do projeto.</p></li>
+</ol>
+</section>
+<section id="introducao-a-tecnica-do-valor-agregado">
+<h2>Introdução à Técnica do Valor Agregado<a class="headerlink" href="#introducao-a-tecnica-do-valor-agregado" title="Link to this heading">#</a></h2>
 <p>O Gerenciamento do Valor Agregado (<em>Earned Value Management</em>, EVM) ou Análise do Valor Agregado (<em>Earned Value Analysis</em>, EVA) é uma técnica de medição e controle de projetos baseado na medição física, financeira e de tempo que proporciona indicadores de avanço real, variações de desempenho e previsões para conclusão do projeto <span id="id1">[<a class="reference internal" href="#id5" title="EunHong Kim, William G Wells Jr, and Michael R Duffey. A model for effective implementation of earned value management methodology. International Journal of Project Management, 21(5):375–382, 2003.">KWJD03</a>]</span>.</p>
 <p>Foi desenvolvido pelo departamento de defesa dos Estados Unidos e é indicada pelo <em>Project Managemetn Institute</em> (PMI). Para <span id="id2"></span>, esta técnica é uma evolução desenvolvida a partir dos esforços iniciais com PERT (1962-1965, <em>Program Evaluation and Review Technique</em>) e CSPCS (1967-1996, <em>Cost Schedule Planning and Control Specification</em>) cujos principais avanços estão relacionados à integração de planejamento, controle e definição de escopos de projetos em uma única ferramenta.</p>
 <p>O <em>Project Management Institute</em> (PMI) <span id="id3">[<a class="reference internal" href="#id6" title="Albert Lester. Project Management, Planning and Control: Managing Engineering, Construction and Manufacturing Projects to PMI, APM and BSI Standards. Elsevier, Oxford, UK, 5th edition, 2006. ISBN 9780750669566.">Les06</a>]</span> classifica o EVM em duas categorias:</p>
@@ -452,8 +472,7 @@ A Variação de Custo (VC) é calculada como VC = VA – CR e representa o quant
 O Índice de desempenho de prazos (IDP = VA / VP) representa o ritmo de produção, ou seja, a taxa de conversão de custo planejado em valor agregado. Ele fornece a mesma informação que VPr, mas agora em termos relativos
 O Índice de Desempenho de Custos (IDC = VA / CR) representa o quão eficientemente os recursos estão sendo usados em termos de taxa de conversão de CR em VA.</p></li>
 </ol>
-<p><img alt="tvaDetalhes.png" src="notebooks/attachment:tvaDetalhes.png" /></p>
-<p><img alt="tvaReservaGer.png" src="../_images/tvaReservaGer.png" /></p>
+<p><img alt="tvaDetalhes.png" src="../_images/tvaDetalhes.png" /></p>
 <p>A aplicação da Gerenciamento de Valor Agregado envolve:</p>
 <ol class="arabic simple">
 <li><p>Definir a Estrutura Analítica do Projeto (EAP) e o cronograma</p></li>
@@ -469,6 +488,9 @@ O Índice de Desempenho de Custos (IDC = VA / CR)</p></li>
 <li><p>Identificar desvios e aplicar ações corretivas</p></li>
 </ol>
 <p>VP, VR e CR podem ser monitorados tanto de período a período (geralmente semana ou mês) como de maneira cumulativa</p>
+<p>No PMBOK, a <strong>reserva de contingência</strong> é usada para riscos identificados e está no orçamento do projeto, enquanto a <strong>reserva gerencial</strong> cobre riscos não identificados. Ambas se correlacionam com as <strong>Técnicas de Análise de Valor (TVA)</strong>, como o <strong>Valor Agregado (Earned Value)</strong>, ao oferecer suporte financeiro para corrigir desvios detectados por indicadores como o IDC e o EPC. A TVA identifica problemas de desempenho, e as reservas garantem a sustentabilidade do valor, permitindo ajustes estratégicos e maior previsibilidade no gerenciamento de projetos.</p>
+<p><img alt="tvaDetalhes.png" src="../_images/tvaReservaGer.png" /></p>
+</section>
 <section id="analise-e-interpretacao-da-tecnica-gerenciamento-de-valor-agregado-gva">
 <h2>Análise e interpretação da Técnica (Gerenciamento) de Valor Agregado (GVA)<a class="headerlink" href="#analise-e-interpretacao-da-tecnica-gerenciamento-de-valor-agregado-gva" title="Link to this heading">#</a></h2>
 <p>O <strong>Gerenciamento de Valor Agregado (GVA)</strong> é uma técnica que integra escopo, cronograma e custo para avaliar o desempenho e o progresso de um projeto. Ele permite medir a saúde financeira e o andamento de uma obra, identificando possíveis desvios para que ações corretivas sejam aplicadas.</p>
@@ -782,11 +804,13 @@ O Índice de Desempenho de Custos (IDC = VA / CR)</p></li>
 <section id="conclusao">
 <h3>Conclusão<a class="headerlink" href="#conclusao" title="Link to this heading">#</a></h3>
 <p>O <strong>Gerenciamento de Valor Agregado</strong> fornece uma visão integrada sobre o desempenho de prazo e custo, permitindo gerenciar a obra de forma mais eficiente e assertiva.</p>
-<p>Principais desafios</p>
-<p>Falta de dados precisos
-Imprevistos e mudanças no escopo do projeto
-Falta de apoio e participação da equipe
-Dificuldade de integração com outras técnicas e indicadores</p>
+<p>Principais desafios:</p>
+<ul class="simple">
+<li><p>Falta de dados precisos</p></li>
+<li><p>Imprevistos e mudanças no escopo do projeto</p></li>
+<li><p>Falta de apoio e participação da equipe</p></li>
+<li><p>Dificuldade de integração com outras técnicas e indicadores</p></li>
+</ul>
 <div class="docutils container" id="id4">
 <div role="list" class="citation-list">
 <div class="citation" id="id5" role="doc-biblioentry">
@@ -868,6 +892,8 @@ Dificuldade de integração com outras técnicas e indicadores</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-do-notebook">Estrutura do Notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao-a-tecnica-do-valor-agregado">Introdução à Técnica do Valor Agregado</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-e-interpretacao-da-tecnica-gerenciamento-de-valor-agregado-gva">Análise e interpretação da Técnica (Gerenciamento) de Valor Agregado (GVA)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-a-estrutura-analitica-do-projeto-eap-e-o-cronograma">1. Definir a Estrutura Analítica do Projeto (EAP) e o Cronograma</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribuir-valores-planejados-vp">2. Atribuir Valores Planejados (VP)</a></li>
