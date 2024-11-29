@@ -5,4 +5,5 @@ format: jb-book
 root: intro
 chapters:
 - file: notebooks/tecnica-valor-agregado-fund.ipynb
-- file: notebooks/tecnica_valor_agregado.ipynb
+- file: notebooks/tecnica-valor-agregado-projetos.ipynb
+- file: notebooks/tecnica-valor-agregado-construcao.ipynb

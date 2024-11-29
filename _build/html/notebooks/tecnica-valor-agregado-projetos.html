@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exemplo de Aplicação: Técnica de Valor Agregado em Projetos &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/tecnica-valor-agregado-projetos';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="# Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil" href="tecnica-valor-agregado-construcao.html" />
+    <link rel="prev" title="Técnica de Valor Agregado (EVM - Earned Value Management)" href="tecnica-valor-agregado-fund.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-fund.html">Técnica de Valor Agregado (EVM - Earned Value Management)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exemplo de Aplicação: Técnica de Valor Agregado em Projetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-construcao.html"># Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/tecnica-valor-agregado-projetos.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/tecnica-valor-agregado-projetos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/tecnica-valor-agregado-projetos.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exemplo de Aplicação: Técnica de Valor Agregado em Projetos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passo-1-carregar-os-dados-do-projeto">Passo 1: Carregar os dados do projeto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passo-2-calcular-indicadores-de-valor-agregado">Passo 2: Calcular Indicadores de Valor Agregado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulas-utilizadas">Fórmulas Utilizadas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passo-3-gerar-graficos">Passo 3: Gerar Gráficos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-1-comparacao-entre-vp-vr-e-va">Gráfico 1: Comparação entre VP, VR e VA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-2-indices-de-desempenho-idp-e-idc">Gráfico 2: Índices de Desempenho (IDP e IDC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exemplo-de-aplicacao-tecnica-de-valor-agregado-em-projetos">
+<h1>Exemplo de Aplicação: Técnica de Valor Agregado em Projetos<a class="headerlink" href="#exemplo-de-aplicacao-tecnica-de-valor-agregado-em-projetos" title="Link to this heading">#</a></h1>
+<p>Este notebook utiliza dados de um projeto para calcular indicadores de desempenho baseados no método de <strong>Valor Agregado (Earned Value Management)</strong>. Os principais passos são:</p>
+<ol class="arabic simple">
+<li><p>Carregar os dados do projeto de um arquivo CSV.</p></li>
+<li><p>Calcular os valores planejados (VP), reais (VR) e os indicadores de desempenho:</p>
+<ul class="simple">
+<li><p>Variação de Prazo (VPr)</p></li>
+<li><p>Variação de Custo (VC)</p></li>
+<li><p>Índice de Desempenho de Prazo (IDP)</p></li>
+<li><p>Índice de Desempenho de Custo (IDC)</p></li>
+</ul>
+</li>
+<li><p>Gerar gráficos que demonstrem as métricas de valor agregado ao longo do tempo.</p></li>
+</ol>
+<p>Vamos começar!</p>
+<section id="passo-1-carregar-os-dados-do-projeto">
+<h2>Passo 1: Carregar os dados do projeto<a class="headerlink" href="#passo-1-carregar-os-dados-do-projeto" title="Link to this heading">#</a></h2>
+<p>Os dados do projeto estão armazenados em um arquivo <code class="docutils literal notranslate"><span class="pre">projeto.csv</span></code>. O formato esperado é o seguinte:</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Atividades,Duração Planejada,Custos Planejados (CP),Custos Reais (CR),Valor Agregado (VA)
+A,5,500,450,475
+B,3,300,320,290
+C,4,400,380,350
+D,6,600,650,590
+E,2,200,220,190
+</pre></div>
+</div>
+<p>Usaremos a biblioteca <code class="docutils literal notranslate"><span class="pre">pandas</span></code> para carregar esses dados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Carregar os dados do arquivo CSV</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/projeto.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atividades</th>
+      <th>Duração Planejada</th>
+      <th>Custos Planejados (CP)</th>
+      <th>Custos Reais (CR)</th>
+      <th>Valor Agregado (VA)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>5</td>
+      <td>500</td>
+      <td>450</td>
+      <td>475</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>3</td>
+      <td>300</td>
+      <td>320</td>
+      <td>290</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>4</td>
+      <td>400</td>
+      <td>380</td>
+      <td>350</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>6</td>
+      <td>600</td>
+      <td>650</td>
+      <td>590</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>2</td>
+      <td>200</td>
+      <td>220</td>
+      <td>190</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="passo-2-calcular-indicadores-de-valor-agregado">
+<h2>Passo 2: Calcular Indicadores de Valor Agregado<a class="headerlink" href="#passo-2-calcular-indicadores-de-valor-agregado" title="Link to this heading">#</a></h2>
+<section id="formulas-utilizadas">
+<h3>Fórmulas Utilizadas<a class="headerlink" href="#formulas-utilizadas" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Valores Planejados (VP)</strong> = Duração Planejada × Custos Planejados (CP)</p></li>
+<li><p><strong>Valores Reais (VR)</strong> = Duração Planejada × Custos Reais (CR)</p></li>
+<li><p><strong>Variação de Prazo (VPr)</strong> = Valor Agregado (VA) - Valores Planejados (VP)</p></li>
+<li><p><strong>Variação de Custo (VC)</strong> = Valor Agregado (VA) - Custos Reais (CR)</p></li>
+<li><p><strong>Índice de Desempenho de Prazo (IDP)</strong> = Valor Agregado (VA) / Valores Planejados (VP)</p></li>
+<li><p><strong>Índice de Desempenho de Custo (IDC)</strong> = Valor Agregado (VA) / Custos Reais (CR)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular os indicadores</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valores Planejados (VP)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Duração Planejada&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Custos Planejados (CP)&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valores Reais (VR)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Duração Planejada&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Custos Reais (CR)&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Variação de Prazo (VPr)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valor Agregado (VA)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valores Planejados (VP)&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Variação de Custo (VC)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valor Agregado (VA)&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Custos Reais (CR)&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Índice de Desempenho de Prazos (IDP)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valor Agregado (VA)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valores Planejados (VP)&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Índice de Desempenho de Custos (IDC)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valor Agregado (VA)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Custos Reais (CR)&#39;</span><span class="p">]</span>
+
+<span class="c1"># Exibir os resultados</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atividades</th>
+      <th>Duração Planejada</th>
+      <th>Custos Planejados (CP)</th>
+      <th>Custos Reais (CR)</th>
+      <th>Valor Agregado (VA)</th>
+      <th>Valores Planejados (VP)</th>
+      <th>Valores Reais (VR)</th>
+      <th>Variação de Prazo (VPr)</th>
+      <th>Variação de Custo (VC)</th>
+      <th>Índice de Desempenho de Prazos (IDP)</th>
+      <th>Índice de Desempenho de Custos (IDC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>5</td>
+      <td>500</td>
+      <td>450</td>
+      <td>475</td>
+      <td>2500</td>
+      <td>2250</td>
+      <td>-2025</td>
+      <td>25</td>
+      <td>0.190000</td>
+      <td>1.055556</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>3</td>
+      <td>300</td>
+      <td>320</td>
+      <td>290</td>
+      <td>900</td>
+      <td>960</td>
+      <td>-610</td>
+      <td>-30</td>
+      <td>0.322222</td>
+      <td>0.906250</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>4</td>
+      <td>400</td>
+      <td>380</td>
+      <td>350</td>
+      <td>1600</td>
+      <td>1520</td>
+      <td>-1250</td>
+      <td>-30</td>
+      <td>0.218750</td>
+      <td>0.921053</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>6</td>
+      <td>600</td>
+      <td>650</td>
+      <td>590</td>
+      <td>3600</td>
+      <td>3900</td>
+      <td>-3010</td>
+      <td>-60</td>
+      <td>0.163889</td>
+      <td>0.907692</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>2</td>
+      <td>200</td>
+      <td>220</td>
+      <td>190</td>
+      <td>400</td>
+      <td>440</td>
+      <td>-210</td>
+      <td>-30</td>
+      <td>0.475000</td>
+      <td>0.863636</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="passo-3-gerar-graficos">
+<h2>Passo 3: Gerar Gráficos<a class="headerlink" href="#passo-3-gerar-graficos" title="Link to this heading">#</a></h2>
+<section id="grafico-1-comparacao-entre-vp-vr-e-va">
+<h3>Gráfico 1: Comparação entre VP, VR e VA<a class="headerlink" href="#grafico-1-comparacao-entre-vp-vr-e-va" title="Link to this heading">#</a></h3>
+<p>Este gráfico mostra os Valores Planejados, Reais e o Valor Agregado para cada atividade.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Gráfico de VP, VR e VA</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividades&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valores Planejados (VP)&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Valores Planejados (VP)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividades&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valores Reais (VR)&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Valores Reais (VR)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividades&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Valor Agregado (VA)&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Valor Agregado (VA)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Métricas de Valor Agregado&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Atividades&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valores&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../figures/grafico_valor_agregado.png&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gráfico salvo como grafico_valor_agregado.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico salvo como grafico_valor_agregado.png
+</pre></div>
+</div>
+<img alt="../_images/6b6d8b5889b22667a70cdc7d6b5ac8e5009bfd6222667b5caceebc27c4fb9347.png" src="../_images/6b6d8b5889b22667a70cdc7d6b5ac8e5009bfd6222667b5caceebc27c4fb9347.png" />
+</div>
+</div>
+</section>
+<section id="grafico-2-indices-de-desempenho-idp-e-idc">
+<h3>Gráfico 2: Índices de Desempenho (IDP e IDC)<a class="headerlink" href="#grafico-2-indices-de-desempenho-idp-e-idc" title="Link to this heading">#</a></h3>
+<p>Este gráfico mostra os índices de desempenho de prazo e custo para cada atividade.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráfico de IDP e IDC</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividades&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Índice de Desempenho de Prazos (IDP)&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IDP&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividades&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Índice de Desempenho de Custos (IDC)&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IDC&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Indicadores de Desempenho (IDP e IDC)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Atividades&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Índice&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../figures/grafico_desempenho.png&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gráfico salvo como grafico_desempenho.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gráfico salvo como grafico_desempenho.png
+</pre></div>
+</div>
+<img alt="../_images/0bc1503fe73f756b37f656da84e5ac91ce15d3280abd0a9e03ea454b6039588a.png" src="../_images/0bc1503fe73f756b37f656da84e5ac91ce15d3280abd0a9e03ea454b6039588a.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="conclusao">
+<h2>Conclusão<a class="headerlink" href="#conclusao" title="Link to this heading">#</a></h2>
+<p>Este notebook demonstrou como calcular indicadores de valor agregado para análise de desempenho de projetos e como visualizá-los em gráficos. Os resultados podem ser utilizados para identificar atrasos, desvios de custo e oportunidades de melhoria no gerenciamento de projetos.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tecnica-valor-agregado-fund.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Técnica de Valor Agregado (EVM - Earned Value Management)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tecnica-valor-agregado-construcao.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"># Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passo-1-carregar-os-dados-do-projeto">Passo 1: Carregar os dados do projeto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passo-2-calcular-indicadores-de-valor-agregado">Passo 2: Calcular Indicadores de Valor Agregado</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulas-utilizadas">Fórmulas Utilizadas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passo-3-gerar-graficos">Passo 3: Gerar Gráficos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-1-comparacao-entre-vp-vr-e-va">Gráfico 1: Comparação entre VP, VR e VA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-2-indices-de-desempenho-idp-e-idc">Gráfico 2: Índices de Desempenho (IDP e IDC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
