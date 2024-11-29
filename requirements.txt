@@ -4,4 +4,3 @@ pandas
 matplotlib
 sphinxcontrib-bibtex
 networkx
-pygraphviz
