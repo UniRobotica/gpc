@@ -463,6 +463,133 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atividade</th>
+      <th>Descrição</th>
+      <th>Atividades Precedentes</th>
+      <th>Duração Estimada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>Escavação</td>
+      <td>None</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>Fundação</td>
+      <td>A</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>Paredes</td>
+      <td>B</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>Telhado</td>
+      <td>C</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E</td>
+      <td>Encanamento Exterior</td>
+      <td>C</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>F</td>
+      <td>Encanamento Interior</td>
+      <td>E</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>G</td>
+      <td>Muros</td>
+      <td>D</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>H</td>
+      <td>Pintura Exterior</td>
+      <td>E,G</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>I</td>
+      <td>Instalação Elétrica</td>
+      <td>C</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>J</td>
+      <td>Divisórias</td>
+      <td>F,I</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>K</td>
+      <td>Piso</td>
+      <td>J</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>L</td>
+      <td>Pintura Interior</td>
+      <td>J</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>M</td>
+      <td>Acabamento Exterior</td>
+      <td>H</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>N</td>
+      <td>Acabamento Interior</td>
+      <td>K,L</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="criar-o-grafo-do-projeto">
@@ -470,7 +597,22 @@
 <p>A partir das dependências, construímos um grafo dirigido para representar as relações entre as atividades.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Criar o grafo de PERT/CPM</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Exemplo de DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 
 <span class="c1"># Adicionar nós e arestas ao grafo</span>
@@ -481,20 +623,41 @@
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
 
+<span class="c1"># Função para calcular os níveis das atividades (hierarquia top-down)</span>
+<span class="k">def</span> <span class="nf">calculate_levels</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># Garante ordem topológica</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">levels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)])</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">levels</span>
+
+<span class="c1"># Calcular os níveis das atividades</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># Atribuir os níveis como atributos aos nós</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="s2">&quot;subset&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calcular o layout dos nós com espaçamento ajustado</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">multipartite_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">subset_key</span><span class="o">=</span><span class="s2">&quot;subset&quot;</span><span class="p">)</span>
+<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento vertical</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>
+
 <span class="c1"># Melhorar a visualização do grafo</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
 
-<span class="c1"># Utilizar layout hierárquico com maior espaçamento para evitar sobreposição</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">nx_agraph</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="s1">&#39;dot&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="s2">&quot;-Granksep=1.5 -Gnodesep=1.0&quot;</span><span class="p">)</span>
-
-<span class="c1"># Desenhar o grafo com nós ajustados</span>
+<span class="c1"># Desenhar o grafo</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
-    <span class="n">G</span><span class="p">,</span> 
-    <span class="n">pos</span><span class="p">,</span> 
+    <span class="n">G</span><span class="p">,</span>
+    <span class="n">pos</span><span class="p">,</span>
     <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa os rótulos padrão</span>
     <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>     <span class="c1"># Ajusta o tamanho dos nós</span>
     <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
-    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span>
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span>
 <span class="p">)</span>
 
 <span class="c1"># Adicionar rótulos personalizados nos nós (Nome e Duração)</span>
@@ -502,11 +665,99 @@
 <span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="c1"># Título e exibição</span>
+<span class="c1"># Adicionar título</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Exibir o gráfico</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/451710f40fb3240d4916747ad4ec3c81e97eecd486712eb86de91773edab0d43.png" src="../_images/451710f40fb3240d4916747ad4ec3c81e97eecd486712eb86de91773edab0d43.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Exemplo de DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Adicionar nós e arestas ao grafo</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
+
+<span class="c1"># Função para calcular os níveis das atividades (hierarquia top-down)</span>
+<span class="k">def</span> <span class="nf">calculate_levels</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># Garante ordem topológica</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">levels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)])</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">levels</span>
+
+<span class="c1"># Calcular os níveis das atividades</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># Atribuir os níveis como atributos aos nós</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="s2">&quot;subset&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calcular o layout dos nós com espaçamento ajustado (invertendo os eixos para orientação vertical)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">multipartite_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">subset_key</span><span class="o">=</span><span class="s2">&quot;subset&quot;</span><span class="p">)</span>
+<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento vertical</span>
+<span class="n">horizontal_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento horizontal</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">horizontal_spacing</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>  <span class="c1"># Trocar os eixos e inverter o nível para ordem top-down</span>
+
+<span class="c1"># Melhorar a visualização do grafo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Desenhar o grafo</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span>
+    <span class="n">pos</span><span class="p">,</span>
+    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa os rótulos padrão</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>     <span class="c1"># Ajusta o tamanho dos nós</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="c1"># Adicionar rótulos personalizados nos nós (Nome e Duração)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;duração&#39;</span><span class="p">)</span>
+<span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Adicionar título</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Exibir o gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bd05ed6c22ab71e1217eaef4c882a97bc45ab8507185629d903a85f1f57d3872.png" src="../_images/bd05ed6c22ab71e1217eaef4c882a97bc45ab8507185629d903a85f1f57d3872.png" />
 </div>
 </div>
 </section>
