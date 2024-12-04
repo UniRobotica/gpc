@@ -5,3 +5,4 @@ matplotlib
 sphinxcontrib-bibtex
 networkx
 scipy
+math

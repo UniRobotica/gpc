@@ -60,11 +60,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/pertcpm-construcao-civil';</script>
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Técnica de Valor Agregado (EVM - Earned Value Management)" href="tecnica-valor-agregado-fund.html" />
+    <link rel="next" title="Análise de PERT/CPM - Incertezas nas durações das atividades" href="pertcpm-calculo-incertezas.html" />
     <link rel="prev" title="Gerenciamento de Projetos e Contratos" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -171,6 +173,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Análise de PERT/CPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertcpm-calculo-incertezas.html">Análise de PERT/CPM - Incertezas nas durações das atividades</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-fund.html">Técnica de Valor Agregado (EVM - Earned Value Management)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-projetos.html">Exemplo de Aplicação: Técnica de Valor Agregado em Projetos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-construcao.html">Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</a></li>
@@ -412,6 +415,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carregar-dados-do-projeto">Carregar Dados do Projeto</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criar-o-grafo-do-projeto">Criar o Grafo do Projeto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caminho-critico">Caminho crítico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representacao-do-caminho-critico-no-grafo-de-rede">Representação do caminho crítico no grafo de rede</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programacao-das-atividades-calculo-dos-tempos-e-folga">Programação das atividades: Cálculo dos tempos e folga</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulas-utilizadas">Fórmulas Utilizadas</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -435,10 +444,18 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar bibliotecas necessárias</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias</span>
+
+<span class="c1"># Pandas: Utilizado para manipulação e análise de dados em tabelas (DataFrames)</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># NetworkX: Utilizado para criar, manipular e analisar grafos (redes de atividades)</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Matplotlib: Utilizado para visualização gráfica dos dados e redes</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># NumPy: Utilizado para operações matemáticas e numéricas avançadas, como manipulação de arrays</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -452,144 +469,19 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Carregar dados do CSV</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
                   <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
-                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="p">})</span>
+
+<span class="c1"># Exibir o DataFrame</span>
 <span class="n">data</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Atividade</th>
-      <th>Descrição</th>
-      <th>Atividades Precedentes</th>
-      <th>Duração Estimada</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>A</td>
-      <td>Escavação</td>
-      <td>None</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>B</td>
-      <td>Fundação</td>
-      <td>A</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>C</td>
-      <td>Paredes</td>
-      <td>B</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>D</td>
-      <td>Telhado</td>
-      <td>C</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>E</td>
-      <td>Encanamento Exterior</td>
-      <td>C</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>F</td>
-      <td>Encanamento Interior</td>
-      <td>E</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>G</td>
-      <td>Muros</td>
-      <td>D</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>H</td>
-      <td>Pintura Exterior</td>
-      <td>E,G</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>I</td>
-      <td>Instalação Elétrica</td>
-      <td>C</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>J</td>
-      <td>Divisórias</td>
-      <td>F,I</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>K</td>
-      <td>Piso</td>
-      <td>J</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>L</td>
-      <td>Pintura Interior</td>
-      <td>J</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>M</td>
-      <td>Acabamento Exterior</td>
-      <td>H</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>N</td>
-      <td>Acabamento Interior</td>
-      <td>K,L</td>
-      <td>6</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="criar-o-grafo-do-projeto">
@@ -598,93 +490,366 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Usada para criar gráficos, neste caso, para visualizar o grafo</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>  <span class="c1"># Biblioteca para manipulação de grafos, necessária para o modelo PERT/CPM</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># Usada para criar e manipular DataFrames, onde armazenamos os dados das atividades</span>
 
-<span class="c1"># Exemplo de DataFrame</span>
+<span class="c1"># Exemplo de DataFrame contendo as informações do projeto</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>  <span class="c1"># Identificadores das atividades</span>
     <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
                   <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
-                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>  <span class="c1"># Descrição de cada atividade</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>  <span class="c1"># Dependências entre atividades</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Duração estimada para cada atividade</span>
 <span class="p">})</span>
 
-<span class="c1"># Criar o grafo de PERT/CPM</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="c1"># Criar um grafo direcionado para modelar as atividades</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>  <span class="c1"># Grafo direcionado (DiGraph), onde as arestas têm direção</span>
 
-<span class="c1"># Adicionar nós e arestas ao grafo</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
-        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
+<span class="c1"># Adicionar nós e arestas ao grafo com base nos dados do DataFrame</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>  <span class="c1"># Iterar sobre as linhas do DataFrame</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>  <span class="c1"># Adicionar nó para cada atividade, com atributo de duração</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>  <span class="c1"># Verificar se a atividade tem predecessores</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># Dividir as atividades precedentes (caso haja mais de uma)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>  <span class="c1"># Para cada atividade predecessora</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>  <span class="c1"># Adicionar uma aresta entre a atividade predecessora e a atividade atual</span>
 
 <span class="c1"># Função para calcular os níveis das atividades (hierarquia top-down)</span>
 <span class="k">def</span> <span class="nf">calculate_levels</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
-    <span class="n">levels</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># Garante ordem topológica</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Dicionário para armazenar o nível de cada atividade</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># Realiza uma ordenação topológica das atividades</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Se a atividade não tem predecessores (como &quot;Início&quot;)</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Atribui nível 0</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Atribui o nível como o maior nível entre os predecessores + 1</span>
             <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">levels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)])</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">levels</span>
+    <span class="k">return</span> <span class="n">levels</span>  <span class="c1"># Retorna o dicionário de níveis das atividades</span>
 
-<span class="c1"># Calcular os níveis das atividades</span>
+<span class="c1"># Calcular os níveis das atividades no grafo</span>
 <span class="n">levels</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
-<span class="c1"># Atribuir os níveis como atributos aos nós</span>
+<span class="c1"># Atribuir os níveis calculados como atributos dos nós no grafo</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="s2">&quot;subset&quot;</span><span class="p">)</span>
 
-<span class="c1"># Calcular o layout dos nós com espaçamento ajustado</span>
-<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">multipartite_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">subset_key</span><span class="o">=</span><span class="s2">&quot;subset&quot;</span><span class="p">)</span>
-<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento vertical</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
-    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>
+<span class="c1"># Calcular o layout para os nós, ajustando o espaçamento entre eles</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">multipartite_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">subset_key</span><span class="o">=</span><span class="s2">&quot;subset&quot;</span><span class="p">)</span>  <span class="c1"># Layout multipartite, baseado nos níveis (subsets)</span>
+<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento vertical entre os níveis</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>  <span class="c1"># Ajustar a posição de cada nó</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>  <span class="c1"># Posições x, y de cada nó</span>
+    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>  <span class="c1"># Alterar a posição vertical com base no espaçamento definido</span>
 
 <span class="c1"># Melhorar a visualização do grafo</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>  <span class="c1"># Definir o tamanho da figura do gráfico</span>
 
 <span class="c1"># Desenhar o grafo</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
-    <span class="n">G</span><span class="p">,</span>
-    <span class="n">pos</span><span class="p">,</span>
-    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa os rótulos padrão</span>
-    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>     <span class="c1"># Ajusta o tamanho dos nós</span>
-    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
-    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
-    <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span>
+    <span class="n">G</span><span class="p">,</span>  <span class="c1"># O grafo a ser desenhado</span>
+    <span class="n">pos</span><span class="p">,</span>  <span class="c1"># A posição dos nós (gerada anteriormente)</span>
+    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa os rótulos padrão (para desenhar nós customizados mais tarde)</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>  <span class="c1"># Ajustar o tamanho dos nós</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span>  <span class="c1"># Cor de fundo dos nós</span>
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>  <span class="c1"># Cor das arestas (conexões entre os nós)</span>
+    <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span>  <span class="c1"># Tamanho das setas nas arestas</span>
 <span class="p">)</span>
 
-<span class="c1"># Adicionar rótulos personalizados nos nós (Nome e Duração)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;duração&#39;</span><span class="p">)</span>
-<span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Adicionar rótulos personalizados nos nós (nome da atividade e duração)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;duração&#39;</span><span class="p">)</span>  <span class="c1"># Obter os atributos de duração de cada nó</span>
+<span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  <span class="c1"># Criar rótulos personalizados no formato &quot;Atividade\nDuração sem&quot;</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Desenhar os rótulos personalizados no grafo</span>
 
-<span class="c1"># Adicionar título</span>
+<span class="c1"># Adicionar título ao gráfico</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
-<span class="c1"># Exibir o gráfico</span>
+<span class="c1"># Exibir o gráfico final</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/451710f40fb3240d4916747ad4ec3c81e97eecd486712eb86de91773edab0d43.png" src="../_images/451710f40fb3240d4916747ad4ec3c81e97eecd486712eb86de91773edab0d43.png" />
+<img alt="../_images/b4bd9ecc25938f41c6a7c510d39e86c460b1ace67f28361bc0879cbd55f79780.png" src="../_images/b4bd9ecc25938f41c6a7c510d39e86c460b1ace67f28361bc0879cbd55f79780.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Biblioteca para criação de gráficos e visualização dos dados</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>  <span class="c1"># Biblioteca para criar e manipular grafos (útil para criar o Diagrama de Rede PERT/CPM)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># Biblioteca para manipulação de dados em formato de tabelas (DataFrame)</span>
+
+<span class="c1"># Exemplo de DataFrame contendo as informações do projeto</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>  <span class="c1"># Identificadores das atividades</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>  <span class="c1"># Descrição de cada atividade</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>  <span class="c1"># Dependências entre atividades</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Duração estimada para cada atividade</span>
+<span class="p">})</span>
+
+<span class="c1"># Criar um grafo direcionado para modelar as atividades (Diagrama de Rede PERT/CPM)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>  <span class="c1"># DiGraph (grafo direcionado) será usado para representar as dependências de atividades</span>
+
+<span class="c1"># Adicionar nós e arestas ao grafo com base nos dados do DataFrame</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>  <span class="c1"># Itera sobre as linhas do DataFrame para adicionar cada atividade</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>  <span class="c1"># Adiciona cada atividade como um nó no grafo, com sua duração</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>  <span class="c1"># Verifica se a atividade tem predecessores</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>  <span class="c1"># Se houver mais de um, separa os predecessores por vírgula</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>  <span class="c1"># Para cada atividade predecessora</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>  <span class="c1"># Adiciona uma aresta do predecessor para a atividade atual (representa a dependência)</span>
+
+<span class="c1"># Função para calcular os níveis das atividades (hierarquia top-down)</span>
+<span class="k">def</span> <span class="nf">calculate_levels</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Dicionário para armazenar o nível de cada atividade</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># Realiza uma ordenação topológica das atividades no grafo</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Se a atividade não tem predecessores (como o &quot;Início&quot;)</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Atribui nível 0 para a atividade inicial</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Para atividades com predecessores, atribui o nível máximo dos predecessores + 1</span>
+            <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">levels</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)])</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">levels</span>  <span class="c1"># Retorna o dicionário de níveis (profundidade hierárquica das atividades)</span>
+
+<span class="c1"># Calcular os níveis das atividades no grafo</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">calculate_levels</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># Atribuir os níveis calculados como atributos dos nós no grafo</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="s2">&quot;subset&quot;</span><span class="p">)</span>  <span class="c1"># Armazena os níveis como atributos dos nós no grafo</span>
+
+<span class="c1"># Calcular o layout dos nós com espaçamento ajustado (invertendo os eixos para orientação vertical)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">multipartite_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">subset_key</span><span class="o">=</span><span class="s2">&quot;subset&quot;</span><span class="p">)</span>  <span class="c1"># Usa o layout multipartite baseado no nível das atividades</span>
+<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Define o espaçamento vertical entre os níveis (maior número significa mais espaço entre as camadas)</span>
+<span class="n">horizontal_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Define o espaçamento horizontal entre as atividades</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>  <span class="c1"># Ajusta a posição de cada nó</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>  <span class="c1"># Obtém as coordenadas x e y</span>
+    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">horizontal_spacing</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>  <span class="c1"># Ajusta as coordenadas, invertendo e ampliando a separação entre os nós</span>
+
+<span class="c1"># Melhorar a visualização do grafo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>  <span class="c1"># Define o tamanho da figura do gráfico, em polegadas (largura, altura)</span>
+
+<span class="c1"># Desenhar o grafo com as configurações ajustadas</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span>  <span class="c1"># O grafo a ser desenhado</span>
+    <span class="n">pos</span><span class="p">,</span>  <span class="c1"># As posições calculadas dos nós</span>
+    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa a exibição dos rótulos padrão (serão desenhados rótulos personalizados mais tarde)</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>  <span class="c1"># Ajusta o tamanho dos nós para torná-los visíveis e legíveis</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span>  <span class="c1"># Define a cor de fundo dos nós (azul claro)</span>
+    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>  <span class="c1"># Define a cor das arestas (linha entre os nós)</span>
+    <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span>  <span class="c1"># Ajusta o tamanho das setas nas arestas para indicar a direção</span>
+<span class="p">)</span>
+
+<span class="c1"># Adicionar rótulos personalizados nos nós (Nome da Atividade e sua Duração Estimada)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;duração&#39;</span><span class="p">)</span>  <span class="c1"># Obtém o atributo de duração de cada nó (atividade)</span>
+<span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  <span class="c1"># Cria rótulos personalizados no formato &quot;Atividade\nDuração sem&quot;</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Desenha os rótulos personalizados nos nós</span>
+
+<span class="c1"># Adicionar título ao gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Título do gráfico (diagramas PERT/CPM)</span>
+
+<span class="c1"># Exibir o gráfico gerado</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Mostra o gráfico na tela</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="caminho-critico">
+<h2>Caminho crítico<a class="headerlink" href="#caminho-critico" title="Link to this heading">#</a></h2>
+<p>A saída do código apresenta todos os caminhos possíveis entre o início e o fim de um projeto, com suas respectivas durações. Cada linha mostra uma sequência de atividades (caminho) e a soma total das durações das atividades ao longo desse caminho. O “caminho crítico” é o caminho com a maior duração total, o que implica que qualquer atraso em uma atividade desse caminho afetará diretamente a duração total do projeto. Nesse caso, o caminho crítico é o mais longo, pois não há atividades que podem ser atrasadas sem impactar o prazo final do projeto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM novamente com base nos dados anteriores</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Adicionar nós e arestas ao grafo</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
+
+<span class="c1"># Função para encontrar todos os caminhos do início ao fim</span>
+<span class="k">def</span> <span class="nf">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">new_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">new_paths</span><span class="p">:</span>
+                <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">paths</span>
+
+<span class="c1"># Encontrar todos os caminhos do &quot;Início&quot; para &quot;Fim&quot;</span>
+<span class="n">all_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calcular a duração de cada caminho</span>
+<span class="n">path_durations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">all_paths</span><span class="p">:</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;duração&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">path_durations</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">path</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+
+<span class="c1"># Criar uma tabela com os caminhos e suas durações</span>
+<span class="n">paths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">path_durations</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">,</span> <span class="s1">&#39;Duração Total&#39;</span><span class="p">])</span>
+<span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; -&gt; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># Formatar o caminho como uma string</span>
+
+<span class="c1"># Ajustar para exibir as células com texto completo</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># Não limitar a largura das células</span>
+
+<span class="c1"># Exibir a tabela de caminhos e durações</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">paths_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>O código abaixo gera uma tabela com todos os caminhos possíveis de um projeto, desde o início até o fim, utilizando o Diagrama PERT/CPM. Cada caminho é exibido com sua respectiva duração total. O caminho crítico, ou seja, o caminho com a maior duração total, é destacado em vermelho. Para isso, o código identifica o caminho com a maior duração e aplica um estilo visual em HTML para colorir as atividades que fazem parte desse caminho. Embora a tabela mostre todos os caminhos, o caminho crítico é facilmente identificado devido ao destaque em vermelho, permitindo uma rápida visualização da sequência de atividades mais longa, o que é crucial para a gestão eficiente do tempo no projeto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM novamente com base nos dados anteriores</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Adicionar nós e arestas ao grafo</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
+
+<span class="c1"># Função para encontrar todos os caminhos do início ao fim</span>
+<span class="k">def</span> <span class="nf">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">new_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">new_paths</span><span class="p">:</span>
+                <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">paths</span>
+
+<span class="c1"># Encontrar todos os caminhos do &quot;Início&quot; para &quot;Fim&quot;</span>
+<span class="n">all_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calcular a duração de cada caminho</span>
+<span class="n">path_durations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">all_paths</span><span class="p">:</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;duração&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">path_durations</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">path</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+
+<span class="c1"># Criar uma tabela com os caminhos e suas durações</span>
+<span class="n">paths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">path_durations</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">,</span> <span class="s1">&#39;Duração Total&#39;</span><span class="p">])</span>
+<span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; -&gt; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># Formatar o caminho como uma string</span>
+
+<span class="c1"># Encontrar o caminho crítico (o de maior duração)</span>
+<span class="n">critical_path</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">path_durations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Função para destacar o caminho crítico em vermelho</span>
+<span class="k">def</span> <span class="nf">highlight_critical</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39; -&gt; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;&lt;span style=&#39;color:red&#39;&gt;</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">&lt;/span&gt;&quot;</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">critical_path</span> <span class="k">else</span> <span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">])</span>
+
+<span class="c1"># Aplicar o destaque para o caminho crítico na tabela</span>
+<span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">highlight_critical</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; -&gt; &#39;</span><span class="p">)))</span>
+
+<span class="c1"># Ajustar para exibir as células com texto completo</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># Não limitar a largura das células</span>
+
+<span class="c1"># Exibir a tabela de caminhos e durações com destaque no caminho crítico</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">paths_df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\DELL\AppData\Local\Temp\ipykernel_26884\3892950494.py:67: DeprecationWarning: Importing display from IPython.core.display is deprecated since IPython 7.14, please import from IPython.display
+  from IPython.core.display import display, HTML
+</pre></div>
+</div>
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Caminho</th>
+      <th>Duração Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> D -> G -> H -> M -> <span style='color:red'>Fim</span></td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> <span style='color:red'>E</span> -> <span style='color:red'>F</span> -> <span style='color:red'>J</span> -> K -> <span style='color:red'>N</span> -> <span style='color:red'>Fim</span></td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> <span style='color:red'>E</span> -> <span style='color:red'>F</span> -> <span style='color:red'>J</span> -> <span style='color:red'>L</span> -> <span style='color:red'>N</span> -> <span style='color:red'>Fim</span></td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> <span style='color:red'>E</span> -> H -> M -> <span style='color:red'>Fim</span></td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> I -> <span style='color:red'>J</span> -> K -> <span style='color:red'>N</span> -> <span style='color:red'>Fim</span></td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> I -> <span style='color:red'>J</span> -> <span style='color:red'>L</span> -> <span style='color:red'>N</span> -> <span style='color:red'>Fim</span></td>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+</section>
+<section id="representacao-do-caminho-critico-no-grafo-de-rede">
+<h2>Representação do caminho crítico no grafo de rede<a class="headerlink" href="#representacao-do-caminho-critico-no-grafo-de-rede" title="Link to this heading">#</a></h2>
+<p>O código apresentado anteriormente foi assim modificado para destacar o <strong>caminho crítico</strong> no Diagrama de Rede PERT/CPM, onde as atividades e os arcos que fazem parte desse caminho são exibidos em vermelho. O <strong>caminho crítico</strong> é a sequência de atividades que determina o tempo total do projeto, ou seja, qualquer atraso em uma dessas atividades resultará em atraso no projeto como um todo. O código identifica esse caminho com base na duração de cada caminho do início ao fim e destaca as atividades e arestas que compõem o caminho crítico. Isso é feito ajustando a cor dos nós e das arestas do grafo durante a renderização, utilizando o <strong>matplotlib</strong> para visualização e <strong>networkx</strong> para manipulação do grafo. Além disso, o código também permite ajustar a aparência do grafo, como o tamanho dos nós, a cor das setas e a disposição das atividades no gráfico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="c1"># Exemplo de DataFrame</span>
+<span class="c1"># Exemplo de DataFrame contendo as informações do projeto</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
     <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
@@ -708,7 +873,7 @@
 <span class="c1"># Função para calcular os níveis das atividades (hierarquia top-down)</span>
 <span class="k">def</span> <span class="nf">calculate_levels</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
     <span class="n">levels</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># Garante ordem topológica</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">levels</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
@@ -721,35 +886,76 @@
 <span class="c1"># Atribuir os níveis como atributos aos nós</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="s2">&quot;subset&quot;</span><span class="p">)</span>
 
-<span class="c1"># Calcular o layout dos nós com espaçamento ajustado (invertendo os eixos para orientação vertical)</span>
+<span class="c1"># Função para encontrar todos os caminhos do início ao fim</span>
+<span class="k">def</span> <span class="nf">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">new_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">new_paths</span><span class="p">:</span>
+                <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">paths</span>
+
+<span class="c1"># Encontrar todos os caminhos do &quot;Início&quot; para &quot;Fim&quot;</span>
+<span class="n">all_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calcular a duração de cada caminho</span>
+<span class="n">path_durations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">all_paths</span><span class="p">:</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;duração&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">path_durations</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">path</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+
+<span class="c1"># Determinar o caminho crítico (o caminho mais longo)</span>
+<span class="n">max_duration</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">path_durations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">critical_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span> <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">duration</span> <span class="ow">in</span> <span class="n">path_durations</span> <span class="k">if</span> <span class="n">duration</span> <span class="o">==</span> <span class="n">max_duration</span><span class="p">]</span>
+
+<span class="c1"># Identificar os nodos e arestas do caminho crítico</span>
+<span class="n">critical_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">critical_edges</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">critical_paths</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">critical_nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">critical_edges</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">path</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># Calcular o layout dos nós</span>
 <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">multipartite_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">subset_key</span><span class="o">=</span><span class="s2">&quot;subset&quot;</span><span class="p">)</span>
-<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento vertical</span>
-<span class="n">horizontal_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># Ajuste do espaçamento horizontal</span>
+<span class="n">vertical_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">horizontal_spacing</span> <span class="o">=</span> <span class="mf">2.0</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
-    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">horizontal_spacing</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>  <span class="c1"># Trocar os eixos e inverter o nível para ordem top-down</span>
+    <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">horizontal_spacing</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">vertical_spacing</span><span class="p">)</span>
 
-<span class="c1"># Melhorar a visualização do grafo</span>
+<span class="c1"># Visualização do grafo com caminho crítico em vermelho</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 
-<span class="c1"># Desenhar o grafo</span>
+<span class="c1"># Desenhar os arcos com cores diferentes para o caminho crítico</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
     <span class="n">G</span><span class="p">,</span>
     <span class="n">pos</span><span class="p">,</span>
-    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Desativa os rótulos padrão</span>
-    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>     <span class="c1"># Ajusta o tamanho dos nós</span>
-    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
-    <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">,</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span>
+    <span class="n">edge_color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span> <span class="k">if</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">critical_edges</span> <span class="k">else</span> <span class="s1">&#39;gray&#39;</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()],</span>
     <span class="n">arrowsize</span><span class="o">=</span><span class="mi">10</span>
 <span class="p">)</span>
 
-<span class="c1"># Adicionar rótulos personalizados nos nós (Nome e Duração)</span>
+<span class="c1"># Desenhar os nós</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">critical_nodes</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">critical_nodes</span><span class="p">],</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">4500</span><span class="p">)</span>
+
+<span class="c1"># Adicionar rótulos personalizados nos nós</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;duração&#39;</span><span class="p">)</span>
 <span class="n">custom_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> sem&quot;</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">custom_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="c1"># Adicionar título</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="c1"># Título do gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Diagrama de Rede PERT/CPM com Caminho Crítico&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
 <span class="c1"># Exibir o gráfico</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -757,9 +963,171 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bd05ed6c22ab71e1217eaef4c882a97bc45ab8507185629d903a85f1f57d3872.png" src="../_images/bd05ed6c22ab71e1217eaef4c882a97bc45ab8507185629d903a85f1f57d3872.png" />
+<img alt="../_images/629c15970cf6cf411ba7b8bef7d491b5ac0d6b9ec0e0744da2b9aea071be3799.png" src="../_images/629c15970cf6cf411ba7b8bef7d491b5ac0d6b9ec0e0744da2b9aea071be3799.png" />
 </div>
 </div>
+<section id="programacao-das-atividades-calculo-dos-tempos-e-folga">
+<h3>Programação das atividades: Cálculo dos tempos e folga<a class="headerlink" href="#programacao-das-atividades-calculo-dos-tempos-e-folga" title="Link to this heading">#</a></h3>
+<p>O código utiliza um grafo dirigido para modelar as dependências entre atividades de um projeto e calcula os tempos mais cedo (ES e EF) e mais tarde (LS e LF) para cada atividade, além do <strong>slack</strong> (folga). Com isso, identifica o <strong>caminho crítico</strong>, ou seja, a sequência de atividades que determina a duração mínima do projeto. Primeiro, avançamos no grafo para calcular ES e EF com base nas durações das atividades e nos maiores valores de EF das predecessoras. Em seguida, retrocedemos para calcular LS e LF a partir dos menores valores de LS dos sucessores. O slack, calculado como <code class="docutils literal notranslate"><span class="pre">Slack</span> <span class="pre">=</span> <span class="pre">LS</span> <span class="pre">-</span> <span class="pre">ES</span></code>, indica atividades críticas quando seu valor é zero.</p>
+</section>
+<hr class="docutils" />
+<section id="formulas-utilizadas">
+<h3>Fórmulas Utilizadas<a class="headerlink" href="#formulas-utilizadas" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Cálculo de ES (Earliest Start) e EF (Earliest Finish):</strong></p>
+<ul class="simple">
+<li><p>Fórmulas inline:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(ES_i = \max(EF_{\text{predecessores}})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(EF_i = ES_i + \text{duração}_i\)</span></p></li>
+</ul>
+</li>
+<li><p>Fórmula destacada:
+$<span class="math notranslate nohighlight">\(
+EF_i = ES_i + \text{duração}_i
+\)</span>$</p></li>
+</ul>
+</li>
+<li><p><strong>Cálculo de LS (Latest Start) e LF (Latest Finish):</strong></p>
+<ul class="simple">
+<li><p>Fórmulas inline:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(LF_i = \min(LS_{\text{sucessores}})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(LS_i = LF_i - \text{duração}_i\)</span></p></li>
+</ul>
+</li>
+<li><p>Fórmula destacada:
+$<span class="math notranslate nohighlight">\(
+LS_i = LF_i - \text{duração}_i
+\)</span>$</p></li>
+</ul>
+</li>
+<li><p><strong>Cálculo do Slack (Folga):</strong></p>
+<ul class="simple">
+<li><p>Fórmulas inline:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Slack = LS - ES\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Slack = LF - EF\)</span></p></li>
+</ul>
+</li>
+<li><p>Fórmula destacada:
+$<span class="math notranslate nohighlight">\(
+Slack = LF - EF
+\)</span>$</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p>O código automatiza esses cálculos usando o <strong>NetworkX</strong> para modelar e navegar pelo grafo, garantindo que dependências complexas sejam corretamente tratadas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Dados iniciais</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Criar o grafo de PERT/CPM</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Adicionar nós e arestas ao grafo</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
+        <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
+
+<span class="c1"># Função para calcular ES e EF</span>
+<span class="k">def</span> <span class="nf">calculate_es_ef</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;ES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">predecessores</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">es_predecessores</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s1">&#39;EF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">predecessores</span><span class="p">]</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;ES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">es_predecessores</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;EF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;ES&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">]</span>
+
+<span class="c1"># Função para calcular LS e LF</span>
+<span class="k">def</span> <span class="nf">calculate_ls_lf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Fim&#39;</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;LF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;EF&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sucessores</span> <span class="o">=</span> <span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])]</span>
+            <span class="n">lf_sucessores</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;LS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sucessores</span><span class="p">]</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;LF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">lf_sucessores</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;LS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;LF&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Duração Estimada&#39;</span><span class="p">]</span>
+
+<span class="c1"># Adicionar colunas para ES, EF, LS, LF e Slack</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;ES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;EF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;LS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;LF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Slack&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Calcular ES, EF, LS, LF e Slack</span>
+<span class="n">calculate_es_ef</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+<span class="n">calculate_ls_lf</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Slack&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;LS&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ES&#39;</span><span class="p">]</span>
+
+<span class="c1"># Identificar o caminho crítico</span>
+<span class="n">critical_path</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Slack&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Atividade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Exibir resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabela final com ES, EF, LS, LF e Slack:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">,</span> <span class="s1">&#39;Descrição&#39;</span><span class="p">,</span> <span class="s1">&#39;ES&#39;</span><span class="p">,</span> <span class="s1">&#39;EF&#39;</span><span class="p">,</span> <span class="s1">&#39;LS&#39;</span><span class="p">,</span> <span class="s1">&#39;LF&#39;</span><span class="p">,</span> <span class="s1">&#39;Slack&#39;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Caminho Crítico:&quot;</span><span class="p">,</span> <span class="s2">&quot; -&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">critical_path</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tabela final com ES, EF, LS, LF e Slack:
+   Atividade             Descrição  ES  EF  LS  LF  Slack
+0     Início                Início   0   0   0   0      0
+1          A             Escavação   0   2   0   2      0
+2          B              Fundação   2   6   2   6      0
+3          C               Paredes   6  16   6  16      0
+4          D               Telhado  16  22  20  26      4
+5          E  Encanamento Exterior  16  20  16  20      0
+6          F  Encanamento Interior  20  25  20  25      0
+7          G                 Muros  22  29  26  33      4
+8          H      Pintura Exterior  29  38  33  42      4
+9          I   Instalação Elétrica  16  23  18  25      2
+10         J            Divisórias  25  33  25  33      0
+11         K                  Piso  33  37  34  38      1
+12         L      Pintura Interior  33  38  33  38      0
+13         M   Acabamento Exterior  38  40  42  44      4
+14         N   Acabamento Interior  38  44  38  44      0
+15       Fim                   Fim  44  44  44  44      0
+
+Caminho Crítico: Início -&gt; A -&gt; B -&gt; C -&gt; E -&gt; F -&gt; J -&gt; L -&gt; N -&gt; Fim
+</pre></div>
+</div>
+</div>
+</div>
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KWJD03<span class="fn-bracket">]</span></span>
+<p>EunHong Kim, William G Wells Jr, and Michael R Duffey. A model for effective implementation of earned value management methodology. <em>International Journal of Project Management</em>, 21(5):375–382, 2003.</p>
+</div>
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Les06<span class="fn-bracket">]</span></span>
+<p>Albert Lester. <em>Project Management, Planning and Control: Managing Engineering, Construction and Manufacturing Projects to PMI, APM and BSI Standards</em>. Elsevier, Oxford, UK, 5th edition, 2006. ISBN 9780750669566.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -803,11 +1171,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="tecnica-valor-agregado-fund.html"
+       href="pertcpm-calculo-incertezas.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Técnica de Valor Agregado (EVM - Earned Value Management)</p>
+        <p class="prev-next-title">Análise de PERT/CPM - Incertezas nas durações das atividades</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -831,6 +1199,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carregar-dados-do-projeto">Carregar Dados do Projeto</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criar-o-grafo-do-projeto">Criar o Grafo do Projeto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caminho-critico">Caminho crítico</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representacao-do-caminho-critico-no-grafo-de-rede">Representação do caminho crítico no grafo de rede</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programacao-das-atividades-calculo-dos-tempos-e-folga">Programação das atividades: Cálculo dos tempos e folga</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulas-utilizadas">Fórmulas Utilizadas</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

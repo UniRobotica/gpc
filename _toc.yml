@@ -5,6 +5,7 @@ format: jb-book
 root: intro
 chapters:
 - file: notebooks/pertcpm-construcao-civil.ipynb
+- file: notebooks/pertcpm-calculo-incertezas.ipynb
 - file: notebooks/tecnica-valor-agregado-fund.ipynb
 - file: notebooks/tecnica-valor-agregado-projetos.ipynb
 - file: notebooks/tecnica-valor-agregado-construcao.ipynb

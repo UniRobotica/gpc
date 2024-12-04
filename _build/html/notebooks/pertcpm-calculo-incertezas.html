@@ -1,0 +1,1139 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Análise de PERT/CPM - Incertezas nas durações das atividades &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/pertcpm-calculo-incertezas';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Técnica de Valor Agregado (EVM - Earned Value Management)" href="tecnica-valor-agregado-fund.html" />
+    <link rel="prev" title="Análise de PERT/CPM" href="pertcpm-construcao-civil.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pertcpm-construcao-civil.html">Análise de PERT/CPM</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Análise de PERT/CPM - Incertezas nas durações das atividades</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-fund.html">Técnica de Valor Agregado (EVM - Earned Value Management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-projetos.html">Exemplo de Aplicação: Técnica de Valor Agregado em Projetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tecnica-valor-agregado-construcao.html">Exemplo de Aplicação: Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/pertcpm-calculo-incertezas.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/pertcpm-calculo-incertezas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/pertcpm-calculo-incertezas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Análise de PERT/CPM - Incertezas nas durações das atividades</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuicao-normal-e-calculo-da-probabilidade">Distribuição Normal e Cálculo da Probabilidade</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analise-de-pert-cpm-incertezas-nas-duracoes-das-atividades">
+<h1>Análise de PERT/CPM - Incertezas nas durações das atividades<a class="headerlink" href="#analise-de-pert-cpm-incertezas-nas-duracoes-das-atividades" title="Link to this heading">#</a></h1>
+<p>Conforme visto, o método <strong>PERT (Program Evaluation and Review Technique)</strong> é uma técnica de gerenciamento de projetos que considera a incerteza nas durações das atividades. A técnica utiliza três estimativas: <strong>otimista (o)</strong>, <strong>mais provável (m)</strong> e <strong>pessimista (p)</strong>. A partir dessas estimativas, calcula-se a <strong>média</strong> (<span class="math notranslate nohighlight">\(\mu\)</span>) e a <strong>variância</strong> (<span class="math notranslate nohighlight">\(\sigma^2\)</span>) de cada atividade, permitindo uma melhor previsão dos prazos do projeto, mesmo diante de incertezas. Essa abordagem, combinada com o <strong>CPM (Critical Path Method)</strong>, auxilia na identificação do caminho crítico, ou seja, a sequência de atividades que determina a duração mínima do projeto.</p>
+<p>As fórmulas utilizadas no cálculo são:
+Aqui estão as fórmulas em LaTeX adequadas para Markdown:</p>
+<ul class="simple">
+<li><p><strong>Duração esperada (<span class="math notranslate nohighlight">\(\mu\)</span>):</strong><br />
+[
+<span class="math notranslate nohighlight">\(\mu = \frac{o + 4m + p}{6}\)</span>
+]</p></li>
+<li><p><strong>Variância (\sigma^2):</strong><br />
+[
+<span class="math notranslate nohighlight">\(\sigma^2 = \left( \frac{p - o}{6} \right)^2\)</span>
+]</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="c1"># Dados de entrada (sem as colunas Média e Variância)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento&lt;br&gt;Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento&lt;br&gt;Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Pintura&lt;br&gt;Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação&lt;br&gt;Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Pintura&lt;br&gt;Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento&lt;br&gt;Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento&lt;br&gt;Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="c1">#&#39;Atividades Precedentes&#39;: [None, &#39;Início&#39;, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;C&#39;, &#39;E&#39;, &#39;D&#39;, &#39;E,G&#39;, &#39;C&#39;, &#39;F,I&#39;, &#39;J&#39;, &#39;J&#39;, &#39;H&#39;, &#39;K,L&#39;, &#39;M,N&#39;],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;o&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Função para calcular a média e a variância</span>
+<span class="k">def</span> <span class="nf">calculate_mean_variance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="c1"># Média: (o + 4m + p) / 6</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span>
+    <span class="c1"># Variância: ((p - o) / 6) ** 2</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="p">((</span><span class="n">p</span> <span class="o">-</span> <span class="n">o</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="c1"># Converter variância para fração mínima</span>
+    <span class="n">variance_fraction</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">mean</span><span class="p">,</span> <span class="n">variance_fraction</span>
+
+<span class="c1"># Criar o DataFrame com o cálculo da média e variância no momento da criação</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Calcular a média e a variância para cada linha</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Média&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Variância&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">calculate_mean_variance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Exibindo o DataFrame com formatação HTML (para mostrar as quebras de linha corretamente)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="c1"># Exibindo o DataFrame com HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atividade</th>
+      <th>Descrição</th>
+      <th>Duração Estimada</th>
+      <th>o</th>
+      <th>m</th>
+      <th>p</th>
+      <th>Média</th>
+      <th>Variância</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Início</td>
+      <td>Início</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>Escavação</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>1/9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B</td>
+      <td>Fundação</td>
+      <td>4</td>
+      <td>2.0</td>
+      <td>3.5</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C</td>
+      <td>Paredes</td>
+      <td>10</td>
+      <td>6.0</td>
+      <td>9.0</td>
+      <td>18.0</td>
+      <td>10.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>D</td>
+      <td>Telhado</td>
+      <td>6</td>
+      <td>4.0</td>
+      <td>5.5</td>
+      <td>10.0</td>
+      <td>6.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>E</td>
+      <td>Encanamento<br>Exterior</td>
+      <td>4</td>
+      <td>1.0</td>
+      <td>4.5</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>4/9</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>F</td>
+      <td>Encanamento<br>Interior</td>
+      <td>5</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>10.0</td>
+      <td>5.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>G</td>
+      <td>Muros</td>
+      <td>7</td>
+      <td>5.0</td>
+      <td>6.5</td>
+      <td>11.0</td>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>H</td>
+      <td>Pintura<br>Exterior</td>
+      <td>9</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>17.0</td>
+      <td>9.0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>I</td>
+      <td>Instalação<br>Elétrica</td>
+      <td>7</td>
+      <td>3.0</td>
+      <td>7.5</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>J</td>
+      <td>Divisórias</td>
+      <td>8</td>
+      <td>3.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
+      <td>8.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>K</td>
+      <td>Piso</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>L</td>
+      <td>Pintura<br>Interior</td>
+      <td>5</td>
+      <td>1.0</td>
+      <td>5.5</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>M</td>
+      <td>Acabamento<br>Exterior</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>1/9</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>N</td>
+      <td>Acabamento<br>Interior</td>
+      <td>6</td>
+      <td>5.0</td>
+      <td>5.5</td>
+      <td>9.0</td>
+      <td>6.0</td>
+      <td>4/9</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Fim</td>
+      <td>Fim</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+<p>Além dos caminhos que consideram a média do projeto, considerando as estimativas pessimistas e otimistas, é possível calcular o pior e o melhor cenário.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="c1"># Criar o DataFrame com as informações das atividades</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Atividade&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Descrição&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Início&#39;</span><span class="p">,</span><span class="s1">&#39;Escavação&#39;</span><span class="p">,</span> <span class="s1">&#39;Fundação&#39;</span><span class="p">,</span> <span class="s1">&#39;Paredes&#39;</span><span class="p">,</span> <span class="s1">&#39;Telhado&#39;</span><span class="p">,</span> <span class="s1">&#39;Encanamento Exterior&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Encanamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Muros&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Instalação Elétrica&#39;</span><span class="p">,</span> <span class="s1">&#39;Divisórias&#39;</span><span class="p">,</span> 
+                  <span class="s1">&#39;Piso&#39;</span><span class="p">,</span> <span class="s1">&#39;Pintura Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Exterior&#39;</span><span class="p">,</span> <span class="s1">&#39;Acabamento Interior&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E,G&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F,I&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;K,L&#39;</span><span class="p">,</span> <span class="s1">&#39;M,N&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Otimista&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Duração Pessimista&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Função para calcular os caminhos e destacar o caminho crítico</span>
+<span class="k">def</span> <span class="nf">calculate_paths_and_critical</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">duration_column</span><span class="p">,</span> <span class="n">highlight_color</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+    <span class="c1"># Adicionar nós e arestas ao grafo com base na coluna de duração especificada</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">],</span> <span class="n">duração</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="n">duration_column</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]:</span>
+            <span class="n">precedentes</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividades Precedentes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">precedentes</span><span class="p">:</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Atividade&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Função para encontrar todos os caminhos do início ao fim</span>
+    <span class="k">def</span> <span class="nf">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+                <span class="n">new_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">new_paths</span><span class="p">:</span>
+                    <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">paths</span>
+
+    <span class="c1"># Encontrar todos os caminhos do &quot;Início&quot; para &quot;Fim&quot;</span>
+    <span class="n">all_paths</span> <span class="o">=</span> <span class="n">find_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;Início&#39;</span><span class="p">,</span> <span class="s1">&#39;Fim&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Calcular a duração de cada caminho</span>
+    <span class="n">path_durations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">all_paths</span><span class="p">:</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;duração&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">)</span>
+        <span class="n">path_durations</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">path</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+
+    <span class="c1"># Criar uma tabela com os caminhos e suas durações</span>
+    <span class="n">paths_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">path_durations</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">,</span> <span class="s1">&#39;Duração Total&#39;</span><span class="p">])</span>
+    <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; -&gt; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># Formatar o caminho como uma string</span>
+
+    <span class="c1"># Encontrar o caminho crítico (o de maior duração)</span>
+    <span class="n">critical_path</span><span class="p">,</span> <span class="n">critical_duration</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">path_durations</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Função para destacar o caminho crítico na cor especificada</span>
+    <span class="k">def</span> <span class="nf">highlight_critical</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39; -&gt; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&lt;span style=&#39;color:</span><span class="si">{</span><span class="n">highlight_color</span><span class="si">}</span><span class="s2">&#39;&gt;</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">&lt;/span&gt;&quot;</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">critical_path</span> <span class="k">else</span> <span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">path</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Destacar o caminho crítico e a duração total na tabela</span>
+    <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Caminho&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">highlight_critical</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; -&gt; &#39;</span><span class="p">)))</span>
+    <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Duração Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paths_df</span><span class="p">[</span><span class="s1">&#39;Duração Total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;&lt;span style=&#39;color:</span><span class="si">{</span><span class="n">highlight_color</span><span class="si">}</span><span class="s2">&#39;&gt;&lt;b&gt;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&lt;/b&gt;&lt;/span&gt;&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">critical_duration</span> <span class="k">else</span> <span class="n">x</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Retornar o DataFrame formatado</span>
+    <span class="k">return</span> <span class="n">paths_df</span>
+
+<span class="c1"># Tabela para a duração otimista (destacado em azul)</span>
+<span class="n">optimistic_paths_df</span> <span class="o">=</span> <span class="n">calculate_paths_and_critical</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;Duração Otimista&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tabela para a duração estimada (destacado em verde)</span>
+<span class="n">estimated_paths_df</span> <span class="o">=</span> <span class="n">calculate_paths_and_critical</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;Duração Estimada&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tabela para a duração pessimista (destacado em vermelho)</span>
+<span class="n">pessimistic_paths_df</span> <span class="o">=</span> <span class="n">calculate_paths_and_critical</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;Duração Pessimista&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Exibir as tabelas</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;Duração Otimista&lt;/h3&gt;&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">optimistic_paths_df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;Duração Estimada&lt;/h3&gt;&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">estimated_paths_df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;Duração Pessimista&lt;/h3&gt;&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">pessimistic_paths_df</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\DELL\AppData\Local\Temp\ipykernel_22304\958558665.py:3: DeprecationWarning: Importing display from IPython.core.display is deprecated since IPython 7.14, please import from IPython.display
+  from IPython.core.display import display, HTML
+</pre></div>
+</div>
+<div class="output text_html"><h3>Duração Otimista</h3></div><div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Caminho</th>
+      <th>Duração Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><span style='color:blue'>Início</span> -> <span style='color:blue'>A</span> -> <span style='color:blue'>B</span> -> <span style='color:blue'>C</span> -> D -> G -> H -> M -> <span style='color:blue'>Fim</span></td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><span style='color:blue'>Início</span> -> <span style='color:blue'>A</span> -> <span style='color:blue'>B</span> -> <span style='color:blue'>C</span> -> <span style='color:blue'>E</span> -> <span style='color:blue'>F</span> -> <span style='color:blue'>J</span> -> <span style='color:blue'>K</span> -> <span style='color:blue'>N</span> -> <span style='color:blue'>Fim</span></td>
+      <td><span style='color:blue'><b>26</b></span></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><span style='color:blue'>Início</span> -> <span style='color:blue'>A</span> -> <span style='color:blue'>B</span> -> <span style='color:blue'>C</span> -> <span style='color:blue'>E</span> -> <span style='color:blue'>F</span> -> <span style='color:blue'>J</span> -> L -> <span style='color:blue'>N</span> -> <span style='color:blue'>Fim</span></td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><span style='color:blue'>Início</span> -> <span style='color:blue'>A</span> -> <span style='color:blue'>B</span> -> <span style='color:blue'>C</span> -> <span style='color:blue'>E</span> -> H -> M -> <span style='color:blue'>Fim</span></td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><span style='color:blue'>Início</span> -> <span style='color:blue'>A</span> -> <span style='color:blue'>B</span> -> <span style='color:blue'>C</span> -> I -> <span style='color:blue'>J</span> -> <span style='color:blue'>K</span> -> <span style='color:blue'>N</span> -> <span style='color:blue'>Fim</span></td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><span style='color:blue'>Início</span> -> <span style='color:blue'>A</span> -> <span style='color:blue'>B</span> -> <span style='color:blue'>C</span> -> I -> <span style='color:blue'>J</span> -> L -> <span style='color:blue'>N</span> -> <span style='color:blue'>Fim</span></td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table></div><div class="output text_html"><h3>Duração Estimada</h3></div><div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Caminho</th>
+      <th>Duração Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><span style='color:green'>Início</span> -> <span style='color:green'>A</span> -> <span style='color:green'>B</span> -> <span style='color:green'>C</span> -> D -> G -> H -> M -> <span style='color:green'>Fim</span></td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><span style='color:green'>Início</span> -> <span style='color:green'>A</span> -> <span style='color:green'>B</span> -> <span style='color:green'>C</span> -> <span style='color:green'>E</span> -> <span style='color:green'>F</span> -> <span style='color:green'>J</span> -> K -> <span style='color:green'>N</span> -> <span style='color:green'>Fim</span></td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><span style='color:green'>Início</span> -> <span style='color:green'>A</span> -> <span style='color:green'>B</span> -> <span style='color:green'>C</span> -> <span style='color:green'>E</span> -> <span style='color:green'>F</span> -> <span style='color:green'>J</span> -> <span style='color:green'>L</span> -> <span style='color:green'>N</span> -> <span style='color:green'>Fim</span></td>
+      <td><span style='color:green'><b>44</b></span></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><span style='color:green'>Início</span> -> <span style='color:green'>A</span> -> <span style='color:green'>B</span> -> <span style='color:green'>C</span> -> <span style='color:green'>E</span> -> H -> M -> <span style='color:green'>Fim</span></td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><span style='color:green'>Início</span> -> <span style='color:green'>A</span> -> <span style='color:green'>B</span> -> <span style='color:green'>C</span> -> I -> <span style='color:green'>J</span> -> K -> <span style='color:green'>N</span> -> <span style='color:green'>Fim</span></td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><span style='color:green'>Início</span> -> <span style='color:green'>A</span> -> <span style='color:green'>B</span> -> <span style='color:green'>C</span> -> I -> <span style='color:green'>J</span> -> <span style='color:green'>L</span> -> <span style='color:green'>N</span> -> <span style='color:green'>Fim</span></td>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table></div><div class="output text_html"><h3>Duração Pessimista</h3></div><div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Caminho</th>
+      <th>Duração Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> <span style='color:red'>D</span> -> <span style='color:red'>G</span> -> <span style='color:red'>H</span> -> <span style='color:red'>M</span> -> <span style='color:red'>Fim</span></td>
+      <td><span style='color:red'><b>70</b></span></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> E -> F -> J -> K -> N -> <span style='color:red'>Fim</span></td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> E -> F -> J -> L -> N -> <span style='color:red'>Fim</span></td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> E -> <span style='color:red'>H</span> -> <span style='color:red'>M</span> -> <span style='color:red'>Fim</span></td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> I -> J -> K -> N -> <span style='color:red'>Fim</span></td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td><span style='color:red'>Início</span> -> <span style='color:red'>A</span> -> <span style='color:red'>B</span> -> <span style='color:red'>C</span> -> I -> J -> L -> N -> <span style='color:red'>Fim</span></td>
+      <td>63</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+<section id="distribuicao-normal-e-calculo-da-probabilidade">
+<h2>Distribuição Normal e Cálculo da Probabilidade<a class="headerlink" href="#distribuicao-normal-e-calculo-da-probabilidade" title="Link to this heading">#</a></h2>
+<p>A <strong>distribuição normal</strong> pode ser utilizada para modelar o tempo total de um projeto no contexto do PERT/CPM, considerando as incertezas nas durações das atividades. Ela é caracterizada pela <strong>média</strong> (<span class="math notranslate nohighlight">\(\mu\)</span>), que representa o tempo esperado do projeto, e o <strong>desvio padrão</strong> (<span class="math notranslate nohighlight">\(\sigma\)</span>), que reflete a variabilidade no tempo de conclusão do projeto. O desvio padrão total do caminho crítico é calculado somando as variâncias das atividades nesse caminho.</p>
+<p>A <strong>probabilidade</strong> de concluir o projeto em um tempo <span class="math notranslate nohighlight">\(T\)</span> é dada pela função de distribuição acumulada normal (CDF):</p>
+<p><span class="math notranslate nohighlight">\(
+P(T) = P(X \leq T) = \Phi\left( \frac{T - \mu_p}{\sigma_p} \right)
+\)</span></p>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Phi\)</span> é a função de distribuição acumulada da normal.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_p\)</span> é a média do tempo total do caminho crítico.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_p\)</span> é o desvio padrão do caminho crítico, calculado pela raiz quadrada da soma das variâncias das atividades no caminho crítico.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> é o tempo fornecido para calcular a probabilidade.</p></li>
+</ul>
+<p>O <strong>desvio padrão</strong> do caminho crítico é calculado por:</p>
+<p><span class="math notranslate nohighlight">\(
+\sigma_p = \sqrt{\sum_{i=1}^{n} \sigma_i^2}
+\)</span></p>
+<p>Onde <span class="math notranslate nohighlight">\(\sigma_i^2\)</span> é a variância de cada atividade no caminho crítico, e <span class="math notranslate nohighlight">\(n\)</span> é o número de atividades nesse caminho.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="c1"># Função para calcular a probabilidade</span>
+<span class="k">def</span> <span class="nf">calcular_probabilidade</span><span class="p">(</span><span class="n">mu_p</span><span class="p">,</span> <span class="n">variancia_atividades</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="c1"># Passo 1: Calcular o desvio padrão total (σ_p)</span>
+    <span class="n">sigma_p</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">variancia_atividades</span><span class="p">))</span>
+    
+    <span class="c1"># Passo 2: Calcular o número de desvios padrão (k_a)</span>
+    <span class="n">k_a</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">mu_p</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_p</span>
+    
+    <span class="c1"># Passo 3: Calcular a probabilidade usando a distribuição normal</span>
+    <span class="n">probabilidade</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">k_a</span><span class="p">)</span>  <span class="c1"># Função de distribuição acumulada da normal</span>
+    <span class="k">return</span> <span class="n">probabilidade</span><span class="p">,</span> <span class="n">sigma_p</span><span class="p">,</span> <span class="n">k_a</span>
+
+<span class="c1"># Função para converter frações em números decimais</span>
+<span class="k">def</span> <span class="nf">fração_para_decimal</span><span class="p">(</span><span class="n">fração_str</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">Fraction</span><span class="p">(</span><span class="n">fração_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erro ao converter a fração: </span><span class="si">{</span><span class="n">fração_str</span><span class="si">}</span><span class="s2">. Certifique-se de usar o formato correto, como &#39;1/9&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+<span class="c1"># Solicitar ao usuário a duração total do Caminho Crítico e as variâncias das atividades</span>
+<span class="n">mu_p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Informe a duração total do Caminho Crítico (μ_p) em unidades de tempo: &quot;</span><span class="p">))</span>
+<span class="n">variancia_atividades</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">fração_para_decimal</span><span class="p">,</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Informe as variâncias das atividades separadas por vírgula (por exemplo, &#39;1/9&#39;): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)))</span>
+
+<span class="c1"># Solicitar o tempo T para calcular a probabilidade</span>
+<span class="n">T</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Informe a duração do projeto (T) para calcular a probabilidade: &quot;</span><span class="p">))</span>
+
+<span class="c1"># Calcular a probabilidade</span>
+<span class="n">probabilidade</span><span class="p">,</span> <span class="n">sigma_p</span><span class="p">,</span> <span class="n">k_a</span> <span class="o">=</span> <span class="n">calcular_probabilidade</span><span class="p">(</span><span class="n">mu_p</span><span class="p">,</span> <span class="n">variancia_atividades</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Exibir o resultado</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A probabilidade de o projeto ser completado em </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> unidades de tempo é: </span><span class="si">{</span><span class="n">probabilidade</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gerar o gráfico da distribuição normal</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_p</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">sigma_p</span><span class="p">,</span> <span class="n">mu_p</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">sigma_p</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu_p</span><span class="p">,</span> <span class="n">sigma_p</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plotar a distribuição normal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Distribuição Normal&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Destacar a área da probabilidade em amarelo</span>
+<span class="n">x_fill</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu_p</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">sigma_p</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y_fill</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_fill</span><span class="p">,</span> <span class="n">mu_p</span><span class="p">,</span> <span class="n">sigma_p</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_fill</span><span class="p">,</span> <span class="n">y_fill</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Área até T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Adicionar marcação de T</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Adicionar títulos e rótulos</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribuição Normal da Duração do Projeto&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Duração (T)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Densidade de Probabilidade&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Exibir o gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A probabilidade de o projeto ser completado em 47.0 unidades de tempo é: 0.8413
+</pre></div>
+</div>
+<img alt="../_images/51e50bf1038dabf1aae81e8f353b9698e228b867623dd6148eaa006413d0b44a.png" src="../_images/51e50bf1038dabf1aae81e8f353b9698e228b867623dd6148eaa006413d0b44a.png" />
+</div>
+</div>
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KWJD03<span class="fn-bracket">]</span></span>
+<p>EunHong Kim, William G Wells Jr, and Michael R Duffey. A model for effective implementation of earned value management methodology. <em>International Journal of Project Management</em>, 21(5):375–382, 2003.</p>
+</div>
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Les06<span class="fn-bracket">]</span></span>
+<p>Albert Lester. <em>Project Management, Planning and Control: Managing Engineering, Construction and Manufacturing Projects to PMI, APM and BSI Standards</em>. Elsevier, Oxford, UK, 5th edition, 2006. ISBN 9780750669566.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pertcpm-construcao-civil.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Análise de PERT/CPM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tecnica-valor-agregado-fund.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Técnica de Valor Agregado (EVM - Earned Value Management)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuicao-normal-e-calculo-da-probabilidade">Distribuição Normal e Cálculo da Probabilidade</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
