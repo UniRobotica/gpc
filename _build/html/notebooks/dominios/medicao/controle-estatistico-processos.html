@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle** &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/dominios/medicao/controle-estatistico-processos';</script>
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Técnica de Valor Agregado (EVM - Earned Value Management)" href="tecnica-valor-agregado-fund.html" />
+    <link rel="prev" title="Medição" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Domínios de Desempenho</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planejamento/pertcpm-construcao-civil.html">PERT/CPM na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Medição</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle**</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../complementos/index.html">Complementos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../complementos/historico-qualidade.html">Histórico da Qualidade</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../referencias.html">Referências Bibliográficas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/dominios/medicao/controle-estatistico-processos.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/dominios/medicao/controle-estatistico-processos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/dominios/medicao/controle-estatistico-processos.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle**</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle**</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-e-controle-estatistico-de-processos-cep">1.1 O que é Controle Estatístico de Processos (CEP)?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-variacao">1.2 Tipos de Variação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-na-construcao-civil">1.3 Exemplos na Construção Civil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-controle">1.4 Gráficos de Controle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construindo-um-grafico-de-controle-de-media-x-bar">1.5 Construindo um Gráfico de Controle de Média (X-bar)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-codigo-grafico-de-controle-de-media-x-bar">Exemplo de Código - Gráfico de Controle de Média (X-bar)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-variabilidade-e-proporcao-defeituosa">Controle de Variabilidade e Proporção Defeituosa</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-variabilidade-do-processo-grafico-de-controle-de-desvio-padrao">2.1 Controle de Variabilidade do Processo (Gráfico de Controle de Desvio Padrão)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-de-controle-de-desvio-padrao-s-chart">2.2 Gráfico de Controle de Desvio Padrão (S-chart)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-codigo-grafico-de-controle-de-variabilidade">Exemplo de Código - Gráfico de Controle de Variabilidade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-proporcao-defeituosa-p-chart">2.3 Controle de Proporção Defeituosa (p-chart)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-codigo-grafico-de-controle-de-proporcao-defeituosa">Exemplo de Código - Gráfico de Controle de Proporção Defeituosa</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resumo">Resumo</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-praticas-e-conclusao">Aplicações Práticas e Conclusão</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="introducao-ao-controle-estatistico-de-processos-cep-e-graficos-de-controle">
+<h1>Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle**<a class="headerlink" href="#introducao-ao-controle-estatistico-de-processos-cep-e-graficos-de-controle" title="Link to this heading">#</a></h1>
+<p>O CEP é uma ferramenta fundamental para monitoramento de processos, e o PMBOK 7ª edição destaca a importância de medir e avaliar o desempenho de um projeto de forma contínua. O objetivo é garantir que o projeto está no caminho certo e que as variações nos processos sejam identificadas e corrigidas.</p>
+<p>No contexto de Medição e Avaliação do Desempenho, o PMBOK 7ª edição aborda a importância de coletar dados, analisar o desempenho do projeto e usar essas informações para tomar decisões informadas. O CEP fornece um conjunto robusto de ferramentas para essa coleta e análise, como gráficos de controle, que ajudam a monitorar a variação nos processos de produção ou execução e tomar ações corretivas quando necessário.</p>
+<p>Outras características do CEP relacionados a GPC:</p>
+<ul class="simple">
+<li><p>Gráficos de Controle (como o gráfico de controle de média, desvio padrão ou proporção defeituosa) são exemplos claros de como o CEP pode ser utilizado para monitorar a qualidade e a variabilidade dos processos.</p></li>
+<li><p>O CEP utiliza dados reais do processo para avaliar se o desempenho está dentro dos limites de controle e, se necessário, tomar ações corretivas, o que é essencial para a gestão de qualidade e desempenho em qualquer tipo de projeto.</p></li>
+<li><p>O PMBOK 7ª edição foca em dados e análise contínua para a tomada de decisões baseadas em informações concretas, o que se alinha diretamente aos princípios do CEP.</p></li>
+</ul>
+<p>Portanto, a conexão entre o CEP e a Medição e Avaliação do Desempenho no PMBOK é bastante forte, já que ambos lidam com a coleta de dados e análise para garantir que os processos do projeto estejam funcionando conforme o esperado, com a detecção de problemas antes que se tornem críticos.</p>
+<section id="o-que-e-controle-estatistico-de-processos-cep">
+<h2>1.1 O que é Controle Estatístico de Processos (CEP)?<a class="headerlink" href="#o-que-e-controle-estatistico-de-processos-cep" title="Link to this heading">#</a></h2>
+<p>O <strong>Controle Estatístico de Processos (CEP)</strong> é uma metodologia usada para monitorar e controlar a qualidade de um processo de produção. Seu objetivo é garantir que o processo opere de forma eficiente, sem falhas ou desvios indesejados. Isso é feito medindo variáveis do processo e analisando sua variabilidade <span id="id1">[<a class="reference internal" href="../../referencias.html#id2" title="Zhiqiang Ge and Zhihuan Song. Multivariate statistical process control: Process monitoring methods and applications. Springer Science &amp; Business Media, 2012.">GS12</a>]</span></p>
+</section>
+<section id="tipos-de-variacao">
+<h2>1.2 Tipos de Variação<a class="headerlink" href="#tipos-de-variacao" title="Link to this heading">#</a></h2>
+<p>Em um processo de produção, as variações podem ser de dois tipos:</p>
+<ul class="simple">
+<li><p><strong>Variação Comum (ou Natural)</strong>: Resulta de causas aleatórias, que são inerentes ao processo. Essas variações não são evitáveis e devem ser controladas com técnicas de melhoria contínua.</p></li>
+<li><p><strong>Variação Especial (ou Anômala)</strong>: Causada por fatores fora do controle do processo. Essas variações podem ser identificadas e corrigidas.</p></li>
+</ul>
+</section>
+<section id="exemplos-na-construcao-civil">
+<h2>1.3 Exemplos na Construção Civil<a class="headerlink" href="#exemplos-na-construcao-civil" title="Link to this heading">#</a></h2>
+<p>Na <strong>construção civil</strong>, podemos usar o CEP para monitorar a qualidade de diversos processos, como:</p>
+<ul class="simple">
+<li><p><strong>Medição da espessura do concreto</strong>: É importante garantir que a espessura do concreto em uma fundação esteja dentro dos limites estabelecidos para garantir a segurança estrutural.</p></li>
+<li><p><strong>Controle de resistência do concreto</strong>: Verificar se a resistência do concreto está dentro das especificações, o que é crucial para a durabilidade e segurança das estruturas.</p></li>
+</ul>
+</section>
+<section id="graficos-de-controle">
+<h2>1.4 Gráficos de Controle<a class="headerlink" href="#graficos-de-controle" title="Link to this heading">#</a></h2>
+<p>Os <strong>gráficos de controle</strong> são ferramentas essenciais do CEP, usadas para monitorar como as medições de um processo variam ao longo do tempo. Eles ajudam a identificar quando um processo está fora de controle (quando a variação é anômala).</p>
+<p>Os principais gráficos de controle usados são:</p>
+<ul class="simple">
+<li><p><strong>Gráfico de Controle de Média (X-bar)</strong>: Usado para monitorar a média de uma variável (ex: resistência média do concreto).</p></li>
+<li><p><strong>Gráfico de Controle de Desvio Padrão (S)</strong>: Usado para monitorar a variabilidade de uma variável (ex: variação na espessura do concreto).</p></li>
+</ul>
+</section>
+<section id="construindo-um-grafico-de-controle-de-media-x-bar">
+<h2>1.5 Construindo um Gráfico de Controle de Média (X-bar)<a class="headerlink" href="#construindo-um-grafico-de-controle-de-media-x-bar" title="Link to this heading">#</a></h2>
+<p><strong>Passos</strong>:</p>
+<ol class="arabic simple">
+<li><p>Coletamos amostras do processo (por exemplo, 5 medições de resistência do concreto por dia).</p></li>
+<li><p>Calculamos a média de cada amostra.</p></li>
+<li><p>Calculamos a média geral e os limites de controle superior (UCL) e inferior (LCL) usando a fórmula de 3 desvios padrão.</p></li>
+</ol>
+</section>
+<section id="exemplo-de-codigo-grafico-de-controle-de-media-x-bar">
+<h2>Exemplo de Código - Gráfico de Controle de Média (X-bar)<a class="headerlink" href="#exemplo-de-codigo-grafico-de-controle-de-media-x-bar" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Gerando dados simulados (resistência do concreto em MPa)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># 20 amostras de 5 medições</span>
+
+<span class="c1"># Calculando a média de cada amostra</span>
+<span class="n">medias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Calculando a média geral</span>
+<span class="n">media_geral</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">medias</span><span class="p">)</span>
+
+<span class="c1"># Calculando o desvio padrão das amostras</span>
+<span class="n">desvio_padrao</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">medias</span><span class="p">)</span>
+
+<span class="c1"># Calculando os limites de controle (UCL e LCL)</span>
+<span class="n">UCL</span> <span class="o">=</span> <span class="n">media_geral</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">desvio_padrao</span>
+<span class="n">LCL</span> <span class="o">=</span> <span class="n">media_geral</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">desvio_padrao</span>
+
+<span class="c1"># Plotando o gráfico de controle</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">medias</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Média das amostras&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">media_geral</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Média Geral&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">UCL</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limite Superior de Controle (UCL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">LCL</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limite Inferior de Controle (LCL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Gráfico de Controle de Média (X-bar) - Resistência do Concreto&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Amostra&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Média da Resistência (MPa)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/b8d85dd2c22e68a1723d5455130079b1291094d4492321ca6747fe86abec0854.png" src="../../../_images/b8d85dd2c22e68a1723d5455130079b1291094d4492321ca6747fe86abec0854.png" />
+</div>
+</div>
+<p><strong>Explicação do gráfico</strong>:</p>
+<ul class="simple">
+<li><p>O gráfico mostra a média das amostras coletadas ao longo do tempo (20 amostras de 5 medições).</p></li>
+<li><p>A linha verde é a média geral do processo.</p></li>
+<li><p>As linhas vermelhas representam os limites de controle. Se algum ponto cair fora desses limites, isso indica uma variação especial (fora de controle), o que exige investigação e ação corretiva.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="controle-de-variabilidade-e-proporcao-defeituosa">
+<h1>Controle de Variabilidade e Proporção Defeituosa<a class="headerlink" href="#controle-de-variabilidade-e-proporcao-defeituosa" title="Link to this heading">#</a></h1>
+<section id="controle-de-variabilidade-do-processo-grafico-de-controle-de-desvio-padrao">
+<h2>2.1 Controle de Variabilidade do Processo (Gráfico de Controle de Desvio Padrão)<a class="headerlink" href="#controle-de-variabilidade-do-processo-grafico-de-controle-de-desvio-padrao" title="Link to this heading">#</a></h2>
+<p>Além de monitorar a média, é importante monitorar a <strong>variabilidade</strong> do processo. Isso nos ajuda a garantir que o processo seja consistente e confiável.</p>
+<p>No contexto da <strong>construção civil</strong>, a variabilidade pode ser crucial:</p>
+<ul class="simple">
+<li><p>Se a espessura das lajes de concreto não for consistente, isso pode comprometer a resistência e segurança estrutural.</p></li>
+<li><p>Se a resistência do concreto variar muito, pode afetar a durabilidade e segurança da construção.</p></li>
+</ul>
+</section>
+<section id="grafico-de-controle-de-desvio-padrao-s-chart">
+<h2>2.2 Gráfico de Controle de Desvio Padrão (S-chart)<a class="headerlink" href="#grafico-de-controle-de-desvio-padrao-s-chart" title="Link to this heading">#</a></h2>
+<p><strong>Passos</strong>:</p>
+<ol class="arabic simple">
+<li><p>Coletamos amostras do processo, como fizemos no gráfico de controle de média.</p></li>
+<li><p>Calculamos o desvio padrão de cada amostra.</p></li>
+<li><p>Calculamos os limites de controle superior (UCL) e inferior (LCL) para o desvio padrão.</p></li>
+</ol>
+</section>
+<section id="exemplo-de-codigo-grafico-de-controle-de-variabilidade">
+<h2>Exemplo de Código - Gráfico de Controle de Variabilidade<a class="headerlink" href="#exemplo-de-codigo-grafico-de-controle-de-variabilidade" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculando o desvio padrão de cada amostra</span>
+<span class="n">desvios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Calculando a média do desvio padrão</span>
+<span class="n">media_desvio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">desvios</span><span class="p">)</span>
+
+<span class="c1"># Calculando os limites de controle para o desvio padrão (S-chart)</span>
+<span class="n">UCL_S</span> <span class="o">=</span> <span class="n">media_desvio</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">desvios</span><span class="p">)</span>
+<span class="n">LCL_S</span> <span class="o">=</span> <span class="n">media_desvio</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">desvios</span><span class="p">)</span>
+
+<span class="c1"># Plotando o gráfico de controle do desvio padrão</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">desvios</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Desvio padrão das amostras&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">media_desvio</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Média do Desvio Padrão&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">UCL_S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limite Superior de Controle (UCL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">LCL_S</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limite Inferior de Controle (LCL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Gráfico de Controle de Desvio Padrão (S-chart) - Variação na Espessura do Concreto&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Amostra&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Desvio Padrão (mm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/76e841a9ea825286b831943a9f424f6ef65cfdfcace42da55aee8b15edccf472.png" src="../../../_images/76e841a9ea825286b831943a9f424f6ef65cfdfcace42da55aee8b15edccf472.png" />
+</div>
+</div>
+<p><strong>Explicação do gráfico</strong>:</p>
+<ul class="simple">
+<li><p>O gráfico mostra como o desvio padrão (variabilidade) das amostras varia ao longo do tempo.</p></li>
+<li><p>Se algum ponto ultrapassar os limites de controle, o processo deve ser ajustado para reduzir a variabilidade.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="controle-de-proporcao-defeituosa-p-chart">
+<h2>2.3 Controle de Proporção Defeituosa (p-chart)<a class="headerlink" href="#controle-de-proporcao-defeituosa-p-chart" title="Link to this heading">#</a></h2>
+<p>No controle de processos, podemos também monitorar a <strong>proporção de defeituosos</strong> em um lote de produção. Na construção civil, isso pode ser relacionado à quantidade de concreto que não atendeu aos requisitos de resistência ou espessura mínima.</p>
+<p><strong>Passos</strong>:</p>
+<ol class="arabic simple">
+<li><p>Definimos uma quantidade de itens a serem inspecionados (ex: 100 blocos de concreto).</p></li>
+<li><p>Contamos quantos itens apresentam defeitos.</p></li>
+<li><p>Calculamos a proporção de defeituosos para cada amostra e, a partir disso, geramos um gráfico de controle para a proporção defeituosa.</p></li>
+</ol>
+</section>
+<section id="exemplo-de-codigo-grafico-de-controle-de-proporcao-defeituosa">
+<h2>Exemplo de Código - Gráfico de Controle de Proporção Defeituosa<a class="headerlink" href="#exemplo-de-codigo-grafico-de-controle-de-proporcao-defeituosa" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definindo o número total de itens e defeituosos</span>
+<span class="n">total_itens</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">defeituosos</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">proporcao_defeituosos</span> <span class="o">=</span> <span class="n">defeituosos</span> <span class="o">/</span> <span class="n">total_itens</span>
+
+<span class="c1"># Gerando 20 amostras de defeituosos</span>
+<span class="n">amostras_defeituosos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">total_itens</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">proporcao_defeituosos</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">proporcao_amostras</span> <span class="o">=</span> <span class="n">amostras_defeituosos</span> <span class="o">/</span> <span class="n">total_itens</span>
+
+<span class="c1"># Calculando os limites de controle para o p-chart</span>
+<span class="n">p_barra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">proporcao_amostras</span><span class="p">)</span>
+<span class="n">UCL_p</span> <span class="o">=</span> <span class="n">p_barra</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">p_barra</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_barra</span><span class="p">))</span> <span class="o">/</span> <span class="n">total_itens</span><span class="p">)</span>
+<span class="n">LCL_p</span> <span class="o">=</span> <span class="n">p_barra</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">p_barra</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_barra</span><span class="p">))</span> <span class="o">/</span> <span class="n">total_itens</span><span class="p">)</span>
+
+<span class="c1"># Plotando o gráfico de controle de proporção defeituosa</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">proporcao_amostras</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Proporção de defeituosos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">p_barra</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Proporção média&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">UCL_p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limite Superior de Controle (UCL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">LCL_p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Limite Inferior de Controle (LCL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Gráfico de Controle de Proporção Defeituosa (p-chart) - Concreto com Defeitos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Amostra&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Proporção de defeituosos&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/222b99b5196a5008f4eec9c17ba43233dc82462d9d7d78f6ff326dc67fcb56d5.png" src="../../../_images/222b99b5196a5008f4eec9c17ba43233dc82462d9d7d78f6ff326dc67fcb56d5.png" />
+</div>
+</div>
+<p><strong>Explicação do gráfico</strong>:</p>
+<ul class="simple">
+<li><p>O gráfico mostra a <strong>proporção de defeituosos</strong> em cada amostra de concreto (como blocos ou peças de concreto).</p></li>
+<li><p>A linha verde indica a <strong>proporção média</strong> de defeituosos, enquanto as linhas vermelhas indicam os limites de controle.</p></li>
+<li><p>Se a proporção de defeituosos em uma amostra cair fora dos limites de controle, isso sugere que o processo está fora de controle e deve ser investigado para identificar e corrigir a causa da variação.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="resumo">
+<h1>Resumo<a class="headerlink" href="#resumo" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>CEP (Controle Estatístico de Processos)</strong> é uma metodologia que ajuda a monitorar e controlar a qualidade de um processo. Ele visa detectar variações especiais e minimizar variações comuns para garantir que o processo permaneça estável e dentro das especificações.</p></li>
+<li><p><strong>Variação Comum</strong>: Variações naturais que ocorrem dentro do processo.</p></li>
+<li><p><strong>Variação Especial</strong>: Variações causadas por fatores externos ou anômalos.</p></li>
+<li><p><strong>Gráficos de Controle</strong> ajudam a visualizar essas variações e identificar quando o processo está fora de controle.</p></li>
+<li><p>Exemplos aplicados na <strong>construção civil</strong> incluem o controle de <strong>resistência do concreto</strong> e a <strong>espessura do concreto</strong>.</p></li>
+<li><p><strong>Gráfico de Controle de Desvio Padrão (S-chart)</strong>: Usado para monitorar a <strong>variabilidade</strong> de um processo. No exemplo da construção civil, isso poderia ser aplicado ao controle da <strong>espessura do concreto</strong> ou à <strong>variação na resistência</strong>.</p></li>
+<li><p><strong>Gráfico de Controle de Proporção Defeituosa (p-chart)</strong>: Usado para monitorar a <strong>proporção de defeituosos</strong> em um processo. No caso da construção civil, pode ser usado para monitorar a proporção de peças de concreto que não atendem às especificações de resistência ou qualidade.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="aplicacoes-praticas-e-conclusao">
+<h1>Aplicações Práticas e Conclusão<a class="headerlink" href="#aplicacoes-praticas-e-conclusao" title="Link to this heading">#</a></h1>
+<p>O <strong>Controle Estatístico de Processos (CEP)</strong> é amplamente utilizado na construção civil para garantir a <strong>qualidade</strong> e a <strong>segurança</strong> das construções. Processos como a <strong>mistura de concreto</strong>, a <strong>resistência do concreto</strong> e a <strong>espessura das lajes</strong> são monitorados para garantir que o trabalho esteja dentro dos padrões exigidos.</p>
+<p>Por exemplo:</p>
+<ul class="simple">
+<li><p><strong>Monitoramento da resistência do concreto</strong>: Ao controlar a resistência média do concreto (gráfico de média) e a variabilidade (gráfico de desvio padrão), podemos garantir que o concreto utilizado nas fundações ou lajes de uma obra tenha qualidade suficiente para suportar as cargas a que será submetido.</p></li>
+<li><p><strong>Controle de defeituosos</strong>: Usar um gráfico de proporção defeituosa (p-chart) para controlar a proporção de blocos de concreto defeituosos ajuda a manter a qualidade durante o processo de produção e fabricação.</p></li>
+</ul>
+<p>O <strong>CEP não só identifica problemas</strong> em um processo, mas também <strong>ajuda a prevenir falhas</strong> por meio da monitorização constante da qualidade. Usar essas ferramentas ajuda a <strong>reduzir desperdícios</strong>, melhorar a eficiência e garantir a <strong>segurança</strong> e <strong>qualidade</strong> das obras. Esses conceitos têm um grande impacto na qualidade e no controle dos processos na engenharia, especialmente em áreas tão críticas como a construção civil.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks\dominios\medicao"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Medição</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tecnica-valor-agregado-fund.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Técnica de Valor Agregado (EVM - Earned Value Management)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle**</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-e-controle-estatistico-de-processos-cep">1.1 O que é Controle Estatístico de Processos (CEP)?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-variacao">1.2 Tipos de Variação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-na-construcao-civil">1.3 Exemplos na Construção Civil</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficos-de-controle">1.4 Gráficos de Controle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construindo-um-grafico-de-controle-de-media-x-bar">1.5 Construindo um Gráfico de Controle de Média (X-bar)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-codigo-grafico-de-controle-de-media-x-bar">Exemplo de Código - Gráfico de Controle de Média (X-bar)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-variabilidade-e-proporcao-defeituosa">Controle de Variabilidade e Proporção Defeituosa</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-variabilidade-do-processo-grafico-de-controle-de-desvio-padrao">2.1 Controle de Variabilidade do Processo (Gráfico de Controle de Desvio Padrão)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grafico-de-controle-de-desvio-padrao-s-chart">2.2 Gráfico de Controle de Desvio Padrão (S-chart)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-codigo-grafico-de-controle-de-variabilidade">Exemplo de Código - Gráfico de Controle de Variabilidade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controle-de-proporcao-defeituosa-p-chart">2.3 Controle de Proporção Defeituosa (p-chart)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-codigo-grafico-de-controle-de-proporcao-defeituosa">Exemplo de Código - Gráfico de Controle de Proporção Defeituosa</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resumo">Resumo</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-praticas-e-conclusao">Aplicações Práticas e Conclusão</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
