@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Histórico da Qualidade e os Pais da Qualidade &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/complementos/historico-qualidade';</script>
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Complementos" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dominios/index.html">Domínios de Desempenho</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dominios/planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dominios/planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dominios/planejamento/pertcpm-construcao-civil.html">PERT/CPM na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dominios/medicao/index.html">Medição</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dominios/medicao/tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dominios/medicao/tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dominios/medicao/tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Complementos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Histórico da Qualidade</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/complementos/historico-qualidade.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/complementos/historico-qualidade.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/complementos/historico-qualidade.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Histórico da Qualidade e os Pais da Qualidade</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-historia-da-qualidade">Pré-História da Qualidade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revolucao-industrial-seculo-xviii-e-xix">Revolução Industrial (Século XVIII e XIX)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna">Início do Século XX - Fundação das Bases da Qualidade Moderna</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-movimento-da-qualidade-total-tqm">O Movimento da Qualidade Total (TQM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualidade-no-seculo-xxi">Qualidade no Século XXI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-da-qualidade-total">Características da Qualidade Total</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-pais-da-qualidade">Os Pais da Qualidade</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="historico-da-qualidade-e-os-pais-da-qualidade">
+<h1>Histórico da Qualidade e os Pais da Qualidade<a class="headerlink" href="#historico-da-qualidade-e-os-pais-da-qualidade" title="Link to this heading">#</a></h1>
+<section id="pre-historia-da-qualidade">
+<h2>Pré-História da Qualidade<a class="headerlink" href="#pre-historia-da-qualidade" title="Link to this heading">#</a></h2>
+<p>O conceito de <strong>qualidade</strong> remonta a tempos antigos, com exemplos notáveis de busca pela qualidade na <strong>construção das Pirâmides do Egito</strong> (cerca de 2600 a.C.). As pirâmides, como as de Gizé, eram monumentos com alto nível de precisão e durabilidade, exigindo cuidados rigorosos com os materiais e processos de construção. Esses projetos demonstraram a importância de garantir a qualidade desde a concepção até a execução.</p>
+<p>Na <strong>Roma Antiga</strong>, o Império Romano era conhecido por suas <strong>infraestruturas</strong> de qualidade, como estradas e aquedutos, que foram projetadas para durar séculos. O foco era em <strong>durabilidade</strong> e <strong>desempenho</strong> dos produtos.</p>
+</section>
+<section id="revolucao-industrial-seculo-xviii-e-xix">
+<h2>Revolução Industrial (Século XVIII e XIX)<a class="headerlink" href="#revolucao-industrial-seculo-xviii-e-xix" title="Link to this heading">#</a></h2>
+<p>Com a <strong>Revolução Industrial</strong>, houve uma necessidade crescente de <strong>controle da qualidade</strong> em processos de produção em massa. A produção em larga escala de bens tornou difícil manter altos padrões de qualidade sem um sistema formal de controle. Durante esse período, surgiram os primeiros sistemas de inspeção e controle de qualidade.</p>
+</section>
+<section id="inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna">
+<h2>Início do Século XX - Fundação das Bases da Qualidade Moderna<a class="headerlink" href="#inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna" title="Link to this heading">#</a></h2>
+<p>A evolução da qualidade como disciplina formal começou no início do século XX, com a contribuição de pioneiros como:</p>
+<ol class="arabic simple">
+<li><p><strong>Frederick Taylor</strong> (1856-1915) - <strong>Administração Científica</strong><br />
+Taylor introduziu os princípios de <strong>racionalização do trabalho</strong> e <strong>padronização</strong>, buscando eficiência e produtividade nos processos de produção. Sua abordagem focava em melhorar a qualidade ao otimizar os processos operacionais.</p></li>
+<li><p><strong>Walter A. Shewhart</strong> (1891-1967) - <strong>Controle Estatístico de Qualidade (SPC)</strong><br />
+Shewhart é amplamente reconhecido por desenvolver o <strong>controle estatístico de qualidade</strong>, um método que utiliza dados e gráficos (como o gráfico de controle) para monitorar e melhorar os processos de produção. Ele também introduziu o conceito de <strong>ciclo PDCA</strong> (Plan-Do-Check-Act).</p></li>
+<li><p><strong>W. Edwards Deming</strong> (1900-1993) - <strong>Qualidade e Produtividade</strong><br />
+Deming foi fundamental para a popularização do <strong>controle de qualidade estatístico</strong> e do conceito de <strong>melhoria contínua</strong> no Japão após a Segunda Guerra Mundial. Ele enfatizou a importância da <strong>participação da alta gestão</strong> no processo de qualidade e introduziu as <strong>14 regras para a gestão de qualidade</strong>.</p></li>
+<li><p><strong>Joseph Juran</strong> (1904-2008) - <strong>Qualidade como Gestão</strong><br />
+Juran abordou a qualidade de uma perspectiva mais ampla, argumentando que a <strong>qualidade não deve ser tratada apenas por engenheiros ou operadores</strong>, mas deve ser uma <strong>responsabilidade de toda a organização</strong>. Ele introduziu o conceito de <strong>custo da qualidade</strong> e ajudou a estabelecer o <strong>Ciclo Juran</strong>: <strong>Planejar, Controlar e Melhorar</strong>.</p></li>
+</ol>
+</section>
+<section id="o-movimento-da-qualidade-total-tqm">
+<h2>O Movimento da Qualidade Total (TQM)<a class="headerlink" href="#o-movimento-da-qualidade-total-tqm" title="Link to this heading">#</a></h2>
+<p>Nos anos 1980 e 1990, o conceito de <strong>Qualidade Total</strong> (TQM - Total Quality Management) surgiu como uma abordagem holística para a gestão de qualidade. A qualidade passou a ser vista como um <strong>esforço contínuo</strong> em todas as partes da organização, envolvendo todos os funcionários, desde a alta gestão até os trabalhadores da linha de frente. O foco estava em <strong>melhoria contínua</strong>, <strong>satisfação do cliente</strong> e <strong>prevenção de defeitos</strong>.</p>
+<p>Principais figuras do TQM incluem:</p>
+<ul class="simple">
+<li><p><strong>Kaoru Ishikawa</strong>: Conhecido por popularizar o <strong>diagrama de causa e efeito</strong> (ou diagrama de espinha de peixe), que ajuda a identificar as causas dos problemas de qualidade.</p></li>
+<li><p><strong>Genichi Taguchi</strong>: Desenvolveu o <strong>Método Taguchi</strong>, que enfoca o design de experimentos para melhorar a qualidade do produto.</p></li>
+</ul>
+</section>
+<section id="qualidade-no-seculo-xxi">
+<h2>Qualidade no Século XXI<a class="headerlink" href="#qualidade-no-seculo-xxi" title="Link to this heading">#</a></h2>
+<p>A qualidade continua a evoluir no século XXI, com novas abordagens e metodologias sendo introduzidas, como a <strong>Gestão da Qualidade Seis Sigma</strong>, que se foca na <strong>eliminação de defeitos</strong> e <strong>redução da variação</strong> nos processos de produção. A <strong>ISO 9001</strong> também se tornou uma das normas de qualidade mais adotadas globalmente, oferecendo uma estrutura de gestão da qualidade para empresas de todos os portes e setores.</p>
+</section>
+<section id="caracteristicas-da-qualidade-total">
+<h2>Características da Qualidade Total<a class="headerlink" href="#caracteristicas-da-qualidade-total" title="Link to this heading">#</a></h2>
+<p>A <strong>Qualidade Total</strong> (TQM) envolve vários princípios e características centrais que visam garantir a excelência em todos os aspectos de uma organização. Algumas das principais características incluem:</p>
+<ol class="arabic simple">
+<li><p><strong>Foco no Cliente</strong>: A satisfação do cliente é uma das principais preocupações, com todos os processos organizacionais voltados para atender ou superar as expectativas do cliente.</p></li>
+<li><p><strong>Participação de Todos</strong>: Todos os membros da organização, desde a alta gestão até os operários da linha de frente, devem estar envolvidos no processo de melhoria da qualidade.</p></li>
+<li><p><strong>Melhoria Contínua</strong>: A melhoria dos processos deve ser constante e não apenas pontual, com uma busca incessante por perfeição.</p></li>
+<li><p><strong>Tomada de Decisões Baseada em Fatos</strong>: As decisões devem ser baseadas em dados objetivos, como resultados de testes e medições, e não apenas em suposições ou opiniões.</p></li>
+<li><p><strong>Gestão de Processos</strong>: Em vez de focar em resultados individuais, a <strong>gestão de qualidade</strong> deve ser feita por meio da <strong>gestão de processos</strong>, buscando melhorar todos os processos que afetam a qualidade do produto ou serviço.</p></li>
+</ol>
+</section>
+<section id="os-pais-da-qualidade">
+<h2>Os Pais da Qualidade<a class="headerlink" href="#os-pais-da-qualidade" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Walter A. Shewhart</strong></p></li>
+<li><p><strong>W. Edwards Deming</strong></p></li>
+<li><p><strong>Joseph Juran</strong></p></li>
+<li><p><strong>Kaoru Ishikawa</strong></p></li>
+<li><p><strong>Genichi Taguchi</strong></p></li>
+</ul>
+<p>Esses profissionais são considerados os <strong>pais da qualidade</strong> devido às suas contribuições significativas para o campo da <strong>gestão da qualidade</strong> e a <strong>melhoria contínua</strong>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks\complementos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complementos</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-historia-da-qualidade">Pré-História da Qualidade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revolucao-industrial-seculo-xviii-e-xix">Revolução Industrial (Século XVIII e XIX)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna">Início do Século XX - Fundação das Bases da Qualidade Moderna</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-movimento-da-qualidade-total-tqm">O Movimento da Qualidade Total (TQM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualidade-no-seculo-xxi">Qualidade no Século XXI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-da-qualidade-total">Características da Qualidade Total</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-pais-da-qualidade">Os Pais da Qualidade</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

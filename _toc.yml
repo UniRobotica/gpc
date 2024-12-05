@@ -1,11 +1,35 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
 root: intro
+
 chapters:
-- file: notebooks/pertcpm-construcao-civil.ipynb
-- file: notebooks/pertcpm-calculo-incertezas.ipynb
-- file: notebooks/tecnica-valor-agregado-fund.ipynb
-- file: notebooks/tecnica-valor-agregado-projetos.ipynb
-- file: notebooks/tecnica-valor-agregado-construcao.ipynb
+  # Capítulo: Domínios de Desempenho
+  - file: notebooks/dominios/index
+    title: Domínios de Desempenho
+    sections:
+
+      # Planejamento
+      - file: notebooks/dominios/planejamento/index
+        title: Planejamento
+        sections:
+          - file: notebooks/dominios/planejamento/pertcpm-calculo-incertezas.ipynb
+            title: PERT/CPM – Cálculo de Incertezas
+          - file: notebooks/dominios/planejamento/pertcpm-construcao-civil.ipynb
+            title: PERT/CPM na Construção Civil
+
+      # Medição
+      - file: notebooks/dominios/medicao/index
+        title: Medição
+        sections:
+          - file: notebooks/dominios/medicao/tecnica-valor-agregado-fund.ipynb
+            title: Técnica do Valor Agregado – Fundamentos
+          - file: notebooks/dominios/medicao/tecnica-valor-agregado-projetos.ipynb
+            title: Técnica do Valor Agregado em Projetos
+          - file: notebooks/dominios/medicao/tecnica-valor-agregado-construcao.ipynb
+            title: Técnica do Valor Agregado na Construção Civil
+
+  # Capítulo: Complementos
+  - file: notebooks/complementos/index
+    title: Complementos
+    sections:
+      - file: notebooks/complementos/historico-qualidade.md
+        title: Histórico da Qualidade
