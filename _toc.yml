@@ -2,13 +2,13 @@ format: jb-book
 root: intro
 
 chapters:
-  sections:
+  # Capítulo: PMBOK 7
   - file: notebooks/PMBOK/PMBOK7.md
+
   # Capítulo: Domínios de Desempenho
   - file: notebooks/dominios/index
     title: Domínios de Desempenho
     sections:
-
       # Planejamento
       - file: notebooks/dominios/planejamento/index
         title: Planejamento
@@ -38,7 +38,6 @@ chapters:
       - file: notebooks/complementos/historico-qualidade.md
         title: Histórico da Qualidade
 
-# Capítulo: Referências
-    
+  # Capítulo: Referências
   - file: notebooks/referencias.ipynb
     title: Referências Bibliográficas
