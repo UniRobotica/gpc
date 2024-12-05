@@ -2,6 +2,6 @@
 
 Este capítulo explora os principais domínios de desempenho no gerenciamento de projetos.
 
-- [Medição](medicao)
+- [Medição](medicao/index.md)
 
-- [Planejamento](planejamento)
+- [Planejamento](planejamento/index.md)
