@@ -64,6 +64,7 @@
     <link rel="icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Referências" href="../referencias.html" />
     <link rel="prev" title="Complementos" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,6 +188,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Histórico da Qualidade</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../referencias.html">Referências Bibliográficas</a></li>
 </ul>
 
     </div>
@@ -233,6 +235,37 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -258,7 +291,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/complementos/historico-qualidade.md" target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/complementos/historico-qualidade.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +338,7 @@
       
       
       
-      <li><a href="../../_sources/notebooks/complementos/historico-qualidade.md" target="_blank"
+      <li><a href="../../_sources/notebooks/complementos/historico-qualidade.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -315,7 +348,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -392,11 +425,10 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-historia-da-qualidade">Pré-História da Qualidade</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revolucao-industrial-seculo-xviii-e-xix">Revolução Industrial (Século XVIII e XIX)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna">Início do Século XX - Fundação das Bases da Qualidade Moderna</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revolucao-industrial-seculos-xviii-e-xix">Revolução Industrial (Séculos XVIII e XIX)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicio-do-seculo-xx-fundamentos-da-qualidade-moderna">Início do Século XX - Fundamentos da Qualidade Moderna</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-movimento-da-qualidade-total-tqm">O Movimento da Qualidade Total (TQM)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualidade-no-seculo-xxi">Qualidade no Século XXI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-da-qualidade-total">Características da Qualidade Total</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-pais-da-qualidade">Os Pais da Qualidade</a></li>
 </ul>
             </nav>
@@ -413,61 +445,50 @@
 <h1>Histórico da Qualidade e os Pais da Qualidade<a class="headerlink" href="#historico-da-qualidade-e-os-pais-da-qualidade" title="Link to this heading">#</a></h1>
 <section id="pre-historia-da-qualidade">
 <h2>Pré-História da Qualidade<a class="headerlink" href="#pre-historia-da-qualidade" title="Link to this heading">#</a></h2>
-<p>O conceito de <strong>qualidade</strong> remonta a tempos antigos, com exemplos notáveis de busca pela qualidade na <strong>construção das Pirâmides do Egito</strong> (cerca de 2600 a.C.). As pirâmides, como as de Gizé, eram monumentos com alto nível de precisão e durabilidade, exigindo cuidados rigorosos com os materiais e processos de construção. Esses projetos demonstraram a importância de garantir a qualidade desde a concepção até a execução.</p>
-<p>Na <strong>Roma Antiga</strong>, o Império Romano era conhecido por suas <strong>infraestruturas</strong> de qualidade, como estradas e aquedutos, que foram projetadas para durar séculos. O foco era em <strong>durabilidade</strong> e <strong>desempenho</strong> dos produtos.</p>
+<p>O conceito de <strong>qualidade</strong> remonta a tempos antigos, com exemplos notáveis da <strong>construção das Pirâmides do Egito</strong> (cerca de 2600 a.C.), onde a precisão e a durabilidade foram fundamentais. Na <strong>Roma Antiga</strong>, o Império Romano foi famoso por suas <strong>infraestruturas</strong> de qualidade, como estradas e aquedutos, projetadas para durar séculos, com foco na <strong>durabilidade</strong> e no <strong>desempenho</strong> dos produtos.</p>
 </section>
-<section id="revolucao-industrial-seculo-xviii-e-xix">
-<h2>Revolução Industrial (Século XVIII e XIX)<a class="headerlink" href="#revolucao-industrial-seculo-xviii-e-xix" title="Link to this heading">#</a></h2>
-<p>Com a <strong>Revolução Industrial</strong>, houve uma necessidade crescente de <strong>controle da qualidade</strong> em processos de produção em massa. A produção em larga escala de bens tornou difícil manter altos padrões de qualidade sem um sistema formal de controle. Durante esse período, surgiram os primeiros sistemas de inspeção e controle de qualidade.</p>
+<section id="revolucao-industrial-seculos-xviii-e-xix">
+<h2>Revolução Industrial (Séculos XVIII e XIX)<a class="headerlink" href="#revolucao-industrial-seculos-xviii-e-xix" title="Link to this heading">#</a></h2>
+<p>A <strong>Revolução Industrial</strong> trouxe a necessidade de <strong>controle de qualidade</strong> para produção em massa. A crescente fabricação em larga escala de bens dificultou a manutenção de altos padrões sem um sistema formal de controle. Nesse período, surgiram os primeiros sistemas de <strong>inspeção</strong> e <strong>controle de qualidade</strong> .</p>
 </section>
-<section id="inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna">
-<h2>Início do Século XX - Fundação das Bases da Qualidade Moderna<a class="headerlink" href="#inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna" title="Link to this heading">#</a></h2>
-<p>A evolução da qualidade como disciplina formal começou no início do século XX, com a contribuição de pioneiros como:</p>
+<section id="inicio-do-seculo-xx-fundamentos-da-qualidade-moderna">
+<h2>Início do Século XX - Fundamentos da Qualidade Moderna<a class="headerlink" href="#inicio-do-seculo-xx-fundamentos-da-qualidade-moderna" title="Link to this heading">#</a></h2>
+<p>No início do século XX, pioneiros como:</p>
 <ol class="arabic simple">
 <li><p><strong>Frederick Taylor</strong> (1856-1915) - <strong>Administração Científica</strong><br />
-Taylor introduziu os princípios de <strong>racionalização do trabalho</strong> e <strong>padronização</strong>, buscando eficiência e produtividade nos processos de produção. Sua abordagem focava em melhorar a qualidade ao otimizar os processos operacionais.</p></li>
+Taylor introduziu a <strong>racionalização do trabalho</strong> e a <strong>padronização</strong>, otimizando processos operacionais para melhorar a qualidade e a eficiência <span id="id1">Taylor [<a class="reference internal" href="../referencias.html#id6" title="Frederick Taylor. The Principles of Scientific Management. Harper &amp; Brothers, 1915.">Tay15</a>]</span>.</p></li>
 <li><p><strong>Walter A. Shewhart</strong> (1891-1967) - <strong>Controle Estatístico de Qualidade (SPC)</strong><br />
-Shewhart é amplamente reconhecido por desenvolver o <strong>controle estatístico de qualidade</strong>, um método que utiliza dados e gráficos (como o gráfico de controle) para monitorar e melhorar os processos de produção. Ele também introduziu o conceito de <strong>ciclo PDCA</strong> (Plan-Do-Check-Act).</p></li>
+Shewhart desenvolveu o <strong>controle estatístico de qualidade</strong>, usando gráficos e dados para monitorar e melhorar os processos. Ele também criou o ciclo <strong>PDCA</strong> (Plan-Do-Check-Act) <span id="id2">[<a class="reference internal" href="../referencias.html#id7" title="Walter A. Shewhart. Economic control of quality of manufactured product. D. Van Nostrand Company, 1931.">She31</a>]</span>.</p></li>
 <li><p><strong>W. Edwards Deming</strong> (1900-1993) - <strong>Qualidade e Produtividade</strong><br />
-Deming foi fundamental para a popularização do <strong>controle de qualidade estatístico</strong> e do conceito de <strong>melhoria contínua</strong> no Japão após a Segunda Guerra Mundial. Ele enfatizou a importância da <strong>participação da alta gestão</strong> no processo de qualidade e introduziu as <strong>14 regras para a gestão de qualidade</strong>.</p></li>
-<li><p><strong>Joseph Juran</strong> (1904-2008) - <strong>Qualidade como Gestão</strong><br />
-Juran abordou a qualidade de uma perspectiva mais ampla, argumentando que a <strong>qualidade não deve ser tratada apenas por engenheiros ou operadores</strong>, mas deve ser uma <strong>responsabilidade de toda a organização</strong>. Ele introduziu o conceito de <strong>custo da qualidade</strong> e ajudou a estabelecer o <strong>Ciclo Juran</strong>: <strong>Planejar, Controlar e Melhorar</strong>.</p></li>
+Deming foi um dos <strong>pais da qualidade</strong> e popularizou o <strong>controle estatístico de qualidade</strong> e a <strong>melhoria contínua</strong> no Japão pós-Segunda Guerra Mundial, destacando a importância da <strong>gestão</strong> na qualidade <span id="id3">Deming [<a class="reference internal" href="../referencias.html#id8" title="W. Edwards Deming. Out of the Crisis. MIT Press, 1982.">Dem82</a>]</span>.</p></li>
+<li><p><strong>Joseph Juran</strong> (1904-2008) - <strong>Gestão da Qualidade</strong><br />
+Juran, outro dos <strong>pais da qualidade</strong>, ampliou a visão sobre qualidade, defendendo que ela deve ser responsabilidade de toda a organização, não apenas de engenheiros. Ele introduziu o conceito de <strong>custo da qualidade</strong> e o <strong>Ciclo Juran</strong>: <strong>Planejar, Controlar e Melhorar</strong> <span id="id4">[<a class="reference internal" href="../referencias.html#id9" title="Joseph Juran. Juran on Quality by Design: The New Steps for Planning Quality into Goods and Services. Free Press, 1989.">Jur89</a>]</span>.</p></li>
 </ol>
 </section>
 <section id="o-movimento-da-qualidade-total-tqm">
 <h2>O Movimento da Qualidade Total (TQM)<a class="headerlink" href="#o-movimento-da-qualidade-total-tqm" title="Link to this heading">#</a></h2>
-<p>Nos anos 1980 e 1990, o conceito de <strong>Qualidade Total</strong> (TQM - Total Quality Management) surgiu como uma abordagem holística para a gestão de qualidade. A qualidade passou a ser vista como um <strong>esforço contínuo</strong> em todas as partes da organização, envolvendo todos os funcionários, desde a alta gestão até os trabalhadores da linha de frente. O foco estava em <strong>melhoria contínua</strong>, <strong>satisfação do cliente</strong> e <strong>prevenção de defeitos</strong>.</p>
-<p>Principais figuras do TQM incluem:</p>
+<p>Nos anos 1980 e 1990, surgiu o conceito de <strong>Qualidade Total</strong> (TQM - Total Quality Management), que enfatiza a <strong>melhoria contínua</strong> e o <strong>envolvimento de todos</strong> na organização, com foco na <strong>satisfação do cliente</strong>. As principais figuras do TQM incluem:</p>
 <ul class="simple">
-<li><p><strong>Kaoru Ishikawa</strong>: Conhecido por popularizar o <strong>diagrama de causa e efeito</strong> (ou diagrama de espinha de peixe), que ajuda a identificar as causas dos problemas de qualidade.</p></li>
-<li><p><strong>Genichi Taguchi</strong>: Desenvolveu o <strong>Método Taguchi</strong>, que enfoca o design de experimentos para melhorar a qualidade do produto.</p></li>
+<li><p><strong>Kaoru Ishikawa</strong>: Criador do <strong>diagrama de causa e efeito</strong> (diagrama de espinha de peixe) <span id="id5">[<a class="reference internal" href="../referencias.html#id10" title="Kaoru Ishikawa. Introduction to Quality Control. Kodansha International, 1976.">Ish76</a>]</span>.</p></li>
+<li><p><strong>Genichi Taguchi</strong>: Desenvolveu o <strong>Método Taguchi</strong>, utilizando experimentos para melhorar a qualidade <span id="id6">Taguchi [<a class="reference internal" href="../referencias.html#id11" title="Genichi Taguchi. Quality Engineering in Production Systems. Prentice-Hall, 1986.">Tag86</a>]</span>.</p></li>
 </ul>
 </section>
 <section id="qualidade-no-seculo-xxi">
 <h2>Qualidade no Século XXI<a class="headerlink" href="#qualidade-no-seculo-xxi" title="Link to this heading">#</a></h2>
-<p>A qualidade continua a evoluir no século XXI, com novas abordagens e metodologias sendo introduzidas, como a <strong>Gestão da Qualidade Seis Sigma</strong>, que se foca na <strong>eliminação de defeitos</strong> e <strong>redução da variação</strong> nos processos de produção. A <strong>ISO 9001</strong> também se tornou uma das normas de qualidade mais adotadas globalmente, oferecendo uma estrutura de gestão da qualidade para empresas de todos os portes e setores.</p>
+<p>A qualidade no século XXI continua a evoluir com novas abordagens como a <strong>Gestão Seis Sigma</strong>, focada na <strong>eliminação de defeitos</strong> e na <strong>redução da variação</strong> nos processos. A <strong>ISO 9001</strong> tornou-se uma das normas de qualidade mais adotadas globalmente, estabelecendo uma estrutura para a gestão da qualidade em diversas empresas <span id="id7">for Standardization [<a class="reference internal" href="../referencias.html#id12" title="International Organization for Standardization. Iso 9001: quality management systems – requirements. 2015. URL: https://www.iso.org/iso-9001-quality-management.html.">fS15</a>]</span>.</p>
 </section>
-<section id="caracteristicas-da-qualidade-total">
-<h2>Características da Qualidade Total<a class="headerlink" href="#caracteristicas-da-qualidade-total" title="Link to this heading">#</a></h2>
-<p>A <strong>Qualidade Total</strong> (TQM) envolve vários princípios e características centrais que visam garantir a excelência em todos os aspectos de uma organização. Algumas das principais características incluem:</p>
-<ol class="arabic simple">
-<li><p><strong>Foco no Cliente</strong>: A satisfação do cliente é uma das principais preocupações, com todos os processos organizacionais voltados para atender ou superar as expectativas do cliente.</p></li>
-<li><p><strong>Participação de Todos</strong>: Todos os membros da organização, desde a alta gestão até os operários da linha de frente, devem estar envolvidos no processo de melhoria da qualidade.</p></li>
-<li><p><strong>Melhoria Contínua</strong>: A melhoria dos processos deve ser constante e não apenas pontual, com uma busca incessante por perfeição.</p></li>
-<li><p><strong>Tomada de Decisões Baseada em Fatos</strong>: As decisões devem ser baseadas em dados objetivos, como resultados de testes e medições, e não apenas em suposições ou opiniões.</p></li>
-<li><p><strong>Gestão de Processos</strong>: Em vez de focar em resultados individuais, a <strong>gestão de qualidade</strong> deve ser feita por meio da <strong>gestão de processos</strong>, buscando melhorar todos os processos que afetam a qualidade do produto ou serviço.</p></li>
-</ol>
-</section>
+<hr class="docutils" />
 <section id="os-pais-da-qualidade">
 <h2>Os Pais da Qualidade<a class="headerlink" href="#os-pais-da-qualidade" title="Link to this heading">#</a></h2>
+<p>Os <strong>pais da qualidade</strong> são indivíduos que tiveram um impacto fundamental no desenvolvimento dos conceitos e práticas que hoje formam a base da <strong>gestão da qualidade</strong> e da <strong>melhoria contínua</strong>. Eles são amplamente reconhecidos por suas contribuições que mudaram a forma como as organizações abordam a qualidade. Entre os mais notáveis estão:</p>
 <ul class="simple">
-<li><p><strong>Walter A. Shewhart</strong></p></li>
-<li><p><strong>W. Edwards Deming</strong></p></li>
-<li><p><strong>Joseph Juran</strong></p></li>
-<li><p><strong>Kaoru Ishikawa</strong></p></li>
-<li><p><strong>Genichi Taguchi</strong></p></li>
+<li><p><strong>Frederick Taylor</strong>, por sua introdução à <strong>Administração Científica</strong>.</p></li>
+<li><p><strong>Walter A. Shewhart</strong>, considerado o pai do <strong>controle estatístico de qualidade</strong> e responsável pela criação do ciclo <strong>PDCA</strong>.</p></li>
+<li><p><strong>W. Edwards Deming</strong>, cuja aplicação de métodos de controle estatístico e de gestão de qualidade no Japão pós-Segunda Guerra Mundial foi crucial para o desenvolvimento da qualidade moderna.</p></li>
+<li><p><strong>Joseph Juran</strong>, que ampliou a gestão de qualidade para um conceito corporativo mais abrangente e introduziu o conceito de <strong>custo da qualidade</strong>.</p></li>
+<li><p><strong>Kaoru Ishikawa</strong> e <strong>Genichi Taguchi</strong>, que inovaram no desenvolvimento de métodos como o <strong>diagrama de causa e efeito</strong> e o <strong>Método Taguchi</strong>, respectivamente, para a análise e melhoria da qualidade.</p></li>
 </ul>
-<p>Esses profissionais são considerados os <strong>pais da qualidade</strong> devido às suas contribuições significativas para o campo da <strong>gestão da qualidade</strong> e a <strong>melhoria contínua</strong>.</p>
+<p>Esses profissionais são considerados fundamentais na formação do campo da <strong>qualidade total</strong> e continuam a influenciar as práticas de gestão da qualidade até os dias de hoje.</p>
 </section>
 </section>
 
@@ -510,6 +531,15 @@ Juran abordou a qualidade de uma perspectiva mais ampla, argumentando que a <str
         <p class="prev-next-title">Complementos</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../referencias.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referências</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -528,11 +558,10 @@ Juran abordou a qualidade de uma perspectiva mais ampla, argumentando que a <str
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-historia-da-qualidade">Pré-História da Qualidade</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revolucao-industrial-seculo-xviii-e-xix">Revolução Industrial (Século XVIII e XIX)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicio-do-seculo-xx-fundacao-das-bases-da-qualidade-moderna">Início do Século XX - Fundação das Bases da Qualidade Moderna</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revolucao-industrial-seculos-xviii-e-xix">Revolução Industrial (Séculos XVIII e XIX)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inicio-do-seculo-xx-fundamentos-da-qualidade-moderna">Início do Século XX - Fundamentos da Qualidade Moderna</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-movimento-da-qualidade-total-tqm">O Movimento da Qualidade Total (TQM)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualidade-no-seculo-xxi">Qualidade no Século XXI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-da-qualidade-total">Características da Qualidade Total</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-pais-da-qualidade">Os Pais da Qualidade</a></li>
 </ul>
   </nav></div>

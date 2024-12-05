@@ -33,3 +33,8 @@ chapters:
     sections:
       - file: notebooks/complementos/historico-qualidade.md
         title: Histórico da Qualidade
+
+# Capítulo: Referências
+    
+  - file: notebooks/referencias.ipynb
+    title: Referências Bibliográficas
