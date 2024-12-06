@@ -13,17 +13,19 @@ chapters:
       - file: notebooks/dominios/planejamento/index
         title: Planejamento
         sections:
-          - file: notebooks/dominios/planejamento/pertcpm-calculo-incertezas.ipynb
-            title: PERT/CPM – Cálculo de Incertezas
           - file: notebooks/dominios/planejamento/pertcpm-construcao-civil.ipynb
             title: PERT/CPM na Construção Civil
+          - file: notebooks/dominios/planejamento/pertcpm-calculo-incertezas.ipynb
+            title: PERT/CPM – Cálculo de Incertezas
 
       # Medição
       - file: notebooks/dominios/medicao/index
         title: Medição
         sections:
           - file: notebooks/dominios/medicao/controle-estatistico-processos.ipynb
-            title: Controle Estatístico de Processos        
+            title: Controle Estatístico de Processos
+          - file: notebooks/dominios/medicao/cep-situacoes-atencao.ipynb
+            title: CEP – Situações de atenção        
           - file: notebooks/dominios/medicao/tecnica-valor-agregado-fund.ipynb
             title: Técnica do Valor Agregado – Fundamentos
           - file: notebooks/dominios/medicao/tecnica-valor-agregado-projetos.ipynb

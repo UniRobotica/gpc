@@ -70,7 +70,7 @@ O guia fornece uma série de recursos complementares, incluindo:
 
 ---
 
-## **Principais Diferenças em Relação à 6ª Edição**
+### **Principais Diferenças em Relação à 6ª Edição**
 | Aspecto                | 6ª Edição                         | 7ª Edição                         |
 |------------------------|-----------------------------------|-----------------------------------|
 | **Foco**               | Processos e Áreas de Conhecimento | Princípios e Domínios de Desempenho |
@@ -80,7 +80,7 @@ O guia fornece uma série de recursos complementares, incluindo:
 
 ---
 
-## **Conclusão**
+### **Conclusão**
 A 7ª edição do PMBOK representa uma mudança significativa para profissionais de gerenciamento de projetos, proporcionando uma abordagem mais flexível, orientada a princípios e centrada na entrega de valor, alinhando-se melhor aos desafios modernos das organizações, incluindo projetos na **construção civil**, área que exige adaptação constante às incertezas, mudanças de escopo e necessidades das partes interessadas.
 
 Essa edição é especialmente relevante para projetos que adotam metodologias híbridas ou ágeis, destacando a importância do engajamento, da resiliência e do pensamento sistêmico.
