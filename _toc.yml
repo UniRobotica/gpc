@@ -25,7 +25,9 @@ chapters:
           - file: notebooks/dominios/medicao/controle-estatistico-processos.ipynb
             title: Controle Estatístico de Processos
           - file: notebooks/dominios/medicao/cep-situacoes-atencao.ipynb
-            title: CEP – Situações de atenção        
+            title: CEP – Situações de atenção
+          - file: notebooks/dominios/medicao/cep-acoes-correcao.ipynb
+            title: CEP – Ações de correção e prevenção        
           - file: notebooks/dominios/medicao/tecnica-valor-agregado-fund.ipynb
             title: Técnica do Valor Agregado – Fundamentos
           - file: notebooks/dominios/medicao/tecnica-valor-agregado-projetos.ipynb
