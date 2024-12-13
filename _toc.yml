@@ -17,7 +17,14 @@ chapters:
             title: PERT/CPM na Construção Civil
           - file: notebooks/dominios/planejamento/pertcpm-calculo-incertezas.ipynb
             title: PERT/CPM – Cálculo de Incertezas
-
+      # Entrega
+      - file: notebooks/dominios/entrega/index
+        title: Entrega
+        sections:
+          - file: notebooks/dominios/entrega/aquisicoes.ipynb
+            title: Gerenciamento de Aquisições
+          - file: notebooks/dominios/entrega/aquisicoes-exemplo.ipynb
+            title: Exemplo de Gerenciamento de Aquisições com Python
       # Medição
       - file: notebooks/dominios/medicao/index
         title: Medição
@@ -34,6 +41,12 @@ chapters:
             title: Técnica do Valor Agregado em Projetos
           - file: notebooks/dominios/medicao/tecnica-valor-agregado-construcao.ipynb
             title: Técnica do Valor Agregado na Construção Civil
+      # Incertezas
+      - file: notebooks/dominios/incertezas/index
+        title: Incertezas
+        sections:
+          - file: notebooks/dominios/incertezas/monte-carlo.ipynb
+            title: Simulação de Monte Carlo
 
   # Capítulo: Complementos
   - file: notebooks/complementos/index

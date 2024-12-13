@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fundamentos de Aquisição para Engenharia Civil &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/dominios/entrega/aquisicoes';</script>
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Exemplo de Gerenciamento de Aquisições com Python" href="aquisicoes-exemplo.html" />
+    <link rel="prev" title="Gerenciamento de Aquisições no Contexto do PMBOK 7ª Edição" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PMBOK/PMBOK7.html">PMBOK 7ª Edição – Guia do Conhecimento em Gerenciamento de Projetos</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Domínios de Desempenho</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../planejamento/pertcpm-construcao-civil.html">PERT/CPM na Construção Civil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Entrega</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Gerenciamento de Aquisições</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aquisicoes-exemplo.html">Exemplo de Gerenciamento de Aquisições com Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../medicao/index.html">Medição</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../medicao/controle-estatistico-processos.html">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../medicao/cep-situacoes-atencao.html">CEP – Situações de atenção</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../medicao/cep-acoes-correcao.html">Ações de correção para situações de atenção</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../medicao/tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../medicao/tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../medicao/tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../incertezas/index.html">Incertezas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../incertezas/monte-carlo.html">Simulação de Monte Carlo</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../complementos/index.html">Complementos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../complementos/historico-qualidade.html">Histórico da Qualidade</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../referencias.html">Referências Bibliográficas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/dominios/entrega/aquisicoes.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/dominios/entrega/aquisicoes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/dominios/entrega/aquisicoes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fundamentos de Aquisição para Engenharia Civil</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-sao-aquisicoes">O que são Aquisições?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importancia-das-aquisicoes-na-engenharia-civil">Importância das Aquisições na Engenharia Civil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processos-de-aquisicao-no-ciclo-de-vida-de-um-projeto-de-construcao">Processos de Aquisição no Ciclo de Vida de um Projeto de Construção</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-de-aquisicoes-em-engenharia-civil">Exemplos de Aquisições em Engenharia Civil</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmbok-7a-edicao-e-as-aquisicoes">PMBOK 7ª Edição e as Aquisições</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-pratico-planejamento-de-aquisicoes-para-um-projeto-de-construcao">Exercício Prático: Planejamento de Aquisições para um Projeto de Construção</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passos-para-o-exercicio">Passos para o Exercício:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fundamentos-de-aquisicao-para-engenharia-civil">
+<h1>Fundamentos de Aquisição para Engenharia Civil<a class="headerlink" href="#fundamentos-de-aquisicao-para-engenharia-civil" title="Link to this heading">#</a></h1>
+<p>Neste notebook, vamos explorar os conceitos fundamentais de <strong>aquisição</strong> no contexto da engenharia civil, abordando os processos e práticas essenciais para garantir a eficácia na obtenção de materiais, serviços e recursos necessários para a execução de projetos de construção civil. Vamos também relacionar esses conceitos com as diretrizes do <strong>PMBOK 7ª edição</strong>, que é uma referência amplamente utilizada na gestão de projetos.</p>
+<section id="o-que-sao-aquisicoes">
+<h2>O que são Aquisições?<a class="headerlink" href="#o-que-sao-aquisicoes" title="Link to this heading">#</a></h2>
+<p>A aquisição é o processo de obtenção de bens, serviços e resultados de fornecedores externos, de acordo com os requisitos do projeto. No contexto da engenharia civil, as aquisições podem envolver desde a compra de materiais de construção, como cimento, aço e madeira, até a contratação de serviços especializados, como mão-de-obra, engenharia de campo, e outros serviços essenciais.</p>
+<p>De acordo com o <strong>PMBOK 7ª edição</strong>, a aquisição faz parte de um grupo de práticas fundamentais para a gestão de projetos. As aquisições são vitais porque impactam diretamente nos custos, prazos e qualidade do projeto, especialmente em projetos de grande escala, como os encontrados na engenharia civil.</p>
+</section>
+<section id="importancia-das-aquisicoes-na-engenharia-civil">
+<h2>Importância das Aquisições na Engenharia Civil<a class="headerlink" href="#importancia-das-aquisicoes-na-engenharia-civil" title="Link to this heading">#</a></h2>
+<p>No setor de construção, as aquisições desempenham um papel crucial no sucesso do projeto. É necessário garantir que os materiais certos sejam adquiridos na quantidade e qualidade necessárias, dentro dos prazos e orçamento estabelecidos. A falha em gerenciar adequadamente as aquisições pode levar a atrasos significativos, aumento de custos e comprometimento da qualidade do produto final.</p>
+<section id="processos-de-aquisicao-no-ciclo-de-vida-de-um-projeto-de-construcao">
+<h3>Processos de Aquisição no Ciclo de Vida de um Projeto de Construção<a class="headerlink" href="#processos-de-aquisicao-no-ciclo-de-vida-de-um-projeto-de-construcao" title="Link to this heading">#</a></h3>
+<p>O gerenciamento de aquisições é realizado ao longo de várias fases do ciclo de vida de um projeto. As principais etapas incluem:</p>
+<ol class="arabic simple">
+<li><p><strong>Planejamento das Aquisições</strong>: Definir o que será adquirido, por que será adquirido, e como os fornecedores serão selecionados.</p></li>
+<li><p><strong>Solicitação de Propostas</strong>: Enviar solicitações formais para fornecedores para obtenção de orçamentos ou propostas.</p></li>
+<li><p><strong>Seleção de Fornecedores</strong>: Avaliar propostas e selecionar os fornecedores que atenderão melhor às necessidades do projeto.</p></li>
+<li><p><strong>Gerenciamento de Contratos</strong>: Gerenciar a execução dos contratos, garantindo que os fornecedores cumpram suas obrigações.</p></li>
+<li><p><strong>Encerramento das Aquisições</strong>: Finalizar os contratos e garantir que todos os itens adquiridos tenham sido entregues e atendam aos requisitos.</p></li>
+</ol>
+</section>
+<section id="exemplos-de-aquisicoes-em-engenharia-civil">
+<h3>Exemplos de Aquisições em Engenharia Civil<a class="headerlink" href="#exemplos-de-aquisicoes-em-engenharia-civil" title="Link to this heading">#</a></h3>
+<p>Em um projeto de construção civil, as aquisições podem incluir, mas não se limitam a:</p>
+<ul class="simple">
+<li><p><strong>Materiais de Construção</strong>: cimento, aço, madeira, concreto, etc.</p></li>
+<li><p><strong>Equipamentos de Construção</strong>: guindastes, betoneiras, caminhões, etc.</p></li>
+<li><p><strong>Serviços de Engenharia</strong>: consultoria, estudos técnicos, projetos estruturais e arquitetônicos.</p></li>
+<li><p><strong>Mão de Obra Especializada</strong>: pedreiros, eletricistas, encanadores, etc.</p></li>
+</ul>
+<p>Essas aquisições devem ser realizadas com base em uma análise detalhada das necessidades do projeto e dos fornecedores disponíveis no mercado.</p>
+</section>
+</section>
+<section id="pmbok-7a-edicao-e-as-aquisicoes">
+<h2>PMBOK 7ª Edição e as Aquisições<a class="headerlink" href="#pmbok-7a-edicao-e-as-aquisicoes" title="Link to this heading">#</a></h2>
+<p>A 7ª edição do PMBOK enfatiza a importância das aquisições de maneira integrada com outras áreas de conhecimento, como os <strong>riscos</strong>, <strong>custos</strong> e <strong>qualidade</strong>. O processo de aquisição não é apenas uma questão de compra, mas uma parte estratégica do projeto.</p>
+<p>Alguns princípios destacados na 7ª edição incluem:</p>
+<ul class="simple">
+<li><p><strong>Agilidade nas Aquisições</strong>: A capacidade de adaptar as aquisições às necessidades emergentes do projeto, especialmente em projetos com características de incerteza e mudanças frequentes.</p></li>
+<li><p><strong>Colaboração com Fornecedores</strong>: Trabalhar de forma colaborativa com os fornecedores, estabelecendo uma relação de confiança e entendimento mútuo.</p></li>
+<li><p><strong>Foco no Valor para o Projeto</strong>: As aquisições devem ser feitas com foco no valor agregado ao projeto, e não apenas na redução de custos.</p></li>
+</ul>
+</section>
+<section id="conclusao">
+<h2>Conclusão<a class="headerlink" href="#conclusao" title="Link to this heading">#</a></h2>
+<p>O gerenciamento de aquisições é uma competência essencial para engenheiros civis, pois garante que todos os recursos necessários para o sucesso do projeto sejam adquiridos de maneira eficiente. O PMBOK 7ª edição oferece um framework flexível para gerenciar aquisições, promovendo uma abordagem mais ágil e colaborativa, que se aplica diretamente ao setor de engenharia civil.</p>
+</section>
+<section id="exercicio-pratico-planejamento-de-aquisicoes-para-um-projeto-de-construcao">
+<h2>Exercício Prático: Planejamento de Aquisições para um Projeto de Construção<a class="headerlink" href="#exercicio-pratico-planejamento-de-aquisicoes-para-um-projeto-de-construcao" title="Link to this heading">#</a></h2>
+<p>Agora, vamos realizar um exercício prático onde você irá planejar as aquisições para um pequeno projeto de construção civil, levando em consideração as etapas descritas anteriormente.</p>
+<section id="passos-para-o-exercicio">
+<h3>Passos para o Exercício:<a class="headerlink" href="#passos-para-o-exercicio" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Defina as necessidades do projeto</strong>: O que você precisa adquirir para o projeto?</p></li>
+<li><p><strong>Selecione os fornecedores</strong>: Quem pode fornecer o que você precisa?</p></li>
+<li><p><strong>Determine o orçamento</strong>: Qual é o orçamento disponível para as aquisições?</p></li>
+<li><p><strong>Estabeleça os prazos</strong>: Quando os materiais e serviços precisam ser entregues?</p></li>
+</ol>
+<p>Use as ferramentas que você aprendeu neste notebook para criar seu plano de aquisições!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks\dominios\entrega"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gerenciamento de Aquisições no Contexto do PMBOK 7ª Edição</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="aquisicoes-exemplo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exemplo de Gerenciamento de Aquisições com Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-sao-aquisicoes">O que são Aquisições?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importancia-das-aquisicoes-na-engenharia-civil">Importância das Aquisições na Engenharia Civil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processos-de-aquisicao-no-ciclo-de-vida-de-um-projeto-de-construcao">Processos de Aquisição no Ciclo de Vida de um Projeto de Construção</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-de-aquisicoes-em-engenharia-civil">Exemplos de Aquisições em Engenharia Civil</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmbok-7a-edicao-e-as-aquisicoes">PMBOK 7ª Edição e as Aquisições</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-pratico-planejamento-de-aquisicoes-para-um-projeto-de-construcao">Exercício Prático: Planejamento de Aquisições para um Projeto de Construção</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passos-para-o-exercicio">Passos para o Exercício:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -177,6 +177,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../entrega/index.html">Entrega</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../entrega/aquisicoes.html">Gerenciamento de Aquisições</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../entrega/aquisicoes-exemplo.html">Exemplo de Gerenciamento de Aquisições com Python</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Medição</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="controle-estatistico-processos.html">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle</a></li>
 
@@ -193,6 +198,10 @@
 <li class="toctree-l3"><a class="reference internal" href="tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../incertezas/index.html">Incertezas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../incertezas/monte-carlo.html">Simulação de Monte Carlo</a></li>
 </ul>
 </details></li>
 </ul>
@@ -447,7 +456,7 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tecnicas-de-controle-de-qualidade"><strong>Técnicas de Controle de Qualidade:</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-de-pareto">1. <strong>Análise de Pareto</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formularios-de-analise-de-causa-fmea-failure-mode-and-effect-analysis">2. <strong>Formulários de Análise de Causa (FMEA - Failure Mode and Effect Analysis)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tecnica-de-controle-de-processos-estatisticos-spc-statistical-process-control">3. <strong>Técnica de Controle de Processos Estatísticos (SPC - Statistical Process Control)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outras-tecnicas-de-controle-de-processos">3. Outras técnicas de Controle de Processos</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acoes-de-correcao-e-melhoria"><strong>Ações de Correção e Melhoria</strong></a></li>
@@ -472,7 +481,7 @@
 <h1>Situação 1: <strong>Pontos Fora do Limite de Controle</strong><a class="headerlink" href="#situacao-1-pontos-fora-do-limite-de-controle" title="Link to this heading">#</a></h1>
 <section id="contexto">
 <h2>Contexto:<a class="headerlink" href="#contexto" title="Link to this heading">#</a></h2>
-<p>Imagine que estamos monitorando a resistência do concreto em uma obra da construção civil. A resistência ideal do concreto é definida como 25 MPa, e o desvio padrão esperado é 2 MPa. Durante os testes diários, alguns pontos de medição começam a exceder os limites superiores ou inferiores de controle, indicando um possível problema no processo de produção do concreto.</p>
+<p>Imagine que estamos monitorando a resistência do concreto em uma obra da construção civil. A resistência ideal do concreto é definida como 30 MPa, e o desvio padrão esperado é 2 MPa. Durante os testes diários, alguns pontos de medição começam a exceder os limites superiores ou inferiores de controle, indicando um possível problema no processo de produção do concreto.</p>
 <p><strong>Exemplo de Código - Situação 1:</strong>
 Este código cria um gráfico que mostra a resistência do concreto em 30 amostras, com alguns pontos fora dos limites de controle definidos.</p>
 <div class="cell docutils container">
@@ -721,9 +730,9 @@ Este código cria um gráfico que mostra a resistência do concreto em 30 amostr
 <li><p>O objetivo é priorizar as falhas com o maior RPN, que devem ser abordadas primeiro.</p></li>
 </ul>
 </section>
-<section id="tecnica-de-controle-de-processos-estatisticos-spc-statistical-process-control">
-<h2>3. <strong>Técnica de Controle de Processos Estatísticos (SPC - Statistical Process Control)</strong><a class="headerlink" href="#tecnica-de-controle-de-processos-estatisticos-spc-statistical-process-control" title="Link to this heading">#</a></h2>
-<p>Além do gráfico de controle que já discutimos, o <strong>SPC</strong> é uma técnica abrangente que usa dados estatísticos para monitorar e controlar um processo. O objetivo é detectar e corrigir problemas no processo antes que eles resultem em falhas no produto final. Para o concreto, isso significa monitorar variáveis como <strong>resistência</strong> para garantir que elas permaneçam dentro dos limites definidos.</p>
+<section id="outras-tecnicas-de-controle-de-processos">
+<h2>3. Outras técnicas de Controle de Processos<a class="headerlink" href="#outras-tecnicas-de-controle-de-processos" title="Link to this heading">#</a></h2>
+<p>Além do gráfico de controle que já discutimos, o Statistical Process Control(SPC) é uma técnica abrangente que usa dados estatísticos para monitorar e controlar um processo. O objetivo é detectar e corrigir problemas no processo antes que eles resultem em falhas no produto final. Para o concreto, isso significa monitorar variáveis como <strong>resistência</strong> para garantir que elas permaneçam dentro dos limites definidos.</p>
 <p><strong>Exemplo de Cálculo de Controle de Processo (CPK - Índice de Capacidade do Processo)</strong></p>
 <p>O <strong>índice CPK</strong> avalia se um processo está sob controle e se é capaz de atender aos requisitos do cliente. Um valor de CPK superior a 1,33 é considerado bom.</p>
 <div class="cell docutils container">
@@ -839,7 +848,7 @@ Se o valor de <strong>CPK</strong> for baixo (menor que 1,33), isso indica que o
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tecnicas-de-controle-de-qualidade"><strong>Técnicas de Controle de Qualidade:</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-de-pareto">1. <strong>Análise de Pareto</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formularios-de-analise-de-causa-fmea-failure-mode-and-effect-analysis">2. <strong>Formulários de Análise de Causa (FMEA - Failure Mode and Effect Analysis)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tecnica-de-controle-de-processos-estatisticos-spc-statistical-process-control">3. <strong>Técnica de Controle de Processos Estatísticos (SPC - Statistical Process Control)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outras-tecnicas-de-controle-de-processos">3. Outras técnicas de Controle de Processos</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acoes-de-correcao-e-melhoria"><strong>Ações de Correção e Melhoria</strong></a></li>
