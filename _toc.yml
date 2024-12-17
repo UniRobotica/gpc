@@ -2,10 +2,12 @@ format: jb-book
 root: intro
 
 chapters:
-  # Capítulo: PMBOK 7
+  # Capítulo 1: Sobre o  PMBOK 7 e Entrega de valor
   - file: notebooks/PMBOK/PMBOK7.md
 
-  # Capítulo: Domínios de Desempenho
+  # Capítulo 2: Modelo Padrão
+
+  # Capítulo 3: Domínios de Desempenho
   - file: notebooks/dominios/index
     title: Domínios de Desempenho
     sections:
@@ -47,8 +49,9 @@ chapters:
         sections:
           - file: notebooks/dominios/incertezas/monte-carlo.ipynb
             title: Simulação de Monte Carlo
+  # Capítulo 4: Práticas de Modelagem (Tailoring)
 
-  # Capítulo: Complementos
+  # Capítulo 5: Complementos
   - file: notebooks/complementos/index
     title: Complementos
     sections:
