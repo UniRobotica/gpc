@@ -55,7 +55,7 @@ chapters:
             title: Simulação de Monte Carlo
 
   # Capítulo 4: Práticas de Modelagem (Tailoring)
-  - file: notebooks/modelagem/index
+  - file: notebooks/modelagem/index.md
     title: Práticas de Modelagem e Tailoring
     
       # BIM
@@ -64,7 +64,7 @@ chapters:
         sections:
           - file: notebooks/modelagem/BIM/BIM.md
             title: O que é BIM?
-          - file: notebooks/modelagem/BIM/BIM-exemplo.md
+          - file: notebooks/modelagem/BIM/BIM-exemplo.ipynb
             title: Exemplo de uso de modelo IFC BIM
 
       # Mineração de Processos
