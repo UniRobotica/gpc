@@ -9,11 +9,11 @@ chapters:
   # - file: notebooks/modelo-padrao/index.md
 
   # Capítulo 3: Domínios de Desempenho
-  - file: notebooks/dominios/index
+  - file: notebooks/dominios/index.md
     title: Domínios de Desempenho
     sections:
       # Planejamento
-      - file: notebooks/dominios/planejamento/index
+      - file: notebooks/dominios/planejamento/index.md
         title: Planejamento
         sections:
           - file: notebooks/dominios/planejamento/pertcpm-construcao-civil.ipynb
@@ -22,7 +22,7 @@ chapters:
             title: PERT/CPM – Cálculo de Incertezas
 
       # Entrega
-      - file: notebooks/dominios/entrega/index
+      - file: notebooks/dominios/entrega/index.md
         title: Entrega
         sections:
           - file: notebooks/dominios/entrega/aquisicoes.ipynb
@@ -31,7 +31,7 @@ chapters:
             title: Exemplo de Gerenciamento de Aquisições com Python
 
       # Medição
-      - file: notebooks/dominios/medicao/index
+      - file: notebooks/dominios/medicao/index.md
         title: Medição
         sections:
           - file: notebooks/dominios/medicao/controle-estatistico-processos.ipynb
@@ -48,7 +48,7 @@ chapters:
             title: Técnica do Valor Agregado na Construção Civil
 
       # Incertezas
-      - file: notebooks/dominios/incertezas/index
+      - file: notebooks/dominios/incertezas/index.md
         title: Incertezas
         sections:
           - file: notebooks/dominios/incertezas/monte-carlo.ipynb
@@ -57,10 +57,10 @@ chapters:
   # Capítulo 4: Práticas de Modelagem (Tailoring)
   - file: notebooks/modelagem/index.md
     title: Práticas de Modelagem e Tailoring
-    
+    sections:
       # BIM
       - file: notebooks/modelagem/BIM/index.md
-        title: BIM (`Building Information Modeling`)
+        title: BIM (Building Information Modeling)
         sections:
           - file: notebooks/modelagem/BIM/BIM.md
             title: O que é BIM?
@@ -71,13 +71,13 @@ chapters:
       - file: notebooks/modelagem/mineracaoProcessos/index.md
         title: Mineração de Processos
         sections:
-          - file: notebooks/modelagem/mineracaoProcessos/mineracao-processos-fund.md
-            title: Mineração de Processos - Fundamentos
           - file: notebooks/modelagem/mineracaoProcessos/mineracao-processos-intro.md
             title: Mineração de Processos - Introdução
+          - file: notebooks/modelagem/mineracaoProcessos/mineracao-processos-fund.md
+            title: Mineração de Processos - Fundamentos
 
   # Capítulo 5: Complementos
-  - file: notebooks/complementos/index
+  - file: notebooks/complementos/index.md
     title: Complementos
     sections:
       - file: notebooks/complementos/historico-qualidade.md

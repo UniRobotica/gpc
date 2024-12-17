@@ -1,0 +1,962 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mineração de Processos - Introdução &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/mineracaoProcessos/mineracao-processos-intro';</script>
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Mineração de Processos - Fundamentos" href="mineracao-processos-fund.html" />
+    <link rel="prev" title="Seção BIM" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PMBOK/PMBOK7.html">PMBOK 7ª Edição – Guia do Conhecimento em Gerenciamento de Projetos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dominios/index.html">Domínios de Desempenho</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/planejamento/pertcpm-construcao-civil.html">PERT/CPM na Construção Civil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/entrega/index.html">Entrega</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/entrega/aquisicoes.html">Gerenciamento de Aquisições</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/entrega/aquisicoes-exemplo.html">Exemplo de Gerenciamento de Aquisições com Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/medicao/index.html">Medição</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/controle-estatistico-processos.html">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/cep-situacoes-atencao.html">CEP – Situações de Atenção</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/cep-acoes-correcao.html">Ações de correção para situações de atenção</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/incertezas/index.html">Incertezas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/incertezas/monte-carlo.html">Simulação de Monte Carlo</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Práticas de Modelagem e Tailoring</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../BIM/index.html">BIM (Building Information Modeling)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../BIM/BIM.html">O que é BIM?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BIM/BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Mineração de Processos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Mineração de Processos - Introdução</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../complementos/index.html">Complementos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../complementos/historico-qualidade.html">Histórico da Qualidade</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../referencias.html">Referências Bibliográficas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/mineracaoProcessos/mineracao-processos-intro.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/mineracaoProcessos/mineracao-processos-intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/modelagem/mineracaoProcessos/mineracao-processos-intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mineração de Processos - Introdução</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mineração de Processos - Introdução</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#como-aplicar"><strong>Como Aplicar</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entendimento-do-processo">1. <strong>Entendimento do Processo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicao-de-objetivos">2. <strong>Definição de Objetivos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dados-e-ferramentas">3. <strong>Dados e Ferramentas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-processo-de-aprovacao-de-emprestimos">Exemplo de processo de aprovação de empréstimos</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelagem-de-processos">Modelagem de processos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#event-log">Event log</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-mineracao-de-processo"><strong>Tipos de mineração de processo</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#play-in-descoberta"><strong>Play In / Descoberta</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#play-out-conformidade"><strong>Play Out / Conformidade</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replay-aprimoramento"><strong>Replay / Aprimoramento</strong></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mineracao-de-processos-introducao">
+<h1>Mineração de Processos - Introdução<a class="headerlink" href="#mineracao-de-processos-introducao" title="Link to this heading">#</a></h1>
+<p><img alt="alt text" src="../../../_images/ponteMinProc.png" /></p>
+<p>A mineração de processos reúne a análise de processos tradicional baseada em modelos e
+técnicas de análise centradas em dados. A mineração de processos busca o confronto entre dados de eventos (ou seja, comportamento observado) e modelos de processos (feitos à mão ou descobertos automaticamente). As abordagens tradicionais da ciência de dados tendem a
+ser agnósticas em relação a processos. Mineração de dados, estatística e técnicas de aprendizado de máquina
+não consideram modelos de processos de ponta a ponta.</p>
+<p>A <strong>mineração de processos</strong>, ou <strong>process mining</strong>, é um área que combina <strong>modelos de processos de négocio</strong> com a Ciência de Dados, ou seja, a partir de event logs ocorre a extração do modelo dos processos ou a análise de desempenho, gargalos, conformidade e etc.</p>
+<p>Desse modo, a mineração de processos é um elo crucial entre a ciência de dados, que lida com a análise e interpretação dos dados, e o estudo de processos, que foca na melhoria contínua e na eficiência organizacional. Ao aplicar métodos de análise avançada, como aprendizado de máquina e visualização de dados, ela proporciona uma visão detalhada e realista de como os processos funcionam, ajudando as empresas a otimizá-los com base em dados reais.</p>
+<p><img alt="missing link" src="../../../_images/missing_link.png" /></p>
+<blockquote>
+<div><p>“Process mining adds the process perspective to machine learning and data mining.
+Process mining seeks the confrontation between event data (i.e., observed behavior) and process models (hand-made or discovered automatically). Event data are
+related to explicit process models, e.g., Petri nets or BPMN models. For example, process models are discovered from event data or event data are replayed on
+models to analyze compliance and performance” (van der Aalst, 2016).</p>
+</div></blockquote>
+<!--
+
+* **Mapeamento detalhado do processo:** Identificar todas as etapas do processo de construção, desde a concepção do projeto até a entrega da obra.
+* **Análise das interdependências:** Identificar como cada etapa do processo se relaciona com as outras.
+* **Otimização do fluxo de trabalho:** Eliminar atividades que não agregam valor, reduzir o tempo de espera entre as etapas e otimizar a utilização de recursos.
+* **Monitoramento contínuo:** Acompanhar o desempenho do processo e realizar ajustes conforme necessário.
+
+**Em resumo,** ao adotar uma visão de ponta a ponta, as empresas de construção podem otimizar seus processos, reduzir custos, melhorar a qualidade e aumentar a satisfação dos clientes. A ideia de van der Aalst de que "o processo é estúpido" serve como um lembrete de que a eficiência e a qualidade de um projeto dependem da otimização do processo como um todo, e não apenas de cada tarefa individual.-->
+<p><img alt="alt text" src="notebooks/modelagem/img/aula02_fund/modProc.png" /></p>
+<p>O valor dos modelos é limitado se pouca atenção for dada ao alinhamento do modelo e da realidade, ou seja, as pessoas envolvidas precisam confiar neles. Por exemplo, não faz sentido conduzir experimentos de simulação enquanto se usa um modelo que assume uma versão idealizada do processo real.</p>
+</section>
+<section id="como-aplicar">
+<h1><strong>Como Aplicar</strong><a class="headerlink" href="#como-aplicar" title="Link to this heading">#</a></h1>
+<p>Conforme mencionado acima, a mineração de processos estabelece links entre os processos reais e seus dados, por um lado, e modelos de processos, por outro lado. Ou seja, mineração de processos conecta o mundo real, sistemas de software, registros de eventos (event logs) e modelos de processos para analisar e aprimorar processos organizacionais.</p>
+<p><img alt="process mining model" src="notebooks/modelagem/img/aula02_fund/process_mining_model.png" /></p>
+<p>De fato, no mundo real, pessoas, máquinas e organizações executam atividades que são apoiadas e controladas por sistemas de software, os quais registram eventos, como transações e mensagens, em logs.</p>
+<p>Esses registros são utilizados para criar ou ajustar modelos de processos por meio de três abordagens principais: descoberta, que identifica o processo real a partir dos dados; conformidade, que verifica se a execução está alinhada ao modelo projetado; e aprimoramento, que ajusta o modelo ou o processo com base nos dados reais. Esse ciclo contínuo visa entender, monitorar e melhorar a eficiência e a conformidade dos processos.</p>
+<hr class="docutils" />
+<p>Assim, para aplicar mineração de processos em um caso de uso específico, é essencial entender o contexto, os objetivos e os dados disponíveis.</p>
+<p>O levantamento de requisitos pode ser dividido em: entendimento do processo, definição de objetivos e dados e ferramentas. Aqui estão algumas sugestões para esse levantamento:</p>
+<section id="entendimento-do-processo">
+<h2>1. <strong>Entendimento do Processo</strong><a class="headerlink" href="#entendimento-do-processo" title="Link to this heading">#</a></h2>
+<p>Neste item, deve-se mapear o contexto e o funcionamento do processo. Para tanto, deve-se buscar respostas para:</p>
+<ul class="simple">
+<li><p><strong>Qual é o processo que será analisado?</strong></p>
+<ul>
+<li><p>Exemplo: É um processo de vendas, atendimento ao cliente, produção, etc.?</p></li>
+</ul>
+</li>
+<li><p><strong>Quais são as entradas, atividades e saídas do processo?</strong></p>
+<ul>
+<li><p>O que inicia o processo? Como ele termina?</p></li>
+</ul>
+</li>
+<li><p><strong>Quais são as principais etapas ou atividades envolvidas?</strong></p>
+<ul>
+<li><p>Liste as tarefas ou fluxos gerais (ex.: aprovação, conferência, execução).</p></li>
+</ul>
+</li>
+<li><p><strong>Existem variações conhecidas no processo?</strong></p>
+<ul>
+<li><p>O processo segue sempre o mesmo fluxo ou tem desvios frequentes?</p></li>
+</ul>
+</li>
+<li><p><strong>Quais são os objetivos principais desse processo?</strong></p>
+<ul>
+<li><p>É maximizar a eficiência? Garantir conformidade? Melhorar a experiência do cliente?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="definicao-de-objetivos">
+<h2>2. <strong>Definição de Objetivos</strong><a class="headerlink" href="#definicao-de-objetivos" title="Link to this heading">#</a></h2>
+<p>Para identificar o que a mineração de processos deve alcançar, deve-se questionar:</p>
+<ul class="simple">
+<li><p><strong>Qual problema específico estamos tentando resolver?</strong></p>
+<ul>
+<li><p>Exemplo: Reduzir atrasos, eliminar gargalos, ou melhorar a qualidade?</p></li>
+</ul>
+</li>
+<li><p><strong>Quais indicadores de desempenho (KPIs) devem ser analisados?</strong></p>
+<ul>
+<li><p>Exemplos: Tempo de ciclo, custo, taxa de conclusão, erros.</p></li>
+</ul>
+</li>
+<li><p><strong>Estamos buscando otimizar, monitorar ou auditar o processo?</strong></p>
+<ul>
+<li><p>O foco é eficiência, detecção de desvios ou conformidade com regras?</p></li>
+</ul>
+</li>
+<li><p><strong>Quais seriam os benefícios esperados com a análise?</strong></p>
+<ul>
+<li><p>Exemplo: Identificar gargalos ou eliminar atividades que não agregam valor.</p></li>
+</ul>
+</li>
+<li><p><strong>Quais decisões dependem das descobertas da mineração de processos?</strong></p>
+<ul>
+<li><p>Exemplo: Redesenho do fluxo, implementação de automação ou treinamento.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="dados-e-ferramentas">
+<h2>3. <strong>Dados e Ferramentas</strong><a class="headerlink" href="#dados-e-ferramentas" title="Link to this heading">#</a></h2>
+<p>Para garantir que os dados necessários estão disponíveis e que as ferramentas corretas serão usadas, deve-se responder a:</p>
+<ul class="simple">
+<li><p><strong>De onde vêm os dados do processo?</strong></p>
+<ul>
+<li><p>Exemplo: Logs de sistemas ERP, CRM, sistemas de ticket, etc.</p></li>
+</ul>
+</li>
+<li><p><strong>Os dados contêm as informações mínimas necessárias?</strong></p>
+<ul>
+<li><p>Devem incluir: <strong>caso (ID único do processo), atividade (ações realizadas)</strong> e <strong>timestamp (tempo de execução)</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Quais ferramentas de mineração de processos serão usadas?</strong></p>
+<ul>
+<li><p>Exemplo: Celonis, Disco, ProM, etc.</p></li>
+</ul>
+</li>
+<li><p><strong>Existem problemas conhecidos com os dados?</strong></p>
+<ul>
+<li><p>Exemplo: Inconsistência, dados incompletos ou falta de integração entre sistemas.</p></li>
+</ul>
+</li>
+<li><p><strong>Quem são os stakeholders que devem validar as descobertas?</strong></p>
+<ul>
+<li><p>Exemplo: Gerentes de processo, analistas de negócio, TI.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="exemplo-de-processo-de-aprovacao-de-emprestimos">
+<h2>Exemplo de processo de aprovação de empréstimos<a class="headerlink" href="#exemplo-de-processo-de-aprovacao-de-emprestimos" title="Link to this heading">#</a></h2>
+<p>Suponha que você esteja analisando um processo de <strong>aprovação de empréstimos em um banco</strong>. As perguntas poderiam ser:</p>
+<ol class="arabic simple">
+<li><p><strong>Entendimento do Processo</strong></p>
+<ul class="simple">
+<li><p>Como um cliente solicita o empréstimo?</p></li>
+<li><p>Quais departamentos participam da aprovação?</p></li>
+<li><p>Existe um prazo ideal para concluir a análise?</p></li>
+</ul>
+</li>
+<li><p><strong>Definição de Objetivos</strong></p>
+<ul class="simple">
+<li><p>Estamos buscando reduzir o tempo médio de aprovação?</p></li>
+<li><p>Queremos identificar gargalos específicos, como espera por documentos?</p></li>
+</ul>
+</li>
+<li><p><strong>Dados e Ferramentas</strong></p>
+<ul class="simple">
+<li><p>Os sistemas bancários registram todas as interações?</p></li>
+<li><p>As ferramentas disponíveis permitem conectar os logs das diferentes etapas?</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="modelagem-de-processos">
+<h1>Modelagem de processos<a class="headerlink" href="#modelagem-de-processos" title="Link to this heading">#</a></h1>
+<p>Os modelos desempenham um papel importante para projetar processos e introduzir novos sistemas de informação. Normalmente, dois tipos de modelos são usados: (a) modelos informais e (b) modelos formais (também chamados de modelos “executáveis”). Os modelos informais são usados ​​para discussão e documentação, enquanto os modelos formais são usados ​​para análise ou execução real do processo.</p>
+<p>A Figura seguinte modela um processo como uma rede de Petri.</p>
+<p><img alt="alt text" src="notebooks/modelagem/img/aula02_fund/redesPetri.png" /></p>
+<p>A Figura seguinte modela o mesmo processo em termos de um chamado
+diagrama BPMN.</p>
+<p><img alt="alt text" src="notebooks/modelagem/img/aula02_fund/BPMN.png" /></p>
+</section>
+<section id="event-log">
+<h1>Event log<a class="headerlink" href="#event-log" title="Link to this heading">#</a></h1>
+<p><strong>Event log</strong> ou <strong>registros de evento</strong> são tabelas que contém as informações de execução dos processos. Nesta tabela, cada linha representa um evento e contém ao menos três colunas essenciais, sendo elas</p>
+<ul class="simple">
+<li><p>case id - contém um identificador da instância do processo ao qual o evento pertence;</p></li>
+<li><p>activity - a atividade que foi realizada no evento;</p></li>
+<li><p>timestamp - a data e hora em que o evento ocorreu (inicio, fim ou outro marco temporal).</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>student name/caseId</em></p></th>
+<th class="head"><p><em>course name/activity</em></p></th>
+<th class="head"><p><em>exam date/timestamp</em></p></th>
+<th class="head"><p><em>mark/other data</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Peter Jones</p></td>
+<td><p>Business Information Systems</p></td>
+<td><p>16-1-2014</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sandy Sott</p></td>
+<td><p>Business Information Systems</p></td>
+<td><p>16-1-2014</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Bridget White</p></td>
+<td><p>Business Information Systems</p></td>
+<td><p>16-1-2014</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sandy Scott</p></td>
+<td><p>BPM Systems</p></td>
+<td><p>17-1-2014</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>Bridget White</p></td>
+<td><p>BPM Systems</p></td>
+<td><p>17-1-2014</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sandy Scott</p></td>
+<td><p>Process Mining</p></td>
+<td><p>20-1-2014</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>John Anderson</p></td>
+<td><p>Process Mining</p></td>
+<td><p>20-1-2014</p></td>
+<td><p>6</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Podem também ter outras colunas, como resources, que indicam o recurso ou pessoa responsável pela execução da atividade, além de  quaisquer outras informações relevantes, tais como o produto e quantidade associada. Nem sempre a tabela contém uma única coluna de timestamp. Em alguns casos, pode haver colunas separadas para o início e o fim de cada evento.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><em>order number / caseId</em></p></th>
+<th class="head"><p><em>activity</em></p></th>
+<th class="head"><p><em>timestamp</em></p></th>
+<th class="head"><p><em>user / resource</em></p></th>
+<th class="head"><p><em>product / other data</em></p></th>
+<th class="head"><p><em>quantity / other data</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9901</p></td>
+<td><p>register order</p></td>
+<td><p>22-1-2014#09.15</p></td>
+<td><p>Sara Jones</p></td>
+<td><p>iPhone5s</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>9902</p></td>
+<td><p>register order</p></td>
+<td><p>22-1-2014#09.18</p></td>
+<td><p>Sara Jones</p></td>
+<td><p>iPhone5s</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>9901</p></td>
+<td><p>check stock</p></td>
+<td><p>22-1-2014#09.49</p></td>
+<td><p>Pete Scott</p></td>
+<td><p>iPhone5s</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>9901</p></td>
+<td><p>ship order</p></td>
+<td><p>22-1-2014#10.11</p></td>
+<td><p>Sue Fox</p></td>
+<td><p>iPhone5s</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>9901</p></td>
+<td><p>handle payment</p></td>
+<td><p>22-1-2014#10.41</p></td>
+<td><p>Carol Hope</p></td>
+<td><p>iPhone5s</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="tipos-de-mineracao-de-processo">
+<h2><strong>Tipos de mineração de processo</strong><a class="headerlink" href="#tipos-de-mineracao-de-processo" title="Link to this heading">#</a></h2>
+<p>Na mineração de processos, os tipos Play-in, Play-out e Replay referem-se a diferentes maneiras de interagir com e analisar os processos dentro de um sistema.</p>
+<img src="https://raw.githubusercontent.com/UniRobotica/cursos/refs/heads/gh-pages/pages/informatica-aplicada/mineracao-processos/img/aula01_intro/tiposMinProc.png" alt="alt text" style="width: 100%;" />
+<section id="play-in-descoberta">
+<h3><strong>Play In / Descoberta</strong><a class="headerlink" href="#play-in-descoberta" title="Link to this heading">#</a></h3>
+<p>Neste tipo geramos um modelo de processo a partir de um event log. Existem diversos algoritmos que fazem isso.</p>
+<blockquote>
+<div><p>“The first type of process mining is discovery. A discovery technique takes an event log and produces a model without using any a-priori information. An example is the α-algorithm [157] that will be described in Chap. 6. This algorithm takes an event log and produces a Petri net explaining the behavior recorded in the log” (van der Aalst, 2016).</p>
+</div></blockquote>
+<p>Por exemplo, considere a seguinte sequência de letras, onde cada letra representa um evento:</p>
+<ul class="simple">
+<li><p>abdeg</p></li>
+<li><p>adbeg</p></li>
+<li><p>adbeh</p></li>
+<li><p>abdeh
+A partir delas podemos determinar o seguinte modelo:</p></li>
+</ul>
+<p><img alt="exe1" src="notebooks/modelagem/img/aula01_intro/exe1.png" /></p>
+</section>
+<section id="play-out-conformidade">
+<h3><strong>Play Out / Conformidade</strong><a class="headerlink" href="#play-out-conformidade" title="Link to this heading">#</a></h3>
+<p>A ideia é gerar um comportamento, event log, a partir de um modelo.</p>
+<blockquote>
+<div><p>“The second type of process mining is conformance. Here, an existing process model is compared with an event log of the same process. Conformance checking can be used to check if reality, as recorded in the log, conforms to the model and vice versa” (van der Aalst, 2016).</p>
+</div></blockquote>
+<p>Por exemplo, considere o modelo abaixo</p>
+<p><img alt="exe1" src="notebooks/modelagem/img/aula01_intro/exe1.png" /></p>
+<p>Podemos a partir desse modelo gerar o seguinte event log:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>case</p></th>
+<th class="head"><p>activity</p></th>
+<th class="head"><p>timestamp</p></th>
+<th class="head"><p>resource</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>235</p></td>
+<td><p>register travel request (a)</p></td>
+<td><p>18-8-2014:9.15</p></td>
+<td><p>John</p></td>
+</tr>
+<tr class="row-odd"><td><p>235</p></td>
+<td><p>get support from local manager (b)</p></td>
+<td><p>18-8-2014:9.25</p></td>
+<td><p>Mary</p></td>
+</tr>
+<tr class="row-even"><td><p>235</p></td>
+<td><p>check budget by finance (d)</p></td>
+<td><p>19-8-2014:8.55</p></td>
+<td><p>John</p></td>
+</tr>
+<tr class="row-odd"><td><p>235</p></td>
+<td><p>decide (e)</p></td>
+<td><p>19-8-2014:9.36</p></td>
+<td><p>Sue</p></td>
+</tr>
+<tr class="row-even"><td><p>235</p></td>
+<td><p>accept request (g)</p></td>
+<td><p>19-8-2014.9.48</p></td>
+<td><p>Mary</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="replay-aprimoramento">
+<h2><strong>Replay / Aprimoramento</strong><a class="headerlink" href="#replay-aprimoramento" title="Link to this heading">#</a></h2>
+<p>Por fim, no tipo replay nos buscamos verificar a conformidade do modelo de processos gerado ou já existente com a realidade. Desta forma podemos descobrir gargalos, processos sendo realizados fora de ordem, e outros desvios de desempenho.</p>
+<blockquote>
+<div><p>“The third type of process mining is enhancement. Here, the idea is to extend or improve an existing process model using information about the actual process recorded in some event log. Whereas conformance checking measures the alignment between model and reality, this third type of process mining aims at changing or extending the a-priori model” (van der Aalst, 2016).</p>
+</div></blockquote>
+<p><img alt="alt text" src="notebooks/modelagem/img/aula02_fund/tiposDiagr.png" /></p>
+<p>| <a class="reference internal" href="#aula01_MineracaoProcessos.md"><span class="xref myst">Aula 01</span></a></p>
+<p><a class="reference internal" href="#../../mineracaoProcessos.md"><span class="xref myst">Sumário</span></a> |</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks\modelagem\mineracaoProcessos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Seção BIM</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mineracao-processos-fund.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mineração de Processos - Fundamentos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mineração de Processos - Introdução</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#como-aplicar"><strong>Como Aplicar</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entendimento-do-processo">1. <strong>Entendimento do Processo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicao-de-objetivos">2. <strong>Definição de Objetivos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dados-e-ferramentas">3. <strong>Dados e Ferramentas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-de-processo-de-aprovacao-de-emprestimos">Exemplo de processo de aprovação de empréstimos</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelagem-de-processos">Modelagem de processos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#event-log">Event log</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-mineracao-de-processo"><strong>Tipos de mineração de processo</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#play-in-descoberta"><strong>Play In / Descoberta</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#play-out-conformidade"><strong>Play Out / Conformidade</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replay-aprimoramento"><strong>Replay / Aprimoramento</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

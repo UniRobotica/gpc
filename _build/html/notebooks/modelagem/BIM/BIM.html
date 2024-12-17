@@ -1,0 +1,1345 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>O que é BIM? &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/BIM/BIM';</script>
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="BIM - Exemplo utilizando modelo IFC" href="BIM-exemplo.html" />
+    <link rel="prev" title="Seção BIM" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PMBOK/PMBOK7.html">PMBOK 7ª Edição – Guia do Conhecimento em Gerenciamento de Projetos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dominios/index.html">Domínios de Desempenho</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/planejamento/pertcpm-construcao-civil.html">PERT/CPM na Construção Civil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/entrega/index.html">Entrega</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/entrega/aquisicoes.html">Gerenciamento de Aquisições</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/entrega/aquisicoes-exemplo.html">Exemplo de Gerenciamento de Aquisições com Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/medicao/index.html">Medição</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/controle-estatistico-processos.html">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/cep-situacoes-atencao.html">CEP – Situações de Atenção</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/cep-acoes-correcao.html">Ações de correção para situações de atenção</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/incertezas/index.html">Incertezas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/incertezas/monte-carlo.html">Simulação de Monte Carlo</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Práticas de Modelagem e Tailoring</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">BIM (Building Information Modeling)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">O que é BIM?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mineracaoProcessos/index.html">Mineração de Processos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-intro.html">Mineração de Processos - Introdução</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../complementos/index.html">Complementos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../complementos/historico-qualidade.html">Histórico da Qualidade</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../referencias.html">Referências Bibliográficas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/BIM/BIM.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/BIM/BIM.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/modelagem/BIM/BIM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>O que é BIM?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-do-bim-no-ciclo-de-vida-da-construcao"><strong>Aplicações do BIM no Ciclo de Vida da Construção</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-concepcao"><strong>1. BIM na Concepção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-no-projeto"><strong>2. BIM no Projeto</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-no-planejamento"><strong>3. BIM no Planejamento</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-analise-termica-energetica"><strong>4. BIM na Análise Térmica/Energética</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-analise-estrutural"><strong>5. BIM na Análise Estrutural</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-construcao"><strong>6. BIM na Construção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-no-retrofit"><strong>7. BIM no Retrofit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-demolicao"><strong>8. BIM na Demolição</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-operacao-e-manutencao-6d"><strong>9. BIM na Operação e Manutenção (6D)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumo"><strong>Resumo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-gestao-de-projetos-e-normas-relacionadas"><strong>BIM na Gestão de Projetos e Normas Relacionadas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao-ao-tema"><strong>1. Introdução ao Tema</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacao-com-o-pmbok"><strong>Relação com o PMBOK</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-gestao-de-projetos"><strong>2. BIM na Gestão de Projetos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vantagens-do-bim"><strong>Vantagens do BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alinhadas-aos-principios-do-pmbok"><strong>Alinhadas aos Princípios do PMBOK</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#as-10-dimensoes-do-bim"><strong>As 10 Dimensões do BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-planejamento-conceitual"><strong>1D – Planejamento Conceitual</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-documentacao-e-desenhos"><strong>2D – Documentação e Desenhos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-modelagem-tridimensional"><strong>3D – Modelagem Tridimensional</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-planejamento-e-tempo"><strong>4D – Planejamento e Tempo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-custos"><strong>5D – Custos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-sustentabilidade"><strong>6D – Sustentabilidade</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-operacao-e-manutencao"><strong>7D – Operação e Manutenção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-seguranca-no-trabalho"><strong>8D – Segurança no Trabalho</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-lean-construction"><strong>9D – Lean Construction</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-industrializacao-da-construcao"><strong>10D – Industrialização da Construção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-no-uso-do-bim"><strong>Desafios no Uso do BIM</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-relacionadas-ao-bim"><strong>3. Normas Relacionadas ao BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-iso"><strong>Normas ISO</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-brasileiras-abnt"><strong>Normas Brasileiras (ABNT)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#politicas-publicas"><strong>Políticas Públicas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br"><strong>1. Estratégia Nacional de Disseminação do BIM (Estratégia BIM BR)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-principais-da-estrategia-bim-br"><strong>Objetivos principais da Estratégia BIM BR</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fases-da-implementacao-do-bim-no-brasil"><strong>2. Fases da Implementação do BIM no Brasil</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-1-a-partir-de-2021"><strong>Fase 1 (a partir de 2021)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-2-a-partir-de-2024"><strong>Fase 2 (a partir de 2024)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-3-a-partir-de-2028"><strong>Fase 3 (a partir de 2028)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-tecnicas-relacionadas-ao-bim"><strong>3. Normas Técnicas Relacionadas ao BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-normas-abnt-relacionadas"><strong>Principais normas ABNT relacionadas</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-do-bim-em-licitacoes-publicas"><strong>4. Uso do BIM em Licitações Públicas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incentivos-e-politicas-governamentais"><strong>5. Incentivos e Políticas Governamentais</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-na-implementacao-do-marco-legal"><strong>6. Desafios na Implementação do Marco Legal</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao"><strong>Conclusão</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decreto-no-9-983-2019-estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br"><strong>1. Decreto nº 9.983/2019 - Estratégia Nacional de Disseminação do BIM (Estratégia BIM BR)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo"><strong>Objetivo</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-caracteristicas"><strong>Principais características</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decreto-no-10-306-2020-uso-do-bim-na-execucao-direta-ou-indireta-de-obras-publicas"><strong>2. Decreto nº 10.306/2020 - Uso do BIM na Execução Direta ou Indireta de Obras Públicas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Objetivo</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Principais características</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-diferencas"><strong>Principais Diferenças</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Resumo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normatizacao-e-modelos-ifc-no-bim"><strong>Normatização e Modelos IFC no BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normatizacao-no-bim"><strong>Normatização no BIM</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-ifc-industry-foundation-classes"><strong>Modelos IFC (Industry Foundation Classes)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-do-ifc"><strong>Características do IFC:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vantagens-do-uso-de-modelos-ifc"><strong>Vantagens do Uso de Modelos IFC</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacao-pratica"><strong>Aplicação Prática</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-x-modelo-bim"><strong>BIM x Modelo BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-building-information-modeling"><strong>1. BIM (Building Information Modeling)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-bim">** Modelo BIM**</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao-e-perguntas"><strong>5. Conclusão e Perguntas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Resumo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encaminhamentos"><strong>Encaminhamentos</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="o-que-e-bim">
+<h1><strong>O que é BIM?</strong><a class="headerlink" href="#o-que-e-bim" title="Link to this heading">#</a></h1>
+<!-- - **Definição:** Modelagem digital integrada com informações multidisciplinares.
+- **Histórico:** Evolução do BIM no setor de construção.
+- **Diferença entre BIM e CAD:**
+  - BIM: Informações integradas em 3D, ciclo de vida do projeto.
+  - CAD: Modelagem apenas geométrica, sem integração de dados.-->
+<p><img alt="alt text" src="../../../_images/contratacao.png" /></p>
+<p>Os modelos tradicionais, como <strong>Projeto-Concorrência-Construção</strong> e <strong>Design-Build</strong>, apresentam desafios significativos de <strong>fragmentação</strong>, <strong>falta de integração</strong> e <strong>comunicação ineficiente</strong> entre os diferentes atores do projeto, como proprietários, projetistas, construtores e subempreiteiros. Essa fragmentação gera conflitos, atrasos, retrabalhos e impactos no orçamento e cronograma das obras.</p>
+<p><img alt="atores" src="../../../_images/atores.png" /></p>
+<p>O <strong>BIM (Building Information Modeling)</strong> resolve esses problemas ao integrar todas as disciplinas e partes interessadas em um <strong>modelo único e centralizado</strong>. O uso do BIM promove a colaboração em tempo real, permitindo acesso transparente a informações do projeto, como prazos, orçamentos e especificações técnicas. Além disso, facilita a visualização em 3D, melhora a tomada de decisões e aumenta a eficiência na gestão de recursos e execução.</p>
+<p><img alt="alt text" src="../../../_images/CADvsBIM.png" /></p>
+<p>Em geral, a estrutura interna de uma instância de um objeto, como definida dentro de um sistema de modelagem paramétrica, é um grafo orientado, onde os nós são classes de objetos com parâmetros ou operações que constroem ou modificam uma instância de objeto; links no grafo indicam relações entre os nós.</p>
+<p><img alt="alt text" src="../../../_images/modParam.png" /></p>
+<p>No modelo <strong>Design-Build</strong>, o BIM se destaca ao unificar o processo de projeto e construção, garantindo maior previsibilidade, controle e qualidade na entrega final. Assim, o BIM se alinha às boas práticas de <strong>gerenciamento de projetos</strong> propostas pelo PMBOK, como integração, gestão de recursos e controle de qualidade, tornando-se essencial para projetos mais eficientes e bem-sucedidos.</p>
+<p>Com base na imagem fornecida, podemos extrair um resumo que <strong>organiza e descreve as aplicações do BIM ao longo do ciclo de vida da construção</strong>. Vou estruturar isso de forma clara e complementar com informações adicionais.</p>
+<hr class="docutils" />
+<section id="aplicacoes-do-bim-no-ciclo-de-vida-da-construcao">
+<h2><strong>Aplicações do BIM no Ciclo de Vida da Construção</strong><a class="headerlink" href="#aplicacoes-do-bim-no-ciclo-de-vida-da-construcao" title="Link to this heading">#</a></h2>
+<p><img alt="alt text" src="../../../_images/BIM_cicloVida.jpg" /></p>
+<section id="bim-na-concepcao">
+<h3><strong>1. BIM na Concepção</strong><a class="headerlink" href="#bim-na-concepcao" title="Link to this heading">#</a></h3>
+<p>Na fase inicial do projeto, o BIM é aplicado para:</p>
+<ul class="simple">
+<li><p><strong>Programa arquitetônico</strong> e concepção inicial.</p></li>
+<li><p><strong>Estudos de massa</strong> e modelagem volumétrica.</p></li>
+<li><p><strong>Estudos de movimentação de terra</strong> para otimização de cortes e aterros.</p></li>
+<li><p><strong>Estimativa preliminar de custos</strong> (macro-BIM).</p></li>
+<li><p><strong>Visualização do projeto</strong> em 3D, facilitando o entendimento pelo cliente.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-no-projeto">
+<h3><strong>2. BIM no Projeto</strong><a class="headerlink" href="#bim-no-projeto" title="Link to this heading">#</a></h3>
+<p>Durante o desenvolvimento do projeto:</p>
+<ul class="simple">
+<li><p><strong>Modelagem 3D paramétrica</strong> com detalhamento.</p></li>
+<li><p>Coordenação interdisciplinar (arquitetura, estrutura, instalações).</p></li>
+<li><p><strong>Detecção de interferências</strong> (clash detection) para evitar problemas na construção.</p></li>
+<li><p>Aplicação de <strong>normas de desempenho</strong> e sustentabilidade (LEED, AQUA).</p></li>
+<li><p><strong>Documentação</strong> automatizada e extração de dados.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-no-planejamento">
+<h3><strong>3. BIM no Planejamento</strong><a class="headerlink" href="#bim-no-planejamento" title="Link to this heading">#</a></h3>
+<p>O BIM contribui significativamente no planejamento da obra ao:</p>
+<ul class="simple">
+<li><p><strong>Extrair quantitativos</strong> diretamente do modelo.</p></li>
+<li><p>Realizar o <strong>planejamento 4D</strong> (tempo) integrando cronogramas.</p></li>
+<li><p>Simular <strong>recursos</strong> e <strong>custos</strong> (5D).</p></li>
+<li><p>Melhorar a <strong>gestão de riscos</strong> e de recursos materiais e humanos.</p></li>
+<li><p>Acompanhamento <strong>físico-financeiro</strong> da obra.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-na-analise-termica-energetica">
+<h3><strong>4. BIM na Análise Térmica/Energética</strong><a class="headerlink" href="#bim-na-analise-termica-energetica" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Simulações térmicas e energéticas.</p></li>
+<li><p>Avaliação do conforto térmico e desempenho energético.</p></li>
+<li><p>Testes com diferentes materiais e soluções de projeto visando sustentabilidade.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-na-analise-estrutural">
+<h3><strong>5. BIM na Análise Estrutural</strong><a class="headerlink" href="#bim-na-analise-estrutural" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Análise estrutural detalhada.</p></li>
+<li><p>Integração entre modelos de cálculo e projetos estruturais.</p></li>
+<li><p>Simulação de cargas e verificações normativas.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-na-construcao">
+<h3><strong>6. BIM na Construção</strong><a class="headerlink" href="#bim-na-construcao" title="Link to this heading">#</a></h3>
+<p>Na fase de execução, o BIM permite:</p>
+<ul class="simple">
+<li><p><strong>Compatibilização</strong> dos projetos (arquitetura, estrutura, instalações).</p></li>
+<li><p>Gestão de <strong>quantitativos</strong> e orçamento em tempo real.</p></li>
+<li><p><strong>Planejamento de canteiro de obras</strong> e logística.</p></li>
+<li><p>Redução de erros por meio da <strong>visualização 3D</strong>.</p></li>
+<li><p><strong>Pré-fabricação</strong> de elementos e redução de desperdícios.</p></li>
+<li><p><strong>Monitoramento da execução</strong> e controle de qualidade.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-no-retrofit">
+<h3><strong>7. BIM no Retrofit</strong><a class="headerlink" href="#bim-no-retrofit" title="Link to this heading">#</a></h3>
+<p>Aplicação do BIM em construções existentes:</p>
+<ul class="simple">
+<li><p><strong>Levantamento de condições existentes</strong> usando tecnologia como <strong>scanners a laser</strong>.</p></li>
+<li><p>Criação de modelos <strong>as-built</strong> (modelos do que existe).</p></li>
+<li><p>Planejamento de <strong>intervenções</strong> para reforma ou retrofit.</p></li>
+<li><p>Simulações de novas soluções e desempenho.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-na-demolicao">
+<h3><strong>8. BIM na Demolição</strong><a class="headerlink" href="#bim-na-demolicao" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Planejamento</strong> da demolição com foco em segurança.</p></li>
+<li><p><strong>Gestão de resíduos</strong>: materiais recicláveis e reaproveitamento.</p></li>
+<li><p>Análise de <strong>deslocamentos</strong> e elementos estruturais para otimização do processo.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="bim-na-operacao-e-manutencao-6d">
+<h3><strong>9. BIM na Operação e Manutenção (6D)</strong><a class="headerlink" href="#bim-na-operacao-e-manutencao-6d" title="Link to this heading">#</a></h3>
+<p>Na fase pós-obra, o BIM se torna uma ferramenta poderosa para:</p>
+<ul class="simple">
+<li><p><strong>Gestão de facilities</strong> usando o modelo como base.</p></li>
+<li><p>Importação do modelo BIM para <strong>sistemas CAFM</strong> (Computer-Aided Facility Management).</p></li>
+<li><p>Planejamento de <strong>manutenção preventiva</strong> e corretiva.</p></li>
+<li><p>Redução de custos operacionais com dados integrados ao longo do ciclo de vida.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resumo">
+<h2><strong>Resumo</strong><a class="headerlink" href="#resumo" title="Link to this heading">#</a></h2>
+<p>O BIM se estende por todo o <strong>ciclo de vida da edificação</strong>: da concepção e planejamento, passando pela construção e operação até o retrofit e demolição. Ele agrega dimensões como <strong>tempo (4D)</strong>, <strong>custos (5D)</strong> e <strong>sustentabilidade (6D)</strong>, permitindo uma gestão mais eficiente, colaborativa e integrada dos projetos.</p>
+</section>
+<section id="bim-na-gestao-de-projetos-e-normas-relacionadas">
+<h2><strong>BIM na Gestão de Projetos e Normas Relacionadas</strong><a class="headerlink" href="#bim-na-gestao-de-projetos-e-normas-relacionadas" title="Link to this heading">#</a></h2>
+</section>
+<section id="introducao-ao-tema">
+<h2><strong>1. Introdução ao Tema</strong><a class="headerlink" href="#introducao-ao-tema" title="Link to this heading">#</a></h2>
+<!-- ### **Objetivo da Aula**
+- Entender como o BIM é utilizado na gestão de projetos.
+- Relacionar o uso do BIM aos **princípios do PMBOK** para a gestão de projetos.
+- Conhecer as principais normas que regulamentam o uso do BIM.-->
+<section id="relacao-com-o-pmbok">
+<h3><strong>Relação com o PMBOK</strong><a class="headerlink" href="#relacao-com-o-pmbok" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Princípios do PMBOK como base para a adoção do BIM:</p>
+<ul>
+<li><p><strong>Foco no Valor:</strong> BIM contribui diretamente para geração de valor, reduzindo custos e entregando maior eficiência ao cliente.</p></li>
+<li><p><strong>Pensamento Sistêmico:</strong> BIM integra diferentes disciplinas e stakeholders em um único sistema digital.</p></li>
+<li><p><strong>Colaboração e Engajamento dos Stakeholders:</strong> O BIM facilita a colaboração e a comunicação visual entre todas as partes interessadas.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bim-na-gestao-de-projetos">
+<h2><strong>2. BIM na Gestão de Projetos</strong><a class="headerlink" href="#bim-na-gestao-de-projetos" title="Link to this heading">#</a></h2>
+<section id="vantagens-do-bim">
+<h3><strong>Vantagens do BIM</strong><a class="headerlink" href="#vantagens-do-bim" title="Link to this heading">#</a></h3>
+<section id="alinhadas-aos-principios-do-pmbok">
+<h4><strong>Alinhadas aos Princípios do PMBOK</strong><a class="headerlink" href="#alinhadas-aos-principios-do-pmbok" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Visualização e Simulações:</strong></p>
+<ul class="simple">
+<li><p>Conexão com o princípio de <strong>entrega incremental de valor</strong>, pois o BIM permite antecipar problemas e planejar entregas eficazes.</p></li>
+</ul>
+</li>
+<li><p><strong>Colaboração Multidisciplinar:</strong></p>
+<ul class="simple">
+<li><p>Relacionado ao princípio de <strong>engajamento ativo dos stakeholders</strong>. O BIM cria um ambiente onde todas as disciplinas colaboram com dados integrados.</p></li>
+</ul>
+</li>
+<li><p><strong>Redução de Erros e Retrabalhos:</strong></p>
+<ul class="simple">
+<li><p>Apoiado pelo princípio de <strong>gestão de risco adaptativa</strong>. O BIM antecipa e resolve conflitos (clash detection) antes da execução.</p></li>
+</ul>
+</li>
+<li><p><strong>Acompanhamento do Ciclo de Vida:</strong></p>
+<ul class="simple">
+<li><p>Conexão com <strong>responsabilidade e ciclo de vida do projeto</strong>, promovendo uma visão sistêmica da obra desde o planejamento até a operação.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="as-10-dimensoes-do-bim">
+<h2><strong>As 10 Dimensões do BIM</strong><a class="headerlink" href="#as-10-dimensoes-do-bim" title="Link to this heading">#</a></h2>
+<p><img alt="alt text" src="../../../_images/Dimensoes-BIM.webp" /></p>
+<p>As <strong>10 dimensões do BIM</strong> representam a evolução do uso de modelos digitais, indo muito além da simples representação em 3D. Elas permitem integrar <strong>tempo, custos, sustentabilidade, segurança e operação</strong> ao modelo, agregando mais valor e eficiência em todas as etapas do ciclo de vida do projeto.</p>
+<section id="d-planejamento-conceitual">
+<h3><strong>1D – Planejamento Conceitual</strong><a class="headerlink" href="#d-planejamento-conceitual" title="Link to this heading">#</a></h3>
+<p>O primeiro estágio, antes da criação de modelos digitais, envolve a <strong>definição conceitual</strong> do projeto. Nessa etapa, são discutidos objetivos, premissas e os principais elementos que guiarão o desenvolvimento do projeto.</p>
+</section>
+<hr class="docutils" />
+<section id="d-documentacao-e-desenhos">
+<h3><strong>2D – Documentação e Desenhos</strong><a class="headerlink" href="#d-documentacao-e-desenhos" title="Link to this heading">#</a></h3>
+<p>Corresponde às representações bidimensionais (plantas, cortes e elevações). Embora ainda seja a base em muitos projetos, o BIM evolui para integrar mais dimensões.</p>
+</section>
+<hr class="docutils" />
+<section id="d-modelagem-tridimensional">
+<h3><strong>3D – Modelagem Tridimensional</strong><a class="headerlink" href="#d-modelagem-tridimensional" title="Link to this heading">#</a></h3>
+<p>É a criação do <strong>modelo 3D inteligente</strong>, com geometrias e propriedades dos elementos construtivos (paredes, pilares, lajes, etc.). Essa representação visual melhora o entendimento do projeto, a comunicação e a detecção de interferências.</p>
+</section>
+<hr class="docutils" />
+<section id="d-planejamento-e-tempo">
+<h3><strong>4D – Planejamento e Tempo</strong><a class="headerlink" href="#d-planejamento-e-tempo" title="Link to this heading">#</a></h3>
+<p>Adiciona a <strong>dimensão do tempo</strong> ao modelo 3D. A partir do BIM 4D, é possível realizar simulações do <strong>cronograma</strong> da obra, visualizar o progresso da construção e identificar atrasos ou conflitos no planejamento.</p>
+</section>
+<hr class="docutils" />
+<section id="d-custos">
+<h3><strong>5D – Custos</strong><a class="headerlink" href="#d-custos" title="Link to this heading">#</a></h3>
+<p>O <strong>BIM 5D</strong> integra dados financeiros ao modelo, permitindo <strong>estimativas de custos</strong> detalhadas e atualizadas em tempo real. Isso facilita o controle orçamentário e o acompanhamento de gastos ao longo do projeto.</p>
+</section>
+<hr class="docutils" />
+<section id="d-sustentabilidade">
+<h3><strong>6D – Sustentabilidade</strong><a class="headerlink" href="#d-sustentabilidade" title="Link to this heading">#</a></h3>
+<p>A dimensão da <strong>sustentabilidade</strong> foca em análises de eficiência energética, consumo de recursos e impacto ambiental. O BIM 6D permite realizar simulações térmicas, de iluminação e de eficiência de materiais.</p>
+</section>
+<hr class="docutils" />
+<section id="d-operacao-e-manutencao">
+<h3><strong>7D – Operação e Manutenção</strong><a class="headerlink" href="#d-operacao-e-manutencao" title="Link to this heading">#</a></h3>
+<p>O <strong>BIM 7D</strong> estende o uso do modelo para a fase de operação do edifício, facilitando a <strong>gestão de facilities</strong>. O modelo inclui dados sobre os componentes (vida útil, manutenções necessárias, garantias), apoiando a operação ao longo do ciclo de vida da edificação.</p>
+</section>
+<hr class="docutils" />
+<section id="d-seguranca-no-trabalho">
+<h3><strong>8D – Segurança no Trabalho</strong><a class="headerlink" href="#d-seguranca-no-trabalho" title="Link to this heading">#</a></h3>
+<p>Essa dimensão incorpora práticas de <strong>segurança ocupacional</strong> durante o planejamento e execução da obra. O BIM 8D ajuda a identificar riscos, otimizar o layout do canteiro de obras e criar medidas de prevenção de acidentes.</p>
+</section>
+<hr class="docutils" />
+<section id="d-lean-construction">
+<h3><strong>9D – Lean Construction</strong><a class="headerlink" href="#d-lean-construction" title="Link to this heading">#</a></h3>
+<p>O <strong>BIM 9D</strong> aplica os conceitos de <strong>Lean Construction</strong> para melhorar a produtividade e reduzir desperdícios. Ele ajuda a planejar fluxos de trabalho, otimizar processos e sincronizar as atividades de construção.</p>
+</section>
+<hr class="docutils" />
+<section id="d-industrializacao-da-construcao">
+<h3><strong>10D – Industrialização da Construção</strong><a class="headerlink" href="#d-industrializacao-da-construcao" title="Link to this heading">#</a></h3>
+<p>O <strong>BIM 10D</strong> integra o processo de <strong>industrialização e pré-fabricação</strong>. Com ele, é possível planejar componentes modulares, otimizando a produção fora do canteiro de obras, acelerando prazos e reduzindo custos.</p>
+</section>
+<hr class="docutils" />
+<section id="desafios-no-uso-do-bim">
+<h3><strong>Desafios no Uso do BIM</strong><a class="headerlink" href="#desafios-no-uso-do-bim" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Relatórios Adaptáveis:</strong> Relacionados ao princípio de <strong>adaptação ao contexto</strong>. Equipes precisam ajustar-se a tecnologias e processos específicos.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="normas-relacionadas-ao-bim">
+<h2><strong>3. Normas Relacionadas ao BIM</strong><a class="headerlink" href="#normas-relacionadas-ao-bim" title="Link to this heading">#</a></h2>
+<p><img alt="alt text" src="../../../_images/nivelBIM.png" /></p>
+<section id="normas-iso">
+<h3><strong>Normas ISO</strong><a class="headerlink" href="#normas-iso" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>ISO 19650 (Gestão de Informações):</strong></p>
+<ul>
+<li><p><strong>Parte 1:</strong> Conceitos e princípios.</p></li>
+<li><p><strong>Parte 2:</strong> Processo de entrega de informações ao longo do ciclo de vida do projeto.</p></li>
+<li><p>Conexão com o princípio de <strong>pensamento sistêmico</strong>, integrando informações em um único modelo.</p></li>
+</ul>
+</li>
+<li><p><strong>ISO 12006-2:</strong> Estruturação de classificação para construção.</p></li>
+<li><p><strong>ISO 29481:</strong> Fluxo de informações em projetos colaborativos, em linha com o princípio de <strong>engajamento ativo dos stakeholders</strong>.</p></li>
+</ul>
+</section>
+<section id="normas-brasileiras-abnt">
+<h3><strong>Normas Brasileiras (ABNT)</strong><a class="headerlink" href="#normas-brasileiras-abnt" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>NBR 15575:</strong> Requisitos de desempenho em projetos, alinhados ao princípio de <strong>foco na qualidade</strong>.</p></li>
+<li><p><strong>NBR 15965:</strong> Estruturação e classificação de objetos no ambiente BIM.</p></li>
+</ul>
+</section>
+<section id="politicas-publicas">
+<h3><strong>Políticas Públicas</strong><a class="headerlink" href="#politicas-publicas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Decreto n.º 10.306/2020:</strong></p>
+<ul>
+<li><p>Estratégia BIM BR, que promove o uso do BIM em obras públicas no Brasil.</p></li>
+<li><p>Relacionado ao princípio de <strong>alinhamento estratégico</strong> com os objetivos nacionais.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>O <strong>marco legal do BIM</strong> no Brasil está em desenvolvimento contínuo, especialmente devido ao seu impacto na eficiência dos processos da construção civil e da infraestrutura. A regulamentação busca padronizar o uso do BIM, promover a adoção em projetos públicos e privados, e facilitar a implementação em larga escala. Abaixo estão os principais pontos sobre o <strong>marco legal do BIM</strong>:</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br">
+<h2><strong>1. Estratégia Nacional de Disseminação do BIM (Estratégia BIM BR)</strong><a class="headerlink" href="#estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br" title="Link to this heading">#</a></h2>
+<p>A Estratégia BIM BR foi estabelecida pelo <strong>Decreto nº 9.983</strong>, de 22 de agosto de 2019, e serve como o principal marco legal para a implementação do BIM no Brasil.</p>
+<section id="objetivos-principais-da-estrategia-bim-br">
+<h3><strong>Objetivos principais da Estratégia BIM BR</strong>:<a class="headerlink" href="#objetivos-principais-da-estrategia-bim-br" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Promover a adoção do BIM</strong> no setor público e privado.</p></li>
+<li><p>Incentivar o <strong>desenvolvimento e aplicação de normas técnicas</strong>.</p></li>
+<li><p>Ampliar a capacitação e qualificação de profissionais e empresas.</p></li>
+<li><p>Estimular o <strong>uso de ferramentas tecnológicas</strong> e a interoperabilidade.</p></li>
+<li><p>Fomentar a inovação e a digitalização da construção civil.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fases-da-implementacao-do-bim-no-brasil">
+<h2><strong>2. Fases da Implementação do BIM no Brasil</strong><a class="headerlink" href="#fases-da-implementacao-do-bim-no-brasil" title="Link to this heading">#</a></h2>
+<p>O Decreto nº 9.983 estabelece a obrigatoriedade gradual do BIM em obras públicas federais. A implementação está dividida em <strong>três fases principais</strong>:</p>
+<section id="fase-1-a-partir-de-2021">
+<h3><strong>Fase 1 (a partir de 2021)</strong><a class="headerlink" href="#fase-1-a-partir-de-2021" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Aplicação do BIM em <strong>projetos de arquitetura e engenharia</strong> para a elaboração de modelos que contenham informações geométricas e dados sobre os elementos construtivos.</p></li>
+</ul>
+</section>
+<section id="fase-2-a-partir-de-2024">
+<h3><strong>Fase 2 (a partir de 2024)</strong><a class="headerlink" href="#fase-2-a-partir-de-2024" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Expansão para a execução de obras públicas, incluindo a <strong>gestão de informações</strong> do modelo durante a construção e o acompanhamento físico-financeiro.</p></li>
+</ul>
+</section>
+<section id="fase-3-a-partir-de-2028">
+<h3><strong>Fase 3 (a partir de 2028)</strong><a class="headerlink" href="#fase-3-a-partir-de-2028" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Aplicação do BIM em <strong>todo o ciclo de vida da construção</strong>, incluindo operação e manutenção das edificações e infraestrutura.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="normas-tecnicas-relacionadas-ao-bim">
+<h2><strong>3. Normas Técnicas Relacionadas ao BIM</strong><a class="headerlink" href="#normas-tecnicas-relacionadas-ao-bim" title="Link to this heading">#</a></h2>
+<p>A regulamentação do uso do BIM é complementada por normas técnicas nacionais e internacionais. No Brasil, a <strong>ABNT</strong> (Associação Brasileira de Normas Técnicas) publicou normas específicas que garantem a padronização e a interoperabilidade.</p>
+<section id="principais-normas-abnt-relacionadas">
+<h3><strong>Principais normas ABNT relacionadas</strong>:<a class="headerlink" href="#principais-normas-abnt-relacionadas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>ABNT NBR ISO 19650</strong>: Gestão da informação ao longo do ciclo de vida da edificação e infraestrutura usando BIM.</p></li>
+<li><p><strong>ABNT NBR 15965</strong>: Classificação da informação na construção civil.</p></li>
+<li><p><strong>ABNT NBR 13532</strong>: Elaboração de projetos de edificações – Processo de projeto.</p></li>
+</ul>
+<p>Essas normas seguem padrões internacionais como os definidos pela <strong>ISO</strong> e pela organização <strong>buildingSMART</strong>, responsável pela estruturação dos <strong>modelos IFC (Industry Foundation Classes)</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="uso-do-bim-em-licitacoes-publicas">
+<h2><strong>4. Uso do BIM em Licitações Públicas</strong><a class="headerlink" href="#uso-do-bim-em-licitacoes-publicas" title="Link to this heading">#</a></h2>
+<p>O <strong>marco legal do BIM</strong> introduz a necessidade do seu uso em <strong>contratações públicas</strong>. O BIM é obrigatório em contratos que envolvem:</p>
+<ul class="simple">
+<li><p><strong>Modelagem e elaboração de projetos</strong>.</p></li>
+<li><p>Gestão e acompanhamento da obra.</p></li>
+<li><p>Operação e manutenção de edifícios e infraestrutura pública.</p></li>
+</ul>
+<p>A utilização do BIM nas licitações públicas visa:</p>
+<ul class="simple">
+<li><p>Melhorar a <strong>transparência e eficiência</strong> dos processos.</p></li>
+<li><p>Reduzir erros e retrabalhos durante a execução.</p></li>
+<li><p>Facilitar o <strong>gerenciamento de custos</strong> e prazos.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="incentivos-e-politicas-governamentais">
+<h2><strong>5. Incentivos e Políticas Governamentais</strong><a class="headerlink" href="#incentivos-e-politicas-governamentais" title="Link to this heading">#</a></h2>
+<p>O Governo Federal promove incentivos ao uso do BIM por meio de:</p>
+<ul class="simple">
+<li><p><strong>Linhas de crédito</strong> específicas para empresas que adotam BIM.</p></li>
+<li><p><strong>Capacitação e treinamento</strong> de profissionais por meio de programas educacionais e parcerias.</p></li>
+<li><p>Investimento em <strong>inovação tecnológica</strong> para pequenas e médias empresas.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="desafios-na-implementacao-do-marco-legal">
+<h2><strong>6. Desafios na Implementação do Marco Legal</strong><a class="headerlink" href="#desafios-na-implementacao-do-marco-legal" title="Link to this heading">#</a></h2>
+<p>Apesar dos avanços no marco regulatório, ainda existem desafios como:</p>
+<ul class="simple">
+<li><p>A <strong>falta de capacitação</strong> adequada de profissionais.</p></li>
+<li><p>A necessidade de <strong>infraestrutura tecnológica</strong> para pequenas empresas.</p></li>
+<li><p>A resistência à mudança por parte de setores tradicionais da construção civil.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conclusao">
+<h2><strong>Conclusão</strong><a class="headerlink" href="#conclusao" title="Link to this heading">#</a></h2>
+<p>O marco legal do BIM no Brasil, liderado pela <strong>Estratégia BIM BR</strong> e pelo <strong>Decreto nº 9.983</strong>, tem como foco modernizar e digitalizar o setor da construção civil. A regulamentação, junto com as <strong>normas ABNT</strong> e padrões internacionais, visa promover uma gestão mais eficiente, transparente e integrada dos projetos ao longo de todo o ciclo de vida das edificações e infraestruturas.</p>
+<p>O BIM, ao ser implementado em fases, facilita a adaptação gradual do setor público e privado, garantindo inovação, economia de recursos e melhores resultados.</p>
+<hr class="docutils" />
+<p>A diferença entre o <strong>Marco Legal do BIM</strong> no Brasil (consolidado principalmente pelo Decreto nº 9.983/2019) e o <strong>Decreto nº 10.306/2020</strong> está nos <strong>objetivos</strong>, <strong>âmbito de aplicação</strong> e na <strong>regulamentação prática</strong> da adoção do BIM no setor público.</p>
+</section>
+<hr class="docutils" />
+<section id="decreto-no-9-983-2019-estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br">
+<h2><strong>1. Decreto nº 9.983/2019 - Estratégia Nacional de Disseminação do BIM (Estratégia BIM BR)</strong><a class="headerlink" href="#decreto-no-9-983-2019-estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br" title="Link to this heading">#</a></h2>
+<section id="objetivo">
+<h3><strong>Objetivo</strong>:<a class="headerlink" href="#objetivo" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Estabelece a estratégia nacional</strong> para a implementação do BIM no Brasil, com diretrizes para estimular o uso da tecnologia no setor público e privado.</p></li>
+<li><p>Foca na <strong>disseminação</strong> e no <strong>planejamento gradual</strong> da adoção do BIM em todo o ciclo de vida das construções.</p></li>
+</ul>
+</section>
+<section id="principais-caracteristicas">
+<h3><strong>Principais características</strong>:<a class="headerlink" href="#principais-caracteristicas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Define <strong>objetivos estratégicos</strong> de implementação do BIM.</p></li>
+<li><p>Estrutura <strong>fases de adoção</strong> em projetos e obras públicas federais.</p></li>
+<li><p>Orienta a necessidade de <strong>capacitação profissional</strong> e adoção de <strong>normas técnicas</strong>.</p></li>
+<li><p>Tem um caráter mais <strong>amplo e programático</strong>, atuando como um <strong>plano de ação</strong> nacional.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="decreto-no-10-306-2020-uso-do-bim-na-execucao-direta-ou-indireta-de-obras-publicas">
+<h2><strong>2. Decreto nº 10.306/2020 - Uso do BIM na Execução Direta ou Indireta de Obras Públicas</strong><a class="headerlink" href="#decreto-no-10-306-2020-uso-do-bim-na-execucao-direta-ou-indireta-de-obras-publicas" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><strong>Objetivo</strong>:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Regulamenta a aplicação prática do BIM</strong> nas licitações e contratações de obras e serviços de engenharia no âmbito da <strong>Administração Pública Federal direta e indireta</strong>.</p></li>
+<li><p>Visa tornar obrigatório o uso do BIM em determinadas situações, <strong>operacionalizando</strong> a estratégia definida pelo Decreto nº 9.983/2019.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3><strong>Principais características</strong>:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Âmbito de aplicação</strong>: Licitações e contratações públicas federais.</p></li>
+<li><p>Torna <strong>obrigatório o uso do BIM</strong> em fases específicas de projetos e obras públicas, sendo implementado em etapas.</p></li>
+<li><p>Determina os <strong>requisitos e processos</strong> para utilização do BIM, como:</p>
+<ul>
+<li><p>Modelagem e execução de projetos;</p></li>
+<li><p>Gestão e manutenção de informações;</p></li>
+<li><p>Planejamento e orçamento de obras públicas.</p></li>
+</ul>
+</li>
+<li><p>Especifica quais etapas do ciclo de vida da obra devem ser modeladas no BIM.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="principais-diferencas">
+<h2><strong>Principais Diferenças</strong><a class="headerlink" href="#principais-diferencas" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspecto</p></th>
+<th class="head"><p><strong>Decreto nº 9.983/2019</strong></p></th>
+<th class="head"><p><strong>Decreto nº 10.306/2020</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Objetivo</strong></p></td>
+<td><p>Estratégia nacional de disseminação do BIM.</p></td>
+<td><p>Regulamenta o uso obrigatório do BIM em obras públicas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Foco</strong></p></td>
+<td><p>Planejamento e incentivo à adoção do BIM.</p></td>
+<td><p>Aplicação prática do BIM em licitações e obras públicas.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Âmbito</strong></p></td>
+<td><p>Nacional, com foco em setor público e privado.</p></td>
+<td><p>Administração Pública Federal direta e indireta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Obrigatoriedade</strong></p></td>
+<td><p>Não obriga diretamente o uso do BIM.</p></td>
+<td><p>Torna o uso do BIM obrigatório em fases específicas.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Aplicação gradual</strong></p></td>
+<td><p>Define fases de implementação.</p></td>
+<td><p>Estabelece prazos e requisitos para obras públicas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Normatização</strong></p></td>
+<td><p>Promove adoção de normas técnicas e capacitação.</p></td>
+<td><p>Define processos e modelos para utilização do BIM.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2><strong>Resumo</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>O <strong>Decreto nº 9.983/2019</strong> atua como <strong>estratégia nacional</strong>, definindo diretrizes para a adoção do BIM e promovendo sua implementação de forma ampla.</p></li>
+<li><p>O <strong>Decreto nº 10.306/2020</strong> é mais específico, focando em <strong>licitações públicas</strong> e exigindo a <strong>adoção obrigatória</strong> do BIM em obras financiadas pelo Governo Federal.</p></li>
+</ul>
+<p>Portanto, o Decreto nº 10.306/2020 <strong>operacionaliza e complementa</strong> o Marco Legal do BIM definido pelo Decreto nº 9.983/2019.</p>
+</section>
+<hr class="docutils" />
+<section id="normatizacao-e-modelos-ifc-no-bim">
+<h2><strong>Normatização e Modelos IFC no BIM</strong><a class="headerlink" href="#normatizacao-e-modelos-ifc-no-bim" title="Link to this heading">#</a></h2>
+<section id="normatizacao-no-bim">
+<h3><strong>Normatização no BIM</strong><a class="headerlink" href="#normatizacao-no-bim" title="Link to this heading">#</a></h3>
+<p>A implementação do <strong>BIM</strong> em projetos de construção exige a adoção de <strong>normas técnicas</strong> que padronizem processos, dados e modelos. A normatização garante <strong>interoperabilidade</strong>, <strong>consistência</strong> e <strong>qualidade</strong> nos fluxos de trabalho entre diferentes softwares e profissionais.</p>
+<p><strong>Principais normas relacionadas ao BIM:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>ISO 19650</strong>: Define os princípios e requisitos para <strong>gestão da informação</strong> ao longo do ciclo de vida da construção com o uso do BIM.</p></li>
+<li><p><strong>NBR 15965</strong>: Norma brasileira que estrutura o sistema de <strong>classificação da informação</strong> na construção civil.</p></li>
+<li><p><strong>IFC (Industry Foundation Classes)</strong>: Padrão aberto que permite a interoperabilidade entre diferentes softwares BIM.</p></li>
+<li><p><strong>COBie (Construction Operations Building Information Exchange)</strong>: Foca na entrega de dados para operação e manutenção de edificações.</p></li>
+</ol>
+<p>A normatização facilita a colaboração entre as partes interessadas, desde o projeto até a operação da construção, garantindo que os dados possam ser utilizados de forma eficiente e sem perda de informações.</p>
+</section>
+<hr class="docutils" />
+<section id="modelos-ifc-industry-foundation-classes">
+<h3><strong>Modelos IFC (Industry Foundation Classes)</strong><a class="headerlink" href="#modelos-ifc-industry-foundation-classes" title="Link to this heading">#</a></h3>
+<p>O <strong>IFC</strong> é um <strong>padrão aberto e neutro</strong> desenvolvido pela <strong>buildingSMART</strong> para promover a <strong>interoperabilidade</strong> entre softwares BIM. Diferente de formatos proprietários (como .rvt ou .dwg), o IFC permite que modelos criados em uma plataforma sejam abertos e editados em outra, garantindo compatibilidade.</p>
+<p>O <strong>modelo IFC</strong> atua como um formato aberto para <strong>troca de informações</strong>, promovendo a colaboração entre equipes multidisciplinares e garantindo que os dados permaneçam consistentes ao longo do ciclo de vida do projeto.</p>
+</section>
+<section id="caracteristicas-do-ifc">
+<h3><strong>Características do IFC:</strong><a class="headerlink" href="#caracteristicas-do-ifc" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>É um <strong>formato de dados estruturado</strong> que descreve informações de elementos construtivos, como paredes, portas, lajes e sistemas (arquitetura, estrutura e instalações).</p></li>
+<li><p>Permite representar <strong>geometria</strong> e <strong>metadados</strong> (propriedades e atributos dos elementos, como materiais e funções).</p></li>
+<li><p>É utilizado em todas as fases do ciclo de vida do projeto: projeto, construção, operação e manutenção.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="vantagens-do-uso-de-modelos-ifc">
+<h3><strong>Vantagens do Uso de Modelos IFC</strong><a class="headerlink" href="#vantagens-do-uso-de-modelos-ifc" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Interoperabilidade</strong>: Facilita a troca de informações entre diferentes softwares (Revit, ArchiCAD, Tekla, entre outros).</p></li>
+<li><p><strong>Independência de Software</strong>: É um padrão aberto, não atrelado a um fornecedor específico.</p></li>
+<li><p><strong>Gerenciamento de Dados</strong>: Permite uma <strong>estrutura unificada</strong> de dados, essencial para colaboração.</p></li>
+<li><p><strong>Ciclo de Vida Completo</strong>: Os modelos IFC podem ser utilizados da concepção até a operação do edifício, com foco em <strong>gestão de facilities</strong>.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="aplicacao-pratica">
+<h3><strong>Aplicação Prática</strong><a class="headerlink" href="#aplicacao-pratica" title="Link to this heading">#</a></h3>
+<p>Por exemplo, ao trabalhar em um projeto de infraestrutura, como uma <strong>ponte</strong>, os profissionais podem criar o modelo em um software específico e exportá-lo em formato <strong>IFC</strong>. Esse modelo pode ser analisado por engenheiros estruturais, verificando interferências ou realizando simulações, sem precisar do mesmo software de origem.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bim-x-modelo-bim">
+<h2><strong>BIM x Modelo BIM</strong><a class="headerlink" href="#bim-x-modelo-bim" title="Link to this heading">#</a></h2>
+<section id="bim-building-information-modeling">
+<h3><strong>1. BIM (Building Information Modeling)</strong><a class="headerlink" href="#bim-building-information-modeling" title="Link to this heading">#</a></h3>
+<p>O <strong>BIM</strong> é um <strong>processo</strong> ou metodologia colaborativa que envolve a criação, o uso e a gestão de informações digitais ao longo de todo o ciclo de vida de um projeto de construção (planejamento, projeto, execução, operação e manutenção). Ele não se restringe a uma ferramenta ou software, mas sim a uma <strong>abordagem integrada</strong> que conecta equipes, dados e processos.</p>
+<p>O principal objetivo do BIM é melhorar a eficiência, reduzir erros, otimizar recursos e facilitar a <strong>comunicação entre os diferentes atores</strong> (projetistas, construtores, gestores e proprietários).</p>
+<p><strong>Características do BIM:</strong></p>
+<ul class="simple">
+<li><p>Colaboração entre disciplinas em um ambiente compartilhado.</p></li>
+<li><p>Integração de dados para visualização, análise e simulação.</p></li>
+<li><p>Aplicação em todas as fases do ciclo de vida do projeto.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="modelo-bim">
+<h3>** Modelo BIM**<a class="headerlink" href="#modelo-bim" title="Link to this heading">#</a></h3>
+<p>O <strong>Modelo BIM</strong> é o <strong>produto gerado</strong> a partir do processo BIM. Trata-se de uma representação digital tridimensional (3D) inteligente da construção, que armazena informações detalhadas sobre os elementos do projeto, como materiais, dimensões, custos, prazos e desempenho.</p>
+<p>Diferente de um modelo 3D tradicional, o <strong>modelo BIM</strong> é um banco de dados visual e paramétrico que permite associar informações a cada componente do projeto, facilitando análises avançadas, como:</p>
+<ul class="simple">
+<li><p><strong>Quantificação de materiais</strong></p></li>
+<li><p><strong>Simulação de cronogramas</strong> (4D)</p></li>
+<li><p><strong>Estimativas de custos</strong> (5D)</p></li>
+<li><p><strong>Análises energéticas e estruturais</strong></p></li>
+</ul>
+<p><strong>Resumo:</strong> Enquanto o <strong>BIM</strong> é o <strong>processo colaborativo</strong>, o <strong>Modelo BIM</strong> é o <strong>resultado digital</strong> desse processo, sendo utilizado como base para análises, execução e operação do empreendimento.</p>
+<hr class="docutils" />
+<p>Essa distinção é fundamental para entender como o BIM revoluciona a <strong>gestão de projetos</strong>, pois combina processos integrados com modelos digitais precisos, gerando eficiência e melhores resultados.</p>
+<!-- ## **4. Atividade Prática **
+### **Dinâmica Rápida**
+ - Apresente um modelo BIM simples (planta ou maquete 3D).
+- Solicite que os alunos identifiquem:
+  - Informações integradas (materiais, custos, cronograma).
+  - Relacionem essas informações aos princípios do PMBOK:
+    - **Exemplo:** Como a integração facilita a entrega de valor e otimiza recursos?
+- **Debate:** Como o BIM transforma a gestão de projetos e gera valor para as partes interessadas? -->
+</section>
+</section>
+<hr class="docutils" />
+<section id="conclusao-e-perguntas">
+<h2><strong>5. Conclusão e Perguntas</strong><a class="headerlink" href="#conclusao-e-perguntas" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3><strong>Resumo</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Como o BIM alinha-se ao PMBOK?</strong></p>
+<ul>
+<li><p>Facilita o foco no valor, engajamento de stakeholders e gestão de riscos.</p></li>
+<li><p>Garante eficiência e qualidade no ciclo de vida do projeto.</p></li>
+</ul>
+</li>
+<li><p><strong>Normas como pilares do BIM:</strong></p>
+<ul>
+<li><p>Garantem padronização e promovem a integração no setor.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="encaminhamentos">
+<h3><strong>Encaminhamentos</strong><a class="headerlink" href="#encaminhamentos" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Estudos Adicionais:</strong></p>
+<ul>
+<li><p>Guias da ISO sobre BIM.</p></li>
+<li><p>Estratégia BIM BR: <a class="reference external" href="https://www.gov.br/projetobim">https://www.gov.br/projetobim</a>.</p></li>
+<li><p>PMBOK 7ª edição: Enfoque nos princípios aplicáveis ao BIM.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks\modelagem\BIM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Seção BIM</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="BIM-exemplo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">BIM - Exemplo utilizando modelo IFC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-do-bim-no-ciclo-de-vida-da-construcao"><strong>Aplicações do BIM no Ciclo de Vida da Construção</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-concepcao"><strong>1. BIM na Concepção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-no-projeto"><strong>2. BIM no Projeto</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-no-planejamento"><strong>3. BIM no Planejamento</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-analise-termica-energetica"><strong>4. BIM na Análise Térmica/Energética</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-analise-estrutural"><strong>5. BIM na Análise Estrutural</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-construcao"><strong>6. BIM na Construção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-no-retrofit"><strong>7. BIM no Retrofit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-demolicao"><strong>8. BIM na Demolição</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-operacao-e-manutencao-6d"><strong>9. BIM na Operação e Manutenção (6D)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumo"><strong>Resumo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-gestao-de-projetos-e-normas-relacionadas"><strong>BIM na Gestão de Projetos e Normas Relacionadas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao-ao-tema"><strong>1. Introdução ao Tema</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relacao-com-o-pmbok"><strong>Relação com o PMBOK</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-na-gestao-de-projetos"><strong>2. BIM na Gestão de Projetos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vantagens-do-bim"><strong>Vantagens do BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alinhadas-aos-principios-do-pmbok"><strong>Alinhadas aos Princípios do PMBOK</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#as-10-dimensoes-do-bim"><strong>As 10 Dimensões do BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-planejamento-conceitual"><strong>1D – Planejamento Conceitual</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-documentacao-e-desenhos"><strong>2D – Documentação e Desenhos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-modelagem-tridimensional"><strong>3D – Modelagem Tridimensional</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-planejamento-e-tempo"><strong>4D – Planejamento e Tempo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-custos"><strong>5D – Custos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-sustentabilidade"><strong>6D – Sustentabilidade</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-operacao-e-manutencao"><strong>7D – Operação e Manutenção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-seguranca-no-trabalho"><strong>8D – Segurança no Trabalho</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-lean-construction"><strong>9D – Lean Construction</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-industrializacao-da-construcao"><strong>10D – Industrialização da Construção</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-no-uso-do-bim"><strong>Desafios no Uso do BIM</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-relacionadas-ao-bim"><strong>3. Normas Relacionadas ao BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-iso"><strong>Normas ISO</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-brasileiras-abnt"><strong>Normas Brasileiras (ABNT)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#politicas-publicas"><strong>Políticas Públicas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br"><strong>1. Estratégia Nacional de Disseminação do BIM (Estratégia BIM BR)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos-principais-da-estrategia-bim-br"><strong>Objetivos principais da Estratégia BIM BR</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fases-da-implementacao-do-bim-no-brasil"><strong>2. Fases da Implementação do BIM no Brasil</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-1-a-partir-de-2021"><strong>Fase 1 (a partir de 2021)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-2-a-partir-de-2024"><strong>Fase 2 (a partir de 2024)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fase-3-a-partir-de-2028"><strong>Fase 3 (a partir de 2028)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normas-tecnicas-relacionadas-ao-bim"><strong>3. Normas Técnicas Relacionadas ao BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-normas-abnt-relacionadas"><strong>Principais normas ABNT relacionadas</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-do-bim-em-licitacoes-publicas"><strong>4. Uso do BIM em Licitações Públicas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incentivos-e-politicas-governamentais"><strong>5. Incentivos e Políticas Governamentais</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-na-implementacao-do-marco-legal"><strong>6. Desafios na Implementação do Marco Legal</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao"><strong>Conclusão</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decreto-no-9-983-2019-estrategia-nacional-de-disseminacao-do-bim-estrategia-bim-br"><strong>1. Decreto nº 9.983/2019 - Estratégia Nacional de Disseminação do BIM (Estratégia BIM BR)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo"><strong>Objetivo</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-caracteristicas"><strong>Principais características</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decreto-no-10-306-2020-uso-do-bim-na-execucao-direta-ou-indireta-de-obras-publicas"><strong>2. Decreto nº 10.306/2020 - Uso do BIM na Execução Direta ou Indireta de Obras Públicas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Objetivo</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Principais características</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principais-diferencas"><strong>Principais Diferenças</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Resumo</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normatizacao-e-modelos-ifc-no-bim"><strong>Normatização e Modelos IFC no BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normatizacao-no-bim"><strong>Normatização no BIM</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-ifc-industry-foundation-classes"><strong>Modelos IFC (Industry Foundation Classes)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-do-ifc"><strong>Características do IFC:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vantagens-do-uso-de-modelos-ifc"><strong>Vantagens do Uso de Modelos IFC</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacao-pratica"><strong>Aplicação Prática</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-x-modelo-bim"><strong>BIM x Modelo BIM</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bim-building-information-modeling"><strong>1. BIM (Building Information Modeling)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-bim">** Modelo BIM**</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao-e-perguntas"><strong>5. Conclusão e Perguntas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Resumo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encaminhamentos"><strong>Encaminhamentos</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
