@@ -57,12 +57,15 @@ chapters:
   # Capítulo 4: Práticas de Modelagem (Tailoring)
   - file: notebooks/modelagem/index
     title: Práticas de Modelagem e Tailoring
-    sections:
+    
       # BIM
-      - file: notebooks/modelagem/BIM/BIM.md
-        title: O que é BIM?
-      - file: notebooks/modelagem/BIM/BIM-exemplo.md
-        title: Exemplo de uso de modelo IFC BIM
+      - file: notebooks/modelagem/BIM/index.md
+        title: BIM (`Building Information Modeling`)
+        sections:
+          - file: notebooks/modelagem/BIM/BIM.md
+            title: O que é BIM?
+          - file: notebooks/modelagem/BIM/BIM-exemplo.md
+            title: Exemplo de uso de modelo IFC BIM
 
       # Mineração de Processos
       - file: notebooks/modelagem/mineracaoProcessos/index.md
