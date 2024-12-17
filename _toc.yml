@@ -10,8 +10,7 @@ chapters:
   # Capítulo 3: Domínios de Desempenho
   - file: notebooks/dominios/index
     title: Domínios de Desempenho
-    sections:
-    
+    sections:    
       # Planejamento
       - file: notebooks/dominios/planejamento/index
         title: Planejamento
@@ -57,15 +56,24 @@ chapters:
   # Capítulo 4: Práticas de Modelagem (Tailoring)
   - file: notebooks/modelagem/index
     title: Modelagem e Tailoring
-    sections:
-      - file: notebooks/BIM/BIM.md
-        title: O que é BIM?
-      - file: notebooks/BIM/BIM-exemplo.md
-        title: Exemplo de uso de modelo ifc BIM
-      - file: notebooks/mineracaoProcessos/mineracao-processos-intro.md
-        title: Mineração de Processos - Introdução
-      - file: notebooks/mineracaoProcessos/mineracao-processos-fund.md
-        title: Mineração de Processos - Fundamentos
+      
+      #BIM
+      - file: notebooks/modelagem/BIM/index
+        title: BIM (`Building Information Modeling`)
+        sections:
+          - file: notebooks/BIM/BIM.md
+            title: O que é BIM?
+          - file: notebooks/BIM/BIM-exemplo.md
+            title: Exemplo de uso de modelo ifc BIM
+      
+      # Mineração de Processos
+      - file: notebooks/mineracaoProcessos/index.md
+        title: Mineração de Processos
+        sections:
+        - file: notebooks/mineracaoProcessos/mineracao-processos-fund.md
+          title: Mineração de Processos - Fundamentos
+        - file: notebooks/mineracaoProcessos/mineracao-processos-intro.md
+          title: Mineração de Processos - Introdução
 
   # Capítulo 5: Complementos
   - file: notebooks/complementos/index
