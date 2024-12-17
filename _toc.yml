@@ -11,6 +11,7 @@ chapters:
   - file: notebooks/dominios/index
     title: Domínios de Desempenho
     sections:
+    
       # Planejamento
       - file: notebooks/dominios/planejamento/index
         title: Planejamento
@@ -19,6 +20,7 @@ chapters:
             title: PERT/CPM na Construção Civil
           - file: notebooks/dominios/planejamento/pertcpm-calculo-incertezas.ipynb
             title: PERT/CPM – Cálculo de Incertezas
+
       # Entrega
       - file: notebooks/dominios/entrega/index
         title: Entrega
@@ -27,6 +29,7 @@ chapters:
             title: Gerenciamento de Aquisições
           - file: notebooks/dominios/entrega/aquisicoes-exemplo.ipynb
             title: Exemplo de Gerenciamento de Aquisições com Python
+
       # Medição
       - file: notebooks/dominios/medicao/index
         title: Medição
@@ -43,13 +46,26 @@ chapters:
             title: Técnica do Valor Agregado em Projetos
           - file: notebooks/dominios/medicao/tecnica-valor-agregado-construcao.ipynb
             title: Técnica do Valor Agregado na Construção Civil
+
       # Incertezas
       - file: notebooks/dominios/incertezas/index
         title: Incertezas
         sections:
           - file: notebooks/dominios/incertezas/monte-carlo.ipynb
             title: Simulação de Monte Carlo
+
   # Capítulo 4: Práticas de Modelagem (Tailoring)
+  - file: notebooks/modelagem/index
+    title: Modelagem e Tailoring
+    sections:
+      - file: notebooks/BIM/BIM.md
+        title: O que é BIM?
+      - file: notebooks/BIM/BIM-exemplo.md
+        title: Exemplo de uso de modelo ifc BIM
+      - file: notebooks/mineracaoProcessos/mineracao-processos-intro.md
+        title: Mineração de Processos - Introdução
+      - file: notebooks/mineracaoProcessos/mineracao-processos-fund.md
+        title: Mineração de Processos - Fundamentos
 
   # Capítulo 5: Complementos
   - file: notebooks/complementos/index
