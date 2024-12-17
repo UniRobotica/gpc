@@ -8,11 +8,11 @@ Nesta seção, exploraremos o conceito e a aplicação do **Building Information
    - Explicação do conceito de **BIM**.  
    - Diferenças entre **BIM** e o **Modelo BIM**.  
    - Benefícios e aplicação no ciclo de vida do projeto.  
-   - [Leia mais...](BIM/BIM.md)
+   - [Leia mais...](BIM.md)
 
 2. **Exemplo Prático de BIM**  
    - Aplicação do BIM em projetos de infraestrutura.  
    - Detalhamento de fases: concepção, planejamento, execução e operação.  
    - Análise de um **modelo IFC** e suas vantagens.  
-   - [Leia mais...](BIM/BIM-exemplo.md)
+   - [Leia mais...](BIM-exemplo.md)
 
