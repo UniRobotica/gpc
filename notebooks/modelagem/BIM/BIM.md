@@ -111,40 +111,6 @@ Na fase pós-obra, o BIM se torna uma ferramenta poderosa para:
 
 ---
 
-## **Resumo**
-O BIM se estende por todo o **ciclo de vida da edificação**: da concepção e planejamento, passando pela construção e operação até o retrofit e demolição. Ele agrega dimensões como **tempo (4D)**, **custos (5D)** e **sustentabilidade (6D)**, permitindo uma gestão mais eficiente, colaborativa e integrada dos projetos.
-
-
-## **BIM na Gestão de Projetos e Normas Relacionadas**
-
-## **1. Introdução ao Tema**
-<!-- ### **Objetivo da Aula**
-- Entender como o BIM é utilizado na gestão de projetos.
-- Relacionar o uso do BIM aos **princípios do PMBOK** para a gestão de projetos.
-- Conhecer as principais normas que regulamentam o uso do BIM.-->
-
-### **Relação com o PMBOK**
-- Princípios do PMBOK como base para a adoção do BIM:
-  - **Foco no Valor:** BIM contribui diretamente para geração de valor, reduzindo custos e entregando maior eficiência ao cliente.
-  - **Pensamento Sistêmico:** BIM integra diferentes disciplinas e stakeholders em um único sistema digital.
-  - **Colaboração e Engajamento dos Stakeholders:** O BIM facilita a colaboração e a comunicação visual entre todas as partes interessadas.
-
----
-
-## **2. BIM na Gestão de Projetos**
-### **Vantagens do BIM**
-#### **Alinhadas aos Princípios do PMBOK**
-1. **Visualização e Simulações:**
-   - Conexão com o princípio de **entrega incremental de valor**, pois o BIM permite antecipar problemas e planejar entregas eficazes.
-2. **Colaboração Multidisciplinar:**
-   - Relacionado ao princípio de **engajamento ativo dos stakeholders**. O BIM cria um ambiente onde todas as disciplinas colaboram com dados integrados.
-3. **Redução de Erros e Retrabalhos:**
-   - Apoiado pelo princípio de **gestão de risco adaptativa**. O BIM antecipa e resolve conflitos (clash detection) antes da execução.
-4. **Acompanhamento do Ciclo de Vida:**
-   - Conexão com **responsabilidade e ciclo de vida do projeto**, promovendo uma visão sistêmica da obra desde o planejamento até a operação.
-
----
-
 ## **As 10 Dimensões do BIM**
 
 ![alt text](img/Dimensoes-BIM.webp)
@@ -198,18 +164,50 @@ O **BIM 9D** aplica os conceitos de **Lean Construction** para melhorar a produt
 ### **10D – Industrialização da Construção**  
 O **BIM 10D** integra o processo de **industrialização e pré-fabricação**. Com ele, é possível planejar componentes modulares, otimizando a produção fora do canteiro de obras, acelerando prazos e reduzindo custos.
 
----
-
-
-
 
 ### **Desafios no Uso do BIM**
 - **Relatórios Adaptáveis:** Relacionados ao princípio de **adaptação ao contexto**. Equipes precisam ajustar-se a tecnologias e processos específicos.
 
+
+
+## **Resumo**
+O BIM se estende por todo o **ciclo de vida da edificação**: da concepção e planejamento, passando pela construção e operação até o retrofit e demolição. Ele agrega dimensões como **tempo (4D)**, **custos (5D)** e **sustentabilidade (6D)**, permitindo uma gestão mais eficiente, colaborativa e integrada dos projetos.
+
 ---
 
+## **BIM na Gestão de Projetos e Normas Relacionadas**
+
+## **1. Introdução ao Tema**
+<!-- ### **Objetivo da Aula**
+- Entender como o BIM é utilizado na gestão de projetos.
+- Relacionar o uso do BIM aos **princípios do PMBOK** para a gestão de projetos.
+- Conhecer as principais normas que regulamentam o uso do BIM.-->
+
+### **Relação com o PMBOK**
+- Princípios do PMBOK como base para a adoção do BIM:
+  - **Foco no Valor:** BIM contribui diretamente para geração de valor, reduzindo custos e entregando maior eficiência ao cliente.
+  - **Pensamento Sistêmico:** BIM integra diferentes disciplinas e stakeholders em um único sistema digital.
+  - **Colaboração e Engajamento dos Stakeholders:** O BIM facilita a colaboração e a comunicação visual entre todas as partes interessadas.
+
+---
+
+## **2. BIM na Gestão de Projetos**
+### **Vantagens do BIM**
+#### **Alinhadas aos Princípios do PMBOK**
+1. **Visualização e Simulações:**
+   - Conexão com o princípio de **entrega incremental de valor**, pois o BIM permite antecipar problemas e planejar entregas eficazes.
+2. **Colaboração Multidisciplinar:**
+   - Relacionado ao princípio de **engajamento ativo dos stakeholders**. O BIM cria um ambiente onde todas as disciplinas colaboram com dados integrados.
+3. **Redução de Erros e Retrabalhos:**
+   - Apoiado pelo princípio de **gestão de risco adaptativa**. O BIM antecipa e resolve conflitos (clash detection) antes da execução.
+4. **Acompanhamento do Ciclo de Vida:**
+   - Conexão com **responsabilidade e ciclo de vida do projeto**, promovendo uma visão sistêmica da obra desde o planejamento até a operação.
+
+---
 ## **3. Normas Relacionadas ao BIM**
 
+
+Essas normas seguem padrões internacionais como os definidos pela **ISO** e pela organização **buildingSMART**, responsável pela estruturação dos **modelos IFC (Industry Foundation Classes)**.
 
 ![alt text](img/nivelBIM.png)
 
@@ -222,8 +220,12 @@ O **BIM 10D** integra o processo de **industrialização e pré-fabricação**. 
 - **ISO 29481:** Fluxo de informações em projetos colaborativos, em linha com o princípio de **engajamento ativo dos stakeholders**.
 
 ### **Normas Brasileiras (ABNT)**
+A regulamentação do uso do BIM é complementada por normas técnicas nacionais e internacionais. No Brasil, a **ABNT** (Associação Brasileira de Normas Técnicas) publicou normas específicas que garantem a padronização e a interoperabilidade.
 - **NBR 15575:** Requisitos de desempenho em projetos, alinhados ao princípio de **foco na qualidade**.
 - **NBR 15965:** Estruturação e classificação de objetos no ambiente BIM.
+- **ABNT NBR 13532**: Elaboração de projetos de edificações – Processo de projeto.
+
+
 
 ### **Políticas Públicas**
 - **Decreto n.º 10.306/2020:**
@@ -263,15 +265,6 @@ O Decreto nº 9.983 estabelece a obrigatoriedade gradual do BIM em obras públic
 ---
 
 
-## **3. Normas Técnicas Relacionadas ao BIM**
-A regulamentação do uso do BIM é complementada por normas técnicas nacionais e internacionais. No Brasil, a **ABNT** (Associação Brasileira de Normas Técnicas) publicou normas específicas que garantem a padronização e a interoperabilidade.
-
-### **Principais normas ABNT relacionadas**:
-- **ABNT NBR ISO 19650**: Gestão da informação ao longo do ciclo de vida da edificação e infraestrutura usando BIM.
-- **ABNT NBR 15965**: Classificação da informação na construção civil.
-- **ABNT NBR 13532**: Elaboração de projetos de edificações – Processo de projeto.
-
-Essas normas seguem padrões internacionais como os definidos pela **ISO** e pela organização **buildingSMART**, responsável pela estruturação dos **modelos IFC (Industry Foundation Classes)**.
 
 ---
 
@@ -452,7 +445,7 @@ Essa distinção é fundamental para entender como o BIM revoluciona a **gestão
 
 ---
 
-## **5. Conclusão e Perguntas**
+<!-- ## **5. Conclusão e Perguntas**
 ### **Resumo**
 - **Como o BIM alinha-se ao PMBOK?**
   - Facilita o foco no valor, engajamento de stakeholders e gestão de riscos.
@@ -465,6 +458,5 @@ Essa distinção é fundamental para entender como o BIM revoluciona a **gestão
   - Guias da ISO sobre BIM.
   - Estratégia BIM BR: https://www.gov.br/projetobim.
   - PMBOK 7ª edição: Enfoque nos princípios aplicáveis ao BIM.
+-->
 
-
-```
