@@ -490,15 +490,15 @@
                   
   <section id="bim-exemplo-utilizando-modelo-ifc">
 <h1>BIM - Exemplo utilizando modelo IFC<a class="headerlink" href="#bim-exemplo-utilizando-modelo-ifc" title="Link to this heading">#</a></h1>
-<p>Para criar um exemplo completo utilizando um modelo <strong>IFC de uma ponte</strong>, podemos demonstrar o uso da biblioteca <code class="docutils literal notranslate"><span class="pre">ifcopenshell</span></code> no Python para analisar o modelo. Contudo, antes, precisamos de um modelo IFC disponível. Vou indicar um modelo de ponte pública que pode ser baixado e usado para o exemplo.</p>
+<p>Neste artigo, apresentamos um exemplo completo utilizando um modelo <strong>IFC de uma ponte</strong>, demonstrando o uso da biblioteca <code class="docutils literal notranslate"><span class="pre">ifcopenshell</span></code> no Python para analisar o modelo.</p>
 <section id="passo-1-obtenha-um-modelo-ifc">
 <h2><strong>Passo 1: Obtenha um Modelo IFC</strong><a class="headerlink" href="#passo-1-obtenha-um-modelo-ifc" title="Link to this heading">#</a></h2>
 <p>Você pode baixar o seguinte modelo gratuito:</p>
 <ul class="simple">
 <li><p><strong>Modelo IFC de Ponte</strong> (Exemplo Público):<br />
-Link para download: <a class="reference external" href="https://github.com/buildingSMART/IFC-infra-unit-test">Modelo IFC de Ponte no GitHub</a></p></li>
+Link para download: <a class="reference external" href="https://ifcinfra.de/ifc-bridge/bridge-abschluss/">Modelo IFC de Ponte no GitHub</a></p></li>
 </ul>
-<p>Baixe o arquivo da pasta <code class="docutils literal notranslate"><span class="pre">Bridge</span></code> (exemplo: <code class="docutils literal notranslate"><span class="pre">bridge.ifc</span></code>).</p>
+<p>Baixe o arquivo da pasta <code class="docutils literal notranslate"><span class="pre">data</span></code> (exemplo: <code class="docutils literal notranslate"><span class="pre">ifcbridge-model01.ifc</span></code>).</p>
 </section>
 <hr class="docutils" />
 <section id="passo-2-codigo-em-python">
@@ -506,11 +506,13 @@ Link para download: <a class="reference external" href="https://github.com/build
 <p>O código a seguir analisa o modelo IFC, extraindo informações como os tipos de elementos e materiais usados na ponte.</p>
 <section id="codigo-python">
 <h3><strong>Código Python</strong><a class="headerlink" href="#codigo-python" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instale o ifcopenshell antes: pip install ifcopenshell</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instale o ifcopenshell antes: pip install ifcopenshell</span>
 <span class="kn">import</span> <span class="nn">ifcopenshell</span>
 
 <span class="c1"># Substitua pelo caminho do modelo IFC baixado</span>
-<span class="n">caminho_arquivo_ifc</span> <span class="o">=</span> <span class="s2">&quot;bridge.ifc&quot;</span>
+<span class="n">caminho_arquivo_ifc</span> <span class="o">=</span> <span class="s2">&quot;../../../data/ifcbridge-model01.ifc&quot;</span>
 
 <span class="c1"># Carregar o modelo IFC</span>
 <span class="n">modelo</span> <span class="o">=</span> <span class="n">ifcopenshell</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">caminho_arquivo_ifc</span><span class="p">)</span>
@@ -550,6 +552,204 @@ Link para download: <a class="reference external" href="https://github.com/build
 <span class="n">contar_tipos_elementos</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Materiais no modelo IFC:
+- Metall - verzinkt
+- Fahrbahnmarkierung
+- Zink
+- Stahlbeton - Fertigbeton
+- Beton - unbewehrt
+- Umgebung - Sand
+- Bitumen
+- Umgebung - Erde
+- Metal - Steel
+- Projektnullpunkt
+- Baustahl - S355
+-  &lt;Unnamed&gt;
+- Metall - Stahl
+- 3D-Schnittmaterial
+- Stahlbeton - Ortbeton
+- Naturstein - Granit
+
+Elementos Construtivos:
+IfcBeam: Kappe_Sued_Ueberbau_Nord:Kappe_Sued_Ueberbau_Nord:1163625
+IfcBeam: Fluegelwand_WL_NO2:Fluegelwand_WL_NO:1618070
+IfcBeam: 14046_Quertraeger:14046_Quertraeger:1126926
+IfcBeam: 14046_Quertraeger:14046_Quertraeger:2488805
+IfcBeam: Kappe_Nord_Ueberbau_Nord:Kappe_Nord_Ueberbau_Nord:1163635
+IfcBeam: Kappe_Nord_Ueberbau_Sued:Kappe_Nord_Ueberbau_Sued:1115992
+IfcBeam: Kappe_Sued_Ueberbau_Sued:Allgemeines Modell 2:1109208
+IfcBeam: Fluegelwand_WL_SO3:Fluegelwand_WL_SO:1615365
+IfcBeam: 14046_Quertraeger:14046_Quertraeger:1144360
+IfcBeam: 14046_Quertraeger:14046_Quertraeger:1151024
+IfcBeam: Fluegelwand_WL_NW1:Fluegelwand_WL_NW:1613824
+IfcBeam: Fluegelwand_WL_SW2:Fluegelwand_WL_SW:1619289
+IfcBearing: 14046_Lager:14046_Lager:1243446
+IfcBearing: 14046_Lager:14046_Lager:1243450
+IfcBearing: 14046_Lager:14046_Lager:1243448
+IfcBearing: 14046_Lager:14046_Lager:1243445
+IfcBearing: 14046_Lager:14046_Lager:1243447
+IfcBearing: 14046_Lager:14046_Lager:1243449
+IfcBearing: 14046_Lager:14046_Lager:1243451
+IfcBearing: 14046_Lager:14046_Lager:1242423
+IfcBuildingElementProxy: Pflaster_SW:Pflaster_SW:1634075
+IfcBuildingElementProxy: Stahltraeger39:Stahltraeger:1248353
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1465747
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1482936
+IfcBuildingElementProxy: Stahltraeger1:Stahltraeger:3260752
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1484259
+IfcBuildingElementProxy: Befestigung_Boeschungstreppe:Befestigung_Boeschungstreppe:1241128
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1481964
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1481424
+IfcBuildingElementProxy: Stahltraeger49:Stahltraeger:1248688
+IfcBuildingElementProxy: Allgemeines Modell 4:Allgemeines Modell 4:2550279
+IfcBuildingElementProxy: Pflaster_NW:Pflaster_NW:1633822
+IfcBuildingElementProxy: Stahltraeger38:Stahltraeger:1248316
+IfcBuildingElementProxy: Stahltraeger33:Stahltraeger:1248146
+IfcBuildingElementProxy: Stahltraeger6:Stahltraeger:1119341
+IfcBuildingElementProxy: Pflaster_SO:Pflaster_SO:1633436
+IfcBuildingElementProxy: Stahltraeger44:Stahltraeger:1248533
+IfcBuildingElementProxy: Strasse_B5_RIFA_BD_180221:Strasse_B5_RIFA_BD_180221_topo:975810
+IfcBuildingElementProxy: Stahltraeger27:Stahltraeger:1247957
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1486635
+IfcBuildingElementProxy: Stahltraeger37:Stahltraeger:1248286
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:3526786
+IfcBuildingElementProxy: Stahltraeger45:Stahltraeger:1248564
+IfcBuildingElementProxy: Stahltraeger36:Stahltraeger:1248242
+IfcBuildingElementProxy: Befestigung_Boeschungstreppe2:Befestigung_Boeschungstreppe:3557878
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1479438
+IfcBuildingElementProxy: Stahltraeger34:Stahltraeger:1248178
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1484502
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1486905
+IfcBuildingElementProxy: Stahltraeger30:Stahltraeger:1248050
+IfcBuildingElementProxy: Stahltraeger35:Stahltraeger:1248210
+IfcBuildingElementProxy: Stahltraeger41:Stahltraeger:1248428
+IfcBuildingElementProxy: Modelltext:175mm Jahreszahl:1294204
+IfcBuildingElementProxy: Stahltraeger29:Stahltraeger:1248019
+IfcBuildingElementProxy: Uebergang_Kappe:Uebergang_Kappe:1108738
+IfcBuildingElementProxy: Allgemeines Modell 3:Allgemeines Modell 3:2546846
+IfcBuildingElementProxy: Stahltraeger28:Stahltraeger:1247988
+IfcBuildingElementProxy: 14046_Mittelpfeiler_SE_O:SE_Mittelpfeiler:3256010
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1492279
+IfcBuildingElementProxy: 14046_Mittelpfeiler_SE_W:SE_Mittelpfeiler:3255140
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1481640
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:3526511
+IfcBuildingElementProxy: Strasse_B5_RIFA_HH_171127:Strasse_B5_180221_topo:974283
+IfcBuildingElementProxy: Stahltraeger40:Stahltraeger:1248398
+IfcBuildingElementProxy: Stahltraeger47:Stahltraeger:1248626
+IfcBuildingElementProxy: Stahltraeger50:Stahltraeger:1248737
+IfcBuildingElementProxy: Stahltraeger51:Stahltraeger:1248768
+IfcBuildingElementProxy: Befestigung_Boeschungstreppe1:Befestigung_Boeschungstreppe:1290771
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1484853
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:3526454
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:3526936
+IfcBuildingElementProxy: Stahltraeger46:Stahltraeger:1248595
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1489683
+IfcBuildingElementProxy: Stahltraeger43:Stahltraeger:1248488
+IfcBuildingElementProxy: Wände 22:Wände 1:1632309
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1465877
+IfcBuildingElementProxy: Projektnullpunkt_LSBG:Projektnullpunkt_LSBG:3602633
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1485177
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1481802
+IfcBuildingElementProxy: Befestigung_Boeschungstreppe3:Befestigung_Boeschungstreppe:3562292
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1479654
+IfcBuildingElementProxy: Stahltraeger26:Stahltraeger:1247924
+IfcBuildingElementProxy: Stahltraeger42:Stahltraeger:1248458
+IfcBuildingElementProxy: Stahltraeger48:Stahltraeger:1248657
+IfcBuildingElementProxy: 14046_Mittelpfeiler_SE:SE_Mittelpfeiler:1173323
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:3526882
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1465575
+IfcBuildingElementProxy: 14046_Kopfplatte:Kopfplatte:1492790
+IfcColumn: 14046_Mittelpfeile - V4_Sued:14046_Mittelpfeile - V4_Sued:1532253
+IfcColumn: 14046_Mittelpfeile - V4_Nord:14046_Mittelpfeile - V4_Nord:1532532
+IfcColumn: Wand_Mitte_Nord:Wand_Mitte_Nord:2526282
+IfcFooting: Allgemeines Modell 2:Allgemeines Modell 1:2507049
+IfcFooting: _Sauberkeitsschicht_WL_NW:_Sauberkeitsschicht_WL_NW:3578782
+IfcFooting: _Fundament_WL_NO:_Fundament_WL_SW:3575952
+IfcFooting: Allgemeines Modell 1:Allgemeines Modell 1:951516
+IfcFooting: _Fundament_MP_N:_Fundament_MP_N:3588828
+IfcFooting: _Fundament_WL_NW:_Fundament_WL_NW:3578626
+IfcFooting: _Fundament_WL_SW:_Fundament_WL_SW:3578495
+IfcFooting: _Sauberkeitsschicht_WL_SW:_Sauberkeitsschicht_WL_SW:3578734
+IfcFooting: _Sauberkeitsschicht_WL_NO:_Sauberkeitsschicht_WL_SW:3576800
+IfcFooting: _Fundament_MP_S:_Fundament_MP_S:3578296
+IfcFooting: _Sauberkeitsschicht_WL_SO:_Sauberkeitsschicht_WL_NW:3577946
+IfcFooting: _Fundament_WL_SO:_Fundament_WL_NW:3577079
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1480784
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526759
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526301
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1483503
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526350
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1465466
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1483206
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1467128
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1465965
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1482153
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1480460
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1485852
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526478
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1466977
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1468020
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1491856
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526849
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526984
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1485528
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1483935
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1481235
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1468462
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1467237
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1467640
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1486230
+IfcPlate: 14046_Kopfplatte:Kopfplatte:1456775
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526421
+IfcPlate: 14046_Kopfplatte:Kopfplatte:3526810
+IfcRailing: Geländer:Safety GuardRail:2527946
+IfcRailing: Geländer:SE_SuperRail_rammen:2672157
+IfcRailing: Geländer:SE_SuperRail_aufduebeln:2527917
+IfcRailing: Geländer:SE_SuperRail_aufduebeln:2527949
+IfcRailing: Geländer:Safety GuardRail:1241990
+IfcRailing: Geländer:SE_SuperRail_rammen:2985381
+IfcRailing: Geländer:SE_SuperRail_aufduebeln:1241959
+IfcRailing: Geländer:SE_SuperRail_aufduebeln:1241993
+IfcSlab: Ueberbau_Nord_Ortbeton:Ueberbau_Nord_Ortbeton:1146600
+IfcSlab: Ueberbau_Sued_Ortbeton:Ueberbau_Sued_Ortbeton:1098043
+IfcSlab: Ueberbau_Sued_FT:Ueberbau_Sued_FT:1102899
+IfcSlab: Ueberbau_Nord_FT:Ueberbau_Nord_FT:1147410
+IfcStair: TreppeBoesch2_Stufen1:TreppeBoesch2_Stufen:3562408
+IfcStair: Stufe:Stufe:1835950
+IfcStair: TreppeBoesch2_Stufen:TreppeBoesch2_Stufen:1840533
+IfcStair: Stufe1:Stufe:3557970
+IfcStair: BoeschTreppe2:BoeschTreppe2:1839912
+IfcStair: BoeschTreppe3:BoeschTreppe1:3557901
+IfcStair: BoeschTreppe1:BoeschTreppe1:1829349
+IfcStair: BoeschTreppe4:BoeschTreppe2:3562393
+IfcWall: Fluegelwand_WL_SO4:Fluegelwand_WL_SO:1616981
+IfcWall: Widerlagerwand_WL_NW:Widerlagerwand_WL_NW:675246
+IfcWall: Hilfswand_WL_SO:Hilfswand_WL_SO:576794
+IfcWall: Widerlagerwand_WL_NO1:Widerlagerwand_WL_NO:590479
+IfcWall: Widerlagerwand_WL_SW3:Widerlagerwand_WL_SW:1033587
+IfcWall: Fluegelwand_WL_SW1:Fluegelwand_WL_SW:1002840
+IfcWall: Widerlagerwand_WL_SO1:Widerlagerwand_WL_SO:570986
+IfcWall: Fluegelwand_WL_NO1:Fluegelwand_WL_NO:1012798
+IfcWall: Widerlagerwand_WL_SW1:Widerlagerwand_WL_SW:2469867
+IfcWall: Fluegelwand_WL_NW:Fluegelwand_WL_NW:666313
+
+Contagem de Tipos de Elementos:
+IfcBeam: 12 elementos
+IfcBearing: 8 elementos
+IfcBuildingElementProxy: 68 elementos
+IfcColumn: 3 elementos
+IfcFooting: 12 elementos
+IfcPlate: 28 elementos
+IfcRailing: 8 elementos
+IfcSlab: 4 elementos
+IfcStair: 8 elementos
+IfcWall: 10 elementos
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -585,7 +785,6 @@ Quantidade de cada tipo de elemento, como 10 pilares, 5 vigas, etc.</p></li>
 </ul>
 </li>
 </ul>
-<p>Esse exemplo demonstra como usar tecnologia para analisar modelos BIM e conectar a teoria com a prática!</p>
 </section>
 </section>
 
