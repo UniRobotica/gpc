@@ -19,8 +19,7 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    environment:
-      name: github-pages  # Define o ambiente como 'github-pages' para a implantação
+    # environment: github-pages  # Remover ou ajustar se não usar ambientes específicos
 
     steps:
     - uses: actions/checkout@v3
@@ -33,14 +32,14 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        pip install jupyter-book  # Usar diretamente se não precisar do requirements.txt
 
     # (optional) Cache your executed notebooks between runs
     - name: Cache executed notebooks
       uses: actions/cache@v3
       with:
         path: _build/.jupyter_cache
-        key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
+        key: jupyter-book-cache-${{ hashFiles('**/*.ipynb') }}
 
     # Build the book
     - name: Build the book
@@ -59,4 +58,4 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v2
       with:
-        artifact_name: book-artifact-${{ github.sha }}  # Garantir que o artefato tenha o nome único
+        artifact_name: book-artifact-${{ github.sha }}  # Certifique-se de que o nome está correto
