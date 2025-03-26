@@ -1,6 +1,5 @@
 name: deploy-book
 
-# Run this when the master or main branch changes, or when notebooks change
 on:
   push:
     branches:
@@ -12,14 +11,12 @@ on:
       - '_config.yml'
       - '_toc.yml'
 
-# This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
-    # environment: github-pages  # Remover ou ajustar se não usar ambientes específicos
 
     steps:
     - uses: actions/checkout@v3
@@ -32,9 +29,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install jupyter-book  # Usar diretamente se não precisar do requirements.txt
+        pip install jupyter-book
 
-    # (optional) Cache your executed notebooks between runs
+    # Cache executed notebooks
     - name: Cache executed notebooks
       uses: actions/cache@v3
       with:
@@ -58,4 +55,4 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v2
       with:
-        artifact_name: book-artifact-${{ github.sha }}  # Certifique-se de que o nome está correto
+        artifact_name: book-artifact-${{ github.sha }}  # Certifique-se de que o nome corresponde
