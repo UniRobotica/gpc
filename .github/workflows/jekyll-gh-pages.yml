@@ -10,50 +10,59 @@ on:
       - '**/*.md'
       - '_config.yml'
       - '_toc.yml'
+  workflow_dispatch:  # Permite disparar manualmente o workflow
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy-book:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    # Install dependencies
     - name: Set up Python 3.11
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: 3.11
+        cache: 'pip'
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt  # Instalar as dependências do requirements.txt, se necessário
-        pip install jupyter-book  # Garante que o jupyter-book será instalado
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install jupyter-book
 
-    # Cache executed notebooks
-    - name: Cache executed notebooks
-      uses: actions/cache@v3
+    - name: Cache Jupyter Book build
+      uses: actions/cache@v4
       with:
-        path: _build/.jupyter_cache
-        key: jupyter-book-cache-${{ hashFiles('**/*.ipynb') }}
+        path: _build
+        key: ${{ runner.os }}-jupyter-book-${{ hashFiles('**/*.ipynb', '**/*.md', '_config.yml', '_toc.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-jupyter-book-
 
-    # Build the book
-    - name: Build the book
+    - name: Build Jupyter Book
       run: |
         jupyter-book build .
+        touch _build/html/.nojekyll
 
-    # Upload the book's HTML as an artifact with a unique name
-    - name: Upload artifact
+    - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: "_build/html"
-        name: book-artifact-${{ github.sha }}  # Garantindo que o nome do artefato seja único
+        path: _build/html
 
-    # Deploy the book's HTML to GitHub Pages
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
-      with:
-        artifact_name: book-artifact-${{ github.sha }}  # O nome do artefato deve ser o mesmo
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
