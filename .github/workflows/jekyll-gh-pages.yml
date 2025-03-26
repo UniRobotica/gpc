@@ -29,7 +29,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install jupyter-book
+        pip install -r requirements.txt  # Instalar as dependências do requirements.txt, se necessário
+        pip install jupyter-book  # Garante que o jupyter-book será instalado
 
     # Cache executed notebooks
     - name: Cache executed notebooks
@@ -48,11 +49,11 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: "_build/html"
-        name: book-artifact-${{ github.sha }}
+        name: book-artifact-${{ github.sha }}  # Garantindo que o nome do artefato seja único
 
     # Deploy the book's HTML to GitHub Pages
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
       with:
-        artifact_name: book-artifact-${{ github.sha }}  # Certifique-se de que o nome corresponde
+        artifact_name: book-artifact-${{ github.sha }}  # O nome do artefato deve ser o mesmo
