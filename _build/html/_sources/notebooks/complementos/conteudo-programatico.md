@@ -187,3 +187,13 @@
 - Início: Imediato
 - Término: 29/07/2025
 - Carga Horária: 75 horas
+
+## Referências
+
+{cite}`de2023gerencia`
+
+{cite}`vargas2018analise`
+
+{cite}`pellegrini2020analise`
+
+[Outros:](../referencias.ipynb)
