@@ -5,39 +5,42 @@ on:
     branches:
       - main
       - master
+    paths:
+      - '**/*.md'
+      - '**/*.ipynb'
+      - '_config.yml'
+      - '_toc.yml'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      pages: write
+      id-token: write  # Necessário para criar o token de autenticação para deploy do GitHub Pages
+
     steps:
-    # Checar o repositório
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Configurar o Python (se necessário para seu projeto)
     - name: Set up Python 3.x
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
-    # Instalar dependências (ajuste conforme necessário)
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
 
-    # (opcional) Construir seu site ou projeto (ajuste conforme necessário)
-    - name: Build the site
+    - name: Build the book
       run: |
         jupyter-book build .
 
-    # Fazer upload dos artefatos para o GitHub Pages
     - name: Upload to GitHub Pages
       uses: actions/upload-pages-artifact@v2
       with:
         path: _build/html
 
-    # Deploy para GitHub Pages
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v2
       with:
