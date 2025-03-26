@@ -1,47 +1,62 @@
-name: Deploy to GitHub Pages
+name: deploy-book
 
+# Run this when the master or main branch changes, or when notebooks change
 on:
   push:
     branches:
-      - main
       - master
+      - main
     paths:
-      - '**/*.md'
       - '**/*.ipynb'
+      - '**/*.md'
       - '_config.yml'
       - '_toc.yml'
 
+# This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  deploy:
+  deploy-book:
     runs-on: ubuntu-latest
-
     permissions:
       pages: write
-      id-token: write  # Necessário para criar o token de autenticação para deploy do GitHub Pages
+      id-token: write
+    environment:
+      name: github-pages  # Define o ambiente como 'github-pages' para a implantação
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-    - name: Set up Python 3.x
+    # Install dependencies
+    - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: 3.11
 
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
 
+    # (optional) Cache your executed notebooks between runs
+    - name: Cache executed notebooks
+      uses: actions/cache@v3
+      with:
+        path: _build/.jupyter_cache
+        key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
+
+    # Build the book
     - name: Build the book
       run: |
         jupyter-book build .
 
-    - name: Upload to GitHub Pages
+    # Upload the book's HTML as an artifact with a unique name
+    - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: _build/html
+        path: "_build/html"
+        name: book-artifact-${{ github.sha }}
 
+    # Deploy the book's HTML to GitHub Pages
     - name: Deploy to GitHub Pages
+      id: deployment
       uses: actions/deploy-pages@v2
       with:
-        artifact_name: book-artifact-${{ github.sha }}
+        artifact_name: book-artifact-${{ github.sha }}  # Garantir que o artefato tenha o nome único
