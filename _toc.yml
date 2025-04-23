@@ -58,6 +58,12 @@ chapters:
   - file: notebooks/modelagem/index.md
     title: Práticas de Modelagem e Tailoring
     sections:
+    # BIM
+      - file: notebooks/modelagem/tailoring/index.md
+        title: Tailoring
+        sections:
+          - file: notebooks/modelagem/tailoring/tailoring-intro.md
+            title: Tailoring - Introdução          
       # BIM
       - file: notebooks/modelagem/BIM/index.md
         title: BIM (Building Information Modeling)

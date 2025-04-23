@@ -4,6 +4,8 @@ A 7ª edição do PMBOK (Project Management Body of Knowledge), publicada pelo *
 
 A principal mudança é a migração de uma abordagem baseada em processos para uma abordagem mais flexível, que se alinha com a natureza dinâmica dos projetos modernos.
 
+![Mudanças da 6ª para 7ª edição](../../figures/PMBOK_6a_7a.png)
+
 ---
 
 ### **Estrutura da 7ª Edição do PMBOK**
