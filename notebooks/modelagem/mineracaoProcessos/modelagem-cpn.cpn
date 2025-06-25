@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<workspaceElements>
+<generator tool="CPN Tools" version="4.0.1" format="6"/>
+<cpnet>
+<globbox>
+<block id="ID1">
+<id>Construcao Civil - Processo de Concretagem</id>
+<ml id="ID2">
+<layout>colset MATERIAL = with concreto | aco | madeira | tijolo;
+colset EQUIPAMENTO = with betoneira | guindaste | escavadeira;
+colset TRABALHADOR = string;
+colset TEMPO = int;
+colset QUANTIDADE = int;
+
+colset RECURSO = record material: MATERIAL * quantidade: QUANTIDADE;
+colset ATIVIDADE = record nome: string * duracao: TEMPO * recursos_necessarios: RECURSO list;
+colset OBRA = record id: int * fase: string * progresso: int;
+
+(* Funcoes auxiliares *)
+fun consumo_material(ativ: ATIVIDADE, fator: real) = 
+    round(Real.fromInt(#quantidade(hd(#recursos_necessarios(ativ)))) * fator);
+
+fun recurso_disponivel(rec: RECURSO, estoque: RECURSO list) =
+    List.exists (fn r => #material(r) = #material(rec) andalso 
+                        #quantidade(r) >= #quantidade(rec)) estoque;
+
+fun atualizar_progresso(obra: OBRA, incremento: int) =
+    {id = #id(obra), 
+     fase = #fase(obra), 
+     progresso = #progresso(obra) + incremento};
+
+(* Variaveis *)
+var m: MATERIAL;
+var e: EQUIPAMENTO;
+var t: TRABALHADOR;
+var tempo: TEMPO;
+var qtd: QUANTIDADE;
+var rec: RECURSO;
+var ativ: ATIVIDADE;
+var obra: OBRA;</layout>
+</ml>
+</block>
+</globbox>
+
+<page id="ID3">
+<pageattr name="Processo Concretagem"/>
+<place id="ID4">
+<posattr x="100" y="100"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">MateriaisEstoque</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<marking x="0" y="0" hidden="false">
+<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0"/>
+<text tool="CPN Tools" version="4.0.1">1`{material=concreto, quantidade=100} ++
+1`{material=aco, quantidade=500} ++
+1`{material=madeira, quantidade=200}</text>
+</marking>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">RECURSO</text>
+</type>
+</place>
+
+<place id="ID5">
+<posattr x="300" y="100"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">EquipamentosLivres</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<marking x="0" y="0" hidden="false">
+<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0"/>
+<text tool="CPN Tools" version="4.0.1">1`betoneira ++
+1`guindaste</text>
+</marking>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">EQUIPAMENTO</text>
+</type>
+</place>
+
+<place id="ID6">
+<posattr x="500" y="100"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">Trabalhadores</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<marking x="0" y="0" hidden="false">
+<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0"/>
+<text tool="CPN Tools" version="4.0.1">1`"Joao" ++
+1`"Maria" ++
+1`"Pedro"</text>
+</marking>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">TRABALHADOR</text>
+</type>
+</place>
+
+<place id="ID7">
+<posattr x="100" y="300"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">AtividadesPendentes</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<marking x="0" y="0" hidden="false">
+<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0"/>
+<text tool="CPN Tools" version="4.0.1">1`{nome="Preparar Concreto", duracao=2, 
+   recursos_necessarios=[{material=concreto, quantidade=50}]} ++
+1`{nome="Armar Ferragem", duracao=3,
+   recursos_necessarios=[{material=aco, quantidade=100}]}</text>
+</marking>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">ATIVIDADE</text>
+</type>
+</place>
+
+<place id="ID8">
+<posattr x="300" y="300"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">PreparacaoAndamento</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">ATIVIDADE</text>
+</type>
+</place>
+
+<place id="ID9">
+<posattr x="500" y="300"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">ConcretegemExecutada</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">ATIVIDADE</text>
+</type>
+</place>
+
+<place id="ID10">
+<posattr x="300" y="500"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">Cronograma</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<marking x="0" y="0" hidden="false">
+<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0"/>
+<text tool="CPN Tools" version="4.0.1">1`0</text>
+</marking>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">TEMPO</text>
+</type>
+</place>
+
+<place id="ID11">
+<posattr x="700" y="300"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">ObraProgresso</text>
+<ellipse w="80" h="40"/>
+<token x="-10" y="0"/>
+<marking x="0" y="0" hidden="false">
+<snap snap_id="0" anchor.horizontal="0" anchor.vertical="0"/>
+<text tool="CPN Tools" version="4.0.1">1`{id=1, fase="Fundacao", progresso=0}</text>
+</marking>
+<type x="0" y="-25">
+<text tool="CPN Tools" version="4.0.1">OBRA</text>
+</type>
+</place>
+
+<trans id="ID12">
+<posattr x="200" y="200"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">IniciarPreparacao</text>
+<box w="60" h="40"/>
+<binding x="7" y="-3"/>
+<cond x="7" y="13">
+<text tool="CPN Tools" version="4.0.1">[#nome(ativ) = "Preparar Concreto" andalso #duracao(ativ) > 0]</text>
+</cond>
+</trans>
+
+<trans id="ID13">
+<posattr x="400" y="200"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">ExecutarConcretagem</text>
+<box w="60" h="40"/>
+<binding x="7" y="-3"/>
+<cond x="7" y="13">
+<text tool="CPN Tools" version="4.0.1">[#duracao(ativ) > 0]</text>
+</cond>
+</trans>
+
+<trans id="ID14">
+<posattr x="600" y="200"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">FinalizarAtividade</text>
+<box w="60" h="40"/>
+<binding x="7" y="-3"/>
+<cond x="7" y="13">
+<text tool="CPN Tools" version="4.0.1">[#duracao(ativ) = 1]</text>
+</cond>
+</trans>
+
+<trans id="ID15">
+<posattr x="300" y="400"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">AvancarTempo</text>
+<box w="60" h="40"/>
+<binding x="7" y="-3"/>
+</trans>
+
+<!-- Arcos -->
+<arc id="ID16" orientation="PtoT" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID4"/>
+<annot id="ID17">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`{material=#material(hd(#recursos_necessarios(ativ))), 
+   quantidade=#quantidade(hd(#recursos_necessarios(ativ)))}</text>
+</annot>
+</arc>
+
+<arc id="ID18" orientation="PtoT" order="2">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID5"/>
+<annot id="ID19">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`e</text>
+</annot>
+</arc>
+
+<arc id="ID20" orientation="PtoT" order="3">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID6"/>
+<annot id="ID21">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`t</text>
+</annot>
+</arc>
+
+<arc id="ID22" orientation="PtoT" order="4">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID7"/>
+<annot id="ID23">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`ativ</text>
+</annot>
+</arc>
+
+<arc id="ID24" orientation="TtoP" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID8"/>
+<annot id="ID25">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`{nome = #nome(ativ), 
+   duracao = #duracao(ativ) - 1, 
+   recursos_necessarios = #recursos_necessarios(ativ)}</text>
+</annot>
+</arc>
+
+<arc id="ID26" orientation="TtoP" order="2">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID5"/>
+<annot id="ID27">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`e</text>
+</annot>
+</arc>
+
+<arc id="ID28" orientation="TtoP" order="3">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID12"/>
+<placeend idref="ID6"/>
+<annot id="ID29">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`t</text>
+</annot>
+</arc>
+
+<arc id="ID30" orientation="PtoT" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID13"/>
+<placeend idref="ID8"/>
+<annot id="ID31">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`ativ</text>
+</annot>
+</arc>
+
+<arc id="ID32" orientation="TtoP" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID13"/>
+<placeend idref="ID9"/>
+<annot id="ID33">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`{nome = #nome(ativ), 
+   duracao = #duracao(ativ) - 1, 
+   recursos_necessarios = #recursos_necessarios(ativ)}</text>
+</annot>
+</arc>
+
+<arc id="ID34" orientation="PtoT" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID14"/>
+<placeend idref="ID9"/>
+<annot id="ID35">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`ativ</text>
+</annot>
+</arc>
+
+<arc id="ID36" orientation="PtoT" order="2">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID14"/>
+<placeend idref="ID11"/>
+<annot id="ID37">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`obra</text>
+</annot>
+</arc>
+
+<arc id="ID38" orientation="TtoP" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID14"/>
+<placeend idref="ID11"/>
+<annot id="ID39">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`atualizar_progresso(obra, 25)</text>
+</annot>
+</arc>
+
+<arc id="ID40" orientation="PtoT" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID15"/>
+<placeend idref="ID10"/>
+<annot id="ID41">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`tempo</text>
+</annot>
+</arc>
+
+<arc id="ID42" orientation="TtoP" order="1">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="" filled="false"/>
+<lineattr colour="Black" thick="1" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<arrowattr headsize="6" currentcyckle="2"/>
+<transend idref="ID15"/>
+<placeend idref="ID10"/>
+<annot id="ID43">
+<posattr x="0" y="0"/>
+<fillattr colour="White" pattern="Solid" filled="false"/>
+<lineattr colour="Black" thick="0" type="Solid"/>
+<textattr colour="Black" bold="false"/>
+<text tool="CPN Tools" version="4.0.1">1`(tempo + 1)</text>
+</annot>
+</arc>
+
+</page>
+</cpnet>
+</workspaceElements>
