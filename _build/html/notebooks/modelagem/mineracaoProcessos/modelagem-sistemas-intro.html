@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Aula — Modelagem de Sistemas (baseada em Controle Programável de Paulo Eigi Miyagi) &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Aula — Modelagem de Sistemas (Controle Programável) &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -455,7 +455,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Aula — Modelagem de Sistemas (baseada em Controle Programável de Paulo Eigi Miyagi)</h1>
+    <h1>Aula — Modelagem de Sistemas (Controle Programável)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -488,27 +488,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="aula-modelagem-de-sistemas-baseada-em-controle-programavel-de-paulo-eigi-miyagi">
-<h1>Aula — Modelagem de Sistemas (baseada em <em>Controle Programável</em> de Paulo Eigi Miyagi)<a class="headerlink" href="#aula-modelagem-de-sistemas-baseada-em-controle-programavel-de-paulo-eigi-miyagi" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="aula-modelagem-de-sistemas-controle-programavel">
+<h1>Aula — Modelagem de Sistemas (Controle Programável)<a class="headerlink" href="#aula-modelagem-de-sistemas-controle-programavel" title="Link to this heading">#</a></h1>
 <section id="objetivos">
 <h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Entender o que são Sistemas a Eventos Discretos (SED) e por que modelá-los <span id="id1"></span>.</p></li>
-<li><p>Aplicar um fluxo de modelagem coerente com <span id="id2"></span>, do requisito ao PLC.</p></li>
-<li><p>Conhecer três formas clássicas de modelagem: <strong>máquinas de estados/statecharts</strong> <span id="id3"></span>, <strong>redes de Petri</strong> <span id="id4"></span> e <strong>GRAFCET/SFC</strong> <span id="id5"></span>.</p></li>
-<li><p>Relacionar modelos formais com a implementação em linguagens da <strong>IEC 61131-3 (Ed. 4, 2025)</strong> <span id="id6"></span>.</p></li>
+<li><p>Entender o que são Sistemas a Eventos Discretos (SED) e por que modelá-los.</p></li>
+<li><p>Aplicar um fluxo de modelagem coerente do requisito ao PLC.</p></li>
+<li><p>Conhecer três formas clássicas de modelagem: <strong>máquinas de estados/statecharts</strong>, <strong>redes de Petri</strong> e <strong>GRAFCET/SFC</strong>.</p></li>
+<li><p>Relacionar modelos formais com a implementação em linguagens da <strong>IEC 61131-3 (Ed. 4, 2025)</strong>.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
 <section id="conceitos-fundamentais">
 <h2>1. Conceitos fundamentais<a class="headerlink" href="#conceitos-fundamentais" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>SED</strong>: sistemas cujo estado muda por eventos discretos no tempo (sensores, comandos) <span id="id7"></span>.</p></li>
-<li><p><strong>Controle programável</strong>: algoritmo de controle para execução em PLCs <span id="id8"></span>.</p></li>
-<li><p><strong>Vantagens da modelagem</strong>: clareza, detecção de impasses, verificação de segurança <span id="id9"></span>.</p></li>
+<li><p><strong>SED</strong>: sistemas cujo estado muda por eventos discretos no tempo (sensores, comandos).</p></li>
+<li><p><strong>Controle programável</strong>: algoritmo de controle para execução em PLCs.</p></li>
+<li><p><strong>Vantagens da modelagem</strong>: clareza, detecção de impasses, verificação de segurança.</p></li>
 </ul>
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Block_Diagram_for_Feedback.svg/800px-Block_Diagram_for_Feedback.svg.png" width="400"/>
+  <img src="figures/fig1.png" width="400"/>
   <figcaption>Figura 1 — Diagrama de blocos ilustrativo (sistema com realimentação).</figcaption>
 </figure>
 </section>
@@ -521,7 +521,7 @@ document.write(`
 <li><p>Decomposição funcional</p></li>
 <li><p>Escolha de formalismo</p></li>
 <li><p>Validação</p></li>
-<li><p>Geração do controle → PLC <span id="id10"></span></p></li>
+<li><p>Geração do controle → PLC</p></li>
 <li><p>Teste / comissionamento</p></li>
 </ol>
 </section>
@@ -531,7 +531,7 @@ document.write(`
 <section id="maquinas-de-estados-statecharts">
 <h3>3.1 Máquinas de estados / Statecharts<a class="headerlink" href="#maquinas-de-estados-statecharts" title="Link to this heading">#</a></h3>
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Finite_State_Machine_Logic.svg/383px-Finite_State_Machine_Logic.svg.png" width="450"/>
+  <img src="figures/fig2.png" width="450"/>
   <figcaption>Figura 2 — Exemplo de máquina de estados (lógica de FSM).</figcaption>
 </figure>
 </section>
@@ -539,7 +539,7 @@ document.write(`
 <section id="redes-de-petri">
 <h3>3.2 Redes de Petri<a class="headerlink" href="#redes-de-petri" title="Link to this heading">#</a></h3>
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Petri_net_diagram.png/640px-Petri_net_diagram.png" width="450"/>
+  <img src="figures/fig3.png" width="450"/>
   <figcaption>Figura 3 — Rede de Petri básica.</figcaption>
 </figure>
 </section>
@@ -547,7 +547,7 @@ document.write(`
 <section id="grafcet-sfc">
 <h3>3.3 GRAFCET / SFC<a class="headerlink" href="#grafcet-sfc" title="Link to this heading">#</a></h3>
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Example_Grafcet_SFC-fr.svg" width="450"/>
+  <img src="figures/fig4.png" width="450"/>
   <figcaption>Figura 4 — Exemplo de GRAFCET (SFC).</figcaption>
 </figure>
 </section>
@@ -556,7 +556,7 @@ document.write(`
 <section id="do-modelo-ao-plc">
 <h2>4. Do modelo ao PLC<a class="headerlink" href="#do-modelo-ao-plc" title="Link to this heading">#</a></h2>
 <figure>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Ladder_logic_diagram.png/640px-Ladder_logic_diagram.png" width="450"/>
+  <img src="figures/fig5.png" width="450"/>
   <figcaption>Figura 5 — Mapeamento conceitual GRAFCET → Ladder.</figcaption>
 </figure>
 </section>
@@ -571,7 +571,7 @@ document.write(`
 <hr class="docutils" />
 <section id="referencias">
 <h2>Referências<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
-<span class="target" id="id11"></span></section>
+<span class="target" id="id1"></span></section>
 </section>
 
     <script type="text/x-thebe-config">
