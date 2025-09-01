@@ -66,7 +66,7 @@ O valor dos modelos é limitado se pouca atenção for dada ao alinhamento do mo
 
 Conforme mencionado acima, a mineração de processos estabelece links entre os processos reais e seus dados, por um lado, e modelos de processos, por outro lado. Ou seja, mineração de processos conecta o mundo real, sistemas de software, registros de eventos (event logs) e modelos de processos para analisar e aprimorar processos organizacionais. 
 
-![process mining model](../img/aula02_fund/process_mining_model.png)
+![process mining model](img/aula02_fund/process_mining_model.png)
 
 De fato, no mundo real, pessoas, máquinas e organizações executam atividades que são apoiadas e controladas por sistemas de software, os quais registram eventos, como transações e mensagens, em logs. 
 
@@ -149,12 +149,12 @@ Os modelos desempenham um papel importante para projetar processos e introduzir 
 
 A Figura seguinte modela um processo como uma rede de Petri. 
 
-![alt text](../img/aula02_fund/redesPetri.png)
+![alt text](img/aula02_fund/redesPetri.png)
 
 A Figura seguinte modela o mesmo processo em termos de um chamado
 diagrama BPMN.
 
-![alt text](../img/aula02_fund/BPMN.png)
+![alt text](img/aula02_fund/BPMN.png)
 
 ## Event log 
 
@@ -206,7 +206,7 @@ Por exemplo, considere a seguinte sequência de letras, onde cada letra represen
 - abdeh
 A partir delas podemos determinar o seguinte modelo:
 
-![exe1](../img/aula01_intro/exe1.png)
+![exe1](img/aula01_intro/exe1.png)
 
 ####  **Play Out / Conformidade**
 A ideia é gerar um comportamento, event log, a partir de um modelo. 
@@ -215,7 +215,7 @@ A ideia é gerar um comportamento, event log, a partir de um modelo.
 
 Por exemplo, considere o modelo abaixo
 
-![exe1](../img/aula01_intro/exe1.png)
+![exe1](img/aula01_intro/exe1.png)
 
 Podemos a partir desse modelo gerar o seguinte event log:
 
@@ -232,9 +232,7 @@ Por fim, no tipo replay nos buscamos verificar a conformidade do modelo de proce
 
 > "The third type of process mining is enhancement. Here, the idea is to extend or improve an existing process model using information about the actual process recorded in some event log. Whereas conformance checking measures the alignment between model and reality, this third type of process mining aims at changing or extending the a-priori model" (van der Aalst, 2016).
 
-![alt text](../img/aula02_fund/tiposDiagr.png)
+![alt text](img/aula02_fund/tiposDiagr.png)
 
-| [Aula 01](aula01_MineracaoProcessos.md) 
- 
- [Sumário](../../mineracaoProcessos.md) |
+
 
