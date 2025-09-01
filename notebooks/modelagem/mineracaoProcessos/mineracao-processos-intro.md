@@ -30,15 +30,33 @@ related to explicit process models, e.g., Petri nets or BPMN models. For example
 models to analyze compliance and performance" (van der Aalst, 2016).
 
 
-<!--
+<div style="border: 1px solid #bbb; border-radius: 10px; padding: 20px; background: #f0f0f0; color: #222;">
 
-* **Mapeamento detalhado do processo:** Identificar todas as etapas do processo de construção, desde a concepção do projeto até a entrega da obra.
-* **Análise das interdependências:** Identificar como cada etapa do processo se relaciona com as outras.
-* **Otimização do fluxo de trabalho:** Eliminar atividades que não agregam valor, reduzir o tempo de espera entre as etapas e otimizar a utilização de recursos.
-* **Monitoramento contínuo:** Acompanhar o desempenho do processo e realizar ajustes conforme necessário.
+### Melhoria de Processos na Construção
 
-**Em resumo,** ao adotar uma visão de ponta a ponta, as empresas de construção podem otimizar seus processos, reduzir custos, melhorar a qualidade e aumentar a satisfação dos clientes. A ideia de van der Aalst de que "o processo é estúpido" serve como um lembrete de que a eficiência e a qualidade de um projeto dependem da otimização do processo como um todo, e não apenas de cada tarefa individual.-->
-![alt text](../img/aula02_fund/modProc.png)
+- **Mapeamento detalhado do processo:**  
+  Identificar todas as etapas do processo de construção, desde a concepção do projeto até a entrega da obra.
+
+- **Análise das interdependências:**  
+  Entender como cada etapa do processo se relaciona com as outras.
+
+- **Otimização do fluxo de trabalho:**  
+  Eliminar atividades que não agregam valor, reduzir o tempo de espera entre as etapas e otimizar a utilização de recursos.
+
+- **Monitoramento contínuo:**  
+  Acompanhar o desempenho do processo e realizar ajustes conforme necessário.
+
+---
+
+**Em resumo,** ao adotar uma visão de ponta a ponta, as empresas de construção podem otimizar seus processos, reduzir custos, melhorar a qualidade e aumentar a satisfação dos clientes.  
+A ideia de *van der Aalst* de que *"o processo é estúpido"* serve como um lembrete de que a eficiência e a qualidade de um projeto dependem da **otimização do processo como um todo**, e não apenas de cada tarefa individual.
+
+</div>
+
+
+
+
+![alt text](img/aula02_fund/modProc.png)
 
 O valor dos modelos é limitado se pouca atenção for dada ao alinhamento do modelo e da realidade, ou seja, as pessoas envolvidas precisam confiar neles. Por exemplo, não faz sentido conduzir experimentos de simulação enquanto se usa um modelo que assume uma versão idealizada do processo real.
 
