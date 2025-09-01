@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -64,11 +61,10 @@
     <link rel="icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Modelagem de Projeto com Redes de Petri Coloridas (RPC) (EM ANÁLISE)" href="rpc_atividades_construcao.html" />
+    <link rel="next" title="&lt;no title&gt;" href="modelagem-sistemas-intro.html" />
     <link rel="prev" title="Mineração de Processos - Introdução" href="mineracao-processos-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
-    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <script>document.write(`<img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark" alt="Gerenciamento de Projetos e Contratos - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -412,16 +423,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -477,7 +496,7 @@
 </section>
 <section id="dados-e-o-novo-petroleo">
 <h1>Dados é o novo petróleo!<a class="headerlink" href="#dados-e-o-novo-petroleo" title="Link to this heading">#</a></h1>
-<p><img alt="data is the new oil" src="notebooks/modelagem/img/aula01_intro/data_is_the_new_oil.png" /></p>
+<p><img alt="data is the new oil" src="../../../_images/data_is_the_new_oil.png" /></p>
 <p>Hoje em dia, nós estamos gerando uma quantidade de dados maior do que se juntarmos todas as informações da pré-história até o ano de 2003.</p>
 <p>Estamos criando constantemente <strong>dados de evento (event data)</strong>, quando</p>
 <ul class="simple">
@@ -488,31 +507,31 @@
 <li><p>através de todos os sensores em um smartphone</p></li>
 </ul>
 <p>Quando falamos de todos esses dados sendo gravados, estamos falando da <strong>Internet dos Eventos</strong>.</p>
-<p><img alt="internet of events" src="notebooks/modelagem/img/aula01_intro/InternetEvents.png" /></p>
+<p><img alt="internet of events" src="../../../_images/InternetEvents.png" /></p>
 <div style="text-align: center; background-color: white;">
   <span style="color: blue; font-weight: bold;">Evolução na forma de criação e manipulação de fotos</span>
 </div>
-<p><img alt="alt text" src="notebooks/modelagem/img/aula01_intro/fotoEvol.png" /></p>
+<p><img alt="alt text" src="../../../_images/fotoEvol.png" /></p>
 <div style="text-align: center; background-color: white;">
   <span style="color: blue; font-weight: bold;">Frequentemente, estamos gerando dados de eventos</span>
 </div>
-<p><img alt="estamos gerando eventos" src="notebooks/modelagem/img/aula01_intro/gerEventos.png" /></p>
+<p><img alt="estamos gerando eventos" src="../../../_images/gerEventos.png" /></p>
 <div style="text-align: center; background-color: white;">
   <span style="color: blue; font-weight: bold;">Sensores e interfaces de smartphones capturam dados</span>
 </div>
-<p><img alt="sensoreamento" src="notebooks/modelagem/img/aula01_intro/sensorCel.png" /></p>
+<p><img alt="sensoreamento" src="../../../_images/sensorCel.png" /></p>
 </section>
 <section id="big-data">
 <h1>Big Data<a class="headerlink" href="#big-data" title="Link to this heading">#</a></h1>
 <p>Hoje nós conseguimos criar e gravar uma enorme quantidade de dados.</p>
 <p>Para se ter uma ideia dessa evolução, pode-se citar <strong>Lei de Moore</strong> é a observação de que o número de transistores em circuitos integrados dobra aproximadamente a cada dois anos, o que resulta em um aumento exponencial na capacidade de processamento dos computadores. Proposta por Gordon Moore em 1965, essa tendência impulsionou a evolução da tecnologia por décadas. No entanto, à medida que os transistores se aproximam dos limites físicos, a Lei de Moore começa a desacelerar, desafiando a indústria a buscar novas soluções, como a computação quântica.</p>
-<p><img alt="alt text" src="notebooks/modelagem/img/aula01_intro/LeiMoore.png" /></p>
+<p><img alt="alt text" src="../../../_images/LeiMoore.png" /></p>
 <div style="background-color: blue; color: white; text-align: center; padding: 1px; font-size: 13px; font-weight: bold;">
   2²⁰ = 1.048.576 * em 40 anos
 </div>
 <section id="os-4-desafios-do-big-data">
 <h2>Os 4 desafios do Big Data<a class="headerlink" href="#os-4-desafios-do-big-data" title="Link to this heading">#</a></h2>
-<p><img alt="alt text" src="notebooks/modelagem/img/aula01_intro/BigData.png" />
+<p><img alt="alt text" src="../../../_images/BigData.png" />
 Os desafios do Big Data são diversos e abrangem questões técnicas, organizacionais, legais e éticas. Entretanto, os principais desafios enfrentados são relacionados a:</p>
 <ul class="simple">
 <li><p>Volume: devido ao tratamento de grandes quantidades de dados</p></li>
@@ -525,7 +544,7 @@ Os desafios do Big Data são diversos e abrangem questões técnicas, organizaci
 </section>
 <section id="a-demanda-por-cientistas-de-dados">
 <h1>A demanda por cientistas de dados<a class="headerlink" href="#a-demanda-por-cientistas-de-dados" title="Link to this heading">#</a></h1>
-<p><img alt="data science" src="notebooks/modelagem/img/aula01_intro/DataScience.png" /></p>
+<p><img alt="data science" src="../../../_images/DataScience.png" /></p>
 <p>A crescente demanda por cientistas de dados é impulsionada pela necessidade das empresas de transformar grandes volumes de dados em informações úteis para tomar decisões mais informadas e estratégicas.</p>
 <p>Cientistas de dados aplicam técnicas de mineração de dados, como clustering, classificação, regressão e análise preditiva, para extrair padrões e insights de conjuntos de dados complexos.</p>
 <p>Esses profissionais desempenham um papel fundamental na análise de dados não estruturados e estruturados, utilizando ferramentas e algoritmos sofisticados para transformar dados brutos em conhecimento acionável.</p>
@@ -539,12 +558,12 @@ Os desafios do Big Data são diversos e abrangem questões técnicas, organizaci
 </section>
 <section id="visao-de-dados">
 <h1>Visão de dados<a class="headerlink" href="#visao-de-dados" title="Link to this heading">#</a></h1>
-<p><img alt="alt text" src="notebooks/modelagem/img/aula01_intro/planilhaDados.png" /></p>
+<p><img alt="alt text" src="../../../_images/planilhaDados.png" /></p>
 <p>As planilhas podem ser usadas para fazer qualquer coisa com números, mas têm dificuldades em capturar adequadamente o comportamento dinâmico.</p>
 </section>
 <section id="visao-de-processo">
 <h1>Visão de processo<a class="headerlink" href="#visao-de-processo" title="Link to this heading">#</a></h1>
-<p><img alt="alt text" src="notebooks/modelagem/img/aula01_intro/procEstupido.png" /></p>
+<p><img alt="alt text" src="../../../_images/procEstupido.png" /></p>
 <p>Van der Aalst critica a abordagem que foca apenas em padrões ou decisões isoladas, pois acredita que o verdadeiro valor está em entender e otimizar o processo de ponta a ponta. Ele considera “estúpido” tratar processos como uma coleção desconexa de boas práticas ou intervenções pontuais, pois isso ignora a eficiência global e os impactos no resultado final. Um processo pode ter partes otimizadas, mas se o fluxo completo não funcionar bem, o desempenho geral será comprometido. O foco em processos de ponta a ponta é essencial para alinhar eficiência local e global, gerando melhores resultados.</p>
 </section>
 <section id="visao-da-mineracao-de-processos">
@@ -575,8 +594,6 @@ usando um site de reservas, analisar falhas de um sistema de manuseio de bagagem
 <li><p><strong>Aumento da produtividade:</strong> Melhor coordenação entre as equipes, redução de interrupções e otimização do fluxo de trabalho.</p></li>
 <li><p><strong>Maior satisfação do cliente:</strong> Entrega do projeto dentro do prazo e com a qualidade esperada.</p></li>
 </ul>
-<p>| <a class="reference internal" href="#aula02_FundMinerProcessos.md"><span class="xref myst">Aula 2</span></a></p>
-<p><a class="reference internal" href="#../../mineracaoProcessos.md"><span class="xref myst">Sumário</span></a> |</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -619,11 +636,11 @@ usando um site de reservas, analisar falhas de um sistema de manuseio de bagagem
       </div>
     </a>
     <a class="right-next"
-       href="rpc_atividades_construcao.html"
+       href="modelagem-sistemas-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modelagem de Projeto com Redes de Petri Coloridas (RPC) (EM ANÁLISE)</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -634,8 +651,7 @@ usando um site de reservas, analisar falhas de um sistema de manuseio de bagagem
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -707,8 +723,8 @@ By UniRobótica
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

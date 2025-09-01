@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -68,7 +65,6 @@
     <link rel="prev" title="Plano de Curso: Gerenciamento de Projetos - baseado no PMBOK 7ª Edição" href="conteudo-programatico.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
-    <img src="../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark pst-js-only" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <script>document.write(`<img src="../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark" alt="Gerenciamento de Projetos e Contratos - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -443,16 +454,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -508,26 +527,26 @@
 <p>No início do século XX, pioneiros como:</p>
 <ol class="arabic simple">
 <li><p><strong>Frederick Taylor</strong> (1856-1915) - <strong>Administração Científica</strong><br />
-Taylor introduziu a <strong>racionalização do trabalho</strong> e a <strong>padronização</strong>, otimizando processos operacionais para melhorar a qualidade e a eficiência <span id="id1">Taylor [<a class="reference internal" href="../referencias.html#id10" title="Frederick Taylor. The Principles of Scientific Management. Harper &amp; Brothers, 1915.">Tay15</a>]</span>.</p></li>
+Taylor introduziu a <strong>racionalização do trabalho</strong> e a <strong>padronização</strong>, otimizando processos operacionais para melhorar a qualidade e a eficiência <span id="id1">Taylor [<a class="reference internal" href="../referencias.html#id16" title="Frederick Taylor. The Principles of Scientific Management. Harper &amp; Brothers, 1915.">Tay15</a>]</span>.</p></li>
 <li><p><strong>Walter A. Shewhart</strong> (1891-1967) - <strong>Controle Estatístico de Qualidade (SPC)</strong><br />
-Shewhart desenvolveu o <strong>controle estatístico de qualidade</strong>, usando gráficos e dados para monitorar e melhorar os processos. Ele também criou o ciclo <strong>PDCA</strong> (Plan-Do-Check-Act) <span id="id2">[<a class="reference internal" href="../referencias.html#id11" title="Walter A. Shewhart. Economic control of quality of manufactured product. D. Van Nostrand Company, 1931.">She31</a>]</span>.</p></li>
+Shewhart desenvolveu o <strong>controle estatístico de qualidade</strong>, usando gráficos e dados para monitorar e melhorar os processos. Ele também criou o ciclo <strong>PDCA</strong> (Plan-Do-Check-Act) <span id="id2">[<a class="reference internal" href="../referencias.html#id17" title="Walter A. Shewhart. Economic control of quality of manufactured product. D. Van Nostrand Company, 1931.">She31</a>]</span>.</p></li>
 <li><p><strong>W. Edwards Deming</strong> (1900-1993) - <strong>Qualidade e Produtividade</strong><br />
-Deming foi um dos <strong>pais da qualidade</strong> e popularizou o <strong>controle estatístico de qualidade</strong> e a <strong>melhoria contínua</strong> no Japão pós-Segunda Guerra Mundial, destacando a importância da <strong>gestão</strong> na qualidade <span id="id3">Deming [<a class="reference internal" href="../referencias.html#id12" title="W. Edwards Deming. Out of the Crisis. MIT Press, 1982.">Dem82</a>]</span>.</p></li>
+Deming foi um dos <strong>pais da qualidade</strong> e popularizou o <strong>controle estatístico de qualidade</strong> e a <strong>melhoria contínua</strong> no Japão pós-Segunda Guerra Mundial, destacando a importância da <strong>gestão</strong> na qualidade <span id="id3">Deming [<a class="reference internal" href="../referencias.html#id18" title="W. Edwards Deming. Out of the Crisis. MIT Press, 1982.">Dem82</a>]</span>.</p></li>
 <li><p><strong>Joseph Juran</strong> (1904-2008) - <strong>Gestão da Qualidade</strong><br />
-Juran, outro dos <strong>pais da qualidade</strong>, ampliou a visão sobre qualidade, defendendo que ela deve ser responsabilidade de toda a organização, não apenas de engenheiros. Ele introduziu o conceito de <strong>custo da qualidade</strong> e o <strong>Ciclo Juran</strong>: <strong>Planejar, Controlar e Melhorar</strong> <span id="id4">[<a class="reference internal" href="../referencias.html#id13" title="Joseph Juran. Juran on Quality by Design: The New Steps for Planning Quality into Goods and Services. Free Press, 1989.">Jur89</a>]</span>.</p></li>
+Juran, outro dos <strong>pais da qualidade</strong>, ampliou a visão sobre qualidade, defendendo que ela deve ser responsabilidade de toda a organização, não apenas de engenheiros. Ele introduziu o conceito de <strong>custo da qualidade</strong> e o <strong>Ciclo Juran</strong>: <strong>Planejar, Controlar e Melhorar</strong> <span id="id4">[<a class="reference internal" href="../referencias.html#id19" title="Joseph Juran. Juran on Quality by Design: The New Steps for Planning Quality into Goods and Services. Free Press, 1989.">Jur89</a>]</span>.</p></li>
 </ol>
 </section>
 <section id="o-movimento-da-qualidade-total-tqm">
 <h2>O Movimento da Qualidade Total (TQM)<a class="headerlink" href="#o-movimento-da-qualidade-total-tqm" title="Link to this heading">#</a></h2>
 <p>Nos anos 1980 e 1990, surgiu o conceito de <strong>Qualidade Total</strong> (TQM - Total Quality Management), que enfatiza a <strong>melhoria contínua</strong> e o <strong>envolvimento de todos</strong> na organização, com foco na <strong>satisfação do cliente</strong>. As principais figuras do TQM incluem:</p>
 <ul class="simple">
-<li><p><strong>Kaoru Ishikawa</strong>: Criador do <strong>diagrama de causa e efeito</strong> (diagrama de espinha de peixe) <span id="id5">[<a class="reference internal" href="../referencias.html#id14" title="Kaoru Ishikawa. Introduction to Quality Control. Kodansha International, 1976.">Ish76</a>]</span>.</p></li>
-<li><p><strong>Genichi Taguchi</strong>: Desenvolveu o <strong>Método Taguchi</strong>, utilizando experimentos para melhorar a qualidade <span id="id6">Taguchi [<a class="reference internal" href="../referencias.html#id15" title="Genichi Taguchi. Quality Engineering in Production Systems. Prentice-Hall, 1986.">Tag86</a>]</span>.</p></li>
+<li><p><strong>Kaoru Ishikawa</strong>: Criador do <strong>diagrama de causa e efeito</strong> (diagrama de espinha de peixe) <span id="id5">[<a class="reference internal" href="../referencias.html#id20" title="Kaoru Ishikawa. Introduction to Quality Control. Kodansha International, 1976.">Ish76</a>]</span>.</p></li>
+<li><p><strong>Genichi Taguchi</strong>: Desenvolveu o <strong>Método Taguchi</strong>, utilizando experimentos para melhorar a qualidade <span id="id6">Taguchi [<a class="reference internal" href="../referencias.html#id21" title="Genichi Taguchi. Quality Engineering in Production Systems. Prentice-Hall, 1986.">Tag86</a>]</span>.</p></li>
 </ul>
 </section>
 <section id="qualidade-no-seculo-xxi">
 <h2>Qualidade no Século XXI<a class="headerlink" href="#qualidade-no-seculo-xxi" title="Link to this heading">#</a></h2>
-<p>A qualidade no século XXI continua a evoluir com novas abordagens como a <strong>Gestão Seis Sigma</strong>, focada na <strong>eliminação de defeitos</strong> e na <strong>redução da variação</strong> nos processos. A <strong>ISO 9001</strong> tornou-se uma das normas de qualidade mais adotadas globalmente, estabelecendo uma estrutura para a gestão da qualidade em diversas empresas <span id="id7">for Standardization [<a class="reference internal" href="../referencias.html#id16" title="International Organization for Standardization. Iso 9001: quality management systems – requirements. 2015. URL: https://www.iso.org/iso-9001-quality-management.html.">fS15</a>]</span>.</p>
+<p>A qualidade no século XXI continua a evoluir com novas abordagens como a <strong>Gestão Seis Sigma</strong>, focada na <strong>eliminação de defeitos</strong> e na <strong>redução da variação</strong> nos processos. A <strong>ISO 9001</strong> tornou-se uma das normas de qualidade mais adotadas globalmente, estabelecendo uma estrutura para a gestão da qualidade em diversas empresas <span id="id7">for Standardization [<a class="reference internal" href="../referencias.html#id22" title="International Organization for Standardization. Iso 9001: quality management systems – requirements. 2015. URL: https://www.iso.org/iso-9001-quality-management.html.">fS15</a>]</span>.</p>
 </section>
 <hr class="docutils" />
 <section id="os-pais-da-qualidade">
@@ -599,8 +618,7 @@ Juran, outro dos <strong>pais da qualidade</strong>, ampliou a visão sobre qual
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -663,8 +681,8 @@ By UniRobótica
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -30,15 +30,33 @@ related to explicit process models, e.g., Petri nets or BPMN models. For example
 models to analyze compliance and performance" (van der Aalst, 2016).
 
 
-<!--
+<div style="border: 1px solid #bbb; border-radius: 10px; padding: 20px; background: #f0f0f0; color: #222;">
 
-* **Mapeamento detalhado do processo:** Identificar todas as etapas do processo de construção, desde a concepção do projeto até a entrega da obra.
-* **Análise das interdependências:** Identificar como cada etapa do processo se relaciona com as outras.
-* **Otimização do fluxo de trabalho:** Eliminar atividades que não agregam valor, reduzir o tempo de espera entre as etapas e otimizar a utilização de recursos.
-* **Monitoramento contínuo:** Acompanhar o desempenho do processo e realizar ajustes conforme necessário.
+### Melhoria de Processos na Construção
 
-**Em resumo,** ao adotar uma visão de ponta a ponta, as empresas de construção podem otimizar seus processos, reduzir custos, melhorar a qualidade e aumentar a satisfação dos clientes. A ideia de van der Aalst de que "o processo é estúpido" serve como um lembrete de que a eficiência e a qualidade de um projeto dependem da otimização do processo como um todo, e não apenas de cada tarefa individual.-->
-![alt text](../img/aula02_fund/modProc.png)
+- **Mapeamento detalhado do processo:**  
+  Identificar todas as etapas do processo de construção, desde a concepção do projeto até a entrega da obra.
+
+- **Análise das interdependências:**  
+  Entender como cada etapa do processo se relaciona com as outras.
+
+- **Otimização do fluxo de trabalho:**  
+  Eliminar atividades que não agregam valor, reduzir o tempo de espera entre as etapas e otimizar a utilização de recursos.
+
+- **Monitoramento contínuo:**  
+  Acompanhar o desempenho do processo e realizar ajustes conforme necessário.
+
+---
+
+**Em resumo,** ao adotar uma visão de ponta a ponta, as empresas de construção podem otimizar seus processos, reduzir custos, melhorar a qualidade e aumentar a satisfação dos clientes.  
+A ideia de *van der Aalst* de que *"o processo é estúpido"* serve como um lembrete de que a eficiência e a qualidade de um projeto dependem da **otimização do processo como um todo**, e não apenas de cada tarefa individual.
+
+</div>
+
+
+
+
+![alt text](img/aula02_fund/modProc.png)
 
 O valor dos modelos é limitado se pouca atenção for dada ao alinhamento do modelo e da realidade, ou seja, as pessoas envolvidas precisam confiar neles. Por exemplo, não faz sentido conduzir experimentos de simulação enquanto se usa um modelo que assume uma versão idealizada do processo real.
 
@@ -48,7 +66,7 @@ O valor dos modelos é limitado se pouca atenção for dada ao alinhamento do mo
 
 Conforme mencionado acima, a mineração de processos estabelece links entre os processos reais e seus dados, por um lado, e modelos de processos, por outro lado. Ou seja, mineração de processos conecta o mundo real, sistemas de software, registros de eventos (event logs) e modelos de processos para analisar e aprimorar processos organizacionais. 
 
-![process mining model](../img/aula02_fund/process_mining_model.png)
+![process mining model](img/aula02_fund/process_mining_model.png)
 
 De fato, no mundo real, pessoas, máquinas e organizações executam atividades que são apoiadas e controladas por sistemas de software, os quais registram eventos, como transações e mensagens, em logs. 
 
@@ -131,12 +149,12 @@ Os modelos desempenham um papel importante para projetar processos e introduzir 
 
 A Figura seguinte modela um processo como uma rede de Petri. 
 
-![alt text](../img/aula02_fund/redesPetri.png)
+![alt text](img/aula02_fund/redesPetri.png)
 
 A Figura seguinte modela o mesmo processo em termos de um chamado
 diagrama BPMN.
 
-![alt text](../img/aula02_fund/BPMN.png)
+![alt text](img/aula02_fund/BPMN.png)
 
 ## Event log 
 
@@ -188,7 +206,7 @@ Por exemplo, considere a seguinte sequência de letras, onde cada letra represen
 - abdeh
 A partir delas podemos determinar o seguinte modelo:
 
-![exe1](../img/aula01_intro/exe1.png)
+![exe1](img/aula01_intro/exe1.png)
 
 ####  **Play Out / Conformidade**
 A ideia é gerar um comportamento, event log, a partir de um modelo. 
@@ -197,7 +215,7 @@ A ideia é gerar um comportamento, event log, a partir de um modelo.
 
 Por exemplo, considere o modelo abaixo
 
-![exe1](../img/aula01_intro/exe1.png)
+![exe1](img/aula01_intro/exe1.png)
 
 Podemos a partir desse modelo gerar o seguinte event log:
 
@@ -214,9 +232,7 @@ Por fim, no tipo replay nos buscamos verificar a conformidade do modelo de proce
 
 > "The third type of process mining is enhancement. Here, the idea is to extend or improve an existing process model using information about the actual process recorded in some event log. Whereas conformance checking measures the alignment between model and reality, this third type of process mining aims at changing or extending the a-priori model" (van der Aalst, 2016).
 
-![alt text](../img/aula02_fund/tiposDiagr.png)
+![alt text](img/aula02_fund/tiposDiagr.png)
 
-| [Aula 01](aula01_MineracaoProcessos.md) 
- 
- [Sumário](../../mineracaoProcessos.md) |
+
 

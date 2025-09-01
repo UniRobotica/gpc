@@ -10,7 +10,7 @@ Nesta aula veremos um pouco sobre a mineração de processos, área essa que rel
 
 ### Dados é o novo petróleo!
 
-![data is the new oil](../img/aula01_intro/data_is_the_new_oil.png)
+![data is the new oil](img/aula01_intro/data_is_the_new_oil.png)
 
 Hoje em dia, nós estamos gerando uma quantidade de dados maior do que se juntarmos todas as informações da pré-história até o ano de 2003. 
 
@@ -24,13 +24,13 @@ Estamos criando constantemente **dados de evento (event data)**, quando
 
 Quando falamos de todos esses dados sendo gravados, estamos falando da **Internet dos Eventos**.
 
-![internet of events](../img/aula01_intro/InternetEvents.png)
+![internet of events](img/aula01_intro/InternetEvents.png)
 
 <div style="text-align: center; background-color: white;">
   <span style="color: blue; font-weight: bold;">Evolução na forma de criação e manipulação de fotos</span>
 </div>
 
-![alt text](../img/aula01_intro/fotoEvol.png)
+![alt text](img/aula01_intro/fotoEvol.png)
 
 
 <div style="text-align: center; background-color: white;">
@@ -39,13 +39,13 @@ Quando falamos de todos esses dados sendo gravados, estamos falando da **Interne
 
 
 
-![estamos gerando eventos](../img/aula01_intro/gerEventos.png)
+![estamos gerando eventos](img/aula01_intro/gerEventos.png)
 
 <div style="text-align: center; background-color: white;">
   <span style="color: blue; font-weight: bold;">Sensores e interfaces de smartphones capturam dados</span>
 </div>
 
-![sensoreamento](../img/aula01_intro/sensorCel.png)
+![sensoreamento](img/aula01_intro/sensorCel.png)
 
 
 ### Big Data
@@ -54,14 +54,14 @@ Hoje nós conseguimos criar e gravar uma enorme quantidade de dados.
 
 Para se ter uma ideia dessa evolução, pode-se citar **Lei de Moore** é a observação de que o número de transistores em circuitos integrados dobra aproximadamente a cada dois anos, o que resulta em um aumento exponencial na capacidade de processamento dos computadores. Proposta por Gordon Moore em 1965, essa tendência impulsionou a evolução da tecnologia por décadas. No entanto, à medida que os transistores se aproximam dos limites físicos, a Lei de Moore começa a desacelerar, desafiando a indústria a buscar novas soluções, como a computação quântica.
 
-![alt text](../img/aula01_intro/LeiMoore.png)
+![alt text](img/aula01_intro/LeiMoore.png)
 <div style="background-color: blue; color: white; text-align: center; padding: 1px; font-size: 13px; font-weight: bold;">
   2²⁰ = 1.048.576 * em 40 anos
 </div>
 
 ####  Os 4 desafios do Big Data
 
-![alt text](../img/aula01_intro/BigData.png)
+![alt text](img/aula01_intro/BigData.png)
 Os desafios do Big Data são diversos e abrangem questões técnicas, organizacionais, legais e éticas. Entretanto, os principais desafios enfrentados são relacionados a:
 - Volume: devido ao tratamento de grandes quantidades de dados
 - Velocidade: devido a rapidez que os dados estão sendo criados e modificados
@@ -72,7 +72,7 @@ Entretanto, o maior desafio hoje é encontrar valor nesses dados.
 
 ## A demanda por cientistas de dados
 
-![data science](../img/aula01_intro/DataScience.png)
+![data science](img/aula01_intro/DataScience.png)
 
 A crescente demanda por cientistas de dados é impulsionada pela necessidade das empresas de transformar grandes volumes de dados em informações úteis para tomar decisões mais informadas e estratégicas. 
 
@@ -93,13 +93,13 @@ Esses avanços proporcionam maior previsibilidade, redução de riscos e uma ges
 
 ## Visão de dados
 
-![alt text](../img/aula01_intro/planilhaDados.png)
+![alt text](img/aula01_intro/planilhaDados.png)
 
 As planilhas podem ser usadas para fazer qualquer coisa com números, mas têm dificuldades em capturar adequadamente o comportamento dinâmico.
 
 ## Visão de processo
 
-![alt text](../img/aula01_intro/procEstupido.png)
+![alt text](img/aula01_intro/procEstupido.png)
 
 Van der Aalst critica a abordagem que foca apenas em padrões ou decisões isoladas, pois acredita que o verdadeiro valor está em entender e otimizar o processo de ponta a ponta. Ele considera "estúpido" tratar processos como uma coleção desconexa de boas práticas ou intervenções pontuais, pois isso ignora a eficiência global e os impactos no resultado final. Um processo pode ter partes otimizadas, mas se o fluxo completo não funcionar bem, o desempenho geral será comprometido. O foco em processos de ponta a ponta é essencial para alinhar eficiência local e global, gerando melhores resultados.
 
@@ -136,8 +136,5 @@ Imagine a construção de um prédio. Se nos concentrarmos apenas em tarefas iso
 * **Maior satisfação do cliente:** Entrega do projeto dentro do prazo e com a qualidade esperada.
 
 
-| [Aula 2](aula02_FundMinerProcessos.md) 
-
- [Sumário](../../mineracaoProcessos.md) |
 
 
