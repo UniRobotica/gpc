@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Modelagem de Precedência com Redes de Petri Coloridas (CPN) &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Aula — Modelagem de Sistemas (Controle Programável) - EM REVISÃO &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -57,12 +57,10 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/modelagem-sistemas-intro';</script>
     <link rel="icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Complementos" href="../../complementos/index.html" />
-    <link rel="prev" title="Aula — Modelagem de Sistemas (Controle Programável)" href="modelagem-sistemas-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +123,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +180,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../PMBOK/PMBOK7.html">PMBOK 7ª Edição – Guia do Conhecimento em Gerenciamento de Projetos</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../dominios/index.html">Domínios de Desempenho</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -217,7 +217,7 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Práticas de Modelagem e Tailoring</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">Práticas de Modelagem e Tailoring</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../tailoring/index.html">Tailoring</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tailoring/tailoring-intro.html">Aula: Tailoring no PMBOK 7ª Edição</a></li>
 
@@ -228,12 +228,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../BIM/BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Mineração de Processos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="mineracao-processos-intro.html">Mineração de Processos - Introdução</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mineracaoProcessos/index.html">Mineração de Processos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-intro.html">Mineração de Processos - Introdução</a></li>
 
 
 
-<li class="toctree-l3"><a class="reference internal" href="mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
 
 
 
@@ -241,8 +241,10 @@
 
 
 
-<li class="toctree-l3"><a class="reference internal" href="modelagem-sistemas-intro.html">Modelagem de Sistemas - Introdução</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Modelagem com redes de Petri Colorida (em análise)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="index.html">Redes de Petri</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="redesPetri-fund.html">Redes de Petri - Fundamentos</a></li>
 </ul>
 </details></li>
 </ul>
@@ -299,37 +301,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -355,7 +326,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao.ipynb" target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/redesPetri/modelagem-sistemas-intro.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -372,7 +343,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/redesPetri/modelagem-sistemas-intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,7 +373,7 @@
       
       
       
-      <li><a href="../../../_sources/notebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao.ipynb" target="_blank"
+      <li><a href="../../../_sources/notebooks/modelagem/redesPetri/modelagem-sistemas-intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -412,7 +383,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -486,7 +457,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modelagem de Precedência com Redes de Petri Coloridas (CPN)</h1>
+    <h1>Aula — Modelagem de Sistemas (Controle Programável) - EM REVISÃO</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -496,16 +467,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aula-pratica-usando-o-cpn-ide">Aula prática usando o CPN IDE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criando-o-projeto">1. Criando o projeto</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declarando-os-tipos">2. Declarando os tipos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criando-a-estrutura-da-rede">3. Criando a estrutura da rede</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lugares">Lugares</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transicoes">Transições</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceitos-fundamentais">1. Conceitos fundamentais</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxo-de-modelagem">2. Fluxo de modelagem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-comportamento">3. Modelos de comportamento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-estados-statecharts">3.1 Máquinas de estados / Statecharts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri">3.2 Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafcet-sfc">3.3 GRAFCET / SFC</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulacao-passo-a-passo">5. Simulação passo a passo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-modelo-ao-plc">4. Do modelo ao PLC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-didatico-porta-automatica-de-garagem">5. Exemplo Didático — Porta Automática de Garagem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
 </ul>
             </nav>
         </div>
@@ -517,69 +490,90 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modelagem-de-precedencia-com-redes-de-petri-coloridas-cpn">
-<h1>Modelagem de Precedência com Redes de Petri Coloridas (CPN)<a class="headerlink" href="#modelagem-de-precedencia-com-redes-de-petri-coloridas-cpn" title="Link to this heading">#</a></h1>
-<section id="aula-pratica-usando-o-cpn-ide">
-<h2>Aula prática usando o CPN IDE<a class="headerlink" href="#aula-pratica-usando-o-cpn-ide" title="Link to this heading">#</a></h2>
-<p>Este notebook apresenta passo a passo a construção de um modelo de controle de precedência de atividades utilizando <strong>Redes de Petri Coloridas (CPN)</strong> no <strong>CPN IDE</strong>.</p>
-<p>O objetivo é garantir que:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="aula-modelagem-de-sistemas-controle-programavel-em-revisao">
+<h1>Aula — Modelagem de Sistemas (Controle Programável) - EM REVISÃO<a class="headerlink" href="#aula-modelagem-de-sistemas-controle-programavel-em-revisao" title="Link to this heading">#</a></h1>
+<section id="objetivos">
+<h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>As atividades <code class="docutils literal notranslate"><span class="pre">A</span></code> e <code class="docutils literal notranslate"><span class="pre">B</span></code> podem ser executadas de forma independente.</p></li>
-<li><p>A atividade <code class="docutils literal notranslate"><span class="pre">C</span></code> <strong>só pode ser executada após a conclusão de A e B</strong>.</p></li>
+<li><p>Entender o que são Sistemas a Eventos Discretos (SED) e por que modelá-los.</p></li>
+<li><p>Aplicar um fluxo de modelagem coerente do requisito ao PLC.</p></li>
+<li><p>Conhecer três formas clássicas de modelagem: <strong>máquinas de estados/statecharts</strong>, <strong>redes de Petri</strong> e <strong>GRAFCET/SFC</strong>.</p></li>
+<li><p>Relacionar modelos formais com a implementação em linguagens da <strong>IEC 61131-3 (Ed. 4, 2025)</strong>.</p></li>
 </ul>
 </section>
-<section id="criando-o-projeto">
-<h2>1. Criando o projeto<a class="headerlink" href="#criando-o-projeto" title="Link to this heading">#</a></h2>
-<p>Abra o CPN IDE e crie um novo projeto (<code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">Project</span></code>). Nomeie como <strong>“ConstrucaoCivil”</strong>.</p>
-</section>
-<section id="declarando-os-tipos">
-<h2>2. Declarando os tipos<a class="headerlink" href="#declarando-os-tipos" title="Link to this heading">#</a></h2>
-<p>Na aba <strong>Declarations</strong>, insira:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colset</span> <span class="n">ATIV</span> <span class="o">=</span> <span class="k">with</span> <span class="n">INICIO</span> <span class="o">|</span> <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">C</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>Esse tipo será usado para representar as atividades do fluxo de trabalho.</p>
-</section>
-<section id="criando-a-estrutura-da-rede">
-<h2>3. Criando a estrutura da rede<a class="headerlink" href="#criando-a-estrutura-da-rede" title="Link to this heading">#</a></h2>
-<p>A rede deve conter os seguintes lugares e transições:</p>
-<section id="lugares">
-<h3>Lugares<a class="headerlink" href="#lugares" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="conceitos-fundamentais">
+<h2>1. Conceitos fundamentais<a class="headerlink" href="#conceitos-fundamentais" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">INICIO</span></code>: lugar inicial com token <code class="docutils literal notranslate"><span class="pre">INICIO</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">A_PREC_OK</span></code>, <code class="docutils literal notranslate"><span class="pre">B_PREC_OK</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">A_IN</span></code>, <code class="docutils literal notranslate"><span class="pre">B_IN</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">A_EXEC</span></code>, <code class="docutils literal notranslate"><span class="pre">B_EXEC</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">A_FIN</span></code>, <code class="docutils literal notranslate"><span class="pre">B_FIN</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">A_OK</span></code>, <code class="docutils literal notranslate"><span class="pre">B_OK</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">C_PREC_OK</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">C_IN</span></code>, <code class="docutils literal notranslate"><span class="pre">C_EXEC</span></code>, <code class="docutils literal notranslate"><span class="pre">C_FIN</span></code>, <code class="docutils literal notranslate"><span class="pre">C_OK</span></code></p></li>
+<li><p><strong>SED</strong>: sistemas cujo estado muda por eventos discretos no tempo (sensores, comandos).</p></li>
+<li><p><strong>Controle programável</strong>: algoritmo de controle para execução em PLCs.</p></li>
+<li><p><strong>Vantagens da modelagem</strong>: clareza, detecção de impasses, verificação de segurança.</p></li>
 </ul>
+<figure>
+  <img src="figures/fig1.png" width="400"/>
+  <figcaption>Figura 1 — Diagrama de blocos ilustrativo (sistema com realimentação).</figcaption>
+</figure>
 </section>
-<section id="transicoes">
-<h3>Transições<a class="headerlink" href="#transicoes" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">INICIAR</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">IN_C</span></code> (inicia C se A e B estiverem concluídas)</p></li>
-</ul>
-</section>
-</section>
-<section id="simulacao-passo-a-passo">
-<h2>5. Simulação passo a passo<a class="headerlink" href="#simulacao-passo-a-passo" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="fluxo-de-modelagem">
+<h2>2. Fluxo de modelagem<a class="headerlink" href="#fluxo-de-modelagem" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Clique em <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">simulation</span></code></p></li>
-<li><p>Dispare <code class="docutils literal notranslate"><span class="pre">INICIAR</span></code></p></li>
-<li><p>Execute os fluxos de <code class="docutils literal notranslate"><span class="pre">A</span></code> e <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
-<li><p>Quando ambos estiverem concluídos, <code class="docutils literal notranslate"><span class="pre">IN_C</span></code> será habilitada</p></li>
-<li><p>Complete a atividade <code class="docutils literal notranslate"><span class="pre">C</span></code></p></li>
+<li><p>Requisitos</p></li>
+<li><p>Fronteira e I/O</p></li>
+<li><p>Decomposição funcional</p></li>
+<li><p>Escolha de formalismo</p></li>
+<li><p>Validação</p></li>
+<li><p>Geração do controle → PLC</p></li>
+<li><p>Teste / comissionamento</p></li>
 </ol>
 </section>
-<section id="conclusao">
-<h2>Conclusão<a class="headerlink" href="#conclusao" title="Link to this heading">#</a></h2>
-<p>O modelo demonstra como representar <strong>restrições de precedência</strong> com CPN.</p>
-<p>Você pode expandir para outros fluxos complexos (por exemplo, D após C, ou E após A e D).</p>
-<p><a class="reference external" href="https://github.com/UniRobotica/Petri-nets/blob/main/Exemplos/ConstrucaoCivil.cpn">Repositório com o modelo no GitHub</a></p>
+<hr class="docutils" />
+<section id="modelos-de-comportamento">
+<h2>3. Modelos de comportamento<a class="headerlink" href="#modelos-de-comportamento" title="Link to this heading">#</a></h2>
+<section id="maquinas-de-estados-statecharts">
+<h3>3.1 Máquinas de estados / Statecharts<a class="headerlink" href="#maquinas-de-estados-statecharts" title="Link to this heading">#</a></h3>
+<figure>
+  <img src="figures/fig2.png" width="450"/>
+  <figcaption>Figura 2 — Exemplo de máquina de estados (lógica de FSM).</figcaption>
+</figure>
 </section>
+<hr class="docutils" />
+<section id="redes-de-petri">
+<h3>3.2 Redes de Petri<a class="headerlink" href="#redes-de-petri" title="Link to this heading">#</a></h3>
+<figure>
+  <img src="figures/fig3.png" width="450"/>
+  <figcaption>Figura 3 — Rede de Petri básica.</figcaption>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="grafcet-sfc">
+<h3>3.3 GRAFCET / SFC<a class="headerlink" href="#grafcet-sfc" title="Link to this heading">#</a></h3>
+<figure>
+  <img src="figures/fig4.png" width="450"/>
+  <figcaption>Figura 4 — Exemplo de GRAFCET (SFC).</figcaption>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="do-modelo-ao-plc">
+<h2>4. Do modelo ao PLC<a class="headerlink" href="#do-modelo-ao-plc" title="Link to this heading">#</a></h2>
+<figure>
+  <img src="figures/fig5.png" width="450"/>
+  <figcaption>Figura 5 — Mapeamento conceitual GRAFCET → Ladder.</figcaption>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="exemplo-didatico-porta-automatica-de-garagem">
+<h2>5. Exemplo Didático — Porta Automática de Garagem<a class="headerlink" href="#exemplo-didatico-porta-automatica-de-garagem" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Entradas</strong>: sensor de presença, botão.</p></li>
+<li><p><strong>Saídas</strong>: motor, luz.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="referencias">
+<h2>Referências<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
+<span class="target" id="id1"></span></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -595,7 +589,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks\modelagem\mineracaoProcessos"
+            path: "./notebooks\modelagem\redesPetri"
         },
         predefinedOutput: true
     }
@@ -612,24 +606,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="modelagem-sistemas-intro.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Aula — Modelagem de Sistemas (Controle Programável)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../../complementos/index.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Complementos</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -646,16 +622,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aula-pratica-usando-o-cpn-ide">Aula prática usando o CPN IDE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criando-o-projeto">1. Criando o projeto</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declarando-os-tipos">2. Declarando os tipos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criando-a-estrutura-da-rede">3. Criando a estrutura da rede</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lugares">Lugares</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transicoes">Transições</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceitos-fundamentais">1. Conceitos fundamentais</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxo-de-modelagem">2. Fluxo de modelagem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-comportamento">3. Modelos de comportamento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-estados-statecharts">3.1 Máquinas de estados / Statecharts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri">3.2 Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafcet-sfc">3.3 GRAFCET / SFC</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulacao-passo-a-passo">5. Simulação passo a passo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">Conclusão</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-modelo-ao-plc">4. Do modelo ao PLC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-didatico-porta-automatica-de-garagem">5. Exemplo Didático — Porta Automática de Garagem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
 </ul>
   </nav></div>
 

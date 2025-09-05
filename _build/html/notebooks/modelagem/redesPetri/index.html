@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Seção BIM &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Mineração de Processos &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/BIM/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/index';</script>
     <link rel="icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="O que é BIM?" href="BIM.html" />
-    <link rel="prev" title="Aula: Tailoring no PMBOK 7ª Edição" href="../tailoring/tailoring-intro.html" />
+    <link rel="next" title="Redes de Petri – Conceitos Fundamentais" href="redesPetri-fund.html" />
+    <link rel="prev" title="Mineração de Processos - Fundamentos" href="../mineracaoProcessos/mineracao-processos-fund.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,9 +223,9 @@
 
 </ul>
 </details></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">BIM (Building Information Modeling)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="BIM.html">O que é BIM?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../BIM/index.html">BIM (Building Information Modeling)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../BIM/BIM.html">O que é BIM?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BIM/BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../mineracaoProcessos/index.html">Mineração de Processos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -243,8 +243,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../redesPetri/index.html">Redes de Petri</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../redesPetri/redesPetri-fund.html">Redes de Petri - Fundamentos</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Redes de Petri</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="redesPetri-fund.html">Redes de Petri - Fundamentos</a></li>
 </ul>
 </details></li>
 </ul>
@@ -326,7 +326,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/BIM/index.md" target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/redesPetri/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -343,7 +343,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/BIM/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/redesPetri/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -373,7 +373,7 @@
       
       
       
-      <li><a href="../../../_sources/notebooks/modelagem/BIM/index.md" target="_blank"
+      <li><a href="../../../_sources/notebooks/modelagem/redesPetri/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -457,7 +457,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Seção BIM</h1>
+    <h1>Mineração de Processos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -479,26 +479,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="secao-bim">
-<h1><strong>Seção BIM</strong><a class="headerlink" href="#secao-bim" title="Link to this heading">#</a></h1>
-<p>Nesta seção, exploraremos o conceito e a aplicação do <strong>Building Information Modeling (BIM)</strong>, abordando suas fases, benefícios e exemplos práticos no contexto de gestão de projetos.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="mineracao-de-processos">
+<h1><strong>Mineração de Processos</strong><a class="headerlink" href="#mineracao-de-processos" title="Link to this heading">#</a></h1>
+<p>Nesta seção, exploraremos o conceito e a aplicação de *<em>Redes de Petri</em>.</p>
 <section id="conteudo">
 <h2><strong>Conteúdo</strong><a class="headerlink" href="#conteudo" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><strong>Introdução ao BIM</strong></p>
+<li><p><strong>Fundamentos</strong></p>
 <ul class="simple">
-<li><p>Explicação do conceito de <strong>BIM</strong>.</p></li>
-<li><p>Diferenças entre <strong>BIM</strong> e o <strong>Modelo BIM</strong>.</p></li>
-<li><p>Benefícios e aplicação no ciclo de vida do projeto.</p></li>
-<li><p><a class="reference internal" href="BIM.html"><span class="std std-doc">Leia mais…</span></a></p></li>
-</ul>
-</li>
-<li><p><strong>Exemplo Prático de BIM</strong></p>
-<ul class="simple">
-<li><p>Aplicação do BIM em projetos de infraestrutura.</p></li>
-<li><p>Detalhamento de fases: concepção, planejamento, execução e operação.</p></li>
-<li><p>Análise de um <strong>modelo IFC</strong> e suas vantagens.</p></li>
-<li><p><a class="reference internal" href="#BIM-exemplo.md"><span class="xref myst">Leia mais…</span></a></p></li>
+<li><p><a class="reference internal" href="redesPetri-fund.html"><span class="std std-doc">Leia mais…</span></a></p></li>
 </ul>
 </li>
 </ol>
@@ -520,7 +509,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks\modelagem\BIM"
+            path: "./notebooks\modelagem\redesPetri"
         },
         predefinedOutput: true
     }
@@ -538,20 +527,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../tailoring/tailoring-intro.html"
+       href="../mineracaoProcessos/mineracao-processos-fund.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Aula: Tailoring no PMBOK 7ª Edição</p>
+        <p class="prev-next-title">Mineração de Processos - Fundamentos</p>
       </div>
     </a>
     <a class="right-next"
-       href="BIM.html"
+       href="redesPetri-fund.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>O que é BIM?</strong></p>
+        <p class="prev-next-title">Redes de Petri – Conceitos Fundamentais</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

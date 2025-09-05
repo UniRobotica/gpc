@@ -1,4 +1,4 @@
-# Aula — Modelagem de Sistemas (Controle Programável)
+# Aula — Modelagem de Sistemas (Controle Programável) - EM REVISÃO
 
 ## Objetivos
 - Entender o que são Sistemas a Eventos Discretos (SED) e por que modelá-los.

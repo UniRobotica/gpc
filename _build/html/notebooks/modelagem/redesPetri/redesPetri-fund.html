@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Aula — Modelagem de Sistemas (Controle Programável) &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Redes de Petri – Conceitos Fundamentais &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/redesPetri-fund';</script>
     <link rel="icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Modelagem de Precedência com Redes de Petri Coloridas (CPN)" href="rpc_atividades_construcao.html" />
-    <link rel="prev" title="Mineração de Processos - Fundamentos" href="mineracao-processos-fund.html" />
+    <link rel="next" title="Complementos" href="../../complementos/index.html" />
+    <link rel="prev" title="Mineração de Processos" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -228,12 +228,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../BIM/BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Mineração de Processos</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="mineracao-processos-intro.html">Mineração de Processos - Introdução</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mineracaoProcessos/index.html">Mineração de Processos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-intro.html">Mineração de Processos - Introdução</a></li>
 
 
 
-<li class="toctree-l3"><a class="reference internal" href="mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
 
 
 
@@ -241,8 +241,10 @@
 
 
 
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Modelagem de Sistemas - Introdução</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rpc_atividades_construcao.html">Modelagem com redes de Petri Colorida (em análise)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Redes de Petri</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Redes de Petri - Fundamentos</a></li>
 </ul>
 </details></li>
 </ul>
@@ -324,7 +326,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro.md" target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/redesPetri/redesPetri-fund.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,7 +343,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/redesPetri/redesPetri-fund.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +373,7 @@
       
       
       
-      <li><a href="../../../_sources/notebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro.md" target="_blank"
+      <li><a href="../../../_sources/notebooks/modelagem/redesPetri/redesPetri-fund.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -455,7 +457,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Aula — Modelagem de Sistemas (Controle Programável)</h1>
+    <h1>Redes de Petri – Conceitos Fundamentais</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -465,18 +467,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceitos-fundamentais">1. Conceitos fundamentais</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxo-de-modelagem">2. Fluxo de modelagem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-comportamento">3. Modelos de comportamento</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-estados-statecharts">3.1 Máquinas de estados / Statecharts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri">3.2 Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafcet-sfc">3.3 GRAFCET / SFC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">1. Introdução</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal">2. Estrutura Formal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marcacao-e-dinamica">3. Marcação e Dinâmica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo">Exemplo:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-modelo-ao-plc">4. Do modelo ao PLC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-didatico-porta-automatica-de-garagem">5. Exemplo Didático — Porta Automática de Garagem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes">4. Extensões</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-ponderados">4.1 Arcos ponderados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-inibidores">4.2 Arcos inibidores</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-pratico-sistema-produtor-consumidor">5. Exemplo Prático – Sistema Produtor/Consumidor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalismo-matematico">6. Formalismo Matemático</a></li>
 </ul>
             </nav>
         </div>
@@ -488,90 +491,90 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="aula-modelagem-de-sistemas-controle-programavel">
-<h1>Aula — Modelagem de Sistemas (Controle Programável)<a class="headerlink" href="#aula-modelagem-de-sistemas-controle-programavel" title="Link to this heading">#</a></h1>
-<section id="objetivos">
-<h2>Objetivos<a class="headerlink" href="#objetivos" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="redes-de-petri-conceitos-fundamentais">
+<h1>Redes de Petri – Conceitos Fundamentais<a class="headerlink" href="#redes-de-petri-conceitos-fundamentais" title="Link to this heading">#</a></h1>
+<section id="introducao">
+<h2>1. Introdução<a class="headerlink" href="#introducao" title="Link to this heading">#</a></h2>
+<p>As <strong>Redes de Petri</strong> são um formalismo matemático e gráfico para modelar sistemas dinâmicos, introduzido por <strong>Carl Adam Petri</strong> em 1962.<br />
+São amplamente usadas em engenharia de software, sistemas distribuídos, manufatura, telecomunicações e biologia.</p>
+<p>Principais características:</p>
 <ul class="simple">
-<li><p>Entender o que são Sistemas a Eventos Discretos (SED) e por que modelá-los.</p></li>
-<li><p>Aplicar um fluxo de modelagem coerente do requisito ao PLC.</p></li>
-<li><p>Conhecer três formas clássicas de modelagem: <strong>máquinas de estados/statecharts</strong>, <strong>redes de Petri</strong> e <strong>GRAFCET/SFC</strong>.</p></li>
-<li><p>Relacionar modelos formais com a implementação em linguagens da <strong>IEC 61131-3 (Ed. 4, 2025)</strong>.</p></li>
+<li><p>Descrevem <strong>concorrência, sincronização e causalidade</strong>.</p></li>
+<li><p>Representam graficamente <strong>estados e eventos</strong>.</p></li>
+<li><p>Permitem <strong>análise formal rigorosa</strong>.</p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="conceitos-fundamentais">
-<h2>1. Conceitos fundamentais<a class="headerlink" href="#conceitos-fundamentais" title="Link to this heading">#</a></h2>
+<section id="estrutura-formal">
+<h2>2. Estrutura Formal<a class="headerlink" href="#estrutura-formal" title="Link to this heading">#</a></h2>
+<p>Uma rede de Petri é um <strong>grafo bipartido direcionado</strong> composto por:</p>
 <ul class="simple">
-<li><p><strong>SED</strong>: sistemas cujo estado muda por eventos discretos no tempo (sensores, comandos).</p></li>
-<li><p><strong>Controle programável</strong>: algoritmo de controle para execução em PLCs.</p></li>
-<li><p><strong>Vantagens da modelagem</strong>: clareza, detecção de impasses, verificação de segurança.</p></li>
+<li><p><strong>Posições (places)</strong>: estados possíveis do sistema, representados por círculos.</p></li>
+<li><p><strong>Transições (transitions)</strong>: eventos ou atividades, representados por retângulos/barras.</p></li>
+<li><p><strong>Arcos (arcs)</strong>: conectam posições e transições, nunca elementos do mesmo tipo.</p></li>
+<li><p><strong>Tokens (fichas)</strong>: pontos pretos nas posições, representam a <strong>marcação</strong> (estado atual).</p></li>
 </ul>
-<figure>
-  <img src="figures/fig1.png" width="400"/>
-  <figcaption>Figura 1 — Diagrama de blocos ilustrativo (sistema com realimentação).</figcaption>
-</figure>
+<p><img alt="Exemplo de Rede de Petri" src="notebooks/modelagem/redesPetri/figuras/rede_basica.png" /></p>
 </section>
 <hr class="docutils" />
-<section id="fluxo-de-modelagem">
-<h2>2. Fluxo de modelagem<a class="headerlink" href="#fluxo-de-modelagem" title="Link to this heading">#</a></h2>
+<section id="marcacao-e-dinamica">
+<h2>3. Marcação e Dinâmica<a class="headerlink" href="#marcacao-e-dinamica" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>O <strong>estado</strong> de uma rede é dado pela <strong>marcação</strong> <code class="docutils literal notranslate"><span class="pre">M</span></code>, isto é, a distribuição de tokens nas posições.</p></li>
+<li><p>Uma <strong>transição é habilitada</strong> se todas as suas posições de entrada têm tokens suficientes (conforme peso dos arcos).</p></li>
+<li><p>Ao <strong>disparar</strong>:</p>
+<ul>
+<li><p>Consome tokens das entradas.</p></li>
+<li><p>Produz tokens nas saídas.</p></li>
+</ul>
+</li>
+</ul>
+<section id="exemplo">
+<h3>Exemplo:<a class="headerlink" href="#exemplo" title="Link to this heading">#</a></h3>
+<p><img alt="Exemplo de disparo" src="notebooks/modelagem/redesPetri/figuras/disparo.png" /></p>
 <ol class="arabic simple">
-<li><p>Requisitos</p></li>
-<li><p>Fronteira e I/O</p></li>
-<li><p>Decomposição funcional</p></li>
-<li><p>Escolha de formalismo</p></li>
-<li><p>Validação</p></li>
-<li><p>Geração do controle → PLC</p></li>
-<li><p>Teste / comissionamento</p></li>
+<li><p>Transição <code class="docutils literal notranslate"><span class="pre">t1</span></code> habilitada porque <code class="docutils literal notranslate"><span class="pre">p1</span></code> contém um token.</p></li>
+<li><p>Após disparo de <code class="docutils literal notranslate"><span class="pre">t1</span></code>, token é removido de <code class="docutils literal notranslate"><span class="pre">p1</span></code> e adicionado em <code class="docutils literal notranslate"><span class="pre">p2</span></code>.</p></li>
 </ol>
 </section>
-<hr class="docutils" />
-<section id="modelos-de-comportamento">
-<h2>3. Modelos de comportamento<a class="headerlink" href="#modelos-de-comportamento" title="Link to this heading">#</a></h2>
-<section id="maquinas-de-estados-statecharts">
-<h3>3.1 Máquinas de estados / Statecharts<a class="headerlink" href="#maquinas-de-estados-statecharts" title="Link to this heading">#</a></h3>
-<figure>
-  <img src="figures/fig2.png" width="450"/>
-  <figcaption>Figura 2 — Exemplo de máquina de estados (lógica de FSM).</figcaption>
-</figure>
 </section>
 <hr class="docutils" />
-<section id="redes-de-petri">
-<h3>3.2 Redes de Petri<a class="headerlink" href="#redes-de-petri" title="Link to this heading">#</a></h3>
-<figure>
-  <img src="figures/fig3.png" width="450"/>
-  <figcaption>Figura 3 — Rede de Petri básica.</figcaption>
-</figure>
-</section>
-<hr class="docutils" />
-<section id="grafcet-sfc">
-<h3>3.3 GRAFCET / SFC<a class="headerlink" href="#grafcet-sfc" title="Link to this heading">#</a></h3>
-<figure>
-  <img src="figures/fig4.png" width="450"/>
-  <figcaption>Figura 4 — Exemplo de GRAFCET (SFC).</figcaption>
-</figure>
-</section>
-</section>
-<hr class="docutils" />
-<section id="do-modelo-ao-plc">
-<h2>4. Do modelo ao PLC<a class="headerlink" href="#do-modelo-ao-plc" title="Link to this heading">#</a></h2>
-<figure>
-  <img src="figures/fig5.png" width="450"/>
-  <figcaption>Figura 5 — Mapeamento conceitual GRAFCET → Ladder.</figcaption>
-</figure>
-</section>
-<hr class="docutils" />
-<section id="exemplo-didatico-porta-automatica-de-garagem">
-<h2>5. Exemplo Didático — Porta Automática de Garagem<a class="headerlink" href="#exemplo-didatico-porta-automatica-de-garagem" title="Link to this heading">#</a></h2>
+<section id="extensoes">
+<h2>4. Extensões<a class="headerlink" href="#extensoes" title="Link to this heading">#</a></h2>
+<section id="arcos-ponderados">
+<h3>4.1 Arcos ponderados<a class="headerlink" href="#arcos-ponderados" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Entradas</strong>: sensor de presença, botão.</p></li>
-<li><p><strong>Saídas</strong>: motor, luz.</p></li>
+<li><p>Arcos podem ter peso <code class="docutils literal notranslate"><span class="pre">w</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>.</p></li>
+<li><p>Ex.: para disparar, a transição precisa de <code class="docutils literal notranslate"><span class="pre">w</span></code> tokens na posição de entrada.</p></li>
 </ul>
 </section>
+<section id="arcos-inibidores">
+<h3>4.2 Arcos inibidores<a class="headerlink" href="#arcos-inibidores" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Representados com <strong>bolinha</strong> na ponta.</p></li>
+<li><p>Uma transição <strong>não pode disparar</strong> se houver token na posição conectada por arco inibidor.</p></li>
+</ul>
+<p><img alt="Arco Inibidor" src="notebooks/modelagem/redesPetri/figuras/arco_inibidor.png" /></p>
+</section>
+</section>
 <hr class="docutils" />
-<section id="referencias">
-<h2>Referências<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
-<span class="target" id="id1"></span></section>
+<section id="exemplo-pratico-sistema-produtor-consumidor">
+<h2>5. Exemplo Prático – Sistema Produtor/Consumidor<a class="headerlink" href="#exemplo-pratico-sistema-produtor-consumidor" title="Link to this heading">#</a></h2>
+<p><img alt="Produtor-Consumidor" src="notebooks/modelagem/redesPetri/figuras/produtor_consumidor.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pBuffer</span></code>: representa o buffer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tProduzir</span></code>: adiciona item no buffer (token).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tConsumir</span></code>: remove item do buffer.</p></li>
+<li><p>Se o buffer estiver vazio (<code class="docutils literal notranslate"><span class="pre">pBuffer</span></code> sem token), <code class="docutils literal notranslate"><span class="pre">tConsumir</span></code> fica desabilitada.</p></li>
+<li><p>Se o buffer estiver cheio (n tokens), <code class="docutils literal notranslate"><span class="pre">tProduzir</span></code> é desabilitada.</p></li>
+</ul>
+<p>Esse modelo simples já evidencia <strong>sincronização e exclusão mútua</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="formalismo-matematico">
+<h2>6. Formalismo Matemático<a class="headerlink" href="#formalismo-matematico" title="Link to this heading">#</a></h2>
+<p>Uma rede de Petri é definida pelo quádruplo:</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -587,7 +590,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks\modelagem\mineracaoProcessos"
+            path: "./notebooks\modelagem\redesPetri"
         },
         predefinedOutput: true
     }
@@ -605,20 +608,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="mineracao-processos-fund.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Mineração de Processos - Fundamentos</p>
+        <p class="prev-next-title"><strong>Mineração de Processos</strong></p>
       </div>
     </a>
     <a class="right-next"
-       href="rpc_atividades_construcao.html"
+       href="../../complementos/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modelagem de Precedência com Redes de Petri Coloridas (CPN)</p>
+        <p class="prev-next-title">Complementos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -638,18 +641,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivos">Objetivos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceitos-fundamentais">1. Conceitos fundamentais</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fluxo-de-modelagem">2. Fluxo de modelagem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-comportamento">3. Modelos de comportamento</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-estados-statecharts">3.1 Máquinas de estados / Statecharts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri">3.2 Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafcet-sfc">3.3 GRAFCET / SFC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">1. Introdução</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal">2. Estrutura Formal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marcacao-e-dinamica">3. Marcação e Dinâmica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo">Exemplo:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-modelo-ao-plc">4. Do modelo ao PLC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-didatico-porta-automatica-de-garagem">5. Exemplo Didático — Porta Automática de Garagem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes">4. Extensões</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-ponderados">4.1 Arcos ponderados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-inibidores">4.2 Arcos inibidores</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-pratico-sistema-produtor-consumidor">5. Exemplo Prático – Sistema Produtor/Consumidor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalismo-matematico">6. Formalismo Matemático</a></li>
 </ul>
   </nav></div>
 

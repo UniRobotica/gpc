@@ -80,11 +80,17 @@ chapters:
           - file: notebooks/modelagem/mineracaoProcessos/mineracao-processos-intro.md
             title: Mineração de Processos - Introdução
           - file: notebooks/modelagem/mineracaoProcessos/mineracao-processos-fund.md
-            title: Mineração de Processos - Fundamentos
-          - file: notebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro.md
-            title: Modelagem de Sistemas - Introdução
-          - file: notebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao.ipynb
-            title: Modelagem com redes de Petri Colorida (em análise)
+            title: Mineração de Processos - Fundamentos          
+      # Redes de Petri
+      - file: notebooks/modelagem/redesPetri/index.md
+        title: Redes de Petri
+        sections:
+          #- file: notebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro.md
+          #  title: Modelagem de Sistemas - Introdução
+          #- file: notebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao.ipynb
+          #  title: Modelagem com redes de Petri Colorida (em análise)
+          - file: notebooks/modelagem/redesPetri/redesPetri-fund.md
+            title: Redes de Petri - Fundamentos
 
   # Capítulo 5: Complementos
   - file: notebooks/complementos/index.md
