@@ -244,7 +244,8 @@
 </ul>
 </details></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Redes de Petri</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Redes de Petri - Fundamentos</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Redes de Petri – Conceitos Fundamentais</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -467,20 +468,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">1. Introdução</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal">2. Estrutura Formal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marcacao-e-dinamica">3. Marcação e Dinâmica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo">Exemplo:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Redes de Petri – Conceitos Fundamentais</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri-why-what-when-e-how">Redes de Petri: Why, What, When e How</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-por-que-usar-redes-de-petri">Why – Por que usar Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-o-que-sao-redes-de-petri">What – O que são Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-quando-utilizar-redes-de-petri">When – Quando utilizar Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-como-aplicar-redes-de-petri">How – Como aplicar Redes de Petri</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes">4. Extensões</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-ponderados">4.1 Arcos ponderados</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-inibidores">4.2 Arcos inibidores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal-e-dinamica">Estrutura Formal e Dinâmica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes-das-redes-de-petri">Extensões das Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1-uma-biblioteca">Exemplo 1: uma biblioteca</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-pratico-sistema-produtor-consumidor">5. Exemplo Prático – Sistema Produtor/Consumidor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalismo-matematico">6. Formalismo Matemático</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abordagem-classica-de-modelagem">Abordagem clássica de modelagem</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#componentes-passivos-e-ativos-em-redes-de-petri">Componentes Passivos e Ativos em Redes de Petri</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-de-propriedades">Análise de Propriedades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-e-beneficios">Aplicações e Benefícios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -493,87 +504,89 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="redes-de-petri-conceitos-fundamentais">
 <h1>Redes de Petri – Conceitos Fundamentais<a class="headerlink" href="#redes-de-petri-conceitos-fundamentais" title="Link to this heading">#</a></h1>
-<section id="introducao">
-<h2>1. Introdução<a class="headerlink" href="#introducao" title="Link to this heading">#</a></h2>
-<p>As <strong>Redes de Petri</strong> são um formalismo matemático e gráfico para modelar sistemas dinâmicos, introduzido por <strong>Carl Adam Petri</strong> em 1962.<br />
-São amplamente usadas em engenharia de software, sistemas distribuídos, manufatura, telecomunicações e biologia.</p>
-<p>Principais características:</p>
+<p>O desenvolvimento de software nas décadas de 1960 e 1970 enfrentava desafios relacionados à <strong>complexidade crescente dos sistemas</strong> e à dificuldade de comunicação entre equipes. Nesse período, os ambientes de desenvolvimento eram colaborativos, utilizando <strong>quadros-negros (blackboards)</strong> como suporte central para a especificação de sistemas. Nos blackboards eram desenhados <strong>fluxogramas</strong>, <strong>diagramas de estados</strong>, <strong>redes de transição</strong> e outros esboços visuais, permitindo que os técnicos expressassem suas ideias de forma clara e imediata. Esse ambiente favorecia reuniões produtivas, com discussões colaborativas, e facilitava a compreensão e o compartilhamento das especificações.</p>
+<p><img alt="alt text" src="../../../_images/blackboardElet.png" /></p>
+<p>Com a transição para a <strong>programação online</strong>, os quadros foram substituídos por <strong>terminais</strong>, que não suportavam desenhos ou comunicação visual rica, resultando em perda de clareza e interação coletiva. Nesse contexto, a emergência da <strong>programação estruturada</strong> e do <strong>refinamento passo a passo (stepwise refinement)</strong> trouxe maior rigor ao desenvolvimento de software, estabelecendo métodos formais e disciplina para enfrentar a crescente complexidade dos sistemas.</p>
+<p><img alt="alt text" src="../../../_images/1970scomputers.png" /></p>
+<p>Foi nesse ambiente que surgiram as <strong>Redes de Petri</strong>, formalismo desenvolvido por <strong>Carl Adam Petri</strong> em 1962, capaz de combinar a expressividade visual dos blackboards com uma <strong>base matemática rigorosa</strong>. As Redes de Petri permitem representar <strong>estados, eventos, concorrência e sincronização</strong> de forma gráfica, oferecendo suporte para <strong>modelagem, edição, verificação e revisão de sistemas complexos</strong>. A notação formal combina clareza visual com precisão matemática, permitindo a análise de propriedades críticas, como <strong>alcance (reachability), vivacidade (liveness), deadlock e invariantes de lugar</strong>.</p>
+<p><img alt="Rede de Petri Dinâmica" src="../../../_images/4-philosophers.gif" /></p>
+<p>Nos anos 1980, <strong>Jacques Vautherin</strong> introduziu uma abordagem algébrica para Redes de Petri, substituindo tokens tradicionais por <strong>tipos de dados algébricos definidos pelo usuário</strong>, conferindo maior semântica e estrutura aos modelos. Wolfgang <strong>Reisig</strong> aprimorou esse formalismo, integrando-o com <strong>especificações algébricas formais</strong> para representar simultaneamente o <strong>controle</strong>, através da estrutura da rede, e os <strong>dados</strong>, por meio de tipos, assinaturas e axiomas. Essa combinação permitiu modelar sistemas de maneira modular e formal, preservando expressividade visual e precisão matemática.</p>
+<p>A história das Redes de Petri está intimamente ligada à <strong>crise do software</strong>, termo cunhado no final dos anos 1960 para descrever problemas emergentes no desenvolvimento de sistemas, como atrasos, custos excessivos e baixa qualidade. Durante a <strong>Conferência da OTAN sobre Engenharia de Software</strong>, realizada em Garmisch, Alemanha, em 1968, o termo foi utilizado oficialmente, destacando a frustração coletiva com os métodos da época. <strong>Edsger W. Dijkstra</strong>, em 1972, enfatizou que controlar a complexidade crescente dos sistemas era um dos problemas mais desafiadores da engenharia. Entre os sintomas da crise estavam o <strong>estouro de prazos e orçamentos</strong>, a entrega de <strong>software de baixa qualidade</strong> e sistemas difíceis de manter, frequentemente chamados de “<strong>vaporware</strong>”.</p>
+<p>As causas incluíam aumento rápido da <strong>complexidade dos sistemas</strong>, métodos de desenvolvimento artesanais, documentação insuficiente, manutenção dispendiosa e falta de <strong>profissionalização da área</strong>. A resposta emergente foi a formalização da <strong>engenharia de software</strong>, com metodologias sistemáticas, documentadas e quantificáveis. Surgiram técnicas estruturadas, ferramentas CASE e modelos de qualidade e maturidade de processos, como ISO 9001 e CMM (Capability Maturity Model). A crise também estimulou a adoção de <strong>formalismos teóricos</strong>, entre os quais as Redes de Petri se destacaram. Reisig ressalta o princípio <strong>“first model, then program”</strong>, defendendo que a modelagem formal deve preceder a implementação, especialmente em sistemas concorrentes e distribuídos.</p>
+<section id="redes-de-petri-why-what-when-e-how">
+<h2>Redes de Petri: Why, What, When e How<a class="headerlink" href="#redes-de-petri-why-what-when-e-how" title="Link to this heading">#</a></h2>
+<section id="why-por-que-usar-redes-de-petri">
+<h3>Why – Por que usar Redes de Petri<a class="headerlink" href="#why-por-que-usar-redes-de-petri" title="Link to this heading">#</a></h3>
+<p>As Redes de Petri são utilizadas para <strong>modelar e analisar sistemas dinâmicos</strong> caracterizados por <strong>concorrência, sincronização e compartilhamento de recursos</strong>. Seus principais benefícios incluem a representação <strong>gráfica e formal</strong>, que facilita a compreensão de sistemas complexos, e a capacidade de analisar propriedades essenciais, como <strong>alcance, vivacidade, deadlock e invariantes</strong>.</p>
+</section>
+<section id="what-o-que-sao-redes-de-petri">
+<h3>What – O que são Redes de Petri<a class="headerlink" href="#what-o-que-sao-redes-de-petri" title="Link to this heading">#</a></h3>
+<p>Uma Rede de Petri é composta por <strong>lugares (places)</strong>, que representam condições ou estados do sistema, <strong>transições (transitions)</strong>, que representam eventos ou ações, e <strong>tokens</strong>, que indicam a marcação atual do sistema. O grafo é <strong>bipartido</strong>, com arcos que conectam apenas lugares a transições ou transições a lugares. Essa estrutura permite combinar a <strong>representação visual intuitiva</strong> com uma <strong>base matemática rigorosa</strong>.</p>
+</section>
+<section id="when-quando-utilizar-redes-de-petri">
+<h3>When – Quando utilizar Redes de Petri<a class="headerlink" href="#when-quando-utilizar-redes-de-petri" title="Link to this heading">#</a></h3>
+<p>Redes de Petri são particularmente adequadas para sistemas que envolvem <strong>concorrência</strong>, <strong>protocolos de comunicação</strong>, <strong>sistemas distribuídos</strong>, <strong>controle e automação</strong>, bem como <strong>análise de desempenho e confiabilidade</strong>. Elas permitem simular o fluxo de tokens, validar algoritmos distribuídos e estudar a sincronização de eventos simultâneos, sendo uma ferramenta valiosa tanto para modelagem quanto para verificação formal.</p>
+</section>
+<section id="how-como-aplicar-redes-de-petri">
+<h3>How – Como aplicar Redes de Petri<a class="headerlink" href="#how-como-aplicar-redes-de-petri" title="Link to this heading">#</a></h3>
+<p>O processo de aplicação envolve a <strong>modelagem</strong>, construção de redes representando lugares, transições e tokens; <strong>análise</strong> das propriedades formais, como alcance, vivacidade e invariantes; <strong>simulação</strong> do comportamento dinâmico; <strong>validação</strong> comparando os resultados com o comportamento esperado; e <strong>refinamento</strong>, ajustando o modelo para maior precisão ou desempenho. Ferramentas como <strong>PIPE</strong> e <strong>WoPeD</strong> auxiliam na criação, edição e análise de redes de Petri.</p>
+</section>
+</section>
+<section id="estrutura-formal-e-dinamica">
+<h2>Estrutura Formal e Dinâmica<a class="headerlink" href="#estrutura-formal-e-dinamica" title="Link to this heading">#</a></h2>
+<p>Matematicamente, uma rede de Petri é definida pelo quádruplo <code class="docutils literal notranslate"><span class="pre">(P,</span> <span class="pre">T,</span> <span class="pre">F,</span> <span class="pre">M0)</span></code>, em que <code class="docutils literal notranslate"><span class="pre">P</span></code> é o conjunto de lugares, <code class="docutils literal notranslate"><span class="pre">T</span></code> o conjunto de transições, <code class="docutils literal notranslate"><span class="pre">F</span></code> a função que define os arcos e <code class="docutils literal notranslate"><span class="pre">M0</span></code> a marcação inicial. O <strong>estado de uma rede</strong> é representado pela <strong>marcação (M)</strong>, ou seja, a distribuição de tokens nos lugares. Uma <strong>transição é habilitada</strong> quando todas as suas posições de entrada possuem tokens suficientes. Ao <strong>disparar</strong>, a transição consome tokens das entradas e adiciona tokens nas saídas, alterando a marcação.</p>
+<section id="extensoes-das-redes-de-petri">
+<h3>Extensões das Redes de Petri<a class="headerlink" href="#extensoes-das-redes-de-petri" title="Link to this heading">#</a></h3>
+<p>As redes podem ser estendidas com <strong>arcos ponderados</strong>, que exigem múltiplos tokens para disparo, ou <strong>arcos inibidores</strong>, que impedem o disparo se houver token em um lugar específico. Essas extensões aumentam a expressividade do modelo, permitindo representar restrições complexas de sistemas reais.</p>
+</section>
+<section id="exemplo-1-uma-biblioteca">
+<h3>Exemplo 1: uma biblioteca<a class="headerlink" href="#exemplo-1-uma-biblioteca" title="Link to this heading">#</a></h3>
+<p><img alt="alt text" src="../../../_images/biblioteca1.png" /></p>
+<p><img alt="alt text" src="../../../_images/biblioteca2.png" /></p>
+<p><img alt="alt text" src="../../../_images/biblioteca3.png" /></p>
+<p><img alt="alt text" src="../../../_images/biblioteca4.png" /></p>
+<p><img alt="alt text" src="../../../_images/biblioteca5.png" /></p>
+<p><img alt="alt text" src="../../../_images/biblioteca6.png" /></p>
+</section>
+</section>
+<section id="abordagem-classica-de-modelagem">
+<h2>Abordagem clássica de modelagem<a class="headerlink" href="#abordagem-classica-de-modelagem" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="componentes-passivos-e-ativos-em-redes-de-petri">
+<h1>Componentes Passivos e Ativos em Redes de Petri<a class="headerlink" href="#componentes-passivos-e-ativos-em-redes-de-petri" title="Link to this heading">#</a></h1>
+<p>Em sistemas modelados com <strong>redes de Petri</strong>, é essencial distinguir <strong>componentes passivos</strong>, chamados <strong>lugares</strong>, e <strong>componentes ativos</strong>, chamados <strong>transições</strong>. Os lugares armazenam ou tornam informações visíveis. No exemplo de uma biblioteca, eles incluem <strong>contadores, estantes e o índice de livros emprestados</strong>. Esses lugares podem assumir diferentes estados e conter <strong>tokens</strong>, que representam objetos ou condições do sistema. Já as transições produzem, transportam ou modificam objetos. No mesmo exemplo, as transições representam os <strong>usuários da biblioteca</strong> em suas funções de pedido, retirada e devolução de livros, assim como as ações de <strong>retirar livros das estantes</strong> ou <strong>colocá-los de volta</strong>.</p>
+<p>As redes são representadas por <strong>círculos para lugares</strong> e <strong>retângulos para transições</strong>, conectados por <strong>arcos</strong> que indicam o fluxo de objetos ou informações. Não se deve conectar dois lugares ou duas transições diretamente, pois isso violaria a separação conceitual entre componentes passivos e ativos. Essa regra garante que todos os elementos reais do sistema sejam corretamente modelados. Por exemplo, ao representar um <strong>canal de comunicação</strong> entre computadores, é incorreto conectar dois computadores diretamente sem modelar o canal como um <strong>lugar</strong> separado, já que ele pode alterar ou perder dados. Redes de Petri permitem representar essas ações e ainda possibilitam que vários computadores compartilhem o mesmo lugar.</p>
+<p><img alt="alt text" src="../../../_images/computadores.png" /></p>
+<p>Uma vez estruturada a rede em lugares e transições, é possível evoluir para um modelo de <strong>comportamento dinâmico</strong>. No exemplo da biblioteca, os lugares contêm objetos concretos, como formulários de pedido preenchidos, livros nos balcões de retirada ou devolução, cartões no índice de livros emprestados e livros nas estantes. As transições redistribuem esses objetos conforme regras definidas pelo sistema: formulários são processados pela transição de empréstimo, livros são retirados das estantes e levados ao balcão de retirada, usuários pegam os livros que solicitaram, e livros devolvidos são recolocados nas estantes.</p>
+<p>Essa abordagem permite modelar o <strong>fluxo de objetos e ações</strong> de forma estruturada, transformando uma rede estática de lugares e transições em uma <strong>rede dinâmica</strong>, apta para análise formal do comportamento do sistema.</p>
+<section id="analise-de-propriedades">
+<h2>Análise de Propriedades<a class="headerlink" href="#analise-de-propriedades" title="Link to this heading">#</a></h2>
+<p>As redes de Petri permitem analisar propriedades formais essenciais:</p>
 <ul class="simple">
-<li><p>Descrevem <strong>concorrência, sincronização e causalidade</strong>.</p></li>
-<li><p>Representam graficamente <strong>estados e eventos</strong>.</p></li>
-<li><p>Permitem <strong>análise formal rigorosa</strong>.</p></li>
+<li><p><strong>Alcance (Reachability):</strong> conjunto de todas as marcações alcançáveis a partir de uma inicial.</p></li>
+<li><p><strong>Limitabilidade (Boundedness):</strong> uma posição é k-limitada se nunca acumula mais que k tokens; a rede é limitada se todas as posições forem k-limitadas.</p></li>
+<li><p><strong>Conservação:</strong> a soma de tokens em todas as posições permanece constante durante a execução.</p></li>
+<li><p><strong>Vivacidade (Liveness):</strong> uma transição é viva se, em algum momento futuro, ainda pode ser disparada; garante que não haja deadlocks.</p></li>
 </ul>
 </section>
-<hr class="docutils" />
-<section id="estrutura-formal">
-<h2>2. Estrutura Formal<a class="headerlink" href="#estrutura-formal" title="Link to this heading">#</a></h2>
-<p>Uma rede de Petri é um <strong>grafo bipartido direcionado</strong> composto por:</p>
-<ul class="simple">
-<li><p><strong>Posições (places)</strong>: estados possíveis do sistema, representados por círculos.</p></li>
-<li><p><strong>Transições (transitions)</strong>: eventos ou atividades, representados por retângulos/barras.</p></li>
-<li><p><strong>Arcos (arcs)</strong>: conectam posições e transições, nunca elementos do mesmo tipo.</p></li>
-<li><p><strong>Tokens (fichas)</strong>: pontos pretos nas posições, representam a <strong>marcação</strong> (estado atual).</p></li>
-</ul>
-<p><img alt="Exemplo de Rede de Petri" src="notebooks/modelagem/redesPetri/figuras/rede_basica.png" /></p>
+<section id="aplicacoes-e-beneficios">
+<h2>Aplicações e Benefícios<a class="headerlink" href="#aplicacoes-e-beneficios" title="Link to this heading">#</a></h2>
+<p>Redes de Petri são utilizadas para <strong>modelagem de sistemas concorrentes e distribuídos</strong>, <strong>verificação formal de propriedades</strong> como segurança, deadlock e performance, e se aplicam em áreas como <strong>automação industrial, redes de computadores, sistemas biológicos, engenharia de software e workflows</strong>. Elas combinam <strong>representação visual intuitiva</strong> e <strong>base formal rigorosa</strong>, sendo uma ferramenta essencial para análise e especificação de sistemas complexos.</p>
+<p><img alt="alt text" src="../../../_images/elementos.png" /></p>
+<p><img alt="alt text" src="../../../_images/disparo.png" /></p>
+<p><img alt="alt text" src="../../../_images/matrizes.png" /></p>
 </section>
 <hr class="docutils" />
-<section id="marcacao-e-dinamica">
-<h2>3. Marcação e Dinâmica<a class="headerlink" href="#marcacao-e-dinamica" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>O <strong>estado</strong> de uma rede é dado pela <strong>marcação</strong> <code class="docutils literal notranslate"><span class="pre">M</span></code>, isto é, a distribuição de tokens nas posições.</p></li>
-<li><p>Uma <strong>transição é habilitada</strong> se todas as suas posições de entrada têm tokens suficientes (conforme peso dos arcos).</p></li>
-<li><p>Ao <strong>disparar</strong>:</p>
-<ul>
-<li><p>Consome tokens das entradas.</p></li>
-<li><p>Produz tokens nas saídas.</p></li>
-</ul>
-</li>
-</ul>
-<section id="exemplo">
-<h3>Exemplo:<a class="headerlink" href="#exemplo" title="Link to this heading">#</a></h3>
-<p><img alt="Exemplo de disparo" src="notebooks/modelagem/redesPetri/figuras/disparo.png" /></p>
+<section id="referencias">
+<h2>Referências<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Transição <code class="docutils literal notranslate"><span class="pre">t1</span></code> habilitada porque <code class="docutils literal notranslate"><span class="pre">p1</span></code> contém um token.</p></li>
-<li><p>Após disparo de <code class="docutils literal notranslate"><span class="pre">t1</span></code>, token é removido de <code class="docutils literal notranslate"><span class="pre">p1</span></code> e adicionado em <code class="docutils literal notranslate"><span class="pre">p2</span></code>.</p></li>
+<li><p>Vautherin, J. (1985). <em>Un Modèle Algébrique, Basé sur les Réseaux de Petri, pour l’Etude des Systèmes Parallèles</em>. Thèse de Docteur Ingénieur, Université de Paris-Sud.</p></li>
+<li><p>Reisig, W. (1991). <em>Petri nets and algebraic specifications</em>. Theoretical Computer Science, 80(1), 1–34.</p></li>
+<li><p>Jensen, K. (1996). <em>Coloured Petri Nets: Basic Concepts, Analysis Methods and Practical Use</em>. Springer-Verlag.</p></li>
+<li><p>Murata, T. (1989). <em>Petri Nets: Properties, Analysis and Applications</em>. Proceedings of the IEEE, 77(4), 541–580.</p></li>
+<li><p>Reisig, W. <em>A Primer in Petri Nets</em>. Springer, 2013.</p></li>
 </ol>
-</section>
-</section>
-<hr class="docutils" />
-<section id="extensoes">
-<h2>4. Extensões<a class="headerlink" href="#extensoes" title="Link to this heading">#</a></h2>
-<section id="arcos-ponderados">
-<h3>4.1 Arcos ponderados<a class="headerlink" href="#arcos-ponderados" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Arcos podem ter peso <code class="docutils literal notranslate"><span class="pre">w</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>.</p></li>
-<li><p>Ex.: para disparar, a transição precisa de <code class="docutils literal notranslate"><span class="pre">w</span></code> tokens na posição de entrada.</p></li>
-</ul>
-</section>
-<section id="arcos-inibidores">
-<h3>4.2 Arcos inibidores<a class="headerlink" href="#arcos-inibidores" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Representados com <strong>bolinha</strong> na ponta.</p></li>
-<li><p>Uma transição <strong>não pode disparar</strong> se houver token na posição conectada por arco inibidor.</p></li>
-</ul>
-<p><img alt="Arco Inibidor" src="notebooks/modelagem/redesPetri/figuras/arco_inibidor.png" /></p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="exemplo-pratico-sistema-produtor-consumidor">
-<h2>5. Exemplo Prático – Sistema Produtor/Consumidor<a class="headerlink" href="#exemplo-pratico-sistema-produtor-consumidor" title="Link to this heading">#</a></h2>
-<p><img alt="Produtor-Consumidor" src="notebooks/modelagem/redesPetri/figuras/produtor_consumidor.png" /></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pBuffer</span></code>: representa o buffer.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tProduzir</span></code>: adiciona item no buffer (token).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tConsumir</span></code>: remove item do buffer.</p></li>
-<li><p>Se o buffer estiver vazio (<code class="docutils literal notranslate"><span class="pre">pBuffer</span></code> sem token), <code class="docutils literal notranslate"><span class="pre">tConsumir</span></code> fica desabilitada.</p></li>
-<li><p>Se o buffer estiver cheio (n tokens), <code class="docutils literal notranslate"><span class="pre">tProduzir</span></code> é desabilitada.</p></li>
-</ul>
-<p>Esse modelo simples já evidencia <strong>sincronização e exclusão mútua</strong>.</p>
-</section>
-<hr class="docutils" />
-<section id="formalismo-matematico">
-<h2>6. Formalismo Matemático<a class="headerlink" href="#formalismo-matematico" title="Link to this heading">#</a></h2>
-<p>Uma rede de Petri é definida pelo quádruplo:</p>
 </section>
 </section>
 
@@ -641,20 +654,30 @@ São amplamente usadas em engenharia de software, sistemas distribuídos, manufa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducao">1. Introdução</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal">2. Estrutura Formal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marcacao-e-dinamica">3. Marcação e Dinâmica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo">Exemplo:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Redes de Petri – Conceitos Fundamentais</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri-why-what-when-e-how">Redes de Petri: Why, What, When e How</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-por-que-usar-redes-de-petri">Why – Por que usar Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-o-que-sao-redes-de-petri">What – O que são Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-quando-utilizar-redes-de-petri">When – Quando utilizar Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-como-aplicar-redes-de-petri">How – Como aplicar Redes de Petri</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes">4. Extensões</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-ponderados">4.1 Arcos ponderados</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arcos-inibidores">4.2 Arcos inibidores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal-e-dinamica">Estrutura Formal e Dinâmica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes-das-redes-de-petri">Extensões das Redes de Petri</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1-uma-biblioteca">Exemplo 1: uma biblioteca</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-pratico-sistema-produtor-consumidor">5. Exemplo Prático – Sistema Produtor/Consumidor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalismo-matematico">6. Formalismo Matemático</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abordagem-classica-de-modelagem">Abordagem clássica de modelagem</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#componentes-passivos-e-ativos-em-redes-de-petri">Componentes Passivos e Ativos em Redes de Petri</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-de-propriedades">Análise de Propriedades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-e-beneficios">Aplicações e Benefícios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
