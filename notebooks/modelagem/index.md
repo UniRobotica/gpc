@@ -22,4 +22,7 @@ Esta seção explora como práticas de modelagem e técnicas de tailoring podem 
    Explicação dos conceitos fundamentais da mineração de processos, incluindo técnicas, ferramentas e estudos de caso.
 
 5. **[Redes de Petri - Fundamentos](redesPetri/redesPetri-fund.md)**  
-Explicação dos conceitos fundamentais da mineração de processos, incluindo técnicas, ferramentas e estudos de caso.
+Fundamentos de redes de Petri.
+
+6. **[Redes de Petri - Condição/Evento](redesPetri/redesPetri-CE.md)**  
+Redes de Petri Condição/Evento.

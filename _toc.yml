@@ -91,6 +91,8 @@ chapters:
           #  title: Modelagem com redes de Petri Colorida (em análise)
           - file: notebooks/modelagem/redesPetri/redesPetri-fund.md
             title: Redes de Petri - Fundamentos
+          - file: notebooks/modelagem/redesPetri/redesPetri-CE.md
+            title: Redes de Petri - Condição/Evento
 
   # Capítulo 5: Complementos
   - file: notebooks/complementos/index.md

@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Capítulo 2 – Redes Condição-Evento (Condition/Event Nets) &#8212; Gerenciamento de Projetos e Contratos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/redesPetri-CE';</script>
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Complementos" href="../../complementos/index.html" />
+    <link rel="prev" title="Redes de Petri – Conceitos Fundamentais" href="redesPetri-fund.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-light" alt="Gerenciamento de Projetos e Contratos - Home"/>
+    <script>document.write(`<img src="../../../_static/UniRoboticaAzulSemFundo.png" class="logo__image only-dark" alt="Gerenciamento de Projetos e Contratos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Gerenciamento de Projetos e Contratos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../PMBOK/PMBOK7.html">PMBOK 7ª Edição – Guia do Conhecimento em Gerenciamento de Projetos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dominios/index.html">Domínios de Desempenho</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/planejamento/index.html">Planejamento</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/planejamento/pertcpm-construcao-civil.html">PERT/CPM na Construção Civil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/planejamento/pertcpm-calculo-incertezas.html">PERT/CPM – Cálculo de Incertezas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/entrega/index.html">Entrega</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/entrega/aquisicoes.html">Gerenciamento de Aquisições</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/entrega/aquisicoes-exemplo.html">Exemplo de Gerenciamento de Aquisições com Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/medicao/index.html">Medição</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/controle-estatistico-processos.html">Introdução ao Controle Estatístico de Processos (CEP) e Gráficos de Controle</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/cep-situacoes-atencao.html">CEP – Situações de Atenção</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/cep-acoes-correcao.html">Ações de correção para situações de atenção</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-fund.html">Técnica do Valor Agregado – Fundamentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-projetos.html">Técnica do Valor Agregado em Projetos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/medicao/tecnica-valor-agregado-construcao.html">Técnica do Valor Agregado na Construção Civil</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dominios/incertezas/index.html">Incertezas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dominios/incertezas/monte-carlo.html">Simulação de Monte Carlo</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Práticas de Modelagem e Tailoring</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tailoring/index.html">Tailoring</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tailoring/tailoring-intro.html">Aula: Tailoring no PMBOK 7ª Edição</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../BIM/index.html">BIM (Building Information Modeling)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../BIM/BIM.html">O que é BIM?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../BIM/BIM-exemplo.html">Exemplo de uso de modelo IFC BIM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mineracaoProcessos/index.html">Mineração de Processos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-intro.html">Mineração de Processos - Introdução</a></li>
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../mineracaoProcessos/mineracao-processos-fund.html">Mineração de Processos - Fundamentos</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Redes de Petri</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="redesPetri-fund.html">Redes de Petri – Conceitos Fundamentais</a></li>
+
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Redes de Petri - Condição/Evento</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../complementos/index.html">Complementos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../complementos/conteudo-programatico.html">Conteúdo Programático (sem. 2025.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../complementos/historico-qualidade.html">Histórico da Qualidade</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../referencias.html">Referências Bibliográficas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/redesPetri/redesPetri-CE.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/redesPetri/redesPetri-CE.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/modelagem/redesPetri/redesPetri-CE.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#da-agencia-canal-as-redes-de-petri">Da Agência-Canal às Redes de Petri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#um-exemplo">2.1 Um Exemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regras-formais">2.2 Regras Formais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicoes">Definições:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conflitos">2.3 Conflitos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contatos-e-complementacao">2.4 Contatos e Complementação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processos-em-redes-condicao-evento">2.5 Processos em Redes Condição-Evento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ocorrencias-repetidas">Ocorrências repetidas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencia-ou-independencia">Sequência ou independência?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representacao-de-processos">Representação de processos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-free-nets">Contact-Free Nets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construcao-de-processos">Construção de processos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos">2.6 Exemplos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="capitulo-2-redes-condicao-evento-condition-event-nets">
+<h1>Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)<a class="headerlink" href="#capitulo-2-redes-condicao-evento-condition-event-nets" title="Link to this heading">#</a></h1>
+<section id="da-agencia-canal-as-redes-de-petri">
+<h2>Da Agência-Canal às Redes de Petri<a class="headerlink" href="#da-agencia-canal-as-redes-de-petri" title="Link to this heading">#</a></h2>
+<p>Na formulação original de Carl Adam Petri (1962), as redes foram concebidas para descrever <strong>sistemas de comunicação</strong>. Ele utilizava a ideia de <strong>channel/agency nets</strong>, onde:</p>
+<ul class="simple">
+<li><p><strong>Agencies</strong> eram elementos ativos, que executavam transformações.</p></li>
+<li><p><strong>Channels</strong> eram meios de transporte ou armazenamento de objetos.</p></li>
+</ul>
+<p>Com o amadurecimento da teoria, essa visão foi refinada para <strong>condition/event nets</strong>, que enfatizam a estrutura lógica:</p>
+<ul class="simple">
+<li><p><strong>Conditions</strong> → estados possíveis do sistema (verdadeiros ou falsos).</p></li>
+<li><p><strong>Events</strong> → transformações que alteram quais condições são verdadeiras.</p></li>
+</ul>
+<p>Mais tarde, a mesma estrutura foi representada como <strong>place/transition nets</strong> (a notação mais comum hoje):</p>
+<ul class="simple">
+<li><p><strong>Places</strong> correspondem às condições.</p></li>
+<li><p><strong>Transitions</strong> correspondem aos eventos.</p></li>
+</ul>
+<p>Assim, <em>condition/event nets</em> podem ser vistas como a <strong>primeira formulação estruturada das redes de Petri</strong>, imediatamente anterior ao formalismo <em>place/transition</em>. Neste capítulo, seguimos a terminologia de Reisig, que parte das <strong>redes condição-evento</strong> para introduzir gradualmente o formalismo mais geral.</p>
+</section>
+<hr class="docutils" />
+<section id="um-exemplo">
+<h2>2.1 Um Exemplo<a class="headerlink" href="#um-exemplo" title="Link to this heading">#</a></h2>
+<p>Considere um sistema genérico onde objetos são:</p>
+<ol class="arabic simple">
+<li><p><strong>Produzidos</strong>,</p></li>
+<li><p><strong>Armazenados em um canal</strong>,</p></li>
+<li><p><strong>Removidos em algum instante</strong>,</p></li>
+<li><p><strong>Consumidos</strong> posteriormente.</p></li>
+</ol>
+<p>Esses objetos podem ser <strong>bens, mensagens, dinheiro, dados ou serviços</strong>. O interesse está no <strong>padrão comum de comportamento</strong>, e não em um domínio específico.</p>
+<ul class="simple">
+<li><p>O evento <strong>deliver</strong> pode ocorrer quando:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{prod\_ready\_deliver} = 1 
+\quad \land \quad 
+\text{channel\_occupied} = 0 
+\quad \land \quad 
+\text{prod\_ready\_producer} = 0
+\]</div>
+<ul class="simple">
+<li><p>Após sua ocorrência, temos:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{prod\_ready\_deliver} \gets 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{channel\_occupied} \gets 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{prod\_ready\_producer} \gets 1
+\]</div>
+<p><img alt="alt text" src="../../../_images/Fig11ProdCons.png" /></p>
+</section>
+<section id="id1">
+<h2><img alt="alt text" src="../../../_images/Fig13DisparoCE.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="regras-formais">
+<h2>2.2 Regras Formais<a class="headerlink" href="#regras-formais" title="Link to this heading">#</a></h2>
+<p>Uma rede condição-evento é composta por:</p>
+<ul class="simple">
+<li><p><strong>Condições</strong> (<span class="math notranslate nohighlight">\(b \in B\)</span>), representadas por círculos;</p></li>
+<li><p><strong>Eventos</strong> (<span class="math notranslate nohighlight">\(e \in E\)</span>), representados por retângulos;</p></li>
+<li><p><strong>Arcos</strong> de condições para eventos (<span class="math notranslate nohighlight">\(b \to e\)</span>) e de eventos para condições (<span class="math notranslate nohighlight">\(e \to b\)</span>);</p></li>
+<li><p><strong>Tokens</strong> (&#64;), representando quais condições estão satisfeitas.</p></li>
+</ul>
+<section id="definicoes">
+<h3>Definições:<a class="headerlink" href="#definicoes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(b \to e\)</span> significa que <span class="math notranslate nohighlight">\(b\)</span> é <strong>pré-condição</strong> de <span class="math notranslate nohighlight">\(e\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e \to b\)</span> significa que <span class="math notranslate nohighlight">\(b\)</span> é <strong>pós-condição</strong> de <span class="math notranslate nohighlight">\(e\)</span>.</p></li>
+<li><p>Um <strong>caso</strong> é o conjunto <span class="math notranslate nohighlight">\(C \subseteq B\)</span> de condições satisfeitas.</p></li>
+</ul>
+<p>Um evento <span class="math notranslate nohighlight">\(e\)</span> está <strong>ativado</strong> em <span class="math notranslate nohighlight">\(C\)</span> se:</p>
+<div class="math notranslate nohighlight">
+\[
+\forall b \in \text{pre}(e): b \in C 
+\quad \land \quad 
+\forall b \in \text{post}(e): b \notin C
+\]</div>
+<p>Quando <span class="math notranslate nohighlight">\(e\)</span> ocorre, o novo caso é:</p>
+<div class="math notranslate nohighlight">
+\[
+C' = (C \setminus \text{pre}(e)) \cup \text{post}(e)
+\]</div>
+<p><img alt="alt text" src="../../../_images/Fig12DisparoCE.png" /></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conflitos">
+<h2>2.3 Conflitos<a class="headerlink" href="#conflitos" title="Link to this heading">#</a></h2>
+<p>Dois eventos <span class="math notranslate nohighlight">\(e_1, e_2\)</span> estão em <strong>conflito</strong> se ambos são ativados, mas a ocorrência de um desativa o outro.</p>
+<p>Formalmente:</p>
+<div class="math notranslate nohighlight">
+\[
+e_1, e_2 \in E \text{ estão em conflito em } C 
+\iff 
+(e_1 \text{ ativado em } C \land e_2 \text{ ativado em } C)
+\land 
+\big( C'_{e_1} \not\models e_2 \;\; \lor \;\; C'_{e_2} \not\models e_1 \big)
+\]</div>
+<p>Exemplo: dois processos competindo por uma chave para acessar memória.</p>
+<p><img alt="Dois processos competindo pelo recurso" src="../../../_images/Fig15CompRec.png" /></p>
+<p><img alt="alt text" src="../../../_images/Fig16-17Conflito.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="contatos-e-complementacao">
+<h2>2.4 Contatos e Complementação<a class="headerlink" href="#contatos-e-complementacao" title="Link to this heading">#</a></h2>
+<p>Um <strong>contato</strong> ocorre quando:</p>
+<ul class="simple">
+<li><p>todas as pré-condições de um evento estão satisfeitas,</p></li>
+<li><p><strong>e pelo menos uma de suas pós-condições também está satisfeita</strong>.</p></li>
+</ul>
+<p>Formalmente:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Contato}(e, C) \iff 
+\big( \text{pre}(e) \subseteq C \big) 
+\land 
+\big( \text{post}(e) \cap C \neq \emptyset \big)
+\]</div>
+<p>Para eliminar contatos, introduz-se a <strong>condição complementar</strong>:</p>
+<ul class="simple">
+<li><p>Para cada condição <span class="math notranslate nohighlight">\(b\)</span>, define-se <span class="math notranslate nohighlight">\(b'\)</span> tal que:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> pré-condição de <span class="math notranslate nohighlight">\(e \iff b'\)</span> é pós-condição de <span class="math notranslate nohighlight">\(e\)</span>.</p></li>
+<li><p>Em qualquer caso, exatamente um de <span class="math notranslate nohighlight">\(\{b, b'\}\)</span> está satisfeito.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="Exemplo de canal com complemento &quot;empty&quot;" src="../../../_images/Fig18Complemento.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="processos-em-redes-condicao-evento">
+<h2>2.5 Processos em Redes Condição-Evento<a class="headerlink" href="#processos-em-redes-condicao-evento" title="Link to this heading">#</a></h2>
+<p>Em redes condição-evento, como discutido na Seção 2.2, sempre há a indicação de um <strong>caso inicial</strong>.<br />
+A partir dele (ou de outro caso), <strong>eventos podem ocorrer</strong> e, como consequência, os casos podem ser modificados.</p>
+<p>Um <strong>complexo de eventos desse tipo é chamado de processo</strong>.<br />
+É importante observar que aqui <em>processo</em> significa <strong>coleção de ocorrências de eventos</strong> em sistemas ou redes, e <strong>não</strong> o mesmo conceito de <em>processo</em> do sistema operacional (como discutido na Seção 2.3).</p>
+<section id="ocorrencias-repetidas">
+<h3>Ocorrências repetidas<a class="headerlink" href="#ocorrencias-repetidas" title="Link to this heading">#</a></h3>
+<p>Em um processo, eventos podem <strong>se repetir</strong>.  Condições podem <strong>mudar repetidamente</strong> ao longo da evolução.</p>
+</section>
+<section id="sequencia-ou-independencia">
+<h3>Sequência ou independência?<a class="headerlink" href="#sequencia-ou-independencia" title="Link to this heading">#</a></h3>
+<p>Seria tentador definir um processo apenas como uma <strong>sequência de eventos</strong>.<br />
+No entanto, essa definição é inadequada:</p>
+<ul>
+<li><p>Em certos casos, dois eventos são <strong>independentes</strong>.</p></li>
+<li><p>Exemplo: na <strong>Figura 13</strong>, os eventos <em>produce</em> e <em>receive</em> podem ocorrer independentemente.</p>
+<ul class="simple">
+<li><p>A representação <em>“primeiro produção, depois recebimento”</em> é <strong>tão correta (e errada)</strong> quanto <em>“primeiro recebimento, depois produção”</em>.</p></li>
+<li><p>A rede não impõe ordem.</p></li>
+</ul>
+<p><img alt="alt text" src="../../../_images/Fig13DisparoCE.png" /></p>
+</li>
+</ul>
+<p>Portanto, <strong>um processo não deve impor sequências arbitrárias</strong> quando eventos podem ocorrer <strong>em paralelo</strong>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Se a ordem entre eventos for <strong>importante para o sistema</strong>, medidas podem ser adotadas para forçar uma sequência.</p></li>
+<li><p>Exemplo: na <strong>Figura 20</strong>, condições complementares <span class="math notranslate nohighlight">\(b_0, b_1\)</span> e um evento <span class="math notranslate nohighlight">\(e\)</span> forçam que, após a ocorrência do primeiro evento (<em>produção</em> ou <em>recebimento</em>), o evento <span class="math notranslate nohighlight">\(e\)</span> deve ocorrer antes que o outro aconteça.</p></li>
+<li><p>Assim, onde a ordem for necessária, ela pode (e deve) ser imposta.</p></li>
+<li><p>Mas, onde isso não é o caso, deve-se <strong>manter explícita a independência</strong> (paralelismo, concorrência, não-sequencialidade).</p></li>
+</ul>
+<p><img alt="alt text" src="../../../_images/Fig20Arbitrariedade.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="representacao-de-processos">
+<h3>Representação de processos<a class="headerlink" href="#representacao-de-processos" title="Link to this heading">#</a></h3>
+<p>Para representar processos de modo adequado:</p>
+<ul class="simple">
+<li><p>Cada <strong>ocorrência de evento</strong> é representada como um <strong>retângulo</strong> (box).</p></li>
+<li><p>Cada <strong>realização de condição</strong> é representada como um <strong>círculo</strong>.</p></li>
+<li><p><strong>Inscrições</strong> identificam os eventos e condições correspondentes.</p></li>
+<li><p><strong>Setas (arcos)</strong> indicam a <strong>relação causal</strong> entre condições satisfeitas e eventos ocorridos.</p></li>
+</ul>
+<p>Essa forma de representação é ilustrada na <strong>Figura 21</strong>, baseada na <strong>Figura 18</strong>.</p>
+<blockquote>
+<div><p>Observação: Apenas redes <strong>livres de contato</strong> podem ser representadas diretamente dessa forma.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="contact-free-nets">
+<h3>Contact-Free Nets<a class="headerlink" href="#contact-free-nets" title="Link to this heading">#</a></h3>
+<p>Apesar dessa restrição, isso não é uma limitação real.</p>
+<ul class="simple">
+<li><p>Vimos na Seção 2.4 que qualquer rede condição-evento pode ser transformada em <strong>rede livre de contato</strong> por meio da <strong>introdução de condições complementares</strong>.</p></li>
+<li><p>Assim, qualquer rede pode ser representada como processo.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="construcao-de-processos">
+<h3>Construção de processos<a class="headerlink" href="#construcao-de-processos" title="Link to this heading">#</a></h3>
+<p>A <strong>Figura 21</strong> mostra um exemplo da construção de processos.<br />
+A representação em forma de grafo causal explicita a independência e a ordem imposta apenas quando necessário.</p>
+<p>Essa abordagem constitui a base para compreender a <strong>concorrência em redes de Petri</strong>, pois os processos capturam:</p>
+<ul class="simple">
+<li><p><strong>Sequências obrigatórias</strong>, quando a estrutura da rede impõe ordem;</p></li>
+<li><p><strong>Independência</strong>, quando eventos podem ocorrer em paralelo.</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2><img alt="alt text" src="../../../_images/Fig21Proc.png" /><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="exemplos">
+<h2>2.6 Exemplos<a class="headerlink" href="#exemplos" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Sistema de Produção com Máquinas e Operadores</strong> – representação de fluxos alternativos.</p></li>
+</ol>
+<p><img alt="alt text" src="../../../_images/Fig24ExMaqOper.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Posto de Gasolina Self-Service</strong> – modelagem de filas, uso de bombas e pagamento.</p></li>
+</ol>
+<p><img alt="alt text" src="../../../_images/Fig25ExAbast.png" /></p>
+<p><img alt="alt text" src="notebooks/modelagem/redesPetri/ExConstCivil.png" /></p>
+</section>
+<section id="referencias">
+<h2>Referências<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
+<p><span id="id3">[<a class="reference internal" href="../../referencias.html#id3" title="Bruno de Athayde Prata, Gustavo Bessa Prata, and José de Paula Barros Neto. Modelo de simulação da movimentação de materiais em um canteiro de obras: um estudo ao caso do transporte de concreto. In ABEPRO-SIMPEP. Simpósio de Engenharia de Produção, 2004.">PPBN04</a>]</span>
+<span id="id4">[<a class="reference internal" href="../../referencias.html#id2" title="Wolfgang Reisig. A primer in Petri net design. Springer Science &amp; Business Media, 2012.">Rei12</a>]</span></p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "UniRobotica/gpc",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks\modelagem\redesPetri"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="redesPetri-fund.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Redes de Petri – Conceitos Fundamentais</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../complementos/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complementos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#da-agencia-canal-as-redes-de-petri">Da Agência-Canal às Redes de Petri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#um-exemplo">2.1 Um Exemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regras-formais">2.2 Regras Formais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicoes">Definições:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conflitos">2.3 Conflitos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contatos-e-complementacao">2.4 Contatos e Complementação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processos-em-redes-condicao-evento">2.5 Processos em Redes Condição-Evento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ocorrencias-repetidas">Ocorrências repetidas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencia-ou-independencia">Sequência ou independência?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representacao-de-processos">Representação de processos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-free-nets">Contact-Free Nets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construcao-de-processos">Construção de processos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos">2.6 Exemplos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By UniRobótica
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

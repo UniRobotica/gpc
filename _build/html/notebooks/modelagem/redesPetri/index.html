@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Mineração de Processos &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Redes de Petri &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/index';</script>
     <link rel="icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -246,6 +248,7 @@
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Redes de Petri</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="redesPetri-fund.html">Redes de Petri – Conceitos Fundamentais</a></li>
 
+<li class="toctree-l3"><a class="reference internal" href="redesPetri-CE.html">Redes de Petri - Condição/Evento</a></li>
 </ul>
 </details></li>
 </ul>
@@ -458,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Mineração de Processos</h1>
+    <h1>Redes de Petri</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -480,8 +483,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mineracao-de-processos">
-<h1><strong>Mineração de Processos</strong><a class="headerlink" href="#mineracao-de-processos" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="redes-de-petri">
+<h1><strong>Redes de Petri</strong><a class="headerlink" href="#redes-de-petri" title="Link to this heading">#</a></h1>
 <p>Nesta seção, exploraremos o conceito e a aplicação de *<em>Redes de Petri</em>.</p>
 <section id="conteudo">
 <h2><strong>Conteúdo</strong><a class="headerlink" href="#conteudo" title="Link to this heading">#</a></h2>
@@ -489,6 +492,7 @@ document.write(`
 <li><p><strong>Fundamentos</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="redesPetri-fund.html"><span class="std std-doc">Leia mais…</span></a></p></li>
+<li><p><a class="reference internal" href="redesPetri-CE.html"><span class="std std-doc">Leia mais…</span></a></p></li>
 </ul>
 </li>
 </ol>
