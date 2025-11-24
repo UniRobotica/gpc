@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Redes de Petri – Conceitos Fundamentais &#8212; Gerenciamento de Projetos e Contratos</title>
+    <title>Capítulo 2 – Redes Condição-Evento (Condition/Event Nets) &#8212; Gerenciamento de Projetos e Contratos</title>
   
   
   
@@ -57,12 +57,14 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/redesPetri-fund';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modelagem/redesPetri/redesPetri-CE-copy';</script>
     <link rel="icon" href="../../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)" href="redesPetri-CE.html" />
-    <link rel="prev" title="Redes de Petri" href="index.html" />
+    <link rel="next" title="Complementos" href="../../complementos/index.html" />
+    <link rel="prev" title="Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)" href="redesPetri-CE.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -244,10 +246,10 @@
 </ul>
 </details></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Redes de Petri</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Redes de Petri – Conceitos Fundamentais</a></li>
+<li class="toctree-l3"><a class="reference internal" href="redesPetri-fund.html">Redes de Petri – Conceitos Fundamentais</a></li>
 
 <li class="toctree-l3"><a class="reference internal" href="redesPetri-CE.html">Redes de Petri - Condição/Evento</a></li>
-<li class="toctree-l3"><a class="reference internal" href="redesPetri-CE-copy.html">Redes de Petri - Condição/Evento</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Redes de Petri - Condição/Evento</a></li>
 </ul>
 </details></li>
 </ul>
@@ -329,7 +331,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/redesPetri/redesPetri-fund.md" target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/edit/main/docs/notebooks/modelagem/redesPetri/redesPetri-CE-copy.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +348,7 @@
       
       
       
-      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/redesPetri/redesPetri-fund.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UniRobotica/gpc/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modelagem/redesPetri/redesPetri-CE-copy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -376,7 +378,7 @@
       
       
       
-      <li><a href="../../../_sources/notebooks/modelagem/redesPetri/redesPetri-fund.md" target="_blank"
+      <li><a href="../../../_sources/notebooks/modelagem/redesPetri/redesPetri-CE-copy.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -460,7 +462,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Redes de Petri – Conceitos Fundamentais</h1>
+    <h1>Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -470,30 +472,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Redes de Petri – Conceitos Fundamentais</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri-why-what-when-e-how">Redes de Petri: Why, What, When e How</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-por-que-usar-redes-de-petri">Why – Por que usar Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-o-que-sao-redes-de-petri">What – O que são Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-quando-utilizar-redes-de-petri">When – Quando utilizar Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-como-aplicar-redes-de-petri">How – Como aplicar Redes de Petri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#da-agencia-canal-as-redes-de-petri">Da Agência-Canal às Redes de Petri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#um-exemplo">2.1 Um Exemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regras-formais">2.2 Regras Formais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicoes">Definições:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal-e-dinamica">Estrutura Formal e Dinâmica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes-das-redes-de-petri">Extensões das Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1-uma-biblioteca">Exemplo 1: uma biblioteca</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conflitos">2.3 Conflitos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contatos-e-complementacao">2.4 Contatos e Complementação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processos-em-redes-condicao-evento">2.5 Processos em Redes Condição-Evento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ocorrencias-repetidas">Ocorrências repetidas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencia-ou-independencia">Sequência ou independência?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representacao-de-processos">Representação de processos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-free-nets">Contact-Free Nets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construcao-de-processos">Construção de processos</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abordagem-classica-de-modelagem">Abordagem clássica de modelagem</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#componentes-passivos-e-ativos-em-redes-de-petri">Componentes Passivos e Ativos em Redes de Petri</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-de-propriedades">Análise de Propriedades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-e-beneficios">Aplicações e Benefícios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos">2.6 Exemplos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -504,91 +503,236 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="redes-de-petri-conceitos-fundamentais">
-<h1>Redes de Petri – Conceitos Fundamentais<a class="headerlink" href="#redes-de-petri-conceitos-fundamentais" title="Link to this heading">#</a></h1>
-<p>O desenvolvimento de software nas décadas de 1960 e 1970 enfrentava desafios relacionados à <strong>complexidade crescente dos sistemas</strong> e à dificuldade de comunicação entre equipes. Nesse período, os ambientes de desenvolvimento eram colaborativos, utilizando <strong>quadros-negros (blackboards)</strong> como suporte central para a especificação de sistemas. Nos blackboards eram desenhados <strong>fluxogramas</strong>, <strong>diagramas de estados</strong>, <strong>redes de transição</strong> e outros esboços visuais, permitindo que os técnicos expressassem suas ideias de forma clara e imediata. Esse ambiente favorecia reuniões produtivas, com discussões colaborativas, e facilitava a compreensão e o compartilhamento das especificações.</p>
-<p><img alt="alt text" src="../../../_images/blackboardElet.png" /></p>
-<p>Com a transição para a <strong>programação online</strong>, os quadros foram substituídos por <strong>terminais</strong>, que não suportavam desenhos ou comunicação visual rica, resultando em perda de clareza e interação coletiva. Nesse contexto, a emergência da <strong>programação estruturada</strong> e do <strong>refinamento passo a passo (stepwise refinement)</strong> trouxe maior rigor ao desenvolvimento de software, estabelecendo métodos formais e disciplina para enfrentar a crescente complexidade dos sistemas.</p>
-<p><img alt="alt text" src="../../../_images/1970scomputers.png" /></p>
-<p>Foi nesse ambiente que surgiram as <strong>Redes de Petri</strong>, formalismo desenvolvido por <strong>Carl Adam Petri</strong> em 1962, capaz de combinar a expressividade visual dos blackboards com uma <strong>base matemática rigorosa</strong>. As Redes de Petri permitem representar <strong>estados, eventos, concorrência e sincronização</strong> de forma gráfica, oferecendo suporte para <strong>modelagem, edição, verificação e revisão de sistemas complexos</strong>. A notação formal combina clareza visual com precisão matemática, permitindo a análise de propriedades críticas, como <strong>alcance (reachability), vivacidade (liveness), deadlock e invariantes de lugar</strong>.</p>
-<p><img alt="Rede de Petri Dinâmica" src="../../../_images/4-philosophers.gif" /></p>
-<p>Nos anos 1980, <strong>Jacques Vautherin</strong> introduziu uma abordagem algébrica para Redes de Petri, substituindo tokens tradicionais por <strong>tipos de dados algébricos definidos pelo usuário</strong>, conferindo maior semântica e estrutura aos modelos. Wolfgang <strong>Reisig</strong> aprimorou esse formalismo, integrando-o com <strong>especificações algébricas formais</strong> para representar simultaneamente o <strong>controle</strong>, através da estrutura da rede, e os <strong>dados</strong>, por meio de tipos, assinaturas e axiomas. Essa combinação permitiu modelar sistemas de maneira modular e formal, preservando expressividade visual e precisão matemática.</p>
-<p>A história das Redes de Petri está intimamente ligada à <strong>crise do software</strong>, termo cunhado no final dos anos 1960 para descrever problemas emergentes no desenvolvimento de sistemas, como atrasos, custos excessivos e baixa qualidade. Durante a <strong>Conferência da OTAN sobre Engenharia de Software</strong>, realizada em Garmisch, Alemanha, em 1968, o termo foi utilizado oficialmente, destacando a frustração coletiva com os métodos da época. <strong>Edsger W. Dijkstra</strong>, em 1972, enfatizou que controlar a complexidade crescente dos sistemas era um dos problemas mais desafiadores da engenharia. Entre os sintomas da crise estavam o <strong>estouro de prazos e orçamentos</strong>, a entrega de <strong>software de baixa qualidade</strong> e sistemas difíceis de manter, frequentemente chamados de “<strong>vaporware</strong>”.</p>
-<p>As causas incluíam aumento rápido da <strong>complexidade dos sistemas</strong>, métodos de desenvolvimento artesanais, documentação insuficiente, manutenção dispendiosa e falta de <strong>profissionalização da área</strong>. A resposta emergente foi a formalização da <strong>engenharia de software</strong>, com metodologias sistemáticas, documentadas e quantificáveis. Surgiram técnicas estruturadas, ferramentas CASE e modelos de qualidade e maturidade de processos, como ISO 9001 e CMM (Capability Maturity Model). A crise também estimulou a adoção de <strong>formalismos teóricos</strong>, entre os quais as Redes de Petri se destacaram. Reisig ressalta o princípio <strong>“first model, then program”</strong>, defendendo que a modelagem formal deve preceder a implementação, especialmente em sistemas concorrentes e distribuídos.</p>
-<section id="redes-de-petri-why-what-when-e-how">
-<h2>Redes de Petri: Why, What, When e How<a class="headerlink" href="#redes-de-petri-why-what-when-e-how" title="Link to this heading">#</a></h2>
-<section id="why-por-que-usar-redes-de-petri">
-<h3>Why – Por que usar Redes de Petri<a class="headerlink" href="#why-por-que-usar-redes-de-petri" title="Link to this heading">#</a></h3>
-<p>As Redes de Petri são utilizadas para <strong>modelar e analisar sistemas dinâmicos</strong> caracterizados por <strong>concorrência, sincronização e compartilhamento de recursos</strong>. Seus principais benefícios incluem a representação <strong>gráfica e formal</strong>, que facilita a compreensão de sistemas complexos, e a capacidade de analisar propriedades essenciais, como <strong>alcance, vivacidade, deadlock e invariantes</strong>.</p>
-</section>
-<section id="what-o-que-sao-redes-de-petri">
-<h3>What – O que são Redes de Petri<a class="headerlink" href="#what-o-que-sao-redes-de-petri" title="Link to this heading">#</a></h3>
-<p>Uma Rede de Petri é composta por <strong>lugares (places)</strong>, que representam condições ou estados do sistema, <strong>transições (transitions)</strong>, que representam eventos ou ações, e <strong>tokens</strong>, que indicam a marcação atual do sistema. O grafo é <strong>bipartido</strong>, com arcos que conectam apenas lugares a transições ou transições a lugares. Essa estrutura permite combinar a <strong>representação visual intuitiva</strong> com uma <strong>base matemática rigorosa</strong>.</p>
-</section>
-<section id="when-quando-utilizar-redes-de-petri">
-<h3>When – Quando utilizar Redes de Petri<a class="headerlink" href="#when-quando-utilizar-redes-de-petri" title="Link to this heading">#</a></h3>
-<p>Redes de Petri são particularmente adequadas para sistemas que envolvem <strong>concorrência</strong>, <strong>protocolos de comunicação</strong>, <strong>sistemas distribuídos</strong>, <strong>controle e automação</strong>, bem como <strong>análise de desempenho e confiabilidade</strong>. Elas permitem simular o fluxo de tokens, validar algoritmos distribuídos e estudar a sincronização de eventos simultâneos, sendo uma ferramenta valiosa tanto para modelagem quanto para verificação formal.</p>
-</section>
-<section id="how-como-aplicar-redes-de-petri">
-<h3>How – Como aplicar Redes de Petri<a class="headerlink" href="#how-como-aplicar-redes-de-petri" title="Link to this heading">#</a></h3>
-<p>O processo de aplicação envolve a <strong>modelagem</strong>, construção de redes representando lugares, transições e tokens; <strong>análise</strong> das propriedades formais, como alcance, vivacidade e invariantes; <strong>simulação</strong> do comportamento dinâmico; <strong>validação</strong> comparando os resultados com o comportamento esperado; e <strong>refinamento</strong>, ajustando o modelo para maior precisão ou desempenho. Ferramentas como <strong>PIPE</strong> e <strong>WoPeD</strong> auxiliam na criação, edição e análise de redes de Petri.</p>
-</section>
-</section>
-<section id="estrutura-formal-e-dinamica">
-<h2>Estrutura Formal e Dinâmica<a class="headerlink" href="#estrutura-formal-e-dinamica" title="Link to this heading">#</a></h2>
-<p>Matematicamente, uma rede de Petri é definida pelo quádruplo <code class="docutils literal notranslate"><span class="pre">(P,</span> <span class="pre">T,</span> <span class="pre">F,</span> <span class="pre">M0)</span></code>, em que <code class="docutils literal notranslate"><span class="pre">P</span></code> é o conjunto de lugares, <code class="docutils literal notranslate"><span class="pre">T</span></code> o conjunto de transições, <code class="docutils literal notranslate"><span class="pre">F</span></code> a função que define os arcos e <code class="docutils literal notranslate"><span class="pre">M0</span></code> a marcação inicial. O <strong>estado de uma rede</strong> é representado pela <strong>marcação (M)</strong>, ou seja, a distribuição de tokens nos lugares. Uma <strong>transição é habilitada</strong> quando todas as suas posições de entrada possuem tokens suficientes. Ao <strong>disparar</strong>, a transição consome tokens das entradas e adiciona tokens nas saídas, alterando a marcação.</p>
-<section id="extensoes-das-redes-de-petri">
-<h3>Extensões das Redes de Petri<a class="headerlink" href="#extensoes-das-redes-de-petri" title="Link to this heading">#</a></h3>
-<p>As redes podem ser estendidas com <strong>arcos ponderados</strong>, que exigem múltiplos tokens para disparo, ou <strong>arcos inibidores</strong>, que impedem o disparo se houver token em um lugar específico. Essas extensões aumentam a expressividade do modelo, permitindo representar restrições complexas de sistemas reais.</p>
-</section>
-<section id="exemplo-1-uma-biblioteca">
-<h3>Exemplo 1: uma biblioteca<a class="headerlink" href="#exemplo-1-uma-biblioteca" title="Link to this heading">#</a></h3>
-<p><img alt="alt text" src="../../../_images/biblioteca1.png" /></p>
-<p><img alt="alt text" src="../../../_images/biblioteca2.png" /></p>
-<p><img alt="alt text" src="../../../_images/biblioteca3.png" /></p>
-<p><img alt="alt text" src="../../../_images/biblioteca4.png" /></p>
-<p><img alt="alt text" src="../../../_images/biblioteca5.png" /></p>
-<p><img alt="alt text" src="../../../_images/biblioteca6.png" /></p>
-</section>
-</section>
-<section id="abordagem-classica-de-modelagem">
-<h2>Abordagem clássica de modelagem<a class="headerlink" href="#abordagem-classica-de-modelagem" title="Link to this heading">#</a></h2>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="componentes-passivos-e-ativos-em-redes-de-petri">
-<h1>Componentes Passivos e Ativos em Redes de Petri<a class="headerlink" href="#componentes-passivos-e-ativos-em-redes-de-petri" title="Link to this heading">#</a></h1>
-<p>Em sistemas modelados com <strong>redes de Petri</strong>, é essencial distinguir <strong>componentes passivos</strong>, chamados <strong>lugares</strong>, e <strong>componentes ativos</strong>, chamados <strong>transições</strong>. Os lugares armazenam ou tornam informações visíveis. No exemplo de uma biblioteca, eles incluem <strong>contadores, estantes e o índice de livros emprestados</strong>. Esses lugares podem assumir diferentes estados e conter <strong>tokens</strong>, que representam objetos ou condições do sistema. Já as transições produzem, transportam ou modificam objetos. No mesmo exemplo, as transições representam os <strong>usuários da biblioteca</strong> em suas funções de pedido, retirada e devolução de livros, assim como as ações de <strong>retirar livros das estantes</strong> ou <strong>colocá-los de volta</strong>.</p>
-<p>As redes são representadas por <strong>círculos para lugares</strong> e <strong>retângulos para transições</strong>, conectados por <strong>arcos</strong> que indicam o fluxo de objetos ou informações. Não se deve conectar dois lugares ou duas transições diretamente, pois isso violaria a separação conceitual entre componentes passivos e ativos. Essa regra garante que todos os elementos reais do sistema sejam corretamente modelados. Por exemplo, ao representar um <strong>canal de comunicação</strong> entre computadores, é incorreto conectar dois computadores diretamente sem modelar o canal como um <strong>lugar</strong> separado, já que ele pode alterar ou perder dados. Redes de Petri permitem representar essas ações e ainda possibilitam que vários computadores compartilhem o mesmo lugar.</p>
-<p><img alt="alt text" src="../../../_images/computadores.png" /></p>
-<p>Uma vez estruturada a rede em lugares e transições, é possível evoluir para um modelo de <strong>comportamento dinâmico</strong>. No exemplo da biblioteca, os lugares contêm objetos concretos, como formulários de pedido preenchidos, livros nos balcões de retirada ou devolução, cartões no índice de livros emprestados e livros nas estantes. As transições redistribuem esses objetos conforme regras definidas pelo sistema: formulários são processados pela transição de empréstimo, livros são retirados das estantes e levados ao balcão de retirada, usuários pegam os livros que solicitaram, e livros devolvidos são recolocados nas estantes.</p>
-<p>Essa abordagem permite modelar o <strong>fluxo de objetos e ações</strong> de forma estruturada, transformando uma rede estática de lugares e transições em uma <strong>rede dinâmica</strong>, apta para análise formal do comportamento do sistema.</p>
-<section id="analise-de-propriedades">
-<h2>Análise de Propriedades<a class="headerlink" href="#analise-de-propriedades" title="Link to this heading">#</a></h2>
-<p>As redes de Petri permitem analisar propriedades formais essenciais:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="capitulo-2-redes-condicao-evento-condition-event-nets">
+<h1>Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)<a class="headerlink" href="#capitulo-2-redes-condicao-evento-condition-event-nets" title="Link to this heading">#</a></h1>
+<section id="da-agencia-canal-as-redes-de-petri">
+<h2>Da Agência-Canal às Redes de Petri<a class="headerlink" href="#da-agencia-canal-as-redes-de-petri" title="Link to this heading">#</a></h2>
+<p>Na formulação original de Carl Adam Petri (1962), as redes foram concebidas para descrever <strong>sistemas de comunicação</strong>. Ele utilizava a ideia de <strong>channel/agency nets</strong>, onde:</p>
 <ul class="simple">
-<li><p><strong>Alcance (Reachability):</strong> conjunto de todas as marcações alcançáveis a partir de uma inicial.</p></li>
-<li><p><strong>Limitabilidade (Boundedness):</strong> uma posição é k-limitada se nunca acumula mais que k tokens; a rede é limitada se todas as posições forem k-limitadas.</p></li>
-<li><p><strong>Conservação:</strong> a soma de tokens em todas as posições permanece constante durante a execução.</p></li>
-<li><p><strong>Vivacidade (Liveness):</strong> uma transição é viva se, em algum momento futuro, ainda pode ser disparada; garante que não haja deadlocks.</p></li>
+<li><p><strong>Agencies</strong> eram elementos ativos, que executavam transformações.</p></li>
+<li><p><strong>Channels</strong> eram meios de transporte ou armazenamento de objetos.</p></li>
 </ul>
-</section>
-<section id="aplicacoes-e-beneficios">
-<h2>Aplicações e Benefícios<a class="headerlink" href="#aplicacoes-e-beneficios" title="Link to this heading">#</a></h2>
-<p>Redes de Petri são utilizadas para <strong>modelagem de sistemas concorrentes e distribuídos</strong>, <strong>verificação formal de propriedades</strong> como segurança, deadlock e performance, e se aplicam em áreas como <strong>automação industrial, redes de computadores, sistemas biológicos, engenharia de software e workflows</strong>. Elas combinam <strong>representação visual intuitiva</strong> e <strong>base formal rigorosa</strong>, sendo uma ferramenta essencial para análise e especificação de sistemas complexos.</p>
-<p><img alt="alt text" src="../../../_images/elementos.png" /></p>
-<p><img alt="alt text" src="../../../_images/disparo.png" /></p>
-<p><img alt="alt text" src="../../../_images/matrizes.png" /></p>
+<p>Com o amadurecimento da teoria, essa visão foi refinada para <strong>condition/event nets</strong>, que enfatizam a estrutura lógica:</p>
+<ul class="simple">
+<li><p><strong>Conditions</strong> → estados possíveis do sistema (verdadeiros ou falsos).</p></li>
+<li><p><strong>Events</strong> → transformações que alteram quais condições são verdadeiras.</p></li>
+</ul>
+<p>Mais tarde, a mesma estrutura foi representada como <strong>place/transition nets</strong> (a notação mais comum hoje):</p>
+<ul class="simple">
+<li><p><strong>Places</strong> correspondem às condições.</p></li>
+<li><p><strong>Transitions</strong> correspondem aos eventos.</p></li>
+</ul>
+<p>Assim, <em>condition/event nets</em> podem ser vistas como a <strong>primeira formulação estruturada das redes de Petri</strong>, imediatamente anterior ao formalismo <em>place/transition</em>. Neste capítulo, seguimos a terminologia de Reisig, que parte das <strong>redes condição-evento</strong> para introduzir gradualmente o formalismo mais geral.</p>
 </section>
 <hr class="docutils" />
+<section id="um-exemplo">
+<h2>2.1 Um Exemplo<a class="headerlink" href="#um-exemplo" title="Link to this heading">#</a></h2>
+<p>Considere um sistema genérico onde objetos são:</p>
+<ol class="arabic simple">
+<li><p><strong>Produzidos</strong>,</p></li>
+<li><p><strong>Armazenados em um canal</strong>,</p></li>
+<li><p><strong>Removidos em algum instante</strong>,</p></li>
+<li><p><strong>Consumidos</strong> posteriormente.</p></li>
+</ol>
+<p>Esses objetos podem ser <strong>bens, mensagens, dinheiro, dados ou serviços</strong>. O interesse está no <strong>padrão comum de comportamento</strong>, e não em um domínio específico.</p>
+<ul class="simple">
+<li><p>O evento <strong>deliver</strong> pode ocorrer quando:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{prod\_ready\_deliver} = 1 
+\quad \land \quad 
+\text{channel\_occupied} = 0 
+\quad \land \quad 
+\text{prod\_ready\_producer} = 0
+\]</div>
+<ul class="simple">
+<li><p>Após sua ocorrência, temos:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{prod\_ready\_deliver} \gets 0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{channel\_occupied} \gets 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{prod\_ready\_producer} \gets 1
+\]</div>
+<p><img alt="alt text" src="../../../_images/Fig11ProdCons.png" /></p>
+</section>
+<section id="id1">
+<h2><img alt="alt text" src="../../../_images/Fig13DisparoCE.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="regras-formais">
+<h2>2.2 Regras Formais<a class="headerlink" href="#regras-formais" title="Link to this heading">#</a></h2>
+<p>Uma rede condição-evento é composta por:</p>
+<ul class="simple">
+<li><p><strong>Condições</strong> (<span class="math notranslate nohighlight">\(b \in B\)</span>), representadas por círculos;</p></li>
+<li><p><strong>Eventos</strong> (<span class="math notranslate nohighlight">\(e \in E\)</span>), representados por retângulos;</p></li>
+<li><p><strong>Arcos</strong> de condições para eventos (<span class="math notranslate nohighlight">\(b \to e\)</span>) e de eventos para condições (<span class="math notranslate nohighlight">\(e \to b\)</span>);</p></li>
+<li><p><strong>Tokens</strong> (&#64;), representando quais condições estão satisfeitas.</p></li>
+</ul>
+<section id="definicoes">
+<h3>Definições:<a class="headerlink" href="#definicoes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(b \to e\)</span> significa que <span class="math notranslate nohighlight">\(b\)</span> é <strong>pré-condição</strong> de <span class="math notranslate nohighlight">\(e\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e \to b\)</span> significa que <span class="math notranslate nohighlight">\(b\)</span> é <strong>pós-condição</strong> de <span class="math notranslate nohighlight">\(e\)</span>.</p></li>
+<li><p>Um <strong>caso</strong> é o conjunto <span class="math notranslate nohighlight">\(C \subseteq B\)</span> de condições satisfeitas.</p></li>
+</ul>
+<p>Um evento <span class="math notranslate nohighlight">\(e\)</span> está <strong>ativado</strong> em <span class="math notranslate nohighlight">\(C\)</span> se:</p>
+<div class="math notranslate nohighlight">
+\[
+\forall b \in \text{pre}(e): b \in C 
+\quad \land \quad 
+\forall b \in \text{post}(e): b \notin C
+\]</div>
+<p>Quando <span class="math notranslate nohighlight">\(e\)</span> ocorre, o novo caso é:</p>
+<div class="math notranslate nohighlight">
+\[
+C' = (C \setminus \text{pre}(e)) \cup \text{post}(e)
+\]</div>
+<p><img alt="alt text" src="../../../_images/Fig12DisparoCE.png" /></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conflitos">
+<h2>2.3 Conflitos<a class="headerlink" href="#conflitos" title="Link to this heading">#</a></h2>
+<p>Dois eventos <span class="math notranslate nohighlight">\(e_1, e_2\)</span> estão em <strong>conflito</strong> se ambos são ativados, mas a ocorrência de um desativa o outro.</p>
+<p>Formalmente:</p>
+<div class="math notranslate nohighlight">
+\[
+e_1, e_2 \in E \text{ estão em conflito em } C 
+\iff 
+(e_1 \text{ ativado em } C \land e_2 \text{ ativado em } C)
+\land 
+\big( C'_{e_1} \not\models e_2 \;\; \lor \;\; C'_{e_2} \not\models e_1 \big)
+\]</div>
+<p>Exemplo: dois processos competindo por uma chave para acessar memória.</p>
+<p><img alt="Dois processos competindo pelo recurso" src="../../../_images/Fig15CompRec.png" /></p>
+<p><img alt="alt text" src="../../../_images/Fig16-17Conflito.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="contatos-e-complementacao">
+<h2>2.4 Contatos e Complementação<a class="headerlink" href="#contatos-e-complementacao" title="Link to this heading">#</a></h2>
+<p>Um <strong>contato</strong> ocorre quando:</p>
+<ul class="simple">
+<li><p>todas as pré-condições de um evento estão satisfeitas,</p></li>
+<li><p><strong>e pelo menos uma de suas pós-condições também está satisfeita</strong>.</p></li>
+</ul>
+<p>Formalmente:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Contato}(e, C) \iff 
+\big( \text{pre}(e) \subseteq C \big) 
+\land 
+\big( \text{post}(e) \cap C \neq \emptyset \big)
+\]</div>
+<p>Para eliminar contatos, introduz-se a <strong>condição complementar</strong>:</p>
+<ul class="simple">
+<li><p>Para cada condição <span class="math notranslate nohighlight">\(b\)</span>, define-se <span class="math notranslate nohighlight">\(b'\)</span> tal que:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> pré-condição de <span class="math notranslate nohighlight">\(e \iff b'\)</span> é pós-condição de <span class="math notranslate nohighlight">\(e\)</span>.</p></li>
+<li><p>Em qualquer caso, exatamente um de <span class="math notranslate nohighlight">\(\{b, b'\}\)</span> está satisfeito.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="Exemplo de canal com complemento &quot;empty&quot;" src="../../../_images/Fig18Complemento.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="processos-em-redes-condicao-evento">
+<h2>2.5 Processos em Redes Condição-Evento<a class="headerlink" href="#processos-em-redes-condicao-evento" title="Link to this heading">#</a></h2>
+<p>Em redes condição-evento, como discutido na Seção 2.2, sempre há a indicação de um <strong>caso inicial</strong>.<br />
+A partir dele (ou de outro caso), <strong>eventos podem ocorrer</strong> e, como consequência, os casos podem ser modificados.</p>
+<p>Um <strong>complexo de eventos desse tipo é chamado de processo</strong>.<br />
+É importante observar que aqui <em>processo</em> significa <strong>coleção de ocorrências de eventos</strong> em sistemas ou redes, e <strong>não</strong> o mesmo conceito de <em>processo</em> do sistema operacional (como discutido na Seção 2.3).</p>
+<section id="ocorrencias-repetidas">
+<h3>Ocorrências repetidas<a class="headerlink" href="#ocorrencias-repetidas" title="Link to this heading">#</a></h3>
+<p>Em um processo, eventos podem <strong>se repetir</strong>.  Condições podem <strong>mudar repetidamente</strong> ao longo da evolução.</p>
+</section>
+<section id="sequencia-ou-independencia">
+<h3>Sequência ou independência?<a class="headerlink" href="#sequencia-ou-independencia" title="Link to this heading">#</a></h3>
+<p>Seria tentador definir um processo apenas como uma <strong>sequência de eventos</strong>.<br />
+No entanto, essa definição é inadequada:</p>
+<ul>
+<li><p>Em certos casos, dois eventos são <strong>independentes</strong>.</p></li>
+<li><p>Exemplo: na <strong>Figura 13</strong>, os eventos <em>produce</em> e <em>receive</em> podem ocorrer independentemente.</p>
+<ul class="simple">
+<li><p>A representação <em>“primeiro produção, depois recebimento”</em> é <strong>tão correta (e errada)</strong> quanto <em>“primeiro recebimento, depois produção”</em>.</p></li>
+<li><p>A rede não impõe ordem.</p></li>
+</ul>
+<p><img alt="alt text" src="../../../_images/Fig13DisparoCE.png" /></p>
+</li>
+</ul>
+<p>Portanto, <strong>um processo não deve impor sequências arbitrárias</strong> quando eventos podem ocorrer <strong>em paralelo</strong>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Se a ordem entre eventos for <strong>importante para o sistema</strong>, medidas podem ser adotadas para forçar uma sequência.</p></li>
+<li><p>Exemplo: na <strong>Figura 20</strong>, condições complementares <span class="math notranslate nohighlight">\(b_0, b_1\)</span> e um evento <span class="math notranslate nohighlight">\(e\)</span> forçam que, após a ocorrência do primeiro evento (<em>produção</em> ou <em>recebimento</em>), o evento <span class="math notranslate nohighlight">\(e\)</span> deve ocorrer antes que o outro aconteça.</p></li>
+<li><p>Assim, onde a ordem for necessária, ela pode (e deve) ser imposta.</p></li>
+<li><p>Mas, onde isso não é o caso, deve-se <strong>manter explícita a independência</strong> (paralelismo, concorrência, não-sequencialidade).</p></li>
+</ul>
+<p><img alt="alt text" src="../../../_images/Fig20Arbitrariedade.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="representacao-de-processos">
+<h3>Representação de processos<a class="headerlink" href="#representacao-de-processos" title="Link to this heading">#</a></h3>
+<p>Para representar processos de modo adequado:</p>
+<ul class="simple">
+<li><p>Cada <strong>ocorrência de evento</strong> é representada como um <strong>retângulo</strong> (box).</p></li>
+<li><p>Cada <strong>realização de condição</strong> é representada como um <strong>círculo</strong>.</p></li>
+<li><p><strong>Inscrições</strong> identificam os eventos e condições correspondentes.</p></li>
+<li><p><strong>Setas (arcos)</strong> indicam a <strong>relação causal</strong> entre condições satisfeitas e eventos ocorridos.</p></li>
+</ul>
+<p>Essa forma de representação é ilustrada na <strong>Figura 21</strong>, baseada na <strong>Figura 18</strong>.</p>
+<blockquote>
+<div><p>Observação: Apenas redes <strong>livres de contato</strong> podem ser representadas diretamente dessa forma.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="contact-free-nets">
+<h3>Contact-Free Nets<a class="headerlink" href="#contact-free-nets" title="Link to this heading">#</a></h3>
+<p>Apesar dessa restrição, isso não é uma limitação real.</p>
+<ul class="simple">
+<li><p>Vimos na Seção 2.4 que qualquer rede condição-evento pode ser transformada em <strong>rede livre de contato</strong> por meio da <strong>introdução de condições complementares</strong>.</p></li>
+<li><p>Assim, qualquer rede pode ser representada como processo.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="construcao-de-processos">
+<h3>Construção de processos<a class="headerlink" href="#construcao-de-processos" title="Link to this heading">#</a></h3>
+<p>A <strong>Figura 21</strong> mostra um exemplo da construção de processos.<br />
+A representação em forma de grafo causal explicita a independência e a ordem imposta apenas quando necessário.</p>
+<p>Essa abordagem constitui a base para compreender a <strong>concorrência em redes de Petri</strong>, pois os processos capturam:</p>
+<ul class="simple">
+<li><p><strong>Sequências obrigatórias</strong>, quando a estrutura da rede impõe ordem;</p></li>
+<li><p><strong>Independência</strong>, quando eventos podem ocorrer em paralelo.</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2><img alt="alt text" src="../../../_images/Fig21Proc.png" /><a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="exemplos">
+<h2>2.6 Exemplos<a class="headerlink" href="#exemplos" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Sistema de Produção com Máquinas e Operadores</strong> – representação de fluxos alternativos.</p></li>
+</ol>
+<p><img alt="alt text" src="../../../_images/Fig24ExMaqOper.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Posto de Gasolina Self-Service</strong> – modelagem de filas, uso de bombas e pagamento.</p></li>
+</ol>
+<p><img alt="alt text" src="../../../_images/Fig25ExAbast.png" /></p>
+<p><img alt="alt text" src="notebooks/modelagem/redesPetri/ExConstCivil.png" /></p>
+</section>
 <section id="referencias">
 <h2>Referências<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Vautherin, J. (1985). <em>Un Modèle Algébrique, Basé sur les Réseaux de Petri, pour l’Etude des Systèmes Parallèles</em>. Thèse de Docteur Ingénieur, Université de Paris-Sud.</p></li>
-<li><p>Reisig, W. (1991). <em>Petri nets and algebraic specifications</em>. Theoretical Computer Science, 80(1), 1–34.</p></li>
-<li><p>Jensen, K. (1996). <em>Coloured Petri Nets: Basic Concepts, Analysis Methods and Practical Use</em>. Springer-Verlag.</p></li>
-<li><p>Murata, T. (1989). <em>Petri Nets: Properties, Analysis and Applications</em>. Proceedings of the IEEE, 77(4), 541–580.</p></li>
-<li><p>Reisig, W. <em>A Primer in Petri Nets</em>. Springer, 2013.</p></li>
-</ol>
+<p><span id="id3">[<a class="reference internal" href="../../referencias.html#id3" title="Bruno de Athayde Prata, Gustavo Bessa Prata, and José de Paula Barros Neto. Modelo de simulação da movimentação de materiais em um canteiro de obras: um estudo ao caso do transporte de concreto. In ABEPRO-SIMPEP. Simpósio de Engenharia de Produção, 2004.">PPBN04</a>]</span>
+<span id="id4">[<a class="reference internal" href="../../referencias.html#id2" title="Wolfgang Reisig. A primer in Petri net design. Springer Science &amp; Business Media, 2012.">Rei12</a>]</span></p>
+<hr class="docutils" />
 </section>
 </section>
 
@@ -623,20 +767,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="redesPetri-CE.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Redes de Petri</strong></p>
+        <p class="prev-next-title">Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)</p>
       </div>
     </a>
     <a class="right-next"
-       href="redesPetri-CE.html"
+       href="../../complementos/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Capítulo 2 – Redes Condição-Evento (Condition/Event Nets)</p>
+        <p class="prev-next-title">Complementos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -656,30 +800,27 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Redes de Petri – Conceitos Fundamentais</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-petri-why-what-when-e-how">Redes de Petri: Why, What, When e How</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-por-que-usar-redes-de-petri">Why – Por que usar Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-o-que-sao-redes-de-petri">What – O que são Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-quando-utilizar-redes-de-petri">When – Quando utilizar Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-como-aplicar-redes-de-petri">How – Como aplicar Redes de Petri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#da-agencia-canal-as-redes-de-petri">Da Agência-Canal às Redes de Petri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#um-exemplo">2.1 Um Exemplo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regras-formais">2.2 Regras Formais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicoes">Definições:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrutura-formal-e-dinamica">Estrutura Formal e Dinâmica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensoes-das-redes-de-petri">Extensões das Redes de Petri</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1-uma-biblioteca">Exemplo 1: uma biblioteca</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conflitos">2.3 Conflitos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contatos-e-complementacao">2.4 Contatos e Complementação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processos-em-redes-condicao-evento">2.5 Processos em Redes Condição-Evento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ocorrencias-repetidas">Ocorrências repetidas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencia-ou-independencia">Sequência ou independência?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representacao-de-processos">Representação de processos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-free-nets">Contact-Free Nets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construcao-de-processos">Construção de processos</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abordagem-classica-de-modelagem">Abordagem clássica de modelagem</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#componentes-passivos-e-ativos-em-redes-de-petri">Componentes Passivos e Ativos em Redes de Petri</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analise-de-propriedades">Análise de Propriedades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacoes-e-beneficios">Aplicações e Benefícios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos">2.6 Exemplos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referências</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

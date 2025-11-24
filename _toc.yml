@@ -93,6 +93,8 @@ chapters:
             title: Redes de Petri - Fundamentos
           - file: notebooks/modelagem/redesPetri/redesPetri-CE.md
             title: Redes de Petri - Condição/Evento
+          - file: notebooks/modelagem/redesPetri/redesPetri-CE-copy.md
+            title: Redes de Petri - Condição/Evento
 
   # Capítulo 5: Complementos
   - file: notebooks/complementos/index.md
