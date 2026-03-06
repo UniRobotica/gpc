@@ -100,6 +100,8 @@ chapters:
   - file: notebooks/complementos/index.md
     title: Complementos
     sections:
+      - file: notebooks/complementos/conteudo-programatico-2026-1.md
+        title: Conteúdo Programático (sem. 2026.1)
       - file: notebooks/complementos/conteudo-programatico.md
         title: Conteúdo Programático (sem. 2025.1)
       - file: notebooks/complementos/historico-qualidade.md
