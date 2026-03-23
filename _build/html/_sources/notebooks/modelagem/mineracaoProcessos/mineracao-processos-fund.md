@@ -8,7 +8,7 @@ layout: aula
 ### Mineração de Processos - Fundamentos
 Nesta aula veremos um pouco sobre a mineração de processos, área essa que relaciona a modelagem de sistemas com a ciência de dados, permitindo transformar registros de eventos em melhorias para processos.  
 
-![mineração processos em ação](../../../figures/minProcessosAcao.png)
+![mineração processos em ação](img/aula02_fund/minProcessosAcao.png)
 
 A Figura representa o ciclo da mineração de processos, evidenciando suas principais etapas e contribuições para a melhoria contínua.
 
@@ -162,7 +162,7 @@ Como resultado, destacam-se benefícios como redução de custos, aumento da pro
 * **Aumento da produtividade:** Melhor coordenação entre as equipes, redução de interrupções e otimização do fluxo de trabalho.
 * **Maior satisfação do cliente:** Entrega do projeto dentro do prazo e com a qualidade esperada.
 
-![mineracao Processos Construcao](../../../figures/minProcessosConstrucao.png)
+![mineracao Processos Construcao](img/aula02_fund/minProcessosConstrucao.png)
 
 
 A Figura ilustra como a mineração de processos pode ser integrada ao planejamento de projetos de construção civil, promovendo uma abordagem orientada por dados. A partir da coleta e análise de registros de eventos, é possível estruturar um mapa de processo otimizado, permitindo maior transparência nas etapas do projeto.
