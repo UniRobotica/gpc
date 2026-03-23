@@ -28,37 +28,45 @@ Na Avaliação 3, a avaliação final de consolidação corresponde a 50% da not
 
 ## Conteúdo Programático
 
-O conteúdo será desenvolvido por meio de seminários apresentados pelos grupos, articulados com o desenvolvimento do projeto coletivo da disciplina.
-
-### Avaliação 1 — Estruturação e Iniciação do Projeto
-
-**Grupo 1:** Fundamentos do gerenciamento de projetos considerando sistemas de entrega de valor, princípios de gerenciamento e ciclo de vida do projeto. Introdução às transformações digitais no gerenciamento de projetos, apresentando o papel de tecnologias como BIM, mineração de processos e inteligência artificial no suporte à tomada de decisão.
-
-**Grupo 2:** Definição do problema, objetivos estratégicos e escopo inicial do projeto. Identificação e análise de stakeholders, utilizando matrizes de poder e interesse e estratégias de engajamento. Introdução ao uso de dados e plataformas digitais para apoiar o gerenciamento das partes interessadas.
-
-**Grupo 3:** Estruturação inicial do trabalho do projeto, incluindo decomposição das entregas, estrutura analítica do projeto e modelagem preliminar de processos. Introdução ao conceito de modelos digitais do projeto, incluindo BIM como ambiente de informação do projeto e sua evolução desde modelagem geométrica até gestão integrada de dados.
-
-**Grupo 4:** Identificação inicial de riscos e incertezas do projeto, incluindo análise qualitativa de probabilidade e impacto e definição de estratégias preliminares de resposta. Introdução ao uso de análise de dados e técnicas de inteligência artificial para apoiar a identificação e classificação de riscos.
-
-**Grupo 5:** Estrutura organizacional do projeto, governança e aspectos iniciais de aquisições e contratos. Identificação de recursos e estimativas preliminares de custos, discutindo o uso de modelos de informação e bases de dados para apoiar estimativas iniciais de custo e recursos.
+O conteúdo será desenvolvido por meio de seminários apresentados pelos grupos, articulados com o desenvolvimento do projeto coletivo da disciplina. Cada avaliação termina com a apresentação de toda a equipe.
 
 ---
 
-### Avaliação 2 — Planejamento Integrado, Análise de Processos e Monitoramento
+### Avaliação 1 — Estruturação e Iniciação do Projeto
 
-**Grupo 1:** Planejamento do cronograma do projeto, incluindo identificação de atividades, dependências, estimativas de duração e análise do caminho crítico. Integração entre cronograma e modelos digitais do projeto, explorando a evolução do BIM para dimensões como 3D (modelagem), 4D (planejamento temporal), 5D (custos) e possibilidades de integração com gestão de ativos e sustentabilidade.
+**Grupo 1:** Fundamentos do gerenciamento de projetos, sistemas de entrega de valor, princípios de gerenciamento e ciclo de vida do projeto. Introdução às transformações digitais, destacando BIM, mineração de processos e inteligência artificial como suporte à tomada de decisão desde o início do projeto.
 
-**Grupo 2:** Planejamento e controle de custos do projeto, incluindo estimativas, estruturação do orçamento e mecanismos de controle financeiro. Exploração da integração entre custos e modelos digitais, incluindo aplicações de BIM para análise de quantitativos e simulação de cenários de investimento.
+**Grupo 2:** Definição do problema, objetivos estratégicos e escopo inicial do projeto. Identificação e análise de stakeholders, utilizando matrizes de poder e interesse e estratégias de engajamento. Introdução a dados e plataformas digitais para apoiar a gestão das partes interessadas.
 
-**Grupo 3:** Gestão da qualidade, comunicação e colaboração no projeto, abordando gestão da informação, ambientes colaborativos digitais e integração de dados entre equipes de projeto. Discussão sobre plataformas digitais de gestão de projetos e integração de informações do projeto.
+**Grupo 3:** Estruturação inicial do trabalho do projeto, incluindo decomposição das entregas, Estrutura Analítica do Projeto (EAP) e modelagem preliminar de processos. Introdução ao BIM como ambiente digital do projeto, evoluindo da modelagem geométrica (3D) para planejamento integrado de dados.
 
-**Grupo 4:** Gestão avançada de riscos e desempenho do projeto, incluindo análise quantitativa de riscos, simulação de cenários e apoio à decisão. Introdução ao uso de inteligência artificial e análise de dados para previsão de riscos, identificação de padrões e suporte à gestão do desempenho.
+**Grupo 4:** Identificação inicial de riscos e incertezas do projeto, com análise qualitativa de probabilidade e impacto e definição de estratégias preliminares de resposta. Aplicação de análise de dados e técnicas de IA para apoiar a identificação e classificação de riscos.
 
-**Grupo 5:** Análise e melhoria de processos do projeto utilizando mineração de processos. Apresentação das etapas fundamentais do *process mining*, incluindo extração de logs de eventos, descoberta de processos, verificação de conformidade entre processo planejado e executado, análise de desempenho e identificação de oportunidades de melhoria nos fluxos de trabalho do projeto. Mining e Inteligência Artificial.
+**Grupo 5:** Estrutura organizacional do projeto, governança e aspectos iniciais de aquisições e contratos. Identificação de recursos e estimativas preliminares de custos, considerando modelos digitais e bases de dados como suporte às decisões iniciais.
+
+**Apresentação geral da equipe:** Integração de escopo, stakeholders, atividades, riscos e custos — equivalente à iniciação formal do projeto.
+
+---
+
+### Avaliação 2 — Planejamento Integrado, Processos e Monitoramento
+
+**Grupo 1:** Planejamento do cronograma, incluindo identificação de atividades, dependências, estimativas de duração e análise do caminho crítico. Integração com BIM nas dimensões 3D (modelagem), 4D (tempo) e 5D (custos), explorando gestão de ativos e sustentabilidade.
+
+**Grupo 2:** Planejamento e controle de custos, incluindo estimativas detalhadas, orçamento e mecanismos de controle financeiro. Integração de custos com BIM, análise de quantitativos e simulação de cenários de investimento.
+
+**Grupo 3:** Gestão da qualidade, comunicação e colaboração, abordando ambientes digitais e integração de informações entre equipes. Discussão sobre plataformas digitais para gestão integrada do projeto.
+
+**Grupo 4:** Gestão avançada de riscos e desempenho, incluindo análise quantitativa de riscos, simulação de cenários e apoio à decisão. Uso de IA para previsão de riscos, identificação de padrões e suporte ao monitoramento de desempenho.
+
+**Grupo 5:** Mineração de processos aplicada ao projeto. Etapas do *process mining*: extração de logs de eventos, descoberta de processos, verificação de conformidade, análise de desempenho e identificação de oportunidades de melhoria nos fluxos de trabalho. Integração com IA para otimização de processos.
+
+**Apresentação geral da equipe:** Status do projeto com integração do cronograma, custos, riscos, processos e tecnologias digitais.
+
+---
 
 ### Avaliação 3 — Consolidação do Projeto
 
-Integração das áreas de conhecimento, consolidação do projeto desenvolvido ao longo da disciplina e apresentação final da equipe com análise dos resultados, lições aprendidas e encerramento do projeto.
+Integração completa das áreas de conhecimento, consolidação do projeto desenvolvido ao longo da disciplina e apresentação final da equipe. Avaliação, análise dos resultados, documentação do projeto, lições aprendidas e encerramento formal do projeto.
 
 ---
 
