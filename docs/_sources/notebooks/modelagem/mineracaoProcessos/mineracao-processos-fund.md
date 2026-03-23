@@ -8,6 +8,16 @@ layout: aula
 ### Mineração de Processos - Fundamentos
 Nesta aula veremos um pouco sobre a mineração de processos, área essa que relaciona a modelagem de sistemas com a ciência de dados, permitindo transformar registros de eventos em melhorias para processos.  
 
+![mineração processos em ação](../../../figures/minProcessosAcao.png)
+
+A Figura representa o ciclo da mineração de processos, evidenciando suas principais etapas e contribuições para a melhoria contínua.
+
+O processo inicia-se com a extração de dados provenientes de sistemas de informação, que registram as atividades executadas ao longo do projeto. Em seguida, ocorre a descoberta de processos, na qual modelos são gerados automaticamente a partir desses dados.
+
+Na etapa de análise de desempenho, são avaliados indicadores como tempo, custo e eficiência, permitindo a identificação de gargalos e ineficiências. Paralelamente, a verificação de conformidade garante que os processos executados estejam alinhados com os modelos planejados.
+
+Por fim, a etapa de melhoria de processos utiliza os insights obtidos para propor otimizações, fechando um ciclo iterativo de aprendizado organizacional. Dessa forma, a mineração de processos se consolida como uma ferramenta essencial para a gestão inteligente e contínua de projetos.
+
 ### Dados é o novo petróleo!
 
 ![data is the new oil](img/aula01_intro/data_is_the_new_oil.png)
@@ -101,7 +111,7 @@ As planilhas podem ser usadas para fazer qualquer coisa com números, mas têm d
 
 ![alt text](img/aula01_intro/procEstupido.png)
 
-Van der Aalst critica a abordagem que foca apenas em padrões ou decisões isoladas, pois acredita que o verdadeiro valor está em entender e otimizar o processo de ponta a ponta. Ele considera "estúpido" tratar processos como uma coleção desconexa de boas práticas ou intervenções pontuais, pois isso ignora a eficiência global e os impactos no resultado final. Um processo pode ter partes otimizadas, mas se o fluxo completo não funcionar bem, o desempenho geral será comprometido. O foco em processos de ponta a ponta é essencial para alinhar eficiência local e global, gerando melhores resultados.
+Van der Aalst critica a abordagem que foca apenas em padrões ou decisões isoladas, pois acredita que o verdadeiro valor está em entender e otimizar o processo de ponta a ponta. Ele considera "estúpido" tratar processos como uma coleção desconexa de boas práticas ou intervenções pontuais, pois, isso ignora a eficiência global e os impactos no resultado final. Um processo pode ter partes otimizadas, mas se o fluxo completo não funcionar bem, o desempenho geral será comprometido. O foco em processos de ponta a ponta é essencial para alinhar eficiência local e global, gerando melhores resultados.
 
 ## Visão da mineração de processos
 
@@ -109,14 +119,31 @@ O comportamento dinâmico precisa estar relacionado a modelos de processo. Porta
 
 
 Exemplos de aplicações incluem:
-analisar processos de tratamento em hospitais, melhorar processos de atendimento ao cliente
-em uma corporação multinacional, entender o comportamento de navegação de clientes
-usando um site de reservas, analisar falhas de um sistema de manuseio de bagagem e melhorar a interface do usuário de uma máquina de raio-X. 
+* analisar processos de tratamento em hospitais, 
+* melhorar processos de atendimento ao cliente
+* em uma corporação multinacional, entender o comportamento de clientes
+* usando um site de reservas, analisar falhas de um sistema de manuseio de bagagem e 
+* melhorar a interface do usuário de uma máquina de raio-X. 
 
 
 ## Exemplo na Construção Civil
 
-Imagine a construção de um prédio. Se nos concentrarmos apenas em tarefas isoladas, como a alvenaria ou a instalação elétrica, podemos otimizar cada uma delas individualmente, mas o projeto como um todo pode sofrer. Por exemplo, se a equipe de elétrica chegar muito cedo para iniciar seu trabalho, enquanto a equipe de alvenaria ainda não concluiu sua parte, haverá um tempo de inatividade e recursos ociosos.
+Imagine a execução de um edifício em que as equipes atuam de forma isolada, cada uma buscando otimizar apenas sua própria atividade, como alvenaria ou instalações elétricas. Embora isso possa gerar ganhos locais de produtividade, a falta de integração entre as etapas compromete o desempenho global do projeto.
+
+Por exemplo, se a equipe de elétrica for mobilizada antes da conclusão da alvenaria, não haverá condições adequadas para iniciar o trabalho. Isso gera tempo ocioso, desperdício de recursos e possíveis atrasos em cadeia. Esse cenário evidencia que a otimização isolada não garante eficiência do sistema como um todo.
+
+Uma abordagem orientada por processos permite alinhar as atividades conforme suas interdependências, evitando mobilizações prematuras e melhorando a coordenação do fluxo de trabalho, o que resulta em maior eficiência e previsibilidade.
+
+![mineracao Processos versus classica](../../../figures/minProcessosXclassica.png)
+
+
+A Figura apresenta uma comparação entre a abordagem tradicional de gestão de obras, caracterizada por uma visão fragmentada, e a abordagem baseada em mineração de processos.
+
+No modelo tradicional, observa-se que as equipes trabalham de forma isolada, focando apenas em suas tarefas específicas, o que frequentemente resulta em desalinhamento, atrasos e retrabalhos. Problemas como a execução de atividades fora de sequência evidenciam a ausência de integração entre as etapas do projeto.
+
+Por outro lado, a mineração de processos oferece uma visão integrada do fluxo de trabalho, desde a concepção até a entrega da obra. Essa abordagem permite a construção de cronogramas mais realistas e interdependentes, favorecendo a coordenação eficiente das atividades.
+
+Como resultado, destacam-se benefícios como redução de custos, aumento da produtividade, melhoria da qualidade e maior satisfação do cliente, evidenciando a superioridade da abordagem orientada por dados em relação ao modelo tradicional.
 
 **Visão fragmentada:**
 
@@ -135,6 +162,12 @@ Imagine a construção de um prédio. Se nos concentrarmos apenas em tarefas iso
 * **Aumento da produtividade:** Melhor coordenação entre as equipes, redução de interrupções e otimização do fluxo de trabalho.
 * **Maior satisfação do cliente:** Entrega do projeto dentro do prazo e com a qualidade esperada.
 
+![mineracao Processos Construcao](../../../figures/minProcessosConstrucao.png)
 
 
+A Figura ilustra como a mineração de processos pode ser integrada ao planejamento de projetos de construção civil, promovendo uma abordagem orientada por dados. A partir da coleta e análise de registros de eventos, é possível estruturar um mapa de processo otimizado, permitindo maior transparência nas etapas do projeto.
+
+A aplicação dessa abordagem possibilita a identificação antecipada de riscos e ineficiências, contribuindo para a melhoria na alocação de recursos e na coordenação do fluxo de trabalho. Além disso, destaca-se o papel da comunicação clara entre equipes, que reduz falhas de integração e retrabalhos.
+
+De forma geral, a mineração de processos permite transformar o planejamento tradicional em um processo proativo, no qual decisões são tomadas com base em evidências, aumentando significativamente as chances de sucesso do empreendimento.
 
