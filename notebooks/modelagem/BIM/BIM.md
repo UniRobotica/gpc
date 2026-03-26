@@ -9,7 +9,7 @@
 
 ![alt text](img/contratacao.png)
 
-Os modelos tradicionais, como **Projeto-Concorrência-Construção** e **Design-Build**, apresentam desafios significativos de **fragmentação**, **falta de integração** e **comunicação ineficiente** entre os diferentes atores do projeto, como proprietários, projetistas, construtores e subempreiteiros. Essa fragmentação gera conflitos, atrasos, retrabalhos e impactos no orçamento e cronograma das obras.
+Os modelos tradicionais, como **Projeto-Concorrência-Construção** e **Design-Build**, apresentam desafios significativos de **fragmentação**, **falta de integração** e **comunicação ineficiente** entre os diferentes atores do projeto, como proprietários, projetistas, construtores e subempreiteiros. Essa fragmentação gera conflitos, atrasos, retrabalhos e impactos no orçamento e cronograma das obras{cite:p}`Silva_2026`.
   
 ![atores](img/atores.png)
 
