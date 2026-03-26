@@ -135,7 +135,7 @@ Por exemplo, se a equipe de elétrica for mobilizada antes da conclusão da alve
 
 Uma abordagem orientada por processos permite alinhar as atividades conforme suas interdependências, evitando mobilizações prematuras e melhorando a coordenação do fluxo de trabalho, o que resulta em maior eficiência e previsibilidade.
 
-![mineracao Processos versus classica](../../../figures/minProcessosXclassica.png)
+![mineracao Processos versus classica](img/aula02_fund/minProcessosXclassica.png)
 
 
 A Figura apresenta uma comparação entre a abordagem tradicional de gestão de obras, caracterizada por uma visão fragmentada, e a abordagem baseada em mineração de processos.
