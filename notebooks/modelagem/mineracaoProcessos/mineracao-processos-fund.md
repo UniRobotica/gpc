@@ -5,7 +5,8 @@ references: pm_aula01
 layout: aula
 ---
 
-### Mineração de Processos - Fundamentos -
+### Mineração de Processos - Fundamentos
+
 Nesta aula veremos um pouco sobre a mineração de processos, área essa que relaciona a modelagem de sistemas com a ciência de dados, permitindo transformar registros de eventos em melhorias para processos.  
 
 ![mineração processos em ação](img/aula02_fund/minProcessosAcao.png)
