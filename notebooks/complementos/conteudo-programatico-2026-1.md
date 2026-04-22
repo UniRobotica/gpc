@@ -65,17 +65,17 @@ O conteúdo será desenvolvido por meio de seminários apresentados pelos grupos
 >
 > Outro ponto central é que essa análise comparativa deve estar alinhada aos **princípios do tema do semestre e às tecnologias emergentes**, conforme discutido no IPG (https://doi.org/10.34117/bjdv12n3-042). Em especial:
 >
-> - **Foco em valor:** decisões justificadas pelo impacto em alunos, professores e operação das escolas, e não apenas por custo ou facilidade.  
-> - **Tomada de decisão baseada em dados:** uso de evidências, ainda que simplificadas (custos, atrasos, padrões).  
-> - **Integração sistêmica:** explicitar como escopo, riscos, custos e stakeholders se influenciam mutuamente.  
-> - **Adaptabilidade:** reconhecer incertezas e indicar como o projeto se ajustaria dinamicamente.  
-> - **Transparência e rastreabilidade:** deixar claro por que cada decisão foi tomada.  
+> - **Foco em valor:** decisões justificadas pelo impacto em alunos, professores e operação das escolas, e não apenas por custo ou facilidade  
+> - **Tomada de decisão baseada em dados:** uso de evidências, ainda que simplificadas (custos, atrasos, padrões)  
+> - **Integração sistêmica:** explicitar como escopo, riscos, custos e stakeholders se influenciam mutuamente  
+> - **Adaptabilidade:** reconhecer incertezas e indicar como o projeto se ajustaria dinamicamente  
+> - **Transparência e rastreabilidade:** deixar claro por que cada decisão foi tomada  
 >
 > Esses princípios não devem aparecer apenas como conceito, mas **embutidos nas decisões apresentadas**.
 >
 > ---
 >
-> Em relação à forma, recomenda-se manter a **organização acadêmica consistente**, estruturando a apresentação em:
+> Em relação à forma, recomenda-se manter uma **organização acadêmica consistente**, estruturando a apresentação em:
 > - fundamentos  
 > - metodologia  
 > - proposta da equipe  
@@ -97,26 +97,36 @@ O conteúdo será desenvolvido por meio de seminários apresentados pelos grupos
 >
 > Nesse conjunto, devem também ser apresentados instrumentos que qualificam a análise:
 >
-> - **QFD (Desdobramento da Função Qualidade):** deve demonstrar como as necessidades dos stakeholders (alunos, professores, gestores) foram traduzidas em requisitos técnicos e prioridades de intervenção nas escolas. Não deve ser genérico; precisa refletir o contexto real das cinco escolas.
+> - **QFD (Desdobramento da Função Qualidade):** deve demonstrar como as necessidades dos stakeholders (alunos, professores, gestores) foram traduzidas em requisitos técnicos e prioridades de intervenção nas escolas. Não deve ser genérico; precisa refletir o contexto real das cinco escolas  
 >
-> - **PERT/CPM:** deve representar a lógica das atividades do projeto, evidenciando sequenciamento, dependências, caminho crítico e possíveis impactos de atrasos. Deve estar coerente com o escopo definido e com a simultaneidade das intervenções nas escolas.
+> - **PERT/CPM:** deve representar a lógica das atividades do projeto, evidenciando sequenciamento, dependências, caminho crítico e possíveis impactos de atrasos. Deve estar coerente com o escopo definido e com a simultaneidade das intervenções nas escolas  
 >
 > É fundamental destacar que esses elementos **não são entregáveis isolados nem anexos formais**, mas parte de um sistema integrado de iniciação. Devem aparecer articulados na análise e utilizados como **suporte às decisões apresentadas pela equipe**.
 >
 > ---
 >
-> Alguns pontos observados ao longo das apresentações:
+> Outro ponto importante refere-se ao uso de **métodos, ferramentas e tecnologias** apresentados ao longo das atividades (como métodos ágeis, Scrum, MSP, Tableau, IA, entre outros). Na apresentação geral, a equipe deve deixar explícito:
 >
-> - houve lacuna na utilização de exemplos,   
-> - o BIM foi proposto de forma transversal, o que é positivo e deve ser mantido e ampliado como suporte à decisão,  
-> - adoatr uma organização acadêmica consistente (conceito → metodologia → aplicação), o que favorece a clareza e deve servir de referência para a apresentação geral.  
+> - o que foi selecionado para uso no projeto  
+> - por que foi escolhido, considerando o contexto das escolas  
+> - como será utilizado ao longo do projeto, incluindo execução e controle  
+>
+> Não é suficiente citar ferramentas ou métodos. É necessário demonstrar **uso aplicado e coerente com a governança do projeto**.
 >
 > ---
 >
-> Por fim, a apresentação deve deixar claro que a equipe não está apenas reproduzindo um modelo teórico, mas **propondo uma forma mais inteligente e atual de gerenciar projetos**. Isso implica reconhecer falhas na realidade observada e demonstrar, de forma objetiva, como uma abordagem integrada — orientada pelos princípios do IPG — pode reduzir essas falhas e melhorar os resultados.
+> Alguns pontos observados ao longo das apresentações:
+>
+> - houve lacuna na utilização de exemplos, o que compromete a aplicação prática  
+> - o uso transversal de BIM é positivo e deve ser mantido e ampliado como suporte à decisão  
+> - a adoção de uma organização acadêmica consistente (conceito → metodologia → aplicação) favorece a clareza e deve ser mantida  
+>
+> ---
+>
+> Por fim, a apresentação deve deixar claro que a equipe não está apenas reproduzindo um modelo teórico, mas **propondo uma forma mais inteligente e atual de gerenciar projetos**. Isso implica reconhecer falhas na realidade observada e demonstrar, de forma objetiva, como uma abordagem integrada, orientada pelos princípios do IPG, pode reduzir essas falhas e melhorar os resultados.
 >
 > Em síntese:  
-> comparar, criticar e propor — com base em valor, dados e integração.
+> comparar, criticar e propor com base em valor, dados e integração.
 
 ### Avaliação 2 — Planejamento Integrado, Processos e Monitoramento
 
