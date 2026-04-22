@@ -46,7 +46,77 @@ O conteúdo será desenvolvido por meio de seminários apresentados pelos grupos
 
 **Apresentação geral da equipe:** Integração de escopo, stakeholders, atividades, riscos e custos — equivalente à iniciação formal do projeto.
 
----
+> ## Orientações baseadas nas apresentações dos grupos
+>
+> A apresentação geral deve evoluir de uma descrição do projeto para uma **análise crítica comparativa entre a realidade observada e a proposta da equipe**. Tomando como referência a forma como as cinco escolas foram efetivamente conduzidas, a equipe deve explicitar **o que faria de forma diferente** para aumentar a assertividade, a eficiência e a entrega de valor.
+>
+> Essa comparação precisa ser objetiva e fundamentada. É necessário evidenciar, por exemplo:
+> - atrasos decorrentes de falhas de coordenação  
+> - decisões pouco orientadas a valor  
+> - ausência de integração entre áreas  
+> - baixa utilização de dados na tomada de decisão  
+>
+> A partir dessa leitura, a equipe deve se posicionar claramente, no formato:
+> “Dado esse cenário real, nossa proposta faria diferente em X, Y e Z, por estes motivos.”
+>
+> Sem esse posicionamento, a apresentação permanece descritiva e não demonstra evolução em relação à prática existente.
+>
+> ---
+>
+> Outro ponto central é que essa análise comparativa deve estar alinhada aos **princípios do tema do semestre e às tecnologias emergentes**, conforme discutido no IPG (https://doi.org/10.34117/bjdv12n3-042). Em especial:
+>
+> - **Foco em valor:** decisões justificadas pelo impacto em alunos, professores e operação das escolas, e não apenas por custo ou facilidade.  
+> - **Tomada de decisão baseada em dados:** uso de evidências, ainda que simplificadas (custos, atrasos, padrões).  
+> - **Integração sistêmica:** explicitar como escopo, riscos, custos e stakeholders se influenciam mutuamente.  
+> - **Adaptabilidade:** reconhecer incertezas e indicar como o projeto se ajustaria dinamicamente.  
+> - **Transparência e rastreabilidade:** deixar claro por que cada decisão foi tomada.  
+>
+> Esses princípios não devem aparecer apenas como conceito, mas **embutidos nas decisões apresentadas**.
+>
+> ---
+>
+> Em relação à forma, recomenda-se manter a **organização acadêmica consistente**, estruturando a apresentação em:
+> - fundamentos  
+> - metodologia  
+> - proposta da equipe  
+> - aplicação ao estudo de caso  
+> - conclusões  
+>
+> Esse encadeamento favorece a clareza e a transição entre teoria e prática. No entanto, é necessário avançar nesta fase: **a aplicação deve ter mais ênfase que o conceito**, com foco nas decisões concretas para as escolas.
+>
+> ---
+>
+> Além da apresentação, é **obrigatória a evidência dos entregáveis da fase de iniciação e planejamento preliminar como um todo**, devidamente conectados ao estudo de caso. Isso inclui, de forma integrada:
+>
+> - definição de escopo inicial  
+> - identificação e análise de stakeholders  
+> - estrutura inicial de atividades  
+> - identificação de riscos  
+> - estimativas preliminares de custos  
+> - diretrizes de governança  
+>
+> Nesse conjunto, devem também ser apresentados instrumentos que qualificam a análise:
+>
+> - **QFD (Desdobramento da Função Qualidade):** deve demonstrar como as necessidades dos stakeholders (alunos, professores, gestores) foram traduzidas em requisitos técnicos e prioridades de intervenção nas escolas. Não deve ser genérico; precisa refletir o contexto real das cinco escolas.
+>
+> - **PERT/CPM:** deve representar a lógica das atividades do projeto, evidenciando sequenciamento, dependências, caminho crítico e possíveis impactos de atrasos. Deve estar coerente com o escopo definido e com a simultaneidade das intervenções nas escolas.
+>
+> É fundamental destacar que esses elementos **não são entregáveis isolados nem anexos formais**, mas parte de um sistema integrado de iniciação. Devem aparecer articulados na análise e utilizados como **suporte às decisões apresentadas pela equipe**.
+>
+> ---
+>
+> Alguns pontos observados ao longo das apresentações:
+>
+> - houve lacuna na utilização de exemplos,   
+> - o BIM foi proposto de forma transversal, o que é positivo e deve ser mantido e ampliado como suporte à decisão,  
+> - adoatr uma organização acadêmica consistente (conceito → metodologia → aplicação), o que favorece a clareza e deve servir de referência para a apresentação geral.  
+>
+> ---
+>
+> Por fim, a apresentação deve deixar claro que a equipe não está apenas reproduzindo um modelo teórico, mas **propondo uma forma mais inteligente e atual de gerenciar projetos**. Isso implica reconhecer falhas na realidade observada e demonstrar, de forma objetiva, como uma abordagem integrada — orientada pelos princípios do IPG — pode reduzir essas falhas e melhorar os resultados.
+>
+> Em síntese:  
+> comparar, criticar e propor — com base em valor, dados e integração.
 
 ### Avaliação 2 — Planejamento Integrado, Processos e Monitoramento
 
