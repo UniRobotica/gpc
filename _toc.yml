@@ -85,14 +85,12 @@ chapters:
       - file: notebooks/modelagem/redesPetri/index.md
         title: Redes de Petri
         sections:
-          #- file: notebooks/modelagem/mineracaoProcessos/modelagem-sistemas-intro.md
-          #  title: Modelagem de Sistemas - Introdução
-          #- file: notebooks/modelagem/mineracaoProcessos/rpc_atividades_construcao.ipynb
-          #  title: Modelagem com redes de Petri Colorida (em análise)
           - file: notebooks/modelagem/redesPetri/redesPetri-fund.md
             title: Redes de Petri - Fundamentos
           - file: notebooks/modelagem/redesPetri/redesPetri-CE.md
             title: Redes de Petri - Condição/Evento
+          - file: notebooks/modelagem/redesPetri/cpn_construcao.ipynb
+            title: Redes de Petri Colorida na Construção Civil
 
   # Capítulo 5: Complementos
   - file: notebooks/complementos/index.md
