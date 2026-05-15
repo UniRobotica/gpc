@@ -10,7 +10,7 @@ O modelo utilizado nesta aula implementa uma integração entre Redes de Petri C
 
 O exemplo de aplicação utilizado é o arquivo:
 
-[Exemplo de aplicação](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev8_Aula.cpn)
+[Exemplo de aplicação](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev9_Aula.cpn)
 
 O modelo está relacionado ao exemplo de PERT/CPM utilizado em [gerenciamento de projetos](https://gpc.unirobotica.com.br/notebooks/dominios/planejamento/pertcpm-construcao-civil.html).
 
