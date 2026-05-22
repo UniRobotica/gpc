@@ -2,27 +2,24 @@
 
 ## Introdução
 
-As Redes de Petri Coloridas (Colored Petri Nets — CPN) constituem uma extensão formal das Redes de Petri clássicas voltada para modelagem de sistemas concorrentes, distribuídos, sincronizados e temporalmente dependentes. Diferentemente das Redes de Petri tradicionais, onde os tokens são indistinguíveis, as CPN introduzem tipagem forte, variáveis, expressões, listas, estruturas compostas e temporização, permitindo representar sistemas reais de elevada complexidade sem gerar explosão estrutural da rede.
+As **Redes de Petri Coloridas (Colored Petri Nets — CPN)** constituem uma extensão formal das Redes de Petri clássicas voltada para modelagem de sistemas concorrentes, distribuídos, sincronizados e temporalmente dependentes. Enquanto que nas **Redes de Petri ordinárias os tokens são indistinguíveis**,  as **CPN introduzem tipagem forte, variáveis, expressões, listas, estruturas compostas e temporização**, permitindo representar sistemas reais de elevada complexidade sem gerar explosão estrutural da rede.
 
-Na construção civil, isso é particularmente importante porque a execução de uma obra envolve simultaneamente precedência lógica, compartilhamento de equipes, sincronização operacional, concorrência entre frentes de trabalho, propagação temporal e restrições de recursos. Assim, a CPN deixa de representar apenas um fluxo abstrato de atividades e passa a representar dinamicamente o estado operacional da obra.
+Na construção civil, isso é particularmente importante porque **a execução de uma obra envolve simultaneamente precedência lógica, compartilhamento de equipes, sincronização operacional, concorrência entre frentes de trabalho, propagação temporal e restrições de recursos**. Assim, a CPN deixa de representar apenas um fluxo abstrato de atividades e passa a representar dinamicamente o estado operacional da obra.
 
-O modelo utilizado nesta aula implementa uma integração entre Redes de Petri Coloridas e o Método do Caminho Crítico (CPM — Critical Path Method), permitindo representar dependências entre atividades, propagação temporal automática, sincronização entre fluxos paralelos, compartilhamento de equipes, cálculo dinâmico do caminho crítico e execução concorrente de atividades.
+O modelo utilizado nesta aula implementa uma **integração entre Redes de Petri Coloridas** e o **Método do Caminho Crítico (CPM — Critical Path Method)**, permitindo representar dependências entre atividades, propagação temporal automática, sincronização entre fluxos paralelos, compartilhamento de equipes, cálculo dinâmico do caminho crítico e execução concorrente de atividades.
 
-O exemplo de aplicação utilizado é o arquivo:
-
-[Exemplo de aplicação](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev9_Aula.cpn)
-
-O modelo está relacionado ao exemplo de PERT/CPM utilizado em [gerenciamento de projetos](https://gpc.unirobotica.com.br/notebooks/dominios/planejamento/pertcpm-construcao-civil.html).
+A CPN utilizada no exemplo de aplicação utilizado está no arquivo [GPCrev*.cpn](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev9_Aula.cpn) disponível no repositório deste curso.
+Este modelo está relacionado ao exemplo de PERT/CPM utilizado em [gerenciamento de projetos](https://gpc.unirobotica.com.br/notebooks/dominios/planejamento/pertcpm-construcao-civil.html).
 
 ---
 
-# Redes de Petri Coloridas
+# Redes de Petri Coloridas (CPN)
 
-As CPN adicionam uma camada semântica importante às Redes de Petri tradicionais. Em vez de tokens equivalentes e sem significado interno, os tokens passam a transportar informação estruturada. Dessa forma, o estado do sistema deixa de estar exclusivamente representado na topologia da rede e passa a ser encapsulado nos próprios tokens.
+As CPN adicionam uma camada semântica importante às Redes de Petri tradicionais. Em vez de tokens (marcas) equivalentes e sem significado interno, os **tokens passam a transportar informação estruturada**. Dessa forma, o estado do sistema deixa de estar exclusivamente representado na topologia da rede e passa a ser encapsulado nos próprios tokens.
 
-Isso reduz significativamente a complexidade estrutural do modelo. Em problemas reais, como planejamento de obras, uma Rede de Petri clássica exigiria uma quantidade muito grande de lugares e transições para representar diferentes estados operacionais. Nas CPN, grande parte dessa lógica é abstraída através de tipos, variáveis e funções.
+Isso reduz significativamente a complexidade estrutural do modelo. Em problemas reais, como **planejamento de obras**, uma Rede de Petri clássica exigiria uma quantidade muito grande de lugares e transições para representar diferentes estados operacionais. Nas CPN, grande parte dessa lógica é abstraída através de tipos, variáveis e funções.
 
-O modelo compartilhado não representa apenas precedência entre atividades. Ele representa simultaneamente estado da obra, equipes alocadas, duração das atividades, tempo acumulado, sincronização operacional, propagação temporal e restrições de recursos. Assim, a rede torna-se um simulador discreto de execução da obra.
+O modelo [GPCrev*.cpn](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev9_Aula.cpn) não representa apenas o fluxo e precedências entre atividades como no tradicional CPM. Ele representa simultaneamente estado da obra, equipes alocadas, duração das atividades, tempo acumulado, sincronização operacional, propagação temporal e restrições de recursos. Assim, a rede torna-se um simulador discreto de execução da obra.
 
 ---
 
@@ -44,21 +41,18 @@ Essa estrutura representa simultaneamente:
 | `dur` | duração planejada |
 | `t` | instante temporal acumulado |
 
-Essa abordagem é muito mais sofisticada do que exemplos acadêmicos básicos de Redes de Petri, porque o token deixa de ser apenas uma marca abstrata e passa a representar efetivamente o estado operacional da obra.
-
+Nessa abordagem, o token deixa de ser apenas uma marca abstrata e passa a representar efetivamente o estado operacional da obra.
 Isso transforma a CPN em um modelo temporal, workflow executável, simulador de eventos discretos e representação dinâmica do CPM.
 
 ---
 
 # Declarações do Modelo
 
-No CPN IDE, as declarações são realizadas na aba `Declarations`. Essas declarações definem os tipos, variáveis, listas, funções e estruturas compostas utilizadas na rede.
-
-O modelo compartilhado utiliza declarações relativamente avançadas para representar a lógica da construção civil.
+No CPN IDE, as declarações são realizadas na aba `Declarations`. Essas declarações definem os tipos, variáveis, listas, funções e estruturas compostas utilizadas na rede. O modelo [GPCrev*.cpn](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev9_Aula.cpn) utiliza declarações relativamente avançadas para representar a lógica da construção civil.
 
 ---
 
-# Conjunto de Atividades
+## Conjunto de Atividades
 
 ```sml
 colset ATIV =
@@ -91,7 +85,7 @@ Um aspecto importante é que a atividade não está representada apenas estrutur
 
 ---
 
-# Modelagem das Equipes
+## Modelagem das Equipes
 
 ```sml
 colset EQUIPE =
@@ -111,9 +105,7 @@ Essa declaração representa os recursos humanos da obra.
 | `CARP` | carpinteiro |
 | `ELET` | eletricista |
 
-Essa parte do modelo é extremamente importante porque introduz explicitamente restrições operacionais. Em modelos simplificados de precedência, normalmente apenas as dependências lógicas são representadas. No entanto, em uma obra real, uma atividade depende não apenas da conclusão da predecessora, mas também da disponibilidade das equipes necessárias.
-
-Assim, a rede passa a representar simultaneamente precedência lógica, disponibilidade operacional, compartilhamento de recursos, troca de equipes e sincronização entre frentes de trabalho.
+Essa parte do modelo introduz restrições operacionais. **Em modelos simplificados de precedência de um CPM, normalmente apenas as dependências lógicas são representadas. No entanto, em uma obra real, uma atividade depende não apenas da conclusão da predecessora, mas também da disponibilidade das equipes necessárias.** Assim, a o modelo CPN passa a representar simultaneamente precedência lógica, disponibilidade operacional, compartilhamento de recursos, troca de equipes e sincronização entre frentes de trabalho.
 
 ---
 
@@ -142,7 +134,6 @@ Cada token passa a representar simultaneamente:
 - instante temporal acumulado.
 
 Essa estrutura é fundamental para compreender por que o modelo implementa uma versão dinâmica do CPM.
-
 O token deixa de representar apenas “uma marca na rede” e passa a representar uma entidade operacional completa da obra.
 
 ---
@@ -187,9 +178,8 @@ O modelo implementa explicitamente conceitos do Método do Caminho Crítico (CPM
 - folgas;
 - caminho crítico.
 
-No CPM clássico, o avanço direto da rede calcula os tempos mais cedo. O avanço reverso calcula os tempos mais tarde. O caminho crítico corresponde às atividades cuja folga é zero.
-
-No modelo CPN, essa propagação temporal é realizada dinamicamente através dos próprios tokens e funções temporais.
+No **Método do Caminho Crítimo (CPM) clássico, através do avanço direto da rede calcula-se os tempos mais cedo**. **O avanço reverso calcula os tempos mais tarde.** O caminho crítico corresponde às atividades cuja folga é zero.
+No **modelo CPN, essa propagação temporal é realizada dinamicamente** através dos próprios tokens e funções temporais.
 
 ---
 
@@ -446,7 +436,7 @@ O modelo implementa simultaneamente:
 - mecanismos equivalentes ao CPM;
 - cálculo dinâmico do caminho crítico.
 
-Diferentemente de exemplos acadêmicos simplificados, o modelo aproxima-se significativamente da dinâmica real de execução de obras, permitindo representar não apenas o fluxo lógico das atividades, mas também os aspectos temporais e operacionais envolvidos no gerenciamento da construção civil.
+Portanto, o modelo em rede Petri Colorida [GPCrev*.cpn](https://raw.githubusercontent.com/UniRobotica/Petri-nets/refs/heads/main/Exemplos/GPCrev9_Aula.cpn), disponível no repositório deste curso,  **aproxima-se significativamente da dinâmica real de execução de obras, permitindo representar não apenas o fluxo lógico das atividades, mas também os aspectos temporais e operacionais envolvidos no gerenciamento da construção civil**.
 
 ## Referências
 
