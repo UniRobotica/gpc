@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log xes.version="1.0" xmlns="http://www.xes-standard.org/">
+  <extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext"/>
+  <extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext"/>
+  <extension name="Organizational" prefix="org" uri="http://www.xes-standard.org/org.xesext"/>
+  <trace>
+    <string key="concept:name" value="APT_01"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-23T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-26T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-29T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-04T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-09T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-11T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_02"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-10T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-15T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-17T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-22T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-24T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_03"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-22T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-29T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-02T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-06T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_04"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-06T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-10T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-11T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-16T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-18T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-01-23T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_05"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-04T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-08T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-15T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-16T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_06"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-08T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-09T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-11T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-16T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-22T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-31T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-03T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_07"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-03T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-08T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-15T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-18T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-23T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_08"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-24T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-26T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-31T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-02-04T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-02-06T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-09T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-20T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-22T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_09"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-23T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-24T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-26T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-28T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-30T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-02-03T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-04T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-08T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-11T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_10"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-08T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-12T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-17T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-26T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_11"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-18T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-23T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-29T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_12"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-15T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-17T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-22T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-29T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-03T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-12T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_13"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-02T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-08T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-12T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-01-17T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_14"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-31T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-02-02T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-02-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-09T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-11T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_15"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-18T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-20T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-30T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-02T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-04T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-09T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_16"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-10T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-16T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-19T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-20T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-21T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-26T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_17"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-14T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-20T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-22T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-24T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-03T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-06T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_18"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-27T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-28T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-29T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-02T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-15T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_19"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-26T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-31T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-02-01T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-02-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-02-06T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-02-10T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-02-11T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-02-16T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="APT_20"/>
+    <event>
+      <string key="concept:name" value="Impermeabilizacao"/>
+      <date key="time:timestamp" value="2026-01-05T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Impermeabilizacao"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Parede"/>
+      <date key="time:timestamp" value="2026-01-07T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Revestimento_Piso"/>
+      <date key="time:timestamp" value="2026-01-09T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Ceramica_B"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Eletrica"/>
+      <date key="time:timestamp" value="2026-01-10T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Eletrica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Instalacao_Hidraulica"/>
+      <date key="time:timestamp" value="2026-01-13T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Hidraulica"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Pintura"/>
+      <date key="time:timestamp" value="2026-01-16T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Pintura_A"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Marcenaria"/>
+      <date key="time:timestamp" value="2026-01-20T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Equipe_Marcenaria"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+    <event>
+      <string key="concept:name" value="Vistoria_Final"/>
+      <date key="time:timestamp" value="2026-01-25T00:00:00.000+00:00"/>
+      <string key="org:resource" value="Engenheiro_Residente"/>
+      <string key="lifecycle:transition" value="complete"/>
+    </event>
+  </trace>
+</log>
