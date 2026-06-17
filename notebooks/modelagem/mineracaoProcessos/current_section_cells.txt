@@ -1,0 +1,282 @@
+CELL 11
+TYPE markdown
+**Discussão:** A existência de múltiplas variantes já indica que o processo executado não é idêntico ao planejado. Variantes com baixa frequência merecem investigação prioritária — podem representar erros de sequenciamento ou desvios críticos de qualidade.
+
+---
+
+## 7. Descoberta de Processos — Alpha Miner
+
+### 7.1 O que o Alpha Miner faz
+
+O **Alpha Miner** infere relações de causalidade a partir do log:
+- se `a` aparece sempre antes de `b`, ele tende a inferir `a → b`;
+- se `a` e `b` aparecem em ordens diferentes, ele pode identificar paralelismo;
+- se há repetição, ele tende a modelar loops simples, mas pode falhar em casos complexos.
+
+Para o engenheiro civil, essa análise é útil para validar a sequência de etapas da obra e identificar desvios comuns como retrabalho ou passos fora de ordem.
+
+### 7.2 Como executar no ProM
+
+> 1. Abra o ProM e importe o log `.xes` gerado pelo notebook.
+> 2. No painel *Workspace*, selecione o log importado.
+> 3. Clique em **Analyse**.
+> 4. Busque por **Alpha Miner**.
+> 5. Execute **Mine with Alpha Miner**.
+> 6. O ProM mostrará a Rede de Petri descoberta.
+> 7. Use o botão **Export** para salvar a rede no formato PNML, se desejar.
+
+### 7.3 Pontos de atenção
+
+- O Alpha Miner funciona melhor quando o log é mais limpo e as sequências são bem definidas.
+- Ele não lida bem com ruído e loops complexos de retrabalho.
+- Use-o como um diagnóstico inicial, não como modelo final de controle de obra.
+
+### 7.4 Espaço para figura do ProM
+
+> **Aqui você pode inserir a figura gerada no ProM:**
+> - screenshot da Rede de Petri;
+> - resultado visual do fluxo descoberto;
+> - breve observação sobre o que chamou atenção.
+
+
+----------------------------------------
+CELL 13
+TYPE markdown
+## 8. Descoberta de Processos — Inductive Miner
+
+### 8.1 Fundamentos
+
+O **Inductive Miner** constrói uma **Process Tree** recursivamente ao dividir o log em sublogs. Ele reconhece operadores como:
+- sequência (`→`);
+- paralelismo (`∧`);
+- escolha (`×`);
+- loop (`↺`).
+
+Esse algoritmo garante um modelo **sound**: sem deadlocks e sem estados inconsistentes. Isso é especialmente útil em processos de engenharia civil porque retrabalhos e variações de caminho são frequentes.
+
+### 8.2 Por que usar o Inductive Visual Miner do Leemans
+
+O plugin **Inductive Visual Miner** do Leemans é valioso porque:
+- mostra a árvore de processo e a rede de Petri juntas;
+- permite ajustar o **noise threshold** e ver como o modelo muda;
+- entrega métricas importantes como fitness, precision, generalization e simplicity.
+
+### 8.3 Como executar no ProM
+
+> 1. Importe o log no ProM e selecione-o no *Workspace*.
+> 2. Clique em **Analyse**.
+> 3. Busque por **Inductive Visual Miner**.
+> 4. Defina o **noise threshold**:
+>    - 0.0: sem filtragem, modelo mais fiel ao log;
+>    - 0.2: valor recomendado para logs com ruído moderado;
+>    - valores maiores: mais generalização.
+> 5. Execute o algoritmo e observe:
+>    - a árvore de processo;
+>    - a conversão para Rede de Petri;
+>    - as métricas de qualidade.
+
+### 8.4 Benefício para o engenheiro civil
+
+O Inductive Miner ajuda a engenharia civil a:
+- capturar retrabalhos e caminhos alternativos reais;
+- expor visualmente desvios do planejamento;
+- fornecer um modelo consistente para comparar com o cronograma;
+- embasar decisões sobre intervenções e prioridades.
+
+### 8.5 Espaço para figura do ProM
+
+> **Espaço para a figura do Inductive Visual Miner:**
+> - insira aqui o print da árvore / da Rede de Petri;
+> - descreva o que foi mais útil para a análise;
+> - destaque os elementos mais relevantes para a obra.
+
+
+----------------------------------------
+CELL 14
+TYPE markdown
+## 9. Análise de Conformidade (*Conformance Checking*)
+
+A conformidade compara o **log real** com um **modelo normativo** e aponta onde o processo diverge.
+
+### 9.1 Qual rede usar
+
+A melhor rede para essa análise é a **Rede de Petri gerada pelo Inductive Miner**. Ela é sound e reflete melhor os caminhos reais do processo.
+
+Não use a Heuristic Net nesta etapa se ela não estiver disponível no ProM atual.
+
+### 9.2 Como executar no ProM
+
+> 1. Selecione o log e o modelo de Petri no *Workspace*.
+> 2. Clique em **Analyse**.
+> 3. Busque por **Replay a Log on a Petri Net for Conformance Analysis**.
+> 4. Configure os custos:
+>    - *Move on Log* = 1;
+>    - *Move on Model* = 1;
+>    - *Move on Silent Transition* = 0 ou padrão.
+> 5. Execute o replay.
+
+### 9.3 O que observar
+
+- **Fitness**: quanto do log pode ser reproduzido pelo modelo.
+- **Desvios por atividade**: quais etapas fugiram do fluxo esperado.
+- **Traces não conformes**: onde o processo real se desviou.
+
+### 9.4 Espaço para resultado
+
+> **Cole aqui o resultado da conformidade:**
+> - fitness obtida;
+> - principais desvios identificados;
+> - atividades de maior risco.
+
+
+----------------------------------------
+CELL 15
+TYPE markdown
+## 10. Análise de Desempenho (*Performance Analysis*)
+
+A análise de desempenho mostra tempo e fluxo de trabalho, complementando a conformidade.
+
+### 10.1 O que ela mostra
+
+- duração de cada atividade;
+- tempo de espera entre etapas;
+- gargalos de ciclo;
+- variação entre casos.
+
+Para a engenharia civil, isso revela etapas que atrasam a obra, fases com alto retrabalho e atividades de maior dispersão de tempo.
+
+### 10.2 Como executar no ProM
+
+> 1. Selecione o log no *Workspace*.
+> 2. Clique em **Analyse**.
+> 3. Use plugins como **Performance Spectrum** ou **Dotted Chart**.
+> 4. Observe:
+>    - barras de tempo para cada atividade;
+>    - distribuição de duração; 
+>    - sequência de eventos no tempo.
+
+### 10.3 Interpretação para a obra
+
+- ciclos longos podem indicar retrabalho ou espera por material;
+- alta dispersão aponta falta de padronização;
+- atividades críticas devem ser priorizadas em ações corretivas.
+
+
+----------------------------------------
+CELL 18
+TYPE markdown
+## 11. Análise de Recursos
+
+A análise de recursos mostra quem faz o quê e onde há sobrecargas.
+
+### 11.1 O que precisa
+
+- um atributo de recurso no log (`resource`, `originator`, `org`);
+- informações sobre equipes ou subcontratados;
+- correspondência entre eventos e responsáveis.
+
+### 11.2 Como usar no ProM
+
+> 1. Se o log contém recursos, selecione-o no *Workspace*.
+> 2. Clique em **Analyse**.
+> 3. Busque plugins de recurso ou performance que aceitem atributos de recurso.
+> 4. Verifique:
+>    - carga de trabalho por função ou equipe;
+>    - atividades com maior número de eventos;
+>    - responsáveis por desvios ou retrabalhos.
+
+### 11.3 Benefício para a engenharia civil
+
+- identifica equipes sobrecarregadas;
+- detecta problemas de coordenação entre disciplinas;
+- ajuda a planejar mão de obra e alocação.
+
+
+----------------------------------------
+CELL 20
+TYPE markdown
+## 12. Comparação dos Algoritmos
+
+### 12.1 Alpha Miner vs Inductive Miner
+
+| Critério | Alpha Miner | Inductive Miner |
+|---|---|---|
+| Robustez ao ruído | baixa | alta |
+| Garantia de soundness | não garante | garante |
+| Captura de loops e retrabalho | limitada | eficiente |
+| Interpretação visual | Rede de Petri simples | Árvore de processo + Petri |
+| Uso recomendado | análise inicial | análise madura e de validação |
+
+### 12.2 Por que preferir o Inductive Miner
+
+- produz modelos mais estáveis para processos com retrabalho;
+- oferece visão de alternativas e escolhas;
+- facilita a comparação entre o processo real e o planejado;
+- no ProM, entrega métricas mais completas.
+
+### 12.3 Observação
+
+Use o Alpha Miner para uma primeira verificação rápida e o Inductive Miner como base principal de análise.
+
+
+----------------------------------------
+CELL 21
+TYPE markdown
+## 13. Identificação de Não Conformidades Específicas
+
+A mineração de processos permite mapear desvios concretos do fluxo esperado:
+- etapas executadas fora de ordem;
+- retrabalhos repetidos;
+- saltos de atividades;
+- atrasos de sequência.
+
+No contexto da obra, esses desvios podem indicar:
+- falta de coordenação entre equipes;
+- problemas de sequenciamento de materiais;
+- entregas parciais sem inspeção.
+
+### 13.1 Como usar o modelo
+
+- use o modelo do Inductive Miner como referência principal;
+- compare o log real com o modelo para encontrar pontos de não conformidade;
+- registre as atividades e os casos com maior número de desvios.
+
+
+----------------------------------------
+CELL 24
+TYPE markdown
+## 14. Discussão dos Resultados
+
+### 14.1 Interpretação dos Modelos Descobertos
+
+O **Alpha Miner** é útil para verificar se a sequência geral da obra está correta. Ele tende a confirmar o fluxo planejado, mas não é robusto para loops complexos e retrabalho.
+
+O **Inductive Miner** é a melhor escolha para este conteúdo:
+- capta retrabalhos reais;
+- gera um modelo sound;
+- permite comparar o processo real com o planejado com maior confiança.
+
+### 14.2 O que o engenheiro civil aprende
+
+- se o processo seguiu a ordem prevista;
+- quais atividades causaram desvio;
+- onde há maior risco de atraso;
+- como a visualização do ProM ajuda a comunicar falhas de execução.
+
+### 14.3 Exercícios Propostos
+
+Considere um exemplo abstrato inspirado em cinco escolas públicas já analisadas no projeto.
+
+- cada escola representa um caso com atividades como matrícula, triagem inicial, transporte, acolhimento e relatório de conclusão;
+- o exercício transversal deve consolidar as cinco escolas para identificar padrões comuns e variações entre unidades;
+- use os resultados para comparar se o desvio maior está em transporte, atendimento ou finalização.
+
+Esses exemplos podem ser combinados com redes de Petri e CPN já desenvolvidas, e com análises temporais ou estatísticas em R.
+
+> **Espaço para anotações:**
+> - principais resultados do exercício;
+> - conclusões operacionais;
+> - ideias de melhoria para o processo.
+
+
+----------------------------------------
