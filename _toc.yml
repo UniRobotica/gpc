@@ -82,7 +82,7 @@ chapters:
           - file: notebooks/modelagem/mineracaoProcessos/mineracao-processos-fund.md
             title: Mineração de Processos - Fundamentos 
           - file: notebooks/modelagem/mineracaoProcessos/MinProc_ConstProM.ipynb
-            title: Mineração de Processos na Construção Civil com ProM  - Parte I   
+            title: Mineração de Processos na Construção Civil com Python e ProM   
       # Redes de Petri
       - file: notebooks/modelagem/redesPetri/index.md
         title: Redes de Petri
