@@ -26,3 +26,7 @@ Fundamentos de redes de Petri.
 
 6. **[Redes de Petri - Condição/Evento](redesPetri/redesPetri-CE.md)**  
 Redes de Petri Condição/Evento.
+
+7. **[Redes de Petri - Álgebra LInear](redesPetri/AlgebraLinear_PetriNet.ipynb)**  
+Redes de Petri e Álgebra
+
