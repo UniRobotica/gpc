@@ -91,7 +91,7 @@ chapters:
             title: Redes de Petri - Fundamentos
           - file: notebooks/modelagem/redesPetri/redesPetri-CE.md
             title: Redes de Petri - Condição/Evento
-          - file: notebooks/modelagem/redesPetri/AlgebraLinerar_PetriNet.ipynb
+          - file: notebooks/modelagem/redesPetri/AlgebraLinear_PetriNet.ipynb
             title: Álgebra linear nas redes de Petri
           - file: notebooks/modelagem/redesPetri/cpn_construcao.ipynb
             title: Redes de Petri Colorida na Construção Civil
