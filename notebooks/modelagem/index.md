@@ -30,3 +30,6 @@ Redes de Petri Condição/Evento.
 7. **[Redes de Petri - Álgebra LInear](redesPetri/AlgebraLinear_PetriNet.ipynb)**  
 Redes de Petri e Álgebra
 
+8. **[RPC na Construção Civil](redesPetri/cpn_construcao_rev1.ipynb)**
+Redes de Petri Colorida na Construção Civil
+
